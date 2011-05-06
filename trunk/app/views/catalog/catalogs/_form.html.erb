@@ -1,0 +1,19 @@
+<table id='subjects' class='scrollike'>
+ <thead>
+  <tr>
+   <th>Department</th>
+   <th id='enrollment'>Subjects</th>
+  </tr>
+ </thead>
+ <tfoot>
+  <tr>
+   <td><%= link_to "Add department", edit_catalog_path(:extra => params[:extra].to_i + 1), {:id => "new_department"} %></td>
+   <td><%= submit_tag button_label, {:class=>"button"} %></td>
+  </tr>
+ </tfoot>
+ <tbody>   
+   <%= school.fields_for :departments do |dept| -%>
+     <%= render :partial => 'department', :locals => { :d => dept } -%>
+   <% end %>
+ </tbody>
+</table>

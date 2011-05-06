@@ -1,0 +1,74 @@
+ENV["RAILS_ENV"] = "test"
+require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+require 'rails/test_help'
+require 'mocha'
+
+include AuthenticatedTestHelper
+
+class Test::Unit::TestCase
+  # Transactional fixtures accelerate your tests by wrapping each test method
+  # in a transaction that's rolled back on completion.  This ensures that the
+  # test database remains unchanged so your fixtures don't have to be reloaded
+  # between every test method.  Fewer database queries means faster tests.
+  #
+  # Read Mike Clark's excellent walkthrough at
+  #   http://clarkware.com/cgi/blosxom/2005/10/24#Rails10FastTesting
+  #
+  # Every Active Record database supports transactions except MyISAM tables
+  # in MySQL.  Turn off transactional fixtures in this case; however, if you
+  # don't care one way or the other, switching from MyISAM to InnoDB tables
+  # is recommended.
+  self.use_transactional_fixtures = true
+  self.pre_loaded_fixtures = true
+
+  self.use_instantiated_fixtures  = false
+
+  # Add more helper methods to be used by all tests here...
+  def assert_difference(object, method = nil, difference = 1)
+    initial_value = object.send(method)
+    yield
+    assert_equal initial_value + difference, object.send(method), "#{object}##{method}"
+  end
+
+  def assert_no_difference(object, method, &block)
+    assert_difference object, method, 0, &block
+  end
+
+  def login_as(user)
+    @request.session[:user] = user ? users(user).id : nil
+    @request.session[:topics] = {}
+  end
+
+  def authorize_as(user, pwd = 'test', mime_type = 'application/xml')
+    @request.env["HTTP_AUTHORIZATION"] = user ? ActionController::HttpAuthentication::Basic.encode_credentials(users(user).authorization.login, pwd) : nil
+  end
+
+  def logout
+    @request.session[:user] = nil
+    @controller.instance_variable_set("@current_user",nil)
+  end
+
+  def content_type(type)
+    @request.env['Content-Type'] = type
+  end
+
+  def accept(accept)
+    @request.env["HTTP_ACCEPT"] = accept
+  end
+
+  def assert_models_equal(expected_models, actual_models, message = nil)
+    to_test_param = lambda { |r| "<#{r.class}:#{r.to_param}>" }
+    full_message = build_message(message, "<?> expected but was\n<?>.\n",
+      expected_models.collect(&to_test_param), actual_models.collect(&to_test_param))
+    assert_block(full_message) { expected_models == actual_models }
+  end
+
+  def prep_mp
+    @mp = stub(:position => 1, :reported_grade_id => 2)
+    @controller.expects(:find_from_track).returns([@mp])
+    Track.expects(:current_marking_period).returns(@mp)
+  end
+end
+
+
+

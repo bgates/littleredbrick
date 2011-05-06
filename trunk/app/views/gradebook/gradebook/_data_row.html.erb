@@ -1,0 +1,12 @@
+<tr class="<%= cycle('odd', 'even') %>">
+  <% data_row.each_with_index do |cell, i| -%>
+    <td<%= " class = text" if i==0 %>>
+      <% if cell.nil? -%>
+        &nbsp;
+      <% else -%>
+        <%= h cell.to_s.gsub(/[^0-9A-Z\s\.a-z]/,'').sub(/COMMA/,',') -%>
+      <% end -%>
+    </td>
+  <% end -%>
+  <td>&nbsp;</td>
+</tr>

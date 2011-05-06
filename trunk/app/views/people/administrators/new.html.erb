@@ -1,0 +1,25 @@
+<div id="content">
+<h1>New Administrator</h1>
+<%= error_messages_for("admin", :class => 'ie') %>
+<%= form_for @admin, :as => :admin, :url => administrators_path do |f| %>
+<%= render(:partial => "form", :locals => {:f => f, :button => "Create Administrator"}) %>
+<% end %>
+
+<%= link_to "Cancel", administrators_path %>
+</div>
+<div id="secondary">
+<h2>Make Teacher Admin</h2>
+<p>To give <abbr title="Administrators may set up terms, create user accounts, assign teaching loads, enroll students in classes, and set up calendar events and discussion groups for the staff and school.">administrative privileges</abbr> for Little<span class='company'>Red</span>Brick to a teacher, enter his or her name below.</p>
+<fieldset>
+ <legend>Find Teacher</legend>
+ <%= form_tag search_administrators_path do %>
+ <%= text_field_tag("search") %>
+  <noscript>
+    <%= submit_tag("Search", :class => 'button') %>
+  </noscript>
+ <% end %>
+</fieldset>
+<%= initial %>
+</div>
+
+

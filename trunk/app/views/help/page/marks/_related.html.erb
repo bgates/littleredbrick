@@ -1,0 +1,10 @@
+  <h2>Related Topics</h2>
+ <p>These links are to general information about the site, not help on any specific page.</p>
+ <ul>
+  <li><%= link_to "Assignments", '/help/assignments' %></li>
+  <% if current_user.is_a?Teacher %>
+  <li><%= link_to "Gradebooks", '/help/gradebooks' %></li>
+  <% end %>
+  <li><%= link_to "Marks", '/help/marks' %></li>
+ </ul>
+ <hr/>

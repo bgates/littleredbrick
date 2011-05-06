@@ -1,0 +1,38 @@
+<div id="content" class="help gapless">
+<h1>Setup Task 1: The Term</h1>
+<p>The organizing unit for all classes that are set up in LittleRedBrick is the <strong>academic term</strong>. To create a term, you need to define five attributes: the <em>daily schedule</em>, <em>duration</em>, the number of <em>marking periods</em>, any other <em>marks</em>, and the number of <em>tracks</em>. Each of these attributes is described below.</p>
+<div style="margin-right:3%">
+<h3>Daily Schedule</h3>
+<p>The only the information you need to enter about the daily schedule is <strong>the number of class periods in a typical day</strong>. If your school&#8217;s schedule varies a lot from day to day or week to week, just enter the maximum number of classes a teacher can teach or a student can study.</p>
+<h3>Duration</h3>
+<p><strong>The date classes start to the date classes end</strong>. (Don&#8217;t worry if you have a multitrack school, with some classes starting or ending on earlier dates than others. On the next page, the dates you enter on this screen can be edited to account for that.)</p>
+<h3>Marks and Marking Periods</h3>
+<p>Teachers are required to turn in grades at least one time during the term. (Right?) Each grade that is turned in is called a <em>mark</em>, and the period of time covered by the mark is, yes, a <em>marking period</em>. On this page, all you need to do is say <strong>how many times grades must be turned in</strong> (= the number of marking periods). On the next page, you will define when each marking period begins and ends. You will also be able to require additional marks, such as a cumulative grade for the term.</p>
+<h3>Tracks</h3>
+<p>As mentioned above, a multitrack school is one in which some classes start or end on earlier dates than others.</p>
+</div>
+<div>
+<h3>Example</h3>
+<p>Suppose a typical school day has classes in periods <strong>1</strong> to <strong>6</strong>. There are 180 school days in a school year. The term may be divided into <strong>four</strong> 9-week <strong>marking periods</strong>. Teachers must submit grades at the end of each one. The classes can take place in one of <strong>two tracks</strong>: one starts <strong>August 15</strong> and ends <strong>June 1</strong>, and the other starts <strong>September 30</strong> and ends <strong>July 15</strong>.</p>
+<p>The school also requires teachers to calculate grades for each semester and for the term as a whole.</p>
+<p>To get all this information into the system, enter the daily schedule:</p>
+<dl>
+ <dt>First Period</dt><dd>1</dd>
+ <dt>Last Period</dt><dd>6</dd>
+</dl>
+<p>the term length:</p>
+<dl>
+ <dt>First Day</dt><dd>August 15</dd>
+ <dt>Last Day</dt><dd>July 15</dd>
+</dl>
+<p>and the number of marking periods and tracks:</p>
+<dl>
+ <dt>Marking Periods</dt><dd>4</dd>
+ <dt>Tracks</dt><dd>2</dd>
+</dl>
+<p>After you enter all that information and submit the form, you will be presented with approximate dates for the start and end of each marking period, in each track, which you can edit as appropriate. <%= link_to "Continue term setup example", :action_name => 'term_2' %></p>
+</div>
+</div>
+<div id="secondary">
+<%= setup_task_list %>
+</div>

@@ -1,0 +1,18 @@
+<div id="content" class="upload_info">
+<h1><%= @page_h1 = "Upload Enrollment Data" -%></h1>
+  <%= notice_or_error %>
+  <%= error_messages_for("upload", :class => 'ie') %>
+    <p style="width:50%">Click the 'Find file' button to identify the Excel or OpenOffice spreadsheet file you want to upload from your computer to the database. Once you have identified a file, click 'Upload'.</p>
+ <div id="SWFUploadTarget">
+    <%= form_for(@upload, :url => enrollment_upload_path(@section), :html => {:multipart => true, :class => 'fileinputs'}) do |u| %>
+      <%= u.file_field 'filedata', :class => 'file' %>
+      <input type="submit" name="Upload" value = 'Upload' class='button file' id = 'original'/>
+    <% end %>
+  </div>
+<h2>Upload File Format</h2>
+<p>Each column of the file you upload should have the names of students in one of <%= his_or_your.html_safe %> classes. On the next page you will be asked to identify each class, and the format of the names (first-last or last, first).</p>
+<%= link_to "Cancel", new_section_enrollment_path(@section) %>
+</div>
+<div id="secondary">
+<%= initial %>
+</div>

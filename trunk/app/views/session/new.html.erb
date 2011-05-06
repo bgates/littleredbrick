@@ -1,0 +1,17 @@
+<% @page_title = 'Login'  %>
+<div id = 'content'>
+<h1>Welcome</h1>
+<%= notice_or_error %>
+<%= form_tag 'login' do %>
+<fieldset>
+<legend>Login</legend>
+<p>Please enter your user name and password.</p>
+<ul>
+  <li><label for="login">Login</label> <%= text_field_tag 'login' %></li>
+  <li><label for="password">Password</label> <%= password_field_tag 'password' %></li>
+</ul>
+<%= submit_tag 'Log in', :class => 'button' %>
+</fieldset>
+<% end %>
+<p style='float:right'>Forgot your password? Click <%= link_to "here", alternate_login_path %> to login through your email account.</p>
+</div>

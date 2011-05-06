@@ -1,0 +1,68 @@
+<div id="content">
+<h1>Edit Parent</h1>
+<%= error_messages_for("parent", :class => 'ie_high') %>
+<%= form_tag student_parent_path(@student, @parent), :method => :put do %>
+<fieldset>
+  <legend>Name</legend>
+  <ul>
+   <li><label for = 'parent_title'>Title</label><%= select("parent", "title", ['Mr','Mrs','Ms','Dr']) %></li>
+   <li><label for = 'parent_first_name'>First Name</label><%= text_field("parent", "first_name") %></li>
+   <li><label for = 'parent_last_name'>Last Name</label><%= text_field("parent", "last_name") %></li>
+  </ul>
+  <% unless @parent.errors[:login].empty? %>
+   <%= fields_for "parent[authorization]", @parent.authorization do |auth| %>
+    <li><label for='parent_authorization_login'>Login</label><%= auth.text_field 'login', {:size => 12} %></li>
+    <li><label for='parent_authorization_password' id='password_label'>Password</label><%= auth.password_field 'password', {:size => 12} %></li>
+    <li><label for='parent_authorization_password_confirmation'>Confirm Password</label><%= auth.password_field 'password_confirmation', {:size => 12} %></li>
+    <% end %>
+  <% else %>
+  <label for="reset"><abbr title="Check this box to reset <%= @parent.display_name %>&#8217;s login and password to '<%= @parent.first_name.downcase + @parent.last_name.downcase %>'">Reset</abbr> Login/Password</label>
+  <%= check_box_tag('parent[reauthorize]', "1") %>
+  <% end %>
+ <% unless @parents.blank? %>
+  <p>There <%= @parents.length == 1 ? 'is' : 'are' %> already <%= pluralize(@parents.length, 'parent') %> in the database with the name you entered. Indicate whether you want to replace <%= @parent.full_name %> with an existing parent account, or just rename.</p>
+  <ul>
+  <% @parents.each do |parent| %>
+   <li><label class='radio' for='parent_id_<%= parent.id %>'>Replace with the parent of <%= parent.children.first.full_name %></label><%= radio_button_tag(:replace, parent.id, false, :id => "parent_id_#{parent.id}") %></li>
+  <% end %>
+   <li><label for='parent_id_new' class='radio'>Change <%= @parent.full_name %>'s name to <%= @parents.first.full_name %></label><%= radio_button_tag(:replace, 'new', true, :id => 'parent_id_new') %></li>
+  </ul>
+ <% end %>
+  <%= submit_tag "Save Changes", :class => 'button' %>
+</fieldset>
+<% end %>
+<fieldset>
+  <legend>Remove Children</legend>
+  <% @children = @parent.children %>
+  <% if @children.length == 1 %>
+  <p><%= @parent.full_name %> has no children in the system besides <%= @student.first_name %>. If <%= @parent.full_name %> should not be in the database, delete the parent account.</p>
+  <%= button_to 'Delete', student_parent_path(@student, @parent), :method => :delete, :class => 'button', :id => 'delete_parent' %>
+  <% else %>
+  <table>
+   <% @children.each do |child| %>
+   <tr>
+    <td><%= child.full_name %></td>
+    <td><%= button_to 'Delete', student_parent_path(@student, @parent, :remove => child.id), :method => :delete, :class => 'button child' %></td>
+   </tr>
+   <% end %>
+  </table>
+  <% end %>
+</fieldset>
+<% if false %>
+<%= form_tag student_parent_path(@student, @parent), :method => :put do %>
+<fieldset>
+  <legend>Add Children</legend>
+  <label for="new_child">Name</label><%= text_field_tag("new_child", '', :size => 10) %>
+  <p class='explanation'>Note: <%= link_to "create a child account", new_student_path %> before linking parent to it.</p>
+  <%= submit_tag "Add", :class => 'button' %>
+</fieldset>
+<% end %>
+<% end %>
+<%= link_to "Cancel", student_parent_path(@student, @parent) %>
+</div>
+<div id="secondary">
+<h2>Notes</h2>
+<p>To edit any information about a child, go through that child&#8217;s page.</p>
+<%= initial %>
+</div>
+

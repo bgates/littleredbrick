@@ -1,0 +1,12 @@
+<div style="width:48%;float:left">
+<h2 title="Click a class name to enter assignment and grade data">Gradebooks</h2>
+   <% if @sections.empty? %>
+    <p>Click <%= link_to "here", new_teaching_load_path(current_user) %> to set up your classes.</p>
+   <% else %>
+   <ul id="gradebooks">
+    <% for section in @sections %>
+     <li><%= link_to section.name, section_gradebook_path(section) %></li>
+    <% end %>
+   </ul>
+   <% end %>
+</div>

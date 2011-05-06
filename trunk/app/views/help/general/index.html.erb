@@ -1,0 +1,12 @@
+<div id="content">
+ <h1><%= @page_title = "Help" -%></h1>
+ <h2>What Can People Do With Little<span class='company'>Red</span>Brick?</h2>
+ <p>There are four ways you can get help with this site:</p>
+ <ol>
+  <li><%= link_to "Read about it", :controller_name => 'subject_menu' %>. A handful of summaries on different aspects of the site, what information you can see about a student or a class, what discussion groups are, and more.</li>
+  <li><%= link_to "Watch help videos", :controller_name => 'video_menu' %>. This is a collection of "how-to" videos that show you every link to click and button to push to do different things in the site, like enrolling a student in a class, putting an event on the calendar, changing your password, and so on.</li>
+  <li><%= link_to "Ask for help", forums_path('help') %>. You can get tech support through the help forums. We&#8217;ll answer your questions about the site, fix things that you find broken, and take your suggestions for making the site work better for you.</li>
+  <li>Explore the site. You can always get back to this page by clicking the <code>Help</code> tab on the front page that you see when you log in. When you click <code>Help</code> on any other page, you will see information on the purpose of that specific page.</li>
+ </ol>
+</div>
+

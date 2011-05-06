@@ -1,0 +1,31 @@
+require 'test_helper'
+
+class Help::GeneralControllerTest < ActionController::TestCase
+
+  def setup
+    @request.session[:school] = 'test'
+    @request.session[:user] = 'test'
+    User.stubs(:find).returns(@user = Teacher.new)
+    @user.stubs(:school).returns(@school = School.new)
+    @user.stubs(:admin?).returns(true)
+  end
+
+  def test_action
+    get :admin
+    assert_template('admin')
+  end
+
+  def test_folder
+    get 'discussions/forums'
+    assert_template('forums')
+  end
+
+  def test_folder_2
+    get :discussions, :id => 'topics'
+    assert_response :success
+  end
+  
+  def test_not_present
+    assert_raise(ActionView::MissingTemplate) {get :nonexistent}
+  end
+end

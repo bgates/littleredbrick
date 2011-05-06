@@ -1,0 +1,38 @@
+<div id = 'content'>
+<h1>Marks</h1>
+<div class='first' style='width:50%'>
+<h2 id = 'reported_grade_0'>Grade List</h2>
+<p> This page lists all the grades that teachers will be prompted to collect over the course of the term. If your school requires teachers to calculate additional grades for all of their classes (for instance, semester or final grades), add a grade using the form to the right. Click the name of a grade to edit or delete it.</p>
+<ol id='list'>
+ <%= render(:partial => "rg", :collection => @reported_grades) %>
+ <%= notice_or_error %>
+</ol>
+</div>
+<div id="reported_grades" class='first'>
+<h2>Update Grade List</h2>
+ <%= error_messages_for("grade") %>
+ <%= form_for :grade, :url => term_reported_grades_path(@term), :html => {:id => 'insert_form'} do |f| %>
+  <fieldset>
+   <legend>Add Grade</legend>
+   <ul id = 'reported_grade_'>
+    <li>
+     <label for='grade_description'>New grade name</label>
+     <%= text_field("grade", "description", :size => 15) %>
+    </li>
+    <li>
+     <label for='grade[predecessor_id]'>Insert after</label>
+     <%= render(:partial => "list", :object => @insertables) %>
+    </li>
+   </ul>
+   <%= submit_tag 'Create Grade', :class => 'button' %>
+  </fieldset>
+ <% end %>
+</div>
+
+</div>
+<div id="secondary">
+<h2>Note</h2>
+<p>Adding a new marking period requires setting dates, and cannot be done using the form on this page. <%= link_to "Add a new marking period", new_term_marking_period_path(@term) %></p>
+<p>When you have finished editing the reported grade list, <%= link_to "return to the term page", term_path(@term) %> </p>
+<%= initial %>
+</div>

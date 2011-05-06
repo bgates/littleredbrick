@@ -1,0 +1,11 @@
+<% @page_title = 'Teachers' %>
+<div id="content">
+ <h1>Teachers Help</h1>
+ <p>The teachers page lists the schedule for every teacher in the school. Click on any teacher&#8217;s name to get an overview of that teacher&#8217;s <%= link_to "classes", help_path('teachers', 'show') %>. Click on any class name to get an overview of the <%= link_to "class", help_path('sections', 'show') %>.</p>
+ <h2>Adding a Teacher</h2>
+ <p>The link to add a new teacher is in the sidebar of the teachers page.</p>
+</div>
+<div id="secondary">
+ <h2>Other Questions?</h2>
+ <p>If there is something else you want to ask about teachers, try the <%= link_to "help forums", forums_path('help') %> for Little<span class='company'>Red</span>Brick tech support.</p>
+</div>

@@ -1,0 +1,21 @@
+<%= stylesheet_link_tag "large", :title => 'large' %>
+<div id="content">
+<h1>Accessibility</h1>
+<h2>Questions</h2>
+<ol id="questions">
+ <li><%= link_to "The text is too small to read, what can I do?", '#1' %></li>
+ <li><%= link_to "Why is the text larger on this page? Is it this size on every page now?", '#2' %></li>
+ <li><span class="question">Want to ask something else? Do you want more than the answers provided here?</span>Ask your question in the <%= link_to "help forums", forums_path('help') %>.</li>
+</ol>
+<h2 id="answer_header">Answers</h2>
+<ol id="answers">
+ <li id="#1"><span class="question">The text is too small to read, what can I do?</span>There is an <code>Enlarge</code> link in the top right corner of every page of Little<span class='company'>Red</span>Brick.
+ <%= image_tag("help/accessibility.png", {:alt => "the link to enlarge text is at the end of the navigation section", :size => "771x47"}) %> If you decide that size is too large, there is a <code>Shrink</code> link right next to it to restore the page to normal.
+ You should also know that you can make the type larger on any web page using browser-specific commands in the browser menu:
+ <dl>
+  <dt>Firefox</dt><dd><code>View<span class='arrow'>&rarr;</span>Zoom</code></dd>
+  <dt>Internet Explorer</dt><dd><code>View<span class='arrow'>&rarr;</span>Text Size</code></dd>
+ </dl></li>
+ <li id="#2"}><span class="question">Why is the text larger on this page? Is it this size on every page now?</span>We figured if you wanted to know about accessibility, you probably wanted larger type. This page is the size you will see if you click the <code>Enlarge</code> link on another page.</li>
+</ol>
+</div>

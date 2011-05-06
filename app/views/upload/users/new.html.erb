@@ -1,0 +1,31 @@
+<div id="content">
+  <h1><%= @page_h1 = "Upload #{@type.capitalize.chomp('s')} Data" -%></h1>
+  <%= notice_or_error %>
+  <%= error_messages_for("upload", :class => 'ie') %>
+    <p>Enter the name of the Excel or OpenOffice spreadsheet file you want to upload from your computer to the database. Once you have identified a file, click 'Upload'.</p>
+ 
+    <%= form_for @upload, :url => users_upload_path(:id => params[:id]), :html => { :multipart => true, :class => 'fileinputs' } do |u| %>
+      <%= u.file_field 'filedata', :class => 'file' %>
+      <input type="submit" name="Upload" value = 'Upload' class='file' id = 'original'/>
+    <% end %>
+  
+ <h2 style="margin-top:1em">What the spreadsheet file should contain</h2>
+ <p>All you need to create an account for a <%= @type.chomp('s') %> is a full name.
+ You may provide an ID number <%= 'and grade ' if @type == 'students' %>for each <%= @type.chomp('s') %> as well, though ID numbers are not necessary.</p>
+ <p>The file you upload should have all the data in columns. Each column should have either ID numbers<%= ', grades,' if @type == 'students' %> or names (first, last, or both). <strong>It does not matter what order you have the columns in</strong>, so long as each column is consistent. After the file is uploaded, you will be asked to specify what kind of data is in each column.</p>
+ <h3>Example</h3>
+ <table class="scrollike" cellspacing="0">
+<thead>
+<tr><th>First Name</th><th>Last Name</th><% if @type == 'students' %><th>Grade</th><% end %><th>ID Number</th></tr>
+</thead>
+<tbody>
+<tr class="odd"><td>Joe</td><td>Clark</td><% if @type == 'students' %><td>10</td><% end %><td>1000</td></tr>
+<tr class="even"><td>Elwood</td><td>Stetler</td><% if @type == 'students' %><td>11</td><% end %><td>1001</td></tr>
+<tr class="odd"><td>Don</td><td>Wilhour</td><% if @type == 'students' %><td>12</td><% end %><td>1002</td></tr>
+</tbody>
+</table>
+</div>
+<div id = 'secondary'>
+ <%= render(:partial => "people/enter/data_entry_options", :locals => {:id => @type}) %>
+ <%= initial %>
+</div>

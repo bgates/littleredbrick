@@ -1,0 +1,13 @@
+<div id="content">
+<h1>Edit Event &#8220;<%= @event.name %>&#8221;</h1>
+<%= error_messages_for("event") %>
+<fieldset>
+<legend>Event Details</legend>
+<%= form_for @event, :html => {:id => 'event_form'} do |f| -%>
+<%= render :partial => "form", :object => f %>
+<%= submit_tag 'Update Event', :class => 'button' %>
+<% end %>
+<%= button_to 'Delete Event', event_path(@event), :method => :delete, :class => 'button' %>
+</fieldset><%= params[:day] %>
+<%= link_to "Return", calendar_path(:year => @event.year, :month => @event.month) %>
+</div>

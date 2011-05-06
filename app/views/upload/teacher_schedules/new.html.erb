@@ -1,0 +1,15 @@
+<div id="content" class="upload_info">
+<h1><%= @page_h1 = "Upload Teacher Schedules" -%></h1>
+  <%= notice_or_error %>
+  <%= error_messages_for("upload", :class => 'ie') %>
+    <p>Click the first button to identify the Excel or OpenOffice spreadsheet file you want to upload from your computer to the database. Once you have identified a file, click 'Upload'.</p>
+ <div id="SWFUploadTarget">
+    <%= form_for(@upload, :url => teaching_load_upload_path, :html => {:multipart => true, :class => 'fileinputs'}) do |u| %>
+      <%= u.file_field 'filedata', :class => 'file' %>
+      <input type="submit" name="Upload" value = 'Upload' class='file' id = 'original'/>
+    <% end %>
+  </div>
+ <h2>What the spreadsheet file should contain</h2>
+ <p>The file you upload should have all the data in columns. The first column in each row should have either ID numbers or names, first and last, for teachers. (After the file is uploaded, you will be asked to specify which kind of data the first column contains.) The rest of the columns must have class names, <strong>exactly as they appear in your course catalog</strong>. </p>
+ <%= link_to "Cancel", teachers_path %>
+</div>

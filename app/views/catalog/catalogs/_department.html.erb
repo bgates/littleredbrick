@@ -1,0 +1,11 @@
+<tr class="<%= cycle('odd', 'even') -%>">   
+ <td class="<%= 'new_' if d.object.new_record? %>department"><%= d.text_field :name, :size => 15 -%></td>    
+ <td class = "subjects">
+  <ul>
+  <% @subject = d.object.subjects.empty?? Array.new(5, Subject.new) : d.object.subjects -%>
+    <%= d.fields_for :subjects, @subject do |s| -%>
+    <%= li(s.text_field :name, :size => 15) -%>
+  <% end -%>                      
+  </ul>
+</td>
+</tr>

@@ -1,0 +1,18 @@
+<% @page_title = 'New Marking Period' %>
+<div id="content">
+ <h1>New Marking Period Help Page</h1>
+ <p>A <strong>marking period</strong> is a period of time during a term at the end of which all classes must report grades for all students.</p>
+ <p>Marking periods must not overlap, so when you create a new one, make sure it starts after the last one ends.</p>
+ <p>If you have a multitrack school, each track can have its own dates for the beginning and end of each marking period.</p>
+</div>
+<div id="secondary">
+ <h2>Related Topics</h2>
+<p>These links are to general information about the site, not help on any specific page.</p>
+ <ul>
+  <li><%= link_to "An example term", '/help/term' %></li>
+  <li><%= link_to "Marks", '/help/marks' %></li>
+ </ul>
+ 
+ <hr/>
+ <%= render 'help/page/shared/tech_support', :subject => 'adding a marking period' -%>
+</div>

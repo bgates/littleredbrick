@@ -1,0 +1,8 @@
+<% @page_h1 = "#{@student.full_name}'s Classes".html_safe %>
+<div id="content">
+<h1><%= @student.full_name %> | Marking Period <%= marking_period_links %></h1>
+<%= render(:partial => "sections/section", :collection => @sections) %>
+</div>
+<div id="secondary">
+
+</div>

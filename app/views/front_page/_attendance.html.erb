@@ -1,0 +1,8 @@
+<div style="width:48%;float:left">
+ <h2 title="Click a class name to enter attendance data">Attendance</h2>
+   <ul id="attendance">
+    <% for section in @sections %>
+     <li><%= link_to section.name, edit_section_attendance_path(section) %></li>
+    <% end %>
+   </ul>
+</div>

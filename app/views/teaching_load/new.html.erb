@@ -1,0 +1,24 @@
+<div id="content">
+<h1><% @page_h1 = "Set #{whose}Teaching Load" %></h1>
+
+<%= notice_or_error %>
+
+<%= render(:partial => "departments") %>
+<%= form_for(@teacher, :url => teaching_load_path(@teacher, :length => params[:length], :term => params[:term]), :id => 'sections', :class => 'first equal') do |teacher_form| %>
+  <%= render(:partial => "form", :locals => { :f => teacher_form }) %>
+<% end %>
+<%= link_to "Back", session[:return_to], :id  => 'cancel' %>
+</div>
+<div id="secondary">
+<h2>Notes</h2>
+<% if current_user.admin? %>
+<p>To simultaneously create teaching assignments for multiple teachers, click <%= link_to "here", new_teaching_load_upload_path %></p>
+<hr/>
+<% end %>
+<%= term_change_link %>
+<%= initial %>
+<% if current_user.admin? %>
+<p>If there are department or subject names missing, add them in <%= link_to "the catalog.", departments_path %></p>
+<% end %>
+
+</div>

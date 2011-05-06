@@ -1,0 +1,18 @@
+<% @page_title = 'Adding an Event' %>
+<div id="content" class="help">
+ <h1>Event Creation Help Page</h1>
+ <p>To add an event, enter the following qualities:</p>
+ <dl class="notice">
+  <dt>Name</dt><dd>The name of the event will appear on the calendar, so try to make it short enough to fit in one of those little boxes</dd>
+  <dt>Date</dt><dd>When the event happens</dd>
+  <dt>Audience</dt><dd>This determines who can see the event</dd>
+  <dt>Description</dt><dd>If the name is not descriptive enough</dd>
+ </dl>
+ <p style="margin-top:7em">If you have a multi-day event, you need to add it as a separate event for each day.</p>
+</div>
+<% if current_user.is_a?Staffer %>
+<div id="secondary">
+  <%= render 'help/page/shared/tech_support', 
+      :subject => 'adding events to the calendar' -%>
+</div>
+<% end %>

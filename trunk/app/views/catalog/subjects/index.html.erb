@@ -1,0 +1,50 @@
+<div id="content">
+<h1><%= @page_h1 = "#{@department.name} Department" %></h1>
+<h2>Total Enrollment: <%= @department.enrollment %></h2>
+<%= notice_or_error %>
+<p>The table below shows the number of sections of each subject in this department during this term, as well as the teacher and enrollment for each section.</p>
+<table id='subjects' class='scrollike'>
+ <thead>
+  <tr>
+   <th>Subjects(Sections)</th><th id='enrollment'>Teacher(Enrollment)</th>
+  </tr>
+ </thead>
+<% if current_user.admin? %>
+ <tfoot>
+ <tr><td class='text' colspan='2'><%= link_to "New Subject", new_department_subject_path(@department), :title => "Click to name a new #{@department.name} subject" %></td></tr>
+ </tfoot>
+<% end %>
+ <tbody>
+  <% @department.subjects.each do |subject| %>
+    <% sections = subject.sections.select(&:current) -%>
+  <tr class = '<%= cycle('odd', 'even') %>'>
+   <td class='text'>
+    <%= subject_link(subject, @department, "#{subject.name}(#{sections.length})") %>
+   </td>
+    <td>
+     <ul>
+     <% sections.each do |section| %>
+      <%= li section_link(section, "#{section.teacher.last_name}(#{section.enrollment})", current_user.may_see?(section), {:id => section.id}) %>
+     <% end %>
+     </ul>
+    </td>
+  <% end %>
+  </tr>
+ </tbody>
+</table>
+</div>
+<div id='secondary'>
+<h2>Departments</h2>
+<ul>
+ <% for department in @departments %>
+  <li>
+   <%= link_to_unless_current department.name, department_subjects_path(department), :title => "Click to view enrollment information for subjects in the #{department.name} department" %>
+   <%= link_to '(edit)', edit_department_path(@department), :title => "Click to edit the name of the department and/or any of its subjects" if @department == department && current_user.admin? %>
+  </li>
+ <% end %>
+</ul>
+<hr/>
+<%= link_to "Return to course catalog", departments_path %>
+<%= term_link %>
+</div>
+

@@ -1,0 +1,29 @@
+<% @page_h1 = "Forum Members" %>
+<div id="content">
+<h1><%= "Participants in the #{@discussable.name.titleize} Forums" %></h1>
+<p class="subtitle">
+<%= number_with_delimiter(@user_count) %> <%= 'participants'[] %>, <abbr title="Number of people who have made posts to these forums within the last hour"><%= @posts.size %> <%= 'active'[] %></abbr>
+</p>
+
+<table border="0" cellspacing="0" cellpadding="0" class="wide forums beast">
+  <tr>
+    <th ><%= 'Name'[:name_or_login] %></th>
+    <th width="1%"><%= 'Posts'[:posts_title] %></th>
+    <th width="30%">Last Post</th>
+  </tr>
+<% @users.each do |user|-%>
+  <tr>
+    <td><%= reader_link(@discussable, user) %>
+      <span style="color:#666">
+      <%= "(admin)"[:admin_in_parens] if user.is_a?(Staffer) && !user.is_a?(Teacher) %>
+      </span>
+      </td>
+    <td class="ca inv"><%= user.forum_activities[0].posts_count %></td>
+    <td><%= user.forum_activities[0].updated_at.strftime("%I:%M%p %A %b %d") rescue '' %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= pagination @users %>
+</div>
+

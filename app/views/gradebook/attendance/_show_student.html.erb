@@ -1,0 +1,11 @@
+<tr class="<%= cycle('odd','even') %>">
+ <td><%#= student.position %></td>
+ <td class='text'><%= link_to show_student.last_first, rbe_attendance_path(@section, show_student), :title => "Click to see #{show_student.first_name}&#39;s attendance history".html_safe %></td>
+ <td><%= show_student.grade %></td>
+ <td>&nbsp;</td>
+ <% (@start..@finish).each do |day| %>
+   <% next if day.cwday > 5 %>
+   <td><%= absence_for(show_student, day) %></td>
+ <% end %>
+ <td>&nbsp;</td>
+</tr>

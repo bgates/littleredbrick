@@ -1,0 +1,13 @@
+<% @page_title = 'Editing an Administrator' %>
+<div id="content">
+ <h1>Editing An Administrator Help Page</h1>
+ <h2>Editing Your Own Account</h2>
+ <p>If you edit your own account, you will see the same form as if you clicked the <em>Edit Account</em> link that is found on every page. (Top right. Just below the <em>Logout</em> link.) In particular, you will be able to enter your own password. So here&#8217;s some advice on that:</p>
+ <%= render(:partial => "/help/page/accounts/password") %>
+ <h2>Editing Another Administrator&#8217;s Account</h2>
+ <p>Any administrator can edit any other administrator&#8217;s account to fix typos in their names. You can also <strong>reset</strong> another administrator&#8217;s login and password for someone who has forgotten how to log in. The reset function sets the administrator&#8217;s login and password to the full name in lowercase, so <em>Albus Dumbledore</em> would have his login and password reset to <code>albusdumbledore</code>.</p>
+</div>
+<div id="secondary">
+  <%= render 'help/page/shared/tech_support', 
+    :subject => 'editing administrator accounts' -%>
+</div>

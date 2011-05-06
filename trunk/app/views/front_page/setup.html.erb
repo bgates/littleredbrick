@@ -1,0 +1,31 @@
+     <div id = "content">
+      <h1>Welcome</h1>
+      <%= notice_or_error %>
+      <p>Follow the steps below to get Little<span class="company">Red</span>Brick ready for everyone at <%= @school.name %> to use<span title="This will be over in no time.">.</span></p>
+      <div>
+       <h2>1. Upcoming Term <%= checkmark if @terms.length > 0 %></h2>
+       <p>Start by setting up the academic term, including the number of class periods per day, the marking period dates, and any grades which teachers must submit. <%= conditional_term_link %></p>
+      </div>
+      <div>
+       <h2>2. People <%= checkmark if @students > 0 && @teachers.length > 0 %></h2>
+       <p>Create accounts for all <%= conditional_create_students_link %> and <%= conditional_create_teachers_link %> at your school; additional <%= link_to('staff', enter_multiple_path('admin/administrators')) %> accounts are optional, and parent accounts are created automatically for each student. Right now <%= link_to_if @students > 0, pluralize(@students,'student'), students_path, :title => 'Click to see the names of the students who have accounts' %>, <%= conditional_teachers_link %>, and <%= link_to_if @staffers > 0, pluralize(@staffers, 'other staff member'), administrators_path, :title => 'Click to see the names of the administrators who have accounts' %> have accounts. <%= pending_accounts %> <%= term_reminder %></p>
+      </div>
+      <div>
+       <h2>3. Classes <%= checkmark if @subjects > 0 %></h2>
+       <p>Enter the departmental structure for your school&#39;s classes to make it easier to assign teaching loads now and to analyze class performance later. <%= conditional_catalog_link %></p>
+      </div>
+      <hr/>
+      <div>
+       <h2>4. Classes for Teachers <%= checkmark if @teachers_with_classes == @teachers.length && @teachers_with_classes > 0 %></h2>
+       <p>Once a teacher has an account, and the course catalog has been entered, that teacher or an administrator can set up the teacher&#39;s class schedule. <%= conditional_setup_links.html_safe %></p>
+      </div>
+      <div>
+       <h2>5. Classes for Students <%= checkmark if @all_enrolled %></h2>
+       <p>Once a teacher has been assigned classes, that teacher or an administrator can log in and assign students to the classes in their online gradebooks.</p>
+       <%= conditional_class_assignment_link.html_safe %>
+      </div>
+      <div>
+       <h2>Setup Help</h2>
+       <p>Click <%= link_to "here", general_help_path('setup') %> if you have any questions about the setup process.</p>
+      </div>
+     </div>

@@ -1,0 +1,65 @@
+<div id= "content">
+<h1>New Term</h1>
+<%= error_messages_for("term", :class => 'ie_high') %>
+<%= form_tag terms_path do %>
+  <fieldset>
+  <legend>Daily Schedule</legend>
+  <p>If your school will have a set number of periods (classes) in a typical school day in the new term, indicate whether there is a 'Zero Period'.</p>
+  <ul class="line">
+   <li><label for="term_low_period" class="periods">First Period</label><%= select("term", "low_period", (0..1), :include_blank => true) %></li>
+  </ul>
+  
+  <p style="clear:both">If your school has a set number of periods per day, enter the last period number. Otherwise, mark the maximum number of classes a teacher can teach.</p>
+  <ul class="line">
+  <li><label class="periods" for="term_high_period">Last Period/Classes per Teacher</label><%= select("term", "high_period", (1..10), :include_blank => true) %></li>
+  </ul>
+  </fieldset>
+  <fieldset>
+  <legend>Term Length</legend>
+  <p>Indicate the duration of the upcoming term (academic year, summer school session, etc)</p>
+  <table>
+   <tr>
+    <td style="padding-bottom:1.5em;padding-left:0"><label for="term_start">First Day</label></td>
+    <td><%= datebocks_field 'term', 'start' %></td>
+    <td style="padding-bottom:1.5em"><label for="term_finish">Last Day</label></td>
+    <td id='finish'><%= datebocks_field 'term', 'finish', nil, false %></td>
+   </tr>
+  </table>
+  </fieldset>
+  <% if @last_term %>
+    <fieldset>
+    <legend>Archive Previous Term</legend>
+    <p>Please indicate when you would like to remove <%= @tracks.length == 1 ? 'the current term' : 'each track of the current term' %> from the database to allow teachers to start making assignments and grades for the new term. Right now, teachers and students logging in see classes from the term which runs <%= term_name @last_term %>. On the dates you choose, <%= @tracks.length == 1 ? 'that term' : 'each track from that term' %> will be removed, clearing space for the new term. You should choose dates that are after the end date for the current <%= @tracks.length == 1 ? 'term' : 'track' %> (so that teachers can copy over final grades to a permanent record), but before the start date for the new term (in case teachers want to start entering assignments before the first day of school in that term). </p>
+    <%= error_messages_for(*@tracks) %>
+    <ul>
+    <% for @track in @tracks %>
+      <li><%= datebocks_field 'track[]', 'archive', 'Archive', false %></li>
+    <% end %>
+    </ul>
+    </fieldset>
+  <% end %>
+  <fieldset>
+  <legend>Marking Periods and Tracks</legend>
+  <p>Select the number of times official grades will be reported during the term (marking periods) and, for multitrack schools, the number of tracks in the term.</p>
+  <ul class="line">
+  <li><label for="term_n_marking_periods">Marking Periods
+    </label><%= select("term", "n_marking_periods", (1..8)) %></li>
+    <li><label for="term_n_tracks" style="margin-left:100px">Tracks</label>
+    <%= select("term", "n_tracks", (1..8), :include_blank => true) %> (Multitrack schools only)</li>
+  </ul>
+  <%= submit_tag 'Create Term', :class => 'button' %>
+  </fieldset>
+<% end %>
+<%= link_to 'Cancel', term_path(@last_term) if @last_term %>
+</div>
+<div id = "secondary">
+  <h2>This Page</h2>
+  <p>Set the basic facts about your school term: Number of classes per day, number of times grade reports are sent home (marking periods), and number of independent tracks during the term</p>
+  <h2>Next Page</h2>
+  <h3>Marking Period Dates</h3>
+  <p>On the next page, you will be able to set all marking period start and end dates. These dates can be set independently for each track in a multitrack school.</p>
+  <h3>Reported Grades</h3>
+  <p>The next page will also show a list of grades that all teachers must keep, namely, grades for each marking period in the term. You will be able to add to that list if teachers are responsible for other grades (cumulative, final exam, semester totals, etc).</p>
+  <%= initial %>
+</div>
+

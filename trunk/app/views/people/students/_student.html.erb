@@ -1,0 +1,14 @@
+<tr id = 'student_<%= student.id %>' class='<%= cycle('odd','even') %>'>
+<% if params[:term] %>
+ <td class='text'><%= link_to "#{student.last_name}, #{student.first_name}", term_staging_path(@school.terms.last, :student => student) %></td>
+ <td class='number'><%= student.id_number %></td>
+ <td class='number'><%= student.grade %></td>
+ <%= section_list(student) %>
+<% else %>
+ <td class='text'><%= link_to "#{student.last_name}, #{student.first_name}", student_path(student), :title => "Click to see #{student.first_name}&#39;s performance in all classes".html_safe %></td>
+ <td class='number'><%= student.id_number %></td>
+ <td class='number'><%= student.grade %></td>
+ <%= section_links(student) %>
+<% end %>
+</tr>
+

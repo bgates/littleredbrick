@@ -1,0 +1,6 @@
+<% unless selection_counter == 0 %>
+<td>
+ <%= select('import', selection_counter, @assignments.collect {|a| ["#{a.position} (#{a.date_due ? a.date_due.strftime("%a %b %d") : 'Due date for each student'})", a.id]}, {:include_blank => true}, {:class => 'columns'}) -%>
+</td>
+<% end %>
+

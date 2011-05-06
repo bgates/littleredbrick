@@ -1,0 +1,171 @@
+require 'test_helper'
+
+class Gradebook::MarksControllerTest < ActionController::TestCase
+
+  def setup
+    @request.session[:school] = @request.session[:user] = :exists
+    @controller.stubs(:set_user).returns(@user = Staffer.new)
+    @user.stubs(:school).returns(@school = School.new)
+    @term = Term.new
+    @term.stubs(:to_param).returns 'id'
+    @school.stub_path('terms.find').returns(@term)
+    @section = sections(:marks)
+  end
+  # gotta show the reported grades for a section, and milestones for all students
+  #gotta add a section reported grade before everything, in the middle, and at the end
+
+  def test_fail_login
+    Gradebook::MarksController.public_instance_methods(false).each do |method|
+      [nil,3001].each do |user|
+        @request.session[:user] = user
+        get method.to_sym, :section_id => sections(:section).id
+        assert_redirected_to login_path
+      end
+    end
+  end
+
+  def test_index_and_new
+    %w{new index}.each do |action|
+      get action, :section_id => sections(:marks)
+      assert_template(action)
+    end
+  end
+
+  def test_empty_index
+    ReportedGrade.destroy_all
+    get 'index', :section_id => sections(:marks)
+    assert_template('index')
+  end
+
+  def test_show
+    Section.expects(:find).returns(@section = Section.new)
+    @section.stubs(:term).returns(Term.new)
+    @section.stubs(:teacher).returns(users(:Sir))
+    ReportedGrade.expects(:find).returns(@rg = ReportedGrade.new(:description => 'Marking Period 1'))
+    get :show
+  end
+  
+  def test_no_predecessors
+    get 'edit', :section_id => sections(:marks), :id => reported_grades(:mark_test_1)
+    assert_template('edit')
+    assert_equal assigns(:predecessors), []
+  end
+
+  def test_one_predecessor
+    @mark, @predecessor = reported_grades(:mark_test_2), reported_grades(:mark_test_1)
+    get 'edit', :section_id => sections(:marks), :id => @mark
+    assert_equal assigns(:predecessors), @predecessor.milestones.group_by(&:rollbook_entry_id)
+  end
+
+  def test_two_predecessors
+    @mark = reported_grades(:mark_test_final)
+    get 'edit', :section_id => sections(:marks), :id => @mark
+  end
+
+  def test_create
+    before = @section.reported_grades.length
+    post :create, :section_id => sections(:marks), :mark => {:description => 'test', :predecessor_id => reported_grades(:mark_test_1).id}
+    assert_redirected_to gradebook_marks_url(@section)
+    assert_equal before + 1, @section.reported_grades(true).length
+  end
+
+  def test_fail_create
+    before = @section.reported_grades.length
+    post :create, :section_id => sections(:marks), :mark => {:description => '', :predecessor_id => reported_grades(:mark_test_1).id}
+    assert_template('new')
+    assert_equal before, @section.reported_grades(true).length
+    assert_select 'div#errorExplanation'
+  end
+
+  def test_update
+    @grade, @hash = @section.reported_grades[0], Hash.new
+    @grade.milestones.each{|m| @hash[m.id] = {:earned => m.earned + 1, :possible => m.possible + 10}}
+    send_update(:commit => 'Save')
+    assert_redirected_to gradebook_marks_url(@section)
+    #follow_redirect - can't with named url
+    #assert_select 'div#notice'
+    @grade.milestones(true).each{|m|assert_equal m.earned, @hash[m.id][:earned]}
+  end
+
+  def test_update_fail
+    @grade, @hash = @section.reported_grades[0], Hash.new
+    @grade.milestones.each{|m| @hash[m.id] = {:earned => 'fail', :possible => 100}}
+    send_update :commit => 'Save'
+    assert_template('edit')
+    assert_select 'div#errorExplanation'
+  end
+
+  def test_update_avg_2
+    @controller.expects(:current_user).at_least_once.returns(@teacher = Teacher.new)
+    Section.expects(:find).returns(@section = mock(:teacher => @teacher, :id => 'id', :term => mock(:id => 'id')))
+    ReportedGrade.expects(:find).returns(@mark = ReportedGrade.new)
+    @mark.expects(:average_of).returns(stub(:inject => true))
+    post :update, :method => :put, :commit => 'Average', :avg => {}
+    assert_redirected_to gradebook_marks_url(@section)
+  end
+  
+  def test_update_avg
+    prep_update
+    @keys.each{|k|@param[k] = k.to_s}
+    @grade.milestones.each{|m|@hash[m.id] = {:earned => m.id, :possible => m.id + 10}}
+    send_update(:avg => @param, :commit => 'Average')
+    assert_redirected_to gradebook_marks_url(@section)
+    assert_equal nil, flash[:error]
+    assert_in_delta (milestones(:mark_avg_1).grade + milestones(:mark_avg_2).grade).to_f / 2, @changed.earned.to_f, 0.001
+    assert_equal 100, @changed.possible
+    assert_unchanged
+  end
+
+  def test_update_weighted_avg
+    prep_update
+    @keys.each_with_index{|k, i| @param[k] = ((i + 1)*100/3.0).to_s}
+    send_update(:wt => @param, :commit => 'Weight')
+    assert_redirected_to gradebook_marks_url(@section)
+    assert_in_delta((milestones(:mark_avg_1).earned+2*milestones(:mark_avg_2).earned).to_f/3, @changed.earned.to_f, 0.1)
+    assert_equal 100, @changed.possible
+    assert_unchanged
+  end
+
+  def test_update_pts
+    prep_update
+    @keys.each{|k| @param[k] = k.to_s}
+    send_update(:pts => @param, :commit => 'Combine')
+    assert_redirected_to gradebook_marks_url(@section)
+    assert_equal (milestones(:mark_avg_1).earned+milestones(:mark_avg_2).earned).to_f, @changed.earned.to_f
+    assert_equal (milestones(:mark_avg_1).possible+milestones(:mark_avg_2).possible), @changed.possible.to_f
+    assert_unchanged
+  end
+
+  def test_update_weight_fail
+    prep_update
+    ['49','fifty'].each do |wt|
+      @keys.each{|k| @param[k] = wt}
+      send_update(:wt => @param, :commit => 'Weight')
+      assert_template('calculate')
+    end
+  end
+
+  def test_destroy
+    delete :destroy, :section_id => sections(:marks), :id => reported_grades(:mark_test_2)
+    assert_raise(ActiveRecord::RecordNotFound) { ReportedGrade.find(assigns(:mark)) }
+    assert_redirected_to gradebook_marks_url(assigns(:section))
+  end
+private
+
+  def prep_update
+    @keys = @section.marks[0..1].map(&:id).map(&:to_s)
+    @grade, @hash, @param = reported_grades(:mark_test_final), Hash.new, Hash.new
+  end
+
+  def send_update(options)
+    Section.expects(:find).returns @section
+    post :update, {:section_id => sections(:marks), :id => @grade.id, :marks => @hash, :method => :put}.merge(options)
+    #assert_equal assigns(:section), @section
+    @changed,@unchanged = @grade.milestones.find_by_rollbook_entry_id(Fixtures.identify(:mark_test_1)), @grade.milestones.find_by_rollbook_entry_id(Fixtures.identify(:mark_test_2))
+  end
+
+  def assert_unchanged
+    assert_equal 0.0, @unchanged.earned.to_f
+    assert_equal 0, @unchanged.possible
+  end
+end

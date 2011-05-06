@@ -1,0 +1,20 @@
+<% @page_title = 'Catalog' %>
+<div id="content">
+ <h1>Catalog Help Page</h1>
+ <p>The <em>catalog</em> page lists the academic departments at your school with total enrollment figures for each. Click any department or subject name to get more information about the subjects in that department, or the sections of that subject, respectively.</p>
+ <h2>Adding a Department</h2>
+ <p>The <code>New Department</code> link is located at the bottom of the departments table.</p>
+ <h2>Adding a Subject</h2>
+ <p>There is a <code>New ___ Subject</code> link at the end of each department&#8217;s list of subjects.</p>
+ <h2>Editing/Removing a Department</h2>
+ <p>Click a department&#8217;s name to reach its <em>department</em> page, which has a link to an edit form which you can use to change its name or delete it.</p>
+</div>
+<div id="secondary">
+ <h2>Related Topics</h2>
+ <p>These links are to general information about the site, not help on any specific page.</p>
+ <ul>
+  <li><%= link_to "Catalog", '/help/catalog' %></li>
+ </ul>
+ <hr/>
+  <%= render 'help/page/shared/tech_support', :subject => 'catalog' -%>
+</div>

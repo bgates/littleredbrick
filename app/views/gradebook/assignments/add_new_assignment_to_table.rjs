@@ -1,0 +1,18 @@
+  if @section.assignments.length == 1
+    page << "var removables = document.getElementsByClassName('remove_after_assign_added');"
+    #page << "for(var i=0;i<removables.length;i++){Element.remove(removables[i])};"
+    page << "removables.invoke('remove');"
+  else
+    page << "var span = $('assign_head').colSpan;$('assign_head').setAttribute('colSpan', span + 1);"
+  end
+  page.insert_html :before, 'new_assign_td', :partial => 'assignment', :locals => {:i => @i}
+  @students.each do |student|
+    @grade = Grade.find_by_student_id_and_assignment_id(student.id, @assignment.id)
+    page.insert_html :before, "end_#{student.id}", :partial => 'grade',
+                                                   :locals => {:student => student,
+                                                               :assignment => @assignment,
+                                                               :grade => @grade,
+                                                               :array_index => @section.assignments.length,
+                                                               :position => @section.students.index(student),
+                                                               :class_size => @section.students.length}
+  end

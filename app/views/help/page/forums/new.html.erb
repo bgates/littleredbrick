@@ -1,0 +1,10 @@
+<% @page_title = 'New Forum' %>
+<div id="content">
+ <h1>New Forum Help Page</h1>
+ <p>A <%= link_to "forum", '/help/discussions/forums' %> is a collection of related discussion <%= link_to "topics", '/help/discussions/topics' %>. </p>
+  <p>If you do not want to create a forum, there is a <code>cancel</code> link at the bottom of the form.</p>
+</div>
+<div id="secondary">
+  <%= render 'help/page/shared/discussion_related' -%>
+  <%= render 'help/page/shared/tech_support', :subject => 'forums' -%>
+</div>

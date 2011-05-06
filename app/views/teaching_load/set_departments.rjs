@@ -1,0 +1,2 @@
+  @options = "#{escape_javascript(options_from_collection_for_select(@department_subjects, "id", "name"))}"
+ page << '$$("#section_form .subject_list").invoke("update","' + @options + '")'

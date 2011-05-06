@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"                 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml'>
+  <%= render(:partial => "layouts/header") %>  
+   <body id="<%= controller.controller_name %>_<%= controller.action_name %>"<%= mark_of_the_beast %>>
+   <div id = 'wrapper'>
+    <div id="masthead" class='selectfree'>
+     <ul id = 'logout'>
+      <li><%= link_to "Logout", logout_path %></li>
+      <li><%= link_to_unless_current "Edit Account", edit_account_path %></li>
+     </ul>
+     <%= link_to_unless_current "Home", home_path, {:id => 'home'} do "<div id='home'></div>".html_safe end %>
+     <div id="nav">
+      <ul id = 'primary'>
+        <%= li link_to_unless_current("Classes", student_classes_path, 
+          :title => 'Click to see how your&#39;e doing in all your classes'){ span "Classes" }, :id => active?('class') %>
+       <%= tab_for_calendar %>
+       <%= tab_for_discussions %>
+      </ul>
+      <ul id = 'secondary_nav'>
+       <%= secondary_nav %>
+       <%= render :partial => 'layouts/styleswitch' -%>
+      </ul>
+     </div>
+     <!--[if lte IE 6.5]><iframe></iframe><![endif]-->
+    </div>
+    <div id="content_wrap"<%= ' class="big_nav"' if @two_lines %>>
+     <%= yield %>
+    </div>
+    <div id='footer' class='selectfree'><%= footer.html_safe %><!--[if lte IE 6.5]><iframe></iframe><![endif]--></div>
+  </div>
+ </body>
+</html>

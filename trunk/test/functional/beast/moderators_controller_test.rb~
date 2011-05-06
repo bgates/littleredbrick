@@ -1,0 +1,156 @@
+require 'test_helper'
+
+class Beast::ModeratorsControllerTest < ActionController::TestCase
+
+  def setup
+    @request.session[:school] = @request.session[:user] = :exists
+    @controller.stubs(:set_user).returns(@current_user = mock('user'))
+    @current_user.stubs(:school).returns @school = School.new
+    @controller.stubs(:find_or_initialize_discussable).returns(@section = Section.new)
+    @section.stubs(:name).returns('Test class')
+    @section.stubs(:forums).returns(stub(:detect => (@forum = Forum.new(:name => 'for helper'))))
+    @controller.stubs(:by_user).returns('staffer')
+    @current_user.stubs(:id).returns('user id')
+    @forum.stubs(:owner_id).returns('user id')
+  end
+
+  def test_should_delete_moderatorship
+    stub_delete
+    delete :destroy, :section_id => 'section id', :user_id => 'user id', :forum_id => 'forum id', :id => 'not user id'
+    assert_redirected_to reader_path('section id', 'not user id')
+  end
+
+  def test_delete_xhr
+    stub_delete
+    xhr :delete, :destroy, :section_id => 'section id', :user_id => 'user id', :forum_id => 'forum id', :id => 'not user id'
+    assert_response :success
+  end
+  
+  def test_should_not_delete_own_moderatorship
+    stub_find
+    stub_path_params
+    @mod.stubs(:user_id).returns('user id')
+    @user.stubs(:to_param).returns('for redirect path')
+    delete :destroy, :section_id => 'section id', :user_id => 'user id', :forum_id => 'forum id', :id => 'user id'
+    assert flash[:error]
+  end
+
+  def test_should_only_allow_admins_to_delete_moderatorships
+    @controller.expects(:authorized?).returns(false)
+    delete :destroy
+    assert_redirected_to login_url
+  end
+
+  def test_should_not_allow_setting_admin_with_xml
+    try_to_create(:format => 'xml')
+    assert_response 406
+  end
+
+  def test_should_add_moderator_from_reader_page
+    stub_path_params
+    @user.stubs(:to_param).returns 'for redirect path'
+    try_to_create(:return => true)
+    assert_equal assigns(:path), reader_path(@section, @user)
+    assert_redirected_to reader_path(@section, @user)
+  end
+
+  def test_should_add_moderator_from_index
+    stub_path_params
+    try_to_create
+    assert_redirected_to forum_moderators_path
+  end
+
+  def test_should_create_moderator_with_js
+    stub_create
+    stub_path_params
+    xhr :post, :create, :section_id => 'section id', :forum_id => 'forum id', :id => 'id'
+    assert_response :success
+  end
+  
+  def test_should_update_moderator_and_return_to_index
+    @forum.stubs(:moderatorships).returns(@mod = mock())
+    @mod.expects(:collect).returns([1,3])
+    @mod.expects(:create).with(:user_id => 4)
+    @mod.expects(:reject).returns([])
+    stub_path_params
+    put :update, {:section_id => 'section id', :forum_id => 'forum id', :moderator => {'1' => 'true', '3' => 'true', '4' => 'true'}, :forum => 'forum id'}
+    assert_redirected_to forum_moderators_path(@section, @forum)
+  end
+
+  def test_should_require_admin_to_set_admin_properties
+    @controller.expects(:authorized?).returns(false)
+    try_to_create
+    assert_redirected_to login_url
+  end
+
+  def test_index
+    stub_path_params
+    get :index, :scope => 'section id', :forum_id => 'forum id'
+    assert_template('index')
+  end
+
+  def test_search_single_result
+    prep_search
+    stub_create
+    stub_path_params
+    get :search, :search => 'query', :scope => 'section id', :forum_id => 'forum id'
+    assert_redirected_to forum_moderators_path(@section, @forum)
+  end
+
+  def test_search_xhr
+    prep_search
+    xhr :get, :search, :search => 'query'
+    assert_template('search_results')
+  end
+
+  def test_search_no_result
+    prep_search([])
+    stub_path_params
+    get :search, :search => 'query', :scope => 'section id', :forum_id => 'forum id'
+    assert_redirected_to forum_moderators_path(@section, @forum)
+  end
+
+  def test_search_multiple_results
+    prep_search([User.new, User.new])
+    stub_path_params
+    get :search, :search => 'query', :scope => 'section id', :forum_id => 'forum id'
+    assert_template 'new'
+  end
+  protected
+
+  def prep_search(result = [User.new])  
+    @school.stubs(:id).returns('id')
+    Moderatorship.expects(:search).with('query', :school_id => 'id', :discussable => @section).returns(result)
+  end
+  
+  def try_to_create(options = {})
+    stub_create
+    post :create, {:scope => 'section id', :forum_id => 'forum id', :user => {:id => 'user id'}, :forum => 'forum id'}.merge(options)
+  end
+
+  def stub_create 
+    @forum.stubs(:members).returns(stub(:detect => @user = Staffer.new))
+    @user.stubs(:moderatorships).returns(@proxy = mock('association proxy'))
+    @proxy.stubs(:create).returns(Moderatorship.new)
+    @user.stubs(:to_param).returns('something')
+  end
+  
+  def stub_delete
+    stub_find
+    @mod.stubs(:user_id).returns('not user id')
+    @mod.expects(:destroy).returns(true)
+    @mod.expects(:user).returns(@user = Staffer.new)
+    @user.stubs(:id).returns('not user id')
+    @section.expects(:to_param).returns('section id')
+  end
+
+  def stub_find  
+    @forum.expects(:moderatorships).returns(@proxy = mock('association proxy'))
+    @proxy.expects(:find).returns(@mod = Moderatorship.new)
+  end
+
+  def stub_path_params  
+    @forum.stubs(:to_param).returns('forum id')
+    @section.stubs(:to_param).returns('section id')
+  end
+end

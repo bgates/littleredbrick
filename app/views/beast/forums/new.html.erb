@@ -1,0 +1,34 @@
+<div id="content">
+<h1><%= @page_h1 = "New #{@discussable.name.titleize} Forum" %></h1>
+<p>A forum is a collection of related discussion topics. For instance,
+<%= new_examples_for(@discussable) %>
+Members of the forum may read these topics and post responses (and responses to the responses).</p>
+<%= error_messages_for("forum", :class => 'ie') %>
+<%= form_for :forum, :url => forums_path(@discussable) do |f| -%>
+<fieldset>
+<legend>Forum Details</legend>
+<%= render :partial => "form", :object => f %>
+<%= submit_tag 'Create Forum'[:Create], :class => 'button' %>
+</fieldset>
+<% end -%>
+<%= link_to('Cancel'[:cancel], forums_path(@discussable)) %>
+</div>
+<div id="secondary">
+<h2>Forum Definition</h2>
+<dl id='forum_def'>
+<dt>Name</dt>
+<dd>The title for a collection of topics</dd>
+<dt>Position</dt>
+<dd>Where this forum should appear in the list of forums you have created for the <%= @discussable.klass.downcase %></dd>
+<dt>Description</dt>
+<dd>One or two sentences</dd>
+</dl>
+<hr style='clear:left'/>
+<p>You will always be able to create topics in a forum you have created; you can decide whether other people who may access the forum are also allowed to create topics.</p>
+<% unless @forums.methods.include?('empty?') && @forums.empty? %>
+<h2>Forums for <%= @discussable.name %></h2>
+<ul>
+<% @forums.each do |forum| %><li><%= h forum.name %></li><% end %>
+</ul>
+<% end %>
+</div>

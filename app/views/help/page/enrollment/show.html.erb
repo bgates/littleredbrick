@@ -1,0 +1,103 @@
+<% @page_title = 'Student Performance Analysis' %>
+<div id="content">
+ <h1 id="rollbook_show">Student Performance Help Page</h1>
+ <p>This is the best page to understand how a student is doing in a class. There is a lot to see here. This help page breaks down a sample <em>student performance</em> page and talks about the contents of each section.</p>
+ <h2>Links</h2>
+ <p>The top section of a <em>student performance</em> page has links to the following pages, in order: the <em>student overview</em> page, the <em>class</em> page, and a link to the class <em>teacher</em> page. After the teacher link is an indicator of the marking period for which information is displayed on the page &ndash; here, 1, the only marking period that is not a link. If you wanted to see grade progression or category information for another marking period (if this were an actual student), you could click a marking period number. The marking period links are followed by a link to see all of Kurt (the example student)&#8217;s marks for the class. The next line has the marking period grade, percent and letter for the marking period you have chosen (90.3%, an A), and Kurt&#8217;s class rank (#1, woohoo!)</p>
+ <h1><a href="#">Kurt Smith</a></h1>
+ <h2 style='display:inline;margin-right:2em'><a href="#">Pre-Calculus</a>(Period 2)<a href="#">Mr Wilhour</a></h2>
+ <h3 style='display:inline'>Viewing Marking Period <span style='font-size:1.3em' title='currently viewing grades for marking period 1'>1</span> <a href="#" title="If this were a real student, you could click here to see grades for marking period 2">2</a> <a href="#" title="If this were a real student, you could click to see grades for marking period 3">3</a> <a href="#" title="If this were a real student, you could click to see grades for marking period 4">4</a>  <a href="#">See all marks</a></h3>
+ <h3 style='margin-top:1em'>Marking Period Grade: 90.3 (A) Class Rank 1</h3>
+ <hr/>
+ <h2>Academic Performance</h2>
+ <p>The next section of the page shows two measures of the student&#8217;s academic performance: performance by assignment category, and performance over time.<noscript> Since you do not have Javascript enabled in your browser, you will see this information in tabular form, rather than graphical as described below.</noscript></p>
+<div id='categories' style="float:left;width:60%;">
+ <h3>Performance by Assignment Category</h3>
+ 
+ <p>When an assignment is created, the teacher must give it a category. The <em>student performance</em> page shows how a student has done on assignments of each category during the marking period. In this example, Kurt has earned 380 out of 400 points on all the tests given in pre-Calculus during the first marking period. There were only 25 homework points assigned, and Kurt earned 23 of them.</p>
+ <img src="http://chart.apis.google.com/chart?cht=bvg&amp;chs=300x140&amp;chco=3b5e7e,66aebd&amp;chd=t:25,78,23,380|35,100,25,400&amp;chdl=Earned|Possible&amp;chxt=x,y&amp;chxl=0:|Classwork|Quiz|Homework|Test|1:|0|5&amp;chf=c,s,efefef&amp;chds=0,5&amp;chbh=r,0.5,1.5"/>
+
+</div>
+ <div class="progression" style="float:left;width:38%;margin-left:10px">
+ <h3 title="Marking period grade over time">Grade Progression</h3>
+ 
+<p>This section is a history of the student&#8217;s grade over time. Kurt the example student started out strong with a 90%, then dropped down to a 63 after the second assignment. He recovered nicely though, climbing steadily back up to 92 by assignment 8 and then hovering in the high 80s/low 90s for the rest of the marking period.</p>
+<img src="http://chart.apis.google.com/chart?cht=lc&amp;chd=t:90.63,72,78,73,88,92,91,87,87,5,87,87,90,89,81,90.5&amp;chs=300x130&amp;chco=66AEBD&amp;chf=c,s,eeeeee&amp;chxt=y&amp;chg=1000,20,1,0"/>
+ 
+</div>
+<hr class="clear"/>
+<h2>Assignments</h2>
+<p>Below the performance information are two tables on Kurt&#8217;s assignments for the class, both the recently graded ones and the ones that will be due soon. Each assignment has a link to more information about it.</p>
+<div id="grades" style="float:left;width:60%;">
+ <h3 title='Graded assignments due between <%= 7.days.ago.strftime("%a %b %d") %> and <%= 1.week.from_now.strftime("%a %b %d") %>'>Recently Graded Assignments</h3>
+ <table class='scrollike sortable' cellspacing='0'>
+  <thead>
+   <tr>
+    <th>#</th><th>Category</th><th>Due Date</th><th>Points</th>
+    <th>Score</th><th>%</th><th title='Class Average'>Class Avg (%)</th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr class='<%= cycle('odd', 'even', :name => 'graded') %>'>
+    <td class='text'><%= link_to '16', '#' %></td>
+    <td><%= 'Classwork' %></td>
+    <td><%= (Date.today - 3).strftime("%a %b %d") %></td>
+    <td><%= 5 %></td>
+    <td><%= 5 %></td>
+    <td><%= 100.0 %></td>
+    <td><%= 77.0 %></td>
+   </tr>
+   <% reset_cycle('graded') %>
+  </tbody>
+ </table>
+</div>
+<div id='ungraded' style="float:left;width:38%;margin-left:10px">
+ <h3 title='Ungraded assignments due between <%= 7.days.ago.strftime("%a %b %d") %> and <%= 1.week.from_now.strftime("%a %b %d") %>'>Upcoming/Ungraded Assignments</h3>
+ <table class='scrollike sortable' cellspacing=0>
+  <thead>
+   <tr>
+    <th>#</th><th>Category</th><th>Due Date</th><th>Points</th>
+   </tr>
+  </thead>
+  <tbody>
+    <tr class='<%= cycle('odd', 'even') %>'>
+     <td><%= link_to '18', '#' %></td>
+     <td><%= 'quiz' %></td>
+     <td><%= (Date.today + 2).strftime("%a %b %d") %></td>
+     <td><%= 25 %></td>
+    </tr>
+  </tbody>
+ </table>
+</div>
+<p class="clear" style="padding-top:1em">After the two tables of assignment information, there is a link to see the student&#8217;s grades on every assignment that has been given for the class. Unlike the grade progression and category information, the assignment information is always current. In other words, if you look back at marking period 1 data during marking period 2, you will still see the most recent assignments in the Recently Graded table.</p>
+<% if current_user.is_a?Teacher %>
+<hr/>
+<div id="posts">
+<h3>Recent Forum Comments</h3>
+<p>The last feature of the <em>student performance</em> page is a list of any recent comments the student has made in the forums for the class discussion group. (This only appears if you are looking at a <em>student performance</em> page for one of your own classes, since you cannot join discussions for another teacher&#8217;s class.)</p>
+ <table class='scrollike'>
+  <thead>
+   <tr>
+    <th>Forum</th>
+    <th>Topic</th>
+    <th>Post</th>
+    <th>Date</th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr class='odd'>
+    <td class='text'><%= link_to 'Homework Hel...', '#posts', {:title => 'Homework Help'} %></td>
+    <td class='text'><%= link_to 'Trigonometri...', '#posts', {:title => 'Trigonometric Identities'} %></td>
+    <td class='text'><p>I'm still not sure what to do with the α in question 3.</p></td>
+    <td><%= (Date.today - 4).strftime("%a %b %d") %></td>
+   </tr>
+  </tbody>
+</table>
+<p>The recent comment table is followed by a link to all of the student&#8217;s comments in the class discussion group.</p>
+</div>
+<% end %>
+</div>
+<div id="secondary">
+  <%= render 'help/page/shared/tech_support', 
+    :subject => 'understanding a student&#8217;s academic performance' -%>
+</div>

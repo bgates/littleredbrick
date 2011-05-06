@@ -1,0 +1,16 @@
+<% @marx = milestone[mark.id][0] %>
+<tr class = '<%= cycle('odd','even') %>'>
+  <td class='text'>
+    <%= rbe_link(mark.student, @section) %>
+  </td>                                    <% if false -%>
+  <% @predecessors[mark.id].each do |predecessor| %>
+    <%= @predecessors.length > 1 ? '<td>'.html_safe : "<td class='mark'>".html_safe %><%= number_with_precision(predecessor.grade, :precision => 1) %></td>
+  <% end unless @predecessors[mark.id].nil? %><% end %>
+  <td class = 'mark'>
+    <%= text_field("marx[]", 'earned', {:maxlength => '5', :tabindex => 2*mark_counter + 1}) %>
+  </td>
+  <td class = 'mark'>
+    <%= text_field("marx[]", 'possible', {:maxlength => '5', :tabindex => 2*mark_counter + 2}) %>
+  </td>
+  <td class = 'mark'>(<%= number_with_precision(@marx.grade, :precision => 1) %>)</td>
+</tr>

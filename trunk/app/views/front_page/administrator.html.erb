@@ -1,0 +1,35 @@
+<div id = 'content'>
+<h1>Welcome to LittleRedBrick</h1><p>As an administrator, you may access all the features of the system, as outlined below.</p>
+<%= notice_or_error %>
+<div>
+ <h2><%= link_to "Admin", admin_home_path %></h2>
+ <p>Manage administrative accounts, compare class performance for all sections of a subject, and more.</p>
+</div>
+<div>
+ <h2><%= link_to "Calendar", calendar_path %></h2>
+ <p>List events for yourself or your school.</p>
+</div>
+<div>
+ <h2><%= link_to "Discussions", personal_path %></h2>
+ <p>Create and participate in forums to discuss school issues with different segments of the school community.</p>
+</div>
+<div>
+ <h2><%= link_to "Students", students_path %></h2>
+ <p>View academic performance data from a variety of perspectives. Add and edit student accounts and schedules.</p>
+</div>
+<div>
+ <h2><%= link_to "Teachers", teachers_path %></h2>
+ <p>View and edit teaching schedules, monitor class performance.</p>
+</div>
+<div>
+  <h2><%= link_to "Help", '/help' %></h2>
+  <p>Every page at the site has a link to help for that page. The front page links to a general help manual for the site, and Little<span class='company'>Red</span>Brick tech support.</p>
+</div>
+</div>
+
+<div id="secondary">
+<h2 title="If you're thinking of that theme song right now, I'm sorry">What's Happening Now</h2>
+<%= render(:partial => "events") %>
+<%= render(:partial => "posts") %>
+<%= button_to "Switch to teacher view", 'toggle_status', :method => :put, :class => 'button' if session[:admin] %>
+</div>

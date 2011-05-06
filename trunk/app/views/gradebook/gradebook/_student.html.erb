@@ -1,0 +1,17 @@
+<tr id = 'current_<%= student.id %>' class = '<%= cycle('odd','even') %>'>
+<td id = 'name_<%= student.id %>' class='text'>
+ <%= rbe_link(student, @section) %>
+ </td>
+  <%= render :partial => 'grade', :collection => @grades[student.id].sort_by(&:id), :locals => {:student => student, :position => student_counter || @students.index(student), :class_size => @students.length} %>
+<% if student_counter == 0 && @assignments.empty? %>
+ <td colspan='4' class='text'>Marking period grade goes here once an assignment is created</td>
+<% else %>
+<td colspan='<%= @assignments.empty?? 2 : 1 %>'>&#160;</td>
+<td id = 'avg_<%= student.id %>'>
+<%= number_with_precision(@range_grades[student.id], :precision => 1) %>
+</td>
+<td id = 'MP_<%= student.id %>'>
+<%= number_with_precision(@milestones[student.id], :precision => 1) %>
+</td>
+<% end %>
+</tr>

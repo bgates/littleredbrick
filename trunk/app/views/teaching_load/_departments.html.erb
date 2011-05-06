@@ -1,0 +1,12 @@
+<%= form_tag(edit_teaching_load_path(@teacher, :length => params[:length], :term => params[:term]), :id => 'department', :class => 'first equal', :style => 'width:30%', :method => :get) do %>
+<fieldset>
+<legend>Departments</legend>
+<p>Select the departments in which <%= @teacher == current_user ? 'you have' : @teacher.display_name  + ' has' %> classes.</p>
+  <ul class='checkbox'>
+  <% for @department in @departments %>
+   <li><label for = 'department_<%= @department.id %>'><%= @department.name %></label><%= check_box_tag("department[#{@department.id}]", "#{@department.id}", @teacher_departments.include?(@department)) %></li>
+  <% end %>
+  </ul>
+  <noscript><%= submit_tag("Select Departments", :class => 'button') %></noscript>
+</fieldset>
+<% end %>

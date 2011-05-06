@@ -1,0 +1,38 @@
+<div id="content">
+<h1><%= @student.full_name %>&#8217;s Parents</h1>
+<table class="scrollike sortable" cellspacing="0">
+ <thead>
+  <tr>
+   <th>Parent</th>
+   <th>Last Login</th>
+   <th>Children</th>
+   <th colspan="2">&nbsp;</th>
+  </tr>
+ </thead>
+ <tfoot>
+  <tr>
+   <th colspan="5"><%= link_to "Add parent", new_student_parent_path(@student) %></th>
+  </tr>
+ </tfoot>
+ <tbody>
+<ul>
+<% @parents.each do |parent| %>
+<tr class="<%= cycle('odd', 'even') %>">
+ <td><%= link_to parent.full_name, student_parent_path(@student, parent) %></td> 
+ <td><%= last_login(parent) %></td>
+ <td><%= parent.children.map{|child| link_to child.full_name, student_path(child) }.to_sentence.html_safe %></td>
+ <td><%= link_to "Edit", edit_student_parent_path(@student, parent) %></td>
+ </tr>
+<% end %>
+  <%= filler_row(@parents, 5) %>
+ </tbody>
+</table>
+
+</div>
+<div id="secondary">
+<% if (unused = @parents.select{|parent| parent.never_logged_in?}).length > 0 %>
+<h2>Note</h2>
+<p>Names like <%= unused.map{|parent| link_to parent.display_name, edit_student_parent_path(@student, parent)}.to_sentence.html_safe %> are created automatically when student accounts are set up. All parents have the ability to edit their own names when they log in, but teachers and staff members can do that for them as well. Click a name in this paragraph to edit it.</p>
+<% end %>
+<%= initial %>
+</div>

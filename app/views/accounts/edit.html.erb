@@ -1,0 +1,33 @@
+<% @page_title = 'Edit Account' %>
+<div id="content">
+<h1>Update Account</h1>
+<%= notice_or_error %>
+<%= error_messages_for("user") %>
+<%= form_for @user, :as => :user, :url => account_path do |f| -%>
+  <%= render 'name', :f => f unless @user.is_a?(Student) %>
+  <fieldset>
+   <legend>Login</legend>
+   <ul class='line'>
+    <%= f.fields_for :authorization, @user.authorization do |auth| %>
+      <li><%= auth.label :login -%>
+          <%= auth.text_field :login, {:size => 12} %></li>
+      <li><%= auth.label :password, 'Password', :id => 'password_label' -%>
+          <%= auth.password_field :password, {:size => 12} %></li>
+      <li class='long'><%= auth.label :password_confirmation, 'Confirm Password', :title => 'Sure, you can just copy and paste' -%>
+          <%= auth.password_field :password_confirmation, {:size => 12} %></li>
+   </ul>
+   <% end %>
+  </fieldset>
+  <%= render 'children', :f => f if @user.is_a?(Parent) %>
+  <fieldset>
+   <legend>Email</legend>
+   <ul class='line'>
+     <li style="width:60%;"><%= f.label :email, 'Email', :style => 'width:10%' -%>
+     <%= f.text_field :email %></li>
+   </ul>
+  <p id="label_note">In case you forget your password. If you aren&#8217;t worried about that, you can leave this blank.</p>
+  <%= submit_tag 'Save Changes', :class => 'button' %>
+  </fieldset>
+<% end -%>
+<%= back_or_home_link %>
+</div>

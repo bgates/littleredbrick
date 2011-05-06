@@ -1,0 +1,31 @@
+<div id="content" class="help">
+<h1><%= @page_h1 = "Calendar" -%></h1>
+<p>The Calendar module has a simple monthly view. Any user may create new events for their own calendar. Teachers may create events for their classes. As an administrator, you may also create events which are viewed school-wide.</p>
+<h2>Adding Events</h2>
+<p>An event must have a name (which appears on the calendar), a date, and an audience (the people who should be able to see the event on their calendars). Anyone can add an event to the calendar, but different users have different options on what they can choose for the audience:</p>
+<table class="scrollike" cellspacing="0">
+ <thead>
+  <tr><th>Administrator</th><th>Teacher</th><th>Student / Parent</th></tr>
+ </thead>
+ <tbody>
+  <tr class="odd">
+   <td class="vertical-align:top"><ul>
+    <li>Whole School</li>
+    <li>All Staff</li>
+    <li>All Teachers</li>
+    <li>Themselves</li>
+   </ul></td>
+   <td style="vertical-align:top"><ul>
+    <li>All Teachers</li>
+    <li>A Class</li>
+    <li>Themselves</li>
+   </ul></td>
+    <td>Themselves</td>
+   </tr>
+ </tbody>
+</table>
+<p>An event may also be given a description, if the name does not sum it up. To see the description for an event on your calendar, click it.</p>
+<h2>Viewing Assignments</h2>
+<p>When a teacher creates an assignment, it automatically shows up on his own calendar and the calendars of every student in the class for which the assignment was created.</p>
+</p>
+</div>

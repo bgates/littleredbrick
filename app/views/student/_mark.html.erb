@@ -1,0 +1,5 @@
+<tr style='<%= cycle('background-color: #ec8','') %>'>
+ <th class='text'><%= mark.reported_grade.description %></th>
+ <td><%= number_with_precision(mark.grade, :precision => 1) %></td>
+ <td><%= @section.on_scale(mark.grade) %></td>
+</tr>

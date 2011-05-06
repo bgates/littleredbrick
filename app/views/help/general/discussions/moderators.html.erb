@@ -1,0 +1,14 @@
+<div id="content">
+ <h1>Moderating Forums</h1>
+ <p>The biggest problem in online forums is dealing with off-topic or objectionable comments. There are filters in place to remove obscene words, but no filter is perfect. To make sure your forums live up to your school&#8217;s standards, every forum has at least one <strong>moderator</strong> who can edit and even remove other people&#8217;s posts.</p>
+ <h2>Adding Moderators</h2>
+ <p>The person who created a forum is automatically made a moderator. To add more moderators to a forum you have created, click the <code>Add/Remove Moderators</code> link on the right side of the forum page.</p>
+ <%= image_tag("help/forum.png", {:alt => "description", :size => "610x170"}) %>
+ <p>The moderators page will show a list of all current moderators beside a form you can use to search for the name of a person you want to add as a moderator.</p>
+ <h2>Identifying Moderators</h2>
+ <p>All moderators for a forum are listed on the forum page. (For the forum creator, the <code>Add/Remove Moderators</code> link appears directly under this list.)</p>
+ <h2>What Moderators May Do</h2>
+ <p style="float:left; margin-top:0; width:40%">If you are a moderator for a forum, then when you view a <%= link_to "topic", 'topics' %>, all of the <%= link_to "posts", 'posts' %> will include an edit link underneath the post date. You may edit or remove any of these posts exactly as if they were your own.</p>
+ <%= image_tag("help/moderator_view.png", {:style => 'float:left', :alt => "description", :size => "114x188"}) %>
+</div>
+<%= render(:partial => "help/general/discussions/forums") %>

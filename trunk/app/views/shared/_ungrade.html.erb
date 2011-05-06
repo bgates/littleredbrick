@@ -1,0 +1,25 @@
+<div id='ungraded'>
+ <h3 title='Ungraded assignments due between <%= 7.days.ago.strftime("%a %b %d") %> and <%= 1.week.from_now.strftime("%a %b %d") %>'>Upcoming/Ungraded Assignments</h3>
+ <% if @ungraded.empty? %>
+  <p>No assignments due in the next week</p>
+ <% else %>
+ <table class='scrollike sortable' cellspacing=0>
+  <thead>
+   <tr>
+    <th>#</th><th>Category</th><%= '<th>Subject</th>' unless @section %><th>Due Date</th><th>Points</th>
+   </tr>
+  </thead>
+  <tbody>
+   <% @ungraded.each do |g| %>
+    <tr class='<%= cycle('odd', 'even') %>'>
+     <td><%= assignment_link(g) %></td>
+     <td><%= g.assignment.category %></td>
+     <%= "<td>#{g.assignment.section.name}</td>" unless @section %>
+     <td><%= g.due.strftime("%a %b %d") %></td>
+     <td><%= g.assignment.point_value %></td>
+    </tr>
+   <% end %>
+  </tbody>
+ </table>
+ <% end %>
+</div>

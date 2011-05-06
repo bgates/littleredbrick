@@ -1,0 +1,2901 @@
+<html>
+  <head>
+    <title>app/helpers/application_helper.rb</title>
+    
+    <link href="../../report.css?0.8544569141499664" media="screen" rel="stylesheet" type="text/css" />
+    <script src='../../jquery.js?0.06254636463321372'></script>
+    <script>
+      $(function() {
+
+        $('#toggle_test_file').click(function(e) {
+          e.preventDefault();
+          if ($('#main_file').hasClass('side_by_side')) {
+            $('#main_file').removeClass('side_by_side');
+          } else {
+            $('#main_file').addClass('side_by_side');
+          }
+        
+          $('#test_file').toggle();
+        });
+
+        $('#test_file').hide();
+        
+        function cleanString(str) {
+          return $.trim(str.replace(/<[^(<|>)]+>/gi, ''));
+        }
+        
+        $('.line_number').hover(function() {
+          $(this).attr('title', 'Line: ' + cleanString($(this).html()));
+        });
+        
+        $('.hit_number').hover(function() {
+          $(this).attr('title', 'Execution Count: ' + cleanString($(this).html()));
+        });
+        
+        $('.code_line').hover(function() {
+          $(this).attr('title', cleanString($(this).html()));
+        });
+        
+      });
+    </script>
+  </head>
+  <body>
+    <h1><a href="../../index.html">Coverage Report</a></h1>
+    
+    <table cellpadding='0' cellspacing='1'>
+      <tr class='header'>
+        <th>File</th>
+        <th>Lines</th>
+        <th>Lines Of Code</th>
+        <th>Tested %</th>
+      </tr>
+      <tr valign='top'>
+        <td>
+          app/helpers/application_helper.rb
+          
+        </td>
+        <td>351</td>
+        <td>164</td>
+        <td>98.8%</td>
+      </tr>
+    </table>
+
+    <div>&nbsp;</div>
+    
+    <table cellpadding='0' cellspacing='1'>
+      <tr>
+        <th>Legend</th>
+      </tr>
+      <tr>
+        <td class='hit'>This line was executed.</td>
+      </tr>
+      <tr>
+        <td class='miss'>This line was not executed!</td>
+      </tr>
+      <tr>
+        <td class='never'>This line doesn't matter.</td>
+      </tr>
+    </table>
+    
+    <div>&nbsp;</div>
+
+    <div id='content'>
+      <div id='main_file'>
+        <table id='main'>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>1</td>
+              <td class='code_line'>
+                <pre>require 'digest/md5'</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>2</td>
+              <td class='code_line'>
+                <pre>module ApplicationHelper</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>3</td>
+              <td class='code_line'>
+                <pre>include ChartHelper, NavHelper, BifurcatedRoutesHelper</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>4</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>5</td>
+              <td class='code_line'>
+                <pre>  def absence_code(absence)</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>6</td>
+              <td class='code_line'>
+                <pre>    @school.absence_codes(true)[absence.code]</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>7</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>8</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>9</td>
+              <td class='code_line'>
+                <pre>  def absence_name(absence)</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>10</td>
+              <td class='code_line'>
+                <pre>    @school.absence_codes(false)[absence.code]</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>11</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>12</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>13</td>
+              <td class='code_line'>
+                <pre>  def action_name</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>14</td>
+              <td class='code_line'>
+                <pre>    controller.action_name</pre>
+              </td>
+              <td class='hit_number'>2469</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>15</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>16</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>17</td>
+              <td class='code_line'>
+                <pre>  def admin_front_link</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>18</td>
+              <td class='code_line'>
+                <pre>    link_to 'Administrative Tasks', admin_home_path, </pre>
+              </td>
+              <td class='hit_number'>87</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>19</td>
+              <td class='code_line'>
+                <pre>            :title => 'Click to return to the overview of administrative functions'</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>20</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>21</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>22</td>
+              <td class='code_line'>
+                <pre>  def admins_link</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>23</td>
+              <td class='code_line'>
+                <pre>    link_to_unless current_page?(administrators_path) && @admin.nil?, </pre>
+              </td>
+              <td class='hit_number'>39</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>24</td>
+              <td class='code_line'>
+                <pre>                   'Administrators', administrators_path, </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>25</td>
+              <td class='code_line'>
+                <pre>                   :title => 'Click to view and edit administrator accounts'</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>26</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>27</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>28</td>
+              <td class='code_line'>
+                <pre>  def ajax_spinner_for(id, spinner="indicator_16.gif")</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>29</td>
+              <td class='code_line'>
+                <pre>    image_tag spinner, </pre>
+              </td>
+              <td class='hit_number'>201</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>30</td>
+              <td class='code_line'>
+                <pre>    style:"display:none; vertical-align:middle;", id:"#{id.to_s}_spinner"</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>31</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>32</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>33</td>
+              <td class='code_line'>
+                <pre>  def assignment_link(grade_or_assignment)</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>34</td>
+              <td class='code_line'>
+                <pre>    assignment = grade_or_assignment.is_a?(Assignment) ? </pre>
+              </td>
+              <td class='hit_number'>9</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>35</td>
+              <td class='code_line'>
+                <pre>                 grade_or_assignment : grade_or_assignment.assignment</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>36</td>
+              <td class='code_line'>
+                <pre>    if (current_user.is_a?(Parent) || current_user.is_a?(Student))</pre>
+              </td>
+              <td class='hit_number'>9</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>37</td>
+              <td class='code_line'>
+                <pre>      link_to assignment.position, </pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>38</td>
+              <td class='code_line'>
+                <pre>              student_assignment_path(assignment.section_id, assignment),</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>39</td>
+              <td class='code_line'>
+                <pre>              :title => assignment.title</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>40</td>
+              <td class='code_line'>
+                <pre>    else</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>41</td>
+              <td class='code_line'>
+                <pre>      link_to assignment.position, </pre>
+              </td>
+              <td class='hit_number'>6</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>42</td>
+              <td class='code_line'>
+                <pre>              section_assignment_path(@section, assignment),</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>43</td>
+              <td class='code_line'>
+                <pre>              :title => "Click to see more information on '#{assignment.title}', including student scores"</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>44</td>
+              <td class='code_line'>
+                <pre>    end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>45</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>46</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>47</td>
+              <td class='code_line'>
+                <pre>  def assignment_page_mp_or_dates</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>48</td>
+              <td class='code_line'>
+                <pre>    if assignment_page_range == 'Assignments'   </pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>49</td>
+              <td class='code_line'>
+                <pre>      begin</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>50</td>
+              <td class='code_line'>
+                <pre>        "(#{params[:start].to_date.strftime("%b %d")}-</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>51</td>
+              <td class='code_line'>
+                <pre>          #{params[:finish].to_date.strftime("%b %d")})" </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>52</td>
+              <td class='code_line'>
+                <pre>      rescue</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>53</td>
+              <td class='code_line'>
+                <pre>        params[:mp].blank?? "(Marking Period #{@mp})" : </pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>54</td>
+              <td class='code_line'>
+                <pre>                        "(Marking Period #{params[:mp].to_a.to_sentence})" </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>55</td>
+              <td class='code_line'>
+                <pre>      end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>56</td>
+              <td class='code_line'>
+                <pre>    end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>57</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>58</td>
+              <td class='code_line'>
+                <pre>  </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>59</td>
+              <td class='code_line'>
+                <pre>  def assignment_page_range</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>60</td>
+              <td class='code_line'>
+                <pre>    if (params[:first].blank? || params[:last].blank?)</pre>
+              </td>
+              <td class='hit_number'>9</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>61</td>
+              <td class='code_line'>
+                <pre>      'Assignments' </pre>
+              </td>
+              <td class='hit_number'>6</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>62</td>
+              <td class='code_line'>
+                <pre>    else</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>63</td>
+              <td class='code_line'>
+                <pre>      "Assignments #{params[:first]}-#{params[:last]}"</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>64</td>
+              <td class='code_line'>
+                <pre>    end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>65</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>66</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>67</td>
+              <td class='code_line'>
+                <pre>  def assignment_page_title</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>68</td>
+              <td class='code_line'>
+                <pre>    category = params[:cat].map(&:capitalize).to_sentence if params[:cat]</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>69</td>
+              <td class='code_line'>
+                <pre>    "#{category} #{assignment_page_range} for #{@section.name} #{assignment_page_mp_or_dates}"</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>70</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>71</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>72</td>
+              <td class='code_line'>
+                <pre>  def arrow</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>73</td>
+              <td class='code_line'>
+                <pre>    span "&rarr;".html_safe, :class => "arrow"</pre>
+              </td>
+              <td class='hit_number'>1093</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>74</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>75</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>76</td>
+              <td class='code_line'>
+                <pre>  def normal_text(txt)</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>77</td>
+              <td class='code_line'>
+                <pre>    span txt, :class => 'norm'</pre>
+              </td>
+              <td class='hit_number'>117</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>78</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>79</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>80</td>
+              <td class='code_line'>
+                <pre>  def department_link_unless_current(department)</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>81</td>
+              <td class='code_line'>
+                <pre>    link_to_unless_current department.name, department_subjects_path(department),</pre>
+              </td>
+              <td class='hit_number'>6</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>82</td>
+              <td class='code_line'>
+                <pre>                   :title => "Click to view enrollment information for subjects in the #{department.name} department"</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>83</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>84</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>85</td>
+              <td class='code_line'>
+                <pre>  def filler_row(var, cols)</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>86</td>
+              <td class='code_line'>
+                <pre>    if var.length < 11</pre>
+              </td>
+              <td class='hit_number'>93</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>87</td>
+              <td class='code_line'>
+                <pre>     tr td('&nbsp;'.html_safe, colspan:cols, style:"height:#{13 - var.length}em"), </pre>
+              </td>
+              <td class='hit_number'>87</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>88</td>
+              <td class='code_line'>
+                <pre>        class:"doNotSort"</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>89</td>
+              <td class='code_line'>
+                <pre>    end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>90</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>91</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>92</td>
+              <td class='code_line'>
+                <pre>  def footer</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>93</td>
+              <td class='code_line'>
+                <pre>    "&#169; 2008-11 Little#{link_to 'Red', 'http://www.littleredbrick.com', </pre>
+              </td>
+              <td class='hit_number'>871</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>94</td>
+              <td class='code_line'>
+                <pre>                                 class:'company'}Brick"</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>95</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>96</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>97</td>
+              <td class='code_line'>
+                <pre>  def grade_with_precision(grade)</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>98</td>
+              <td class='code_line'>
+                <pre>    number_with_precision(grade, :precision => 1) rescue 'N/A'</pre>
+              </td>
+              <td class='hit_number'>51</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>99</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>100</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>101</td>
+              <td class='code_line'>
+                <pre>  def grade_values</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>102</td>
+              <td class='code_line'>
+                <pre>    @grades.values.reject{|g| g == '-' }.map{|g| g.percent(@assignment) }</pre>
+              </td>
+              <td class='hit_number'>6</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>103</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>104</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>105</td>
+              <td class='code_line'>
+                <pre>  def gradebook_page_link</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="miss" data-hits='#{cov}'"">
+              <td class='line_number'>106</td>
+              <td class='code_line'>
+                <pre>    link_to 'Gradebook', section_gradebook_path(@section), </pre>
+              </td>
+              <td class='hit_number'>0</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>107</td>
+              <td class='code_line'>
+                <pre>      :title => 'Click to add assignments and grades for the class' if current_user.teaches?(@section)</pre>
+              </td>
+              <td class='hit_number'>72</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>108</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>109</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>110</td>
+              <td class='code_line'>
+                <pre>  def his_or_your</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>111</td>
+              <td class='code_line'>
+                <pre>    current_user == @teacher ? 'your' : "#{@teacher.display_name}&#39;s"</pre>
+              </td>
+              <td class='hit_number'>24</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>112</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>113</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>114</td>
+              <td class='code_line'>
+                <pre>  def initial</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>115</td>
+              <td class='code_line'>
+                <pre>    div "#{link_to 'Return', home_path} to the home page to see the full list of what must be done to set up your school.".html_safe, :class => "notice" if session[:initial]</pre>
+              </td>
+              <td class='hit_number'>273</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>116</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>117</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>118</td>
+              <td class='code_line'>
+                <pre>  def last_assignment_link(section)</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>119</td>
+              <td class='code_line'>
+                <pre>    if !section.assignments._last.new_record? && current_user.may_see?(section)</pre>
+              </td>
+              <td class='hit_number'>21</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>120</td>
+              <td class='code_line'>
+                <pre>      link_to section.assignments._last.title,  </pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>121</td>
+              <td class='code_line'>
+                <pre>              section_assignment_path(section, section.assignments._last) </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>122</td>
+              <td class='code_line'>
+                <pre>    else</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>123</td>
+              <td class='code_line'>
+                <pre>      'N/A'.html_safe</pre>
+              </td>
+              <td class='hit_number'>18</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>124</td>
+              <td class='code_line'>
+                <pre>    end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>125</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>126</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>127</td>
+              <td class='code_line'>
+                <pre>  def last_assignment_grade(section)</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>128</td>
+              <td class='code_line'>
+                <pre>    a = section.assignments._last</pre>
+              </td>
+              <td class='hit_number'>18</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>129</td>
+              <td class='code_line'>
+                <pre>    grades = if @rbes.nil?</pre>
+              </td>
+              <td class='hit_number'>18</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>130</td>
+              <td class='code_line'>
+                <pre>               a.grades </pre>
+              </td>
+              <td class='hit_number'>15</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>131</td>
+              <td class='code_line'>
+                <pre>             else </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>132</td>
+              <td class='code_line'>
+                <pre>               @rbes.map{|r| r.grades.detect{|g|g.assignment_id == a.id}} </pre>
+              </td>
+              <td class='hit_number'>18</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>133</td>
+              <td class='code_line'>
+                <pre>             end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>134</td>
+              <td class='code_line'>
+                <pre>    grade_with_precision(a.average_pct(grades)) </pre>
+              </td>
+              <td class='hit_number'>18</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>135</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>136</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>137</td>
+              <td class='code_line'>
+                <pre>  def link_by_user</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>138</td>
+              <td class='code_line'>
+                <pre>    if current_user.is_a?(Teacher) || current_user.is_a?(Staffer)</pre>
+              </td>
+              <td class='hit_number'>9</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>139</td>
+              <td class='code_line'>
+                <pre>      section_assignments_path(@section, :cat => [@assignment.category], :mp => [@mp_position])</pre>
+              </td>
+              <td class='hit_number'>6</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>140</td>
+              <td class='code_line'>
+                <pre>    else</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>141</td>
+              <td class='code_line'>
+                <pre>      student_assignments_path(@section, :cat => [@assignment.category], :mp => [@mp_position])</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>142</td>
+              <td class='code_line'>
+                <pre>    end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>143</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>144</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>145</td>
+              <td class='code_line'>
+                <pre>  def link_to_term</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>146</td>
+              <td class='code_line'>
+                <pre>    link_to 'Term', term_path(@term), :title => 'Click to return to the term page'</pre>
+              </td>
+              <td class='hit_number'>24</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>147</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>148</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>149</td>
+              <td class='code_line'>
+                <pre>  def mark_of_the_beast;end</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>150</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>151</td>
+              <td class='code_line'>
+                <pre>  def marking_period_links</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>152</td>
+              <td class='code_line'>
+                <pre>    (1..@n_mps).map do |n|</pre>
+              </td>
+              <td class='hit_number'>36</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>153</td>
+              <td class='code_line'>
+                <pre>      link_to_unless n == @mp_position, n, {:marking_period => n}, </pre>
+              </td>
+              <td class='hit_number'>36</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>154</td>
+              <td class='code_line'>
+                <pre>        {:title => "Click to see grades for marking period #{n}"} do</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>155</td>
+              <td class='code_line'>
+                <pre>        span n, :title => "currently viewing grades for marking period #{n}", </pre>
+              </td>
+              <td class='hit_number'>36</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>156</td>
+              <td class='code_line'>
+                <pre>                :style => "font-size:1.3em"  </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>157</td>
+              <td class='code_line'>
+                <pre>        end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>158</td>
+              <td class='code_line'>
+                <pre>    end.join.html_safe</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>159</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>160</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>161</td>
+              <td class='code_line'>
+                <pre>  def msg_head(type)</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>162</td>
+              <td class='code_line'>
+                <pre>    type == :notice ? h2("Good News") : ''</pre>
+              </td>
+              <td class='hit_number'>150</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>163</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>164</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>165</td>
+              <td class='code_line'>
+                <pre>  def next_page collection</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>166</td>
+              <td class='code_line'>
+                <pre>    unless only_page? collection</pre>
+              </td>
+              <td class='hit_number'>27</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>167</td>
+              <td class='code_line'>
+                <pre>      p link_to("Next page"[], next_params(collection)), </pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>168</td>
+              <td class='code_line'>
+                <pre>        :style => "float:right;"</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>169</td>
+              <td class='code_line'>
+                <pre>    end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>170</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>171</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>172</td>
+              <td class='code_line'>
+                <pre>  def next_params collection</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>173</td>
+              <td class='code_line'>
+                <pre>    params.merge(:page => collection.current_page.next)</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>174</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>175</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>176</td>
+              <td class='code_line'>
+                <pre>  def notice_or_error</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>177</td>
+              <td class='code_line'>
+                <pre>    if !flash[:notice].nil?</pre>
+              </td>
+              <td class='hit_number'>429</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>178</td>
+              <td class='code_line'>
+                <pre>      div sanitize(flash[:notice], :attributes => %w(id class style href mailto)), </pre>
+              </td>
+              <td class='hit_number'>156</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>179</td>
+              <td class='code_line'>
+                <pre>          :id => 'notice'</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>180</td>
+              <td class='code_line'>
+                <pre>    elsif !flash[:error].nil?</pre>
+              </td>
+              <td class='hit_number'>273</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>181</td>
+              <td class='code_line'>
+                <pre>      div sanitize(flash[:error], :attributes => %w(id class style href)), </pre>
+              </td>
+              <td class='hit_number'>33</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>182</td>
+              <td class='code_line'>
+                <pre>          :id => 'error'</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>183</td>
+              <td class='code_line'>
+                <pre>    end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>184</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>185</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>186</td>
+              <td class='code_line'>
+                <pre>  def only_page? collection</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>187</td>
+              <td class='code_line'>
+                <pre>    [0, collection.current_page].include? collection.total_pages </pre>
+              </td>
+              <td class='hit_number'>27</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>188</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>189</td>
+              <td class='code_line'>
+                <pre>   </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>190</td>
+              <td class='code_line'>
+                <pre>  def pagination collection</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>191</td>
+              <td class='code_line'>
+                <pre>    if collection.total_pages > 1</pre>
+              </td>
+              <td class='hit_number'>114</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>192</td>
+              <td class='code_line'>
+                <pre>      p('Pages'[:pages_title].html_safe + </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>193</td>
+              <td class='code_line'>
+                <pre>      strong(will_paginate(collection, :inner_window => 10, </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>194</td>
+              <td class='code_line'>
+                <pre>                                       :next_label => "next"[], </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>195</td>
+              <td class='code_line'>
+                <pre>                                       :prev_label => "previous"[], </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>196</td>
+              <td class='code_line'>
+                <pre>                                       :params => { </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>197</td>
+              <td class='code_line'>
+                <pre>        :discussable_type => nil, :discussable_id => nil })))</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>198</td>
+              <td class='code_line'>
+                <pre>    end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>199</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>200</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>201</td>
+              <td class='code_line'>
+                <pre>  def point_value(total)</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>202</td>
+              <td class='code_line'>
+                <pre>  "#{@assignment.point_value} / #{total} </pre>
+              </td>
+              <td class='hit_number'>12</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>203</td>
+              <td class='code_line'>
+                <pre>   (#{number_with_precision(100 * @assignment.point_value/total.to_f, </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>204</td>
+              <td class='code_line'>
+                <pre>                            :precision => 0) rescue 'N/A' })%)" </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>205</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>206</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>207</td>
+              <td class='code_line'>
+                <pre>  def rangify(range)</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>208</td>
+              <td class='code_line'>
+                <pre>    return "< #{range.last}" if range.first ==  -1.0 / 0</pre>
+              </td>
+              <td class='hit_number'>135</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>209</td>
+              <td class='code_line'>
+                <pre>    return "> #{range.first}" if range.last == 1.0 / 0</pre>
+              </td>
+              <td class='hit_number'>108</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>210</td>
+              <td class='code_line'>
+                <pre>    "#{range.first} &ndash; #{range.last - 1}".html_safe</pre>
+              </td>
+              <td class='hit_number'>81</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>211</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>212</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>213</td>
+              <td class='code_line'>
+                <pre>  def rbe_link(student, section, text = nil, condition = true)</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>214</td>
+              <td class='code_line'>
+                <pre>    text ||= "#{student.last_name}, #{student.first_name}"</pre>
+              </td>
+              <td class='hit_number'>24</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>215</td>
+              <td class='code_line'>
+                <pre>    link_to_if condition, text, rbe_path(student, section), </pre>
+              </td>
+              <td class='hit_number'>24</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>216</td>
+              <td class='code_line'>
+                <pre>      :title => "Click to see #{student.first_name}&#39;s performance in #{section.name}".html_safe</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>217</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>218</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>219</td>
+              <td class='code_line'>
+                <pre>  def return_link_by_user</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>220</td>
+              <td class='code_line'>
+                <pre>    "#{return_link_for_teacher}#{section_link(@section, 'Section')}" </pre>
+              </td>
+              <td class='hit_number'>15</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>221</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>222</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>223</td>
+              <td class='code_line'>
+                <pre>  def return_link_for_teacher</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>224</td>
+              <td class='code_line'>
+                <pre>    if current_user.teaches?(@section) </pre>
+              </td>
+              <td class='hit_number'>15</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>225</td>
+              <td class='code_line'>
+                <pre>      "#{link_to 'Gradebook', section_gradebook_path(@section), </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="miss" data-hits='#{cov}'"">
+              <td class='line_number'>226</td>
+              <td class='code_line'>
+                <pre>        :title => 'Click to see the gradebook for this class'} | "</pre>
+              </td>
+              <td class='hit_number'>0</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>227</td>
+              <td class='code_line'>
+                <pre>    end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>228</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>229</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>230</td>
+              <td class='code_line'>
+                <pre>  def sections_front</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>231</td>
+              <td class='code_line'>
+                <pre>    link_to 'Sections', sections_path, :title => 'Click to see an overview of all of your classes' unless current_user.admin?</pre>
+              </td>
+              <td class='hit_number'>135</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>232</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>233</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>234</td>
+              <td class='code_line'>
+                <pre>  def section_link(section, text = nil, conditional = true, options = {})</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>235</td>
+              <td class='code_line'>
+                <pre>    text ||= section.name</pre>
+              </td>
+              <td class='hit_number'>75</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>236</td>
+              <td class='code_line'>
+                <pre>    link_to_if conditional, text, section_path(section), </pre>
+              </td>
+              <td class='hit_number'>75</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>237</td>
+              <td class='code_line'>
+                <pre>               options.merge(:title => "Click to see the class overview for #{section.name_and_time}")</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>238</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>239</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>240</td>
+              <td class='code_line'>
+                <pre>  def section_time</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>241</td>
+              <td class='code_line'>
+                <pre>    "(Period #{@section.time})" if @section.time</pre>
+              </td>
+              <td class='hit_number'>9</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>242</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>243</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>244</td>
+              <td class='code_line'>
+                <pre>  def section_student_link(section, student, text = nil, which = nil)</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>245</td>
+              <td class='code_line'>
+                <pre>    text ||= student.last_first</pre>
+              </td>
+              <td class='hit_number'>15</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>246</td>
+              <td class='code_line'>
+                <pre>    which ||= section.name</pre>
+              </td>
+              <td class='hit_number'>15</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>247</td>
+              <td class='code_line'>
+                <pre>    link_to text, section_enrollment_path(section, student),</pre>
+              </td>
+              <td class='hit_number'>15</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>248</td>
+              <td class='code_line'>
+                <pre>            :title => "Click to see more information about #{student.first_name}&#39;s performance in #{which}".html_safe</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>249</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>250</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>251</td>
+              <td class='code_line'>
+                <pre>  def section_page_link</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>252</td>
+              <td class='code_line'>
+                <pre>    link_to_if current_user.may_see?(@section), </pre>
+              </td>
+              <td class='hit_number'>99</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>253</td>
+              <td class='code_line'>
+                <pre>      @section.name_and_time(false), section_path(@section), </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>254</td>
+              <td class='code_line'>
+                <pre>      :title => "Click to see information on the #{@section.name} class" do</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>255</td>
+              <td class='code_line'>
+                <pre>        normal_text @section.name_and_time(false) </pre>
+              </td>
+              <td class='hit_number'>57</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>256</td>
+              <td class='code_line'>
+                <pre>      end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>257</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>258</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>259</td>
+              <td class='code_line'>
+                <pre>  def section_title(section)</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>260</td>
+              <td class='code_line'>
+                <pre>    unless @section</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>261</td>
+              <td class='code_line'>
+                <pre>      link_text = section.time.nil?? 'View section' : section.time</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>262</td>
+              <td class='code_line'>
+                <pre>      h2([department_link_unless_current(section.department),</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>263</td>
+              <td class='code_line'>
+                <pre>          subject_link(section.subject, section.department),</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>264</td>
+              <td class='code_line'>
+                <pre>          link_to(link_text, section_path(section), </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>265</td>
+              <td class='code_line'>
+                <pre>                  :title => "Click to see information on this #{section.name} class")].join(arrow).html_safe)</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>266</td>
+              <td class='code_line'>
+                <pre>    end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>267</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>268</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>269</td>
+              <td class='code_line'>
+                <pre>  def subject_link(subject, department = nil, text = nil)</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>270</td>
+              <td class='code_line'>
+                <pre>    department ||= subject.department_id</pre>
+              </td>
+              <td class='hit_number'>21</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>271</td>
+              <td class='code_line'>
+                <pre>    text ||= subject.name</pre>
+              </td>
+              <td class='hit_number'>21</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>272</td>
+              <td class='code_line'>
+                <pre>    link_to text, department_subject_path(department, subject), </pre>
+              </td>
+              <td class='hit_number'>21</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>273</td>
+              <td class='code_line'>
+                <pre>    :title => "Click to see an overview of every section of #{subject.name}"</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>274</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>275</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>276</td>
+              <td class='code_line'>
+                <pre>  def submit_tag(value = "Save Changes"[], options={} )</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>277</td>
+              <td class='code_line'>
+                <pre>    or_option = options.delete(:or)</pre>
+              </td>
+              <td class='hit_number'>594</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>278</td>
+              <td class='code_line'>
+                <pre>    return super + </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>279</td>
+              <td class='code_line'>
+                <pre>           span("or #{or_option}", :class => 'button_or') if or_option</pre>
+              </td>
+              <td class='hit_number'>594</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>280</td>
+              <td class='code_line'>
+                <pre>    super</pre>
+              </td>
+              <td class='hit_number'>594</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>281</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>282</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>283</td>
+              <td class='code_line'>
+                <pre>  def teacher_limit_notice</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>284</td>
+              <td class='code_line'>
+                <pre>    raw "You have reached the limit on the number of teacher accounts you are allowed under your current subscription plan. If you need to add more, please contact us at #{mail_to 'support@littleredbrick.com', 'support@littleredbrick.com', :encode => :hex} to upgrade."</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>285</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>286</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>287</td>
+              <td class='code_line'>
+                <pre>  def teacher_link(teacher, conditional = true, text = nil, &block)</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>288</td>
+              <td class='code_line'>
+                <pre>    text ||= teacher.display_name</pre>
+              </td>
+              <td class='hit_number'>135</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>289</td>
+              <td class='code_line'>
+                <pre>    link_to_if conditional, text, teacher_path(teacher), </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>290</td>
+              <td class='code_line'>
+                <pre>      :title => "Click to see an overview of #{teacher.display_name}&#39;s classes".html_safe, &block</pre>
+              </td>
+              <td class='hit_number'>135</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>291</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>292</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>293</td>
+              <td class='code_line'>
+                <pre>  def teacher_or_gradebook</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>294</td>
+              <td class='code_line'>
+                <pre>    if current_user.teaches?(@section)</pre>
+              </td>
+              <td class='hit_number'>6</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>295</td>
+              <td class='code_line'>
+                <pre>      link_to 'Gradebook', section_gradebook_path(@section)</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>296</td>
+              <td class='code_line'>
+                <pre>    else</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>297</td>
+              <td class='code_line'>
+                <pre>      teacher_link(@teacher)</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>298</td>
+              <td class='code_line'>
+                <pre>    end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>299</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>300</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>301</td>
+              <td class='code_line'>
+                <pre>  def teacher_page_link</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>302</td>
+              <td class='code_line'>
+                <pre>    unless current_user.teaches?(@section)</pre>
+              </td>
+              <td class='hit_number'>102</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>303</td>
+              <td class='code_line'>
+                <pre>      teacher_link(@section.teacher, </pre>
+              </td>
+              <td class='hit_number'>90</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>304</td>
+              <td class='code_line'>
+                <pre>                   current_user.may_see?(@section.teacher)) do</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>305</td>
+              <td class='code_line'>
+                <pre>                     normal_text @section.teacher.display_name</pre>
+              </td>
+              <td class='hit_number'>57</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>306</td>
+              <td class='code_line'>
+                <pre>                   end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>307</td>
+              <td class='code_line'>
+                <pre>    end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>308</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>309</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>310</td>
+              <td class='code_line'>
+                <pre>  def teacher_section_gradebook_links</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>311</td>
+              <td class='code_line'>
+                <pre>    [sections_front, teachers_front, teacher_page_link, section_page_link, </pre>
+              </td>
+              <td class='hit_number'>72</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>312</td>
+              <td class='code_line'>
+                <pre>     gradebook_page_link]</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>313</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>314</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>315</td>
+              <td class='code_line'>
+                <pre>  def teachers</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>316</td>
+              <td class='code_line'>
+                <pre>    "#{@teacher.display_name}&#39;s " if current_user.admin?</pre>
+              </td>
+              <td class='hit_number'>45</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>317</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>318</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>319</td>
+              <td class='code_line'>
+                <pre>  def teachers_front</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>320</td>
+              <td class='code_line'>
+                <pre>    link_to 'Teachers', teachers_path if current_user.admin?</pre>
+              </td>
+              <td class='hit_number'>72</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>321</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>322</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>323</td>
+              <td class='code_line'>
+                <pre>  def term_link</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>324</td>
+              <td class='code_line'>
+                <pre>    if @school.terms.count > 1</pre>
+              </td>
+              <td class='hit_number'>9</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>325</td>
+              <td class='code_line'>
+                <pre>      present, other, term = params[:term].blank?? ['next', 'current', nil] : ['current', 'next', 'future']</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>326</td>
+              <td class='code_line'>
+                <pre>      h3('Term') + </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>327</td>
+              <td class='code_line'>
+                <pre>      p("These are the schedules for the #{present} term. Click to see </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>328</td>
+              <td class='code_line'>
+                <pre>        schedules for the #{link_to other, students_url(:term => term)} </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>329</td>
+              <td class='code_line'>
+                <pre>        term.")</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>330</td>
+              <td class='code_line'>
+                <pre>    end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>331</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>332</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>333</td>
+              <td class='code_line'>
+                <pre>  def term_name(term)</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>334</td>
+              <td class='code_line'>
+                <pre>    "#{term.start_date.strftime('%b %d')}&#151;</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>335</td>
+              <td class='code_line'>
+                <pre>     #{term.end_date.strftime('%b %d')}".html_safe</pre>
+              </td>
+              <td class='hit_number'>72</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>336</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>337</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>338</td>
+              <td class='code_line'>
+                <pre>  def title</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>339</td>
+              <td class='code_line'>
+                <pre>    if action_name == 'index'</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>340</td>
+              <td class='code_line'>
+                <pre>      @title = "#{controller.controller_name.humanize.titleize}"</pre>
+              </td>
+              <td class='hit_number'>21</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>341</td>
+              <td class='code_line'>
+                <pre>    else</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>342</td>
+              <td class='code_line'>
+                <pre>      @title = "#{action_name.humanize.titleize} #{controller.controller_name.humanize.titleize.singularize}"</pre>
+              </td>
+              <td class='hit_number'>9</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>343</td>
+              <td class='code_line'>
+                <pre>    end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>344</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>345</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>346</td>
+              <td class='code_line'>
+                <pre>  [:div, :tr, :td, :th, :span, :li, :h2, :h3, :p, :ol, :ul, :strong].each do |element|</pre>
+              </td>
+              <td class='hit_number'>30</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>347</td>
+              <td class='code_line'>
+                <pre>    define_method(element) do |content, options = {}|</pre>
+              </td>
+              <td class='hit_number'>360</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>348</td>
+              <td class='code_line'>
+                <pre>      content_tag element, content, options</pre>
+              </td>
+              <td class='hit_number'>11036</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>349</td>
+              <td class='code_line'>
+                <pre>    end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>350</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>351</td>
+              <td class='code_line'>
+                <pre>end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+        </table>
+      </div>
+      
+    </div>
+    
+    <p>Generated on: 2011-02-26 21:12:41 -0500</p>
+  </body>
+</html>

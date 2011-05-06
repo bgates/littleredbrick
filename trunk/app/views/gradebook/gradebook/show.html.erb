@@ -1,0 +1,43 @@
+<% @page_title = "#{@section.name_and_time(false)} Gradebook | Sections" %>
+<div id='content'>
+ <h1><%= @section.name %> Gradebook</h1>
+  <%= form_tag(section_gradebook_path(@section), :method => :put) do %>
+   <div class="scrollableTable" id="taller">
+    <table cellspacing = 0>
+     <%= render("header", :assignments => @assignments) %>
+     <%= render "footer"  %>
+     <tbody>
+      <%= initial_instructions %>
+      <%= render :partial => 'student', :collection => @students %>
+      <%= filler_row(@students, @assignments.length + 4) -%>
+      </tbody>
+     </table>
+    </div>
+    <%= hidden_field_tag("start", params[:start]) if params[:start] %>
+  <% end %>
+  <%= notice_or_error %>
+</div>
+<div id = 'secondary'>
+ <% render 'assignment_selector' unless @assignments == @all_assignments %>
+ <div class = 'sidebar'>
+  <h2><%= Time::RFC2822_MONTH_NAME[@month - 1] %> Due Dates</h2>
+    <%= sidebar_calendar.html_safe %>
+ </div>
+ <div class = 'sidebar'>
+  <h3>Other Tasks</h3>
+  <ul>
+   <%= li(link_to 'Upload grades', 
+           new_grades_upload_path(@section), 
+           :class => 'excel', 
+           :title => 'transfer grades from an Excel or OpenOffice spreadsheet to LittleRedBrick') unless @all_assignments.empty? %>
+   <%= li(link_to 'Set marks', section_marks_path(@section), 
+          :title => 'Edit grades for marking periods, final exams, etc') %>
+   <%= li(link_to 'See student performance', 
+          performance_section_assignments_path(@section), 
+          :title => 'See grades for all students across any assignment range or category') %>
+   <%= li section_link(@section, "See classwide performance") %>
+   <%= li(link_to "Set grade scale", 
+          edit_section_path(@section, :grade_scale => ''), :title => 'Set the percentage ranges that correspond to each letter grade') %>
+  </ul>
+ </div>
+</div>

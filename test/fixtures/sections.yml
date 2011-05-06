@@ -1,0 +1,14 @@
+beast:
+  teacher: aaron
+  current: true
+  subject_id: 1
+marks:
+  teacher: Sir
+  current: true
+  track: current
+section:
+  teacher: Sir
+  current: true
+  subject: algebra
+  track: current
+

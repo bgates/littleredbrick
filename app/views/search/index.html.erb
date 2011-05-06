@@ -1,0 +1,63 @@
+<style>
+.numeric label {width: 3em;}
+.numeric li, #depts li {clear: left;}
+</style>
+<div id="content">
+ <h1>Search</h1>
+ <% if @students %>
+  <p><%= @students.length %> students found.</p>
+  <table class='sortable resizable scrollike' cellspacing = 0>
+   <thead>
+    <tr><th>Name</th><th>Grade</th><% if params[:department] %><th>Class</th><th>Teacher</th><% end %><% if params[:period] || params[:department] %><th>Period</th><% end %></tr>
+   </thead>
+   <tbody>
+    <% @students.each do |student| %>
+     <tr>
+      <td><%= link_to student.last_first, student_path(student) %></td>
+      <td><%= student.grade %></td>
+      <% if params[:department] %>
+       <td><%= section_link(student.rollbook_entries[0].section) %></td>
+       <td><%= teacher_link(student.rollbook_entries[0].section.teacher) %></td>
+      <% end %>
+      <% if params[:period] || params[:department] %>
+       <td><%= student.rollbook_entries[0].section.time %></td>
+      <% end %>
+     </tr>
+    <% end %>
+   </tbody>
+  </table>
+ <% else %>
+ <p>Use the form on the right to select characteristics of students.</p>
+ <% end %>
+</div>
+<div id="secondary">
+<%= form_tag '/search', :method => :get do %>
+   <fieldset>
+    <legend>Students</legend>
+    <ul id="categories">
+     <li>Grade(s)
+      <ul class="numeric">
+       <% @school.low_grade.upto(@school.high_grade) do |n| %>
+        <li><label for="grade[<%= n %>]"><%= check_box_tag("grade[]", n, (params[:grade] && [params[:grade]].flatten.include?(n.to_s))) %><%= n %></label></li>
+       <% end %>
+      </ul>
+      </li>
+      <li>Taking Classes In
+       <ul id="depts">
+        <% @departments.each do |dept| %>
+         <li><label for="department[<%= dept.id %>]"><%= check_box_tag("department[]", dept.id, params[:department] && params[:department].include?(dept.id.to_s)) %><%= dept.name %></label></li>
+        <% end %>
+       </ul>
+      </li>
+      <li>During Period(s)
+       <ul class="numeric">
+        <% @low.upto(@hi) do |n| %>
+         <li><label for="period[<%= n %>]"><%= check_box_tag("period[]", n, params[:period] && params[:period].include?(n.to_s)) %><%= n %></label></li>
+        <% end %>
+       </ul>
+      </li>
+    </ul>
+    <%= submit_tag("Find Students", :class => "button") %>
+   </fieldset>
+ <% end %>
+</div>

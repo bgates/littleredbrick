@@ -1,0 +1,11 @@
+<% if a.object.attachment? -%>
+  <p>
+  Attachment: <%= link_to a.object.attachment_file_name, section_assignment_path(@section, @assignment, :format => @assignment.attachment_extension), :title => 'Click to download' -%>
+  <%= a.label :remove_attachment, 'Remove', :title => 'Check the box to delete the attachment' -%>
+  <%= a.check_box :remove_attachment -%>
+  </p>
+  <%= a.label :attachment, 'Change attachment' -%>
+<% else -%>
+  <%= a.label :attachment, 'Add a file attachment' -%>
+<% end %>
+<%= a.file_field :attachment -%>

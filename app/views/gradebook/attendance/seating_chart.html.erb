@@ -1,0 +1,20 @@
+<div id="content">
+<h1>Edit <%= @section.name %> Attendance : Seating Chart</h1>
+<p>Mark the attendance for each student.</p>
+<%= notice_or_error %>
+<%= form_tag edit_section_attendance_path(@section) do %>
+  <fieldset>
+   <table>
+    <% 0.upto(@rbes.map(&:y).max) do |y| %>
+     <tr>
+      <% 0.upto(@rbes.map(&:x).max) do |x| %>
+       <td><% if @rbe = @rbes.detect{|rbe| rbe.x == x && rbe.y == y} %><%= @rbe.student.full_name %><br/><%= select_tag "absence[#{@rbe.student_id}]", options_for_select(@school.absence_codes(false).map{|text, code| [text, code]}.unshift(['Present', nil]), absence_for(@rbe)) %><% end %></td>
+      <% end %>
+     </tr>
+    <% end %>
+   </table>
+   <%= submit_tag("Update Attendance", :class => 'button') %>
+   
+  </fieldset>
+<% end %>
+</div>

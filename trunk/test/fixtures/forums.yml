@@ -1,0 +1,25 @@
+rails:
+  name: rails
+  topics_count: 4
+  posts_count: 6
+  discussable: beast (Section)
+  position: 1
+  owner: aaron
+  open: true
+comics:
+  name: comics
+  topics_count: 2
+  posts_count: 4
+  discussable: beast (Section)
+  position: 2
+  owner: aaron
+  open: true
+closed:
+  name: notices
+  topics_count: 0
+  posts_count: 0
+  discussable: beast (Section)
+  position: 3
+  owner: aaron
+  open: false
+

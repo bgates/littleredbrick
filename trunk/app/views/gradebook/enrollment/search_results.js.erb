@@ -1,0 +1,6 @@
+<ul class='autocomplete_list'>
+  <% @students.each do |student| %>
+    <li class='autocomplete_item' id='<%= student.id %>'><%= student.full_name %></li>
+  <% end %>
+  <%= "<li>No student with that name was found. If you are sure the student should be present, click #{link_to 'here', new_student_path} to create the student account.</li>" if @students.empty? %>
+</ul>

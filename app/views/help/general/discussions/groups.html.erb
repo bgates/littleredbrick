@@ -1,0 +1,44 @@
+<div id="content">
+ <h1>Discussion Groups</h1>
+ <p>The main discussion page at Little<span class='company'>Red</span>Brick is found by clicking the <code>Discussions</code> tab. It lists the discussion groups you may access. Briefly, they are:</p>
+<table class="scrollike" cellspacing="0">
+ <thead>
+  <tr><th>Group</th><th>Members</th></tr>
+ </thead>
+ <tbody>
+  <% if current_user.is_a?Staffer %>
+  <tr class="<%= cycle 'odd', 'even' %>">
+    <td>Help</td><td>Staff (Administrators and Teachers), <i>all schools</i> (and tech support)</td>
+  </tr>
+  <% end %>
+  <tr class="<%= cycle 'odd', 'even' %>">
+   <td>School</td><td>Staff and students from your school</td>
+  </tr>
+  <% if current_user.is_a?Staffer %>
+  <tr class="<%= cycle 'odd', 'even' %>">
+   <td>Staff</td><td>Staff from your school</td>
+  </tr>
+  <% end %>
+  <% if current_user.is_a?Teacher %>
+  <tr class="<%= cycle 'odd', 'even' %>">
+   <td>Teachers</td><td>Teachers from your school</td>
+  </tr>
+  <% end %>
+  <% if current_user.is_a?(Staffer) && !current_user.is_a?(Teacher) %>
+  <tr class="<%= cycle 'odd', 'even' %>">
+   <td>Administrators</td><td>Administrators (excluding teachers with admin privileges) from your school</td>
+  </tr>
+  <% end %>
+  <tr class="odd">
+   <td>PTA</td><td>Parents and staff from your school</td>
+  </tr>
+ </tbody>
+</table>
+<% if current_user.is_a?(Staffer) && !current_user.is_a?(Teacher) %>
+<p>Note the Administrators discussion group is the one aspect of the site which distinguishes between users with Administrator accounts and teachers with admin account privileges. In other words, even if a teacher is given administrative privileges within Little<span class='company'>Red</span>Brick to maintain the site, he will not be able to access the Administrators discussion group.</p>
+<% end %>
+<p>When you click the name of a group, you will be presented with a list of fora. A <%= link_to "forum", 'forums' %> is a collection of related <%= link_to "topics", 'topics' %>. For example, the "School" discussion group might have a forum called "Sports", with topics like "Spirit Week Ideas". The "PTA" discussion group might have a forum called "Graduation Requirements", with topics like "Community Service" and "Passing the State Exam".</p>
+
+<p>As an administrator, you may <%= link_to "create new forums", 'forums' %> for any discussion group except the Help group, <%= link_to "new topics", 'topics' %> within those forums, and <%= link_to "post replies", 'posts' %> to topics.</p>
+</div>
+<%= render(:partial => "help/general/discussions/forums") %>

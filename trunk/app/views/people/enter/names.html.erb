@@ -1,0 +1,17 @@
+<div id="content">
+  <h1><%= @page_h1 = "Enter #{@type.singularize.capitalize} Names" -%></h1>
+<p>Please enter <%= @type.chomp('s') %> names, each on its own line. On the next screen you will be prompted to add more information, such as ID numbers and <%= type_specific_info %>. The form will expand to fit as many names as you want to enter.</p>
+<%= notice_or_error %>
+
+<%= form_tag do %>
+<fieldset>
+  <%= text_area_tag(:names, params[:names], :size => '25x20') %>
+  <%= submit_tag 'Enter', :class => 'button' %>
+</fieldset>
+<% end %>
+
+</div>
+<div id="secondary">
+  <%= render(:partial => "data_entry_options", :locals => {:id => params[:id]}) %>
+  <%= initial %>
+</div>

@@ -1,0 +1,12 @@
+<tr class='<%= cycle('odd','even') %>'>
+  <td class='text'>
+  <%= button_to "click to unenroll #{student.first_name}", section_enrollment_path(@section, student), :type => "image", :method => :delete, :src => 'sub_16.png', :style => "display:#{params[:unenroll] && (current_user.teaches?(@section) || current_user.admin?) ? '' : 'none'}" %>
+<%= link_to "#{student.last_name}, #{student.first_name}", rbe_path(@section, student.id, :marking_period => @mp_position), :title => "Click to see more about #{student.first_name}&#39;s performance in this class".html_safe %>
+  </td>
+  <td class='mark'><%= grade_with_precision(@section.grade_distribution[student.id].grade) %></td>
+  <% for assignment in @recent_assignments %>
+    <td class='score' align='right'><%= @section.rollbook_entries.detect{|rbe|rbe.student_id == student.id}.grades.detect{|g| g.assignment_id == assignment.id}.score %></td>
+  <% end %>
+  <%= content_tag(:td, '-') if @recent_assignments.empty? %>
+  <td><%= link_to_if session[:initial].nil?, @posts[student.id].posts_count || '0', reader_path(@section, student) %></td>
+</tr>

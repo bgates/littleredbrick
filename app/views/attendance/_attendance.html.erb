@@ -1,0 +1,6 @@
+<tr id = 'student_<%= student.id %>' class='<%= cycle('odd','even') %>'>
+ <td class='text'><%= link_to "#{student.last_name}, #{student.first_name}", students_individual_section_attendance_path(student), :title => "Click to see #{student.first_name}&#39;s attendance in all classes" %></td>
+ <td class='number'><%= student.id_number %></td>
+ <td class='number'><%= student.grade %></td>
+ <%= attendance_list(student) %>
+</tr>

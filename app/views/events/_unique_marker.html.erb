@@ -1,0 +1,6 @@
+<fieldset>
+<h3>Event Key</h3>
+ <ul><% @event = @events.detect{|e| !e.new_record?} || @events.first %>
+  <li class="<%= class_for(@event) %>"><%= id_only(@assignments_and_grades, @academic_events, @nonacademic_events) %></li>
+ </ul>
+</fieldset>

@@ -1,0 +1,49 @@
+<style>
+fieldset {float: left; width: 40%; margin-right: 30px}
+</style>
+<div id = 'content'>
+<h1>Enroll Students</h1>
+<%= notice_or_error %>
+<fieldset>
+<legend>Enter Name</legend>
+<p>Enter the name or ID number of a student to enroll in <%= section_identifier %></p>
+<%= form_tag search_section_enrollment_path(@section) do %>
+  <%= text_field_tag("search") %>
+  <noscript>
+    <%= submit_tag("Search", :class => 'button') %>
+  </noscript>
+<% end %>
+<% if @students && !@students.empty? %>
+<%= form_tag performance_section_assignments_path(@section) do %>
+<ul>
+<% @students.each do |student| %>
+  <li><label for="id_<%= student.id %>"><%= student.full_name %> (ID <%= student.id_number %>)</label><%= radio_button_tag("id", "#{student.id}") %></li>
+<% end %>
+</ul>
+  <%= submit_tag("Add Student", :class => 'button') %>
+<% end %>
+<% end %>
+</fieldset>
+<fieldset style="z-index:0">
+ <legend>Enter Multiple Names</legend>
+<%= form_tag performance_section_assignments_path(@section) do %>
+   <p style='float:left;'>If you would like to enroll more than one student, enter their names in the form (one student per line).</p>
+   <%= text_area_tag("names", '', :style => 'float:left', :rows => 10) %>
+   <%= submit_tag("Add Students", :class => 'button') %>
+ <% end %>
+</fieldset>
+<%= link_to 'back', session[:return_to], :id => 'cancel' %>
+</div>
+<div id="secondary">
+<h2>Note</h2>
+<p>To enroll multiple students for more than one of <%= his_or_your.html_safe -%> classes, click <%= link_to "here", new_enrollment_upload_path(@section) %></p>
+<h2>Current Enrollment</h2>
+<ul>
+<% for student in @section.students %>
+ <li><%= student.last_first %></li>
+<% end %>
+</ul>
+<% if @section.students.empty? %>
+<p>No students have been enrolled in this section. To enroll a student, enter his name or ID number in the form to the left. When you are finished, the 'back' link under the form will take you back to the section page.</p>
+<% end %>
+</div>

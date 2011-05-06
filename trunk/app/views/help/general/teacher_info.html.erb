@@ -1,0 +1,19 @@
+<div id="content" class="help">
+<h1><%= @page_h1 = "Teacher Information" -%></h1>
+<p>Administrators can see teacher information on the following pages:</p>
+ <dl class="notice">
+  <dt><%= link_to "Teacher index", '#index' %></dt><dd>Shows the schedule for every teacher in the school</dd>
+  <dt><%= link_to "Teacher&#8217;s sections overview", '#teacher_sections' %></dt><dd>Provides an overview of the class-level performance for all of the student&#8217;s classes</dd>
+ </dl>
+ <h3>Teacher Index</h3>
+ <dl>
+ <dt>How to get there</dt><dd><code>Teachers</code> tab</dd>
+ <dt>Summary</dt><dd>Shows the schedules for each teacher in the school</dd>
+ <dt>More information</dt><dd>Click any teacher&#8217;s name to reach that teacher&#8217;s <%= link_to "teacher overview", '#teacher_sections' %> page. Click the name of a class on the teacher&#8217;s schedule to see the <%= link_to "class", :action => 'class_info' %> page.</dd></dl>
+ <hr/>
+ <h3>Teacher Sections Overview</h3>
+ <dl>
+ <dt>How to get there</dt><dd>Click any teacher&#8217;s name on the teacher index page</dd>
+  <dt>Summary</dt><dd>Provides an overview of the class-level performance for all of the teacher&#8217;s classes</dd>
+  <dt>More information</dt><dd>The section overview presents the class summary for each of the teacher&#8217;s classes:<%= render :partial => "class_summary" %><p>The overview page also has links to other stuff.</p></dd></dl>
+</div>

@@ -1,0 +1,45 @@
+<div id="content">
+  <h1><%= @page_title =  "#{@section.name} Attendance" %></h1>
+<%= form_for @section, :url => section_attendance_path(@section) do |s| %>
+ <div class="scrollableTable" id="taller">
+  <table cellspacing = 0 class="sortable">
+   <thead>
+    <tr>
+     <th colspan="3">Student</th>
+     <th colspan="7">Attendance <%= @start.strftime("%b %d") %>&ndash;<%= @finish.strftime("%b %d") %></th>
+    </tr>
+    <tr>
+     <th>#</th>
+     <th>Name</th>
+     <th>Year</th>
+     <th><%= link_to "<", edit_section_attendance_path(@section, :date => @start - 7), :style => 'float:left', :title => "Click to see attendance records for the week of #{(@start - 7).strftime("%B %d")}" %></th>
+     <% (@start..@finish).each do |date| %>
+      <% next if date.cwday > 5 %>
+      <th><%= link_to_unless_current date.strftime("%m-%d"), edit_section_attendance_path(@section, :date => date), :title => "Click to set attendance for #{date.strftime("%B %d")}" do span(date.strftime("%m-%d"), :style => 'font-size:1.1em') end %></th>
+     <% end %>
+     <th><%= link_to ">", edit_section_attendance_path(@section, :date => @start + 7), :style => 'float:left', :title => "Click to see attendance records for the week of #{(@start + 7).strftime("%B %d")}" unless @finish >= Date.today %></th>
+    </tr>
+   </thead>
+   <tfoot>
+    <tr><th colspan="10"><%= submit_tag("Update Attendance", :class => 'button') %></th></tr>
+   </tfoot>
+   <tbody id='student_table'>
+    <%= render(:partial => "student", :collection => @section.rollbook_entries) %>
+    <%= render(:partial => "shared/initial") if @section.students.empty? %>
+    <%= filler_row(@section.students, 6) %>
+   </tbody>
+  </table>
+ </div>
+   <%= hidden_field_tag("section[date]", @date) %>
+   <% end %>
+   
+<%= notice_or_error %>
+</div>
+<div id="secondary">
+ <h2>Change Classes</h2>
+ <ul>
+  <% for section in @sections %>
+  <li><%= link_to_unless_current section.name, edit_section_attendance_path(section, :date => conditional_date) %></li>
+  <% end %>
+ </ul>
+</div>

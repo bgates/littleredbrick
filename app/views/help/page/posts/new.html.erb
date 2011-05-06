@@ -1,0 +1,12 @@
+<% @page_title = 'Adding a Post' %>
+<div id="content">
+ <h1>New Post Help Page</h1>
+ <p>When you reply to a topic, you can write a response using the following formatting options:</p>
+  <%= render(:partial => "/help/page/posts/post") %>
+</div>
+<% if current_user.is_a?Staffer %>
+<div id="secondary">
+  <%= render 'help/page/shared/discussion_related' -%>
+  <%= render 'help/page/shared/tech_support', :subject => 'editing posts' -%>
+</div>
+<% end %>

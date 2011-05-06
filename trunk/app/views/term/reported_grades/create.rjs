@@ -1,0 +1,6 @@
+  page.replace_html 'list', :partial => 'rg', :collection => @reported_grades
+  page.visual_effect 'highlight', "reported_grade_#{@grade.id}", {:startcolor => '#f8f8ff', :endcolor => '#ffffff', :duration => 5.0}
+
+  page.replace 'grade[predecessor_id]', :partial => 'list', :object => @insertables
+  page << "setReportedGradeForms();"
+

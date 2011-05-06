@@ -1,0 +1,14 @@
+<% @page_title = 'Editing the School' %>
+<div id="content">
+ <h1>School Editing Help Page</h1>
+ <p>There are three things you <em>can</em> edit about your school on this page, but only two things you <em>should</em>.</p>
+ <h2>School Name</h2>
+ <p>The school name is mainly useful to help us identify your school. The name can be changed without repercussions.</p>
+ <h2>Domain Name</h2>
+ <p><strong>The domain name should not be changed</strong>. Right now everyone at your school logs in by directing their browsers to <code><%= @school.domain_name %>.littleredbrick.com</code>. If you change that to <code>othername.littleredbrick.com</code>, no one will be able to find it any more.</p>
+ <p>You should only change the domain name if you are the first and only person at your school who has an account, and you have a typo in the domain name.</p>
+ <h2>Grades</h2>
+ <p>There would not be much harm in changing the grade range for your school.</p>
+ <h2>Other School Attributes</h2>
+ <p>If you need to change the number of <strong>teacher accounts</strong> at your school, <%= mail_to "support@littleredbrick.com", "contact us by email", :encode => "hex" %>. If you need to change something else school-wide like marking period dates or the number of classes in a school day, go to the term page.</p>
+</div>

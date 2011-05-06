@@ -1,0 +1,17 @@
+<% @page_title = 'Class' %>
+<div id="content" class="help">
+ <h1>Class Page Help</h1>
+ <h2>Overview</h2>
+ <p>Class &ndash; level information is summarized on the right side of the class page as follows:</p>
+ <%= render(:partial => "help/general/class_summary") %>
+ <h2 class="clear">Rollbook</h2>
+ <p>The rollbook section of the page lists the marking period grade for every student, their three most recent assignment scores, and the number of posts they have made to topics in the class discussion group forums.</p>
+ <h3 class="nonlist">Adding Students</h3>
+ <p>To add students to the class, click the <code>Add Student</code> link at the base of the rollbook table. If you add a student after the start of a marking period, the automatic calculation of the student&#8217;s marking period grade will include only the assignments for which the student gets a score.</p>
+ <h3 class="nonlist">Removing Students</h3>
+ <p>To remove a student from a class, click the <code>Remove Student</code> link at the base of the rollbook table. Removing a student will destroy all of that student&#8217;s grade records for that class, but the student will still be able to log in and access information for his remaining classes.</p>
+</div>
+<div id="secondary">
+ <h2>Other Questions?</h2>
+ <p>If there is something else you want to ask about classes, try the <%= link_to "help forums", forums_path('help') %> for Little<span class='company'>Red</span>Brick tech support.</p>
+</div>

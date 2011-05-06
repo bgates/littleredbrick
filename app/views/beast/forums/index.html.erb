@@ -1,0 +1,35 @@
+<div id="content">
+<h1><%= @discussable.name.titleize %> Forums</h1>
+<p class="subtitle">
+<%= pluralize(number_with_delimiter(@forums.sum('topics_count')), 'topic') %>,
+<%= pluralize(number_with_delimiter(@forums.sum('posts_count')), 'post') %>,
+<abbr title='People who have created posts in this forum'><%= pluralize(number_with_delimiter(@voices), 'voice') %></abbr>
+</p>
+<%= notice_or_error %>
+<table border="0" cellspacing="0" cellpadding="0" class="wide forums beast">
+ <thead>
+   <tr>
+    <th class="la" width="70%" colspan="3"><%= 'Forum'[:forum_title] %></th>
+    <th class="la" width="30%" colspan="1"><%= 'Last Post'[:last_post] %></th>
+   </tr>
+ </thead>
+ <tbody>
+  <%= render(:partial => "forum", :collection => @forums) %>
+  <% if @forums.empty? %>
+  <tr><td colspan='4'>No <%= @discussable.name %> forums have been created yet.<%= ' Click the link to the right to create one.' if current_user.may_create_forum_for?(@discussable) -%></td></tr>
+  <% end %>
+ </tbody>
+</table>
+<% if @forums.sum('posts_count') > 0 %>
+  <p><%= link_to 'Recent posts'[:recent_posts], posts_path(@discussable) %></p>
+<% end %>
+</div>
+<div id='secondary'>
+<% if current_user.may_create_forum_for?(@discussable) %>
+  <h2><%= 'Admin'[:admin_title] %></h2>
+  <p><%= link_to 'Create New Forum'[:create_new_forum], new_forum_path(@discussable) %></p>
+<% elsif @discussable.name == 'help' %>
+ <h2>Note</h2>
+ <p>The Help Forums are unique in that your friendly neighborhood tech support gurus are the only ones who can create new forums here. If you would like to see a new help forum appear, leave a note in the 'suggestions' forum. Thanks!</p>
+<% end %>
+</div>

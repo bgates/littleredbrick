@@ -1,0 +1,24 @@
+<div id="content" class="help">
+<h1><%= @page_h1 = "Enrolling Students" -%></h1>
+<p>Once a teacher has been <%= link_to "assigned classes", :action => 'setup', :id => 'teaching_load' %>, that teacher or an administrator may enter the names of students enrolled in each of those classes. Note that a student account must have been created in order for that student to be enrolled in a class.</p>
+<div style="margin-right:3%">
+<h2>How Administrators Get to the Enrollment Page</h2>
+<p>Click the <code>Teachers</code> tab to get to the teachers index, scroll through the table to find the class in which you want to enroll students, and click the class name. The rollbook table on the section page will list every student enrolled in the class. If no students have been enrolled, the table will contain nothing but a direction to click the "Add students" link at the bottom of the table:</p>
+<%= image_tag("help/empty_rollbook.png", {:alt => "description", :size => "454x199"}) %>
+<p>Instructions on what to do on the Enroll Students form are presented below.</p>
+<div class="notice" style="width:100%;margin-bottom:1em"><h2>Note</h2>As an administrator, entering the enrollment for every class can involve an awful lot of typing. Even if you have spreadsheet data, the upload procedure can be cumbersome. You are better off if you can get the teachers to do this themselves.</div>
+<h2>How to Enroll Students</h2>
+<p>Once you have reached the enrollment page (as an administrator or a teacher), there are three ways to enroll students. If you only have a few students to add, <strong>type each name</strong> as illustrated below. As you start to type a name, the system will try to guess the completed form. Clicking a name when it shows up in the guess list will autocomplete the form.</p>
+<%= image_tag("help/enroll.png", {:alt => "description", :size => "606x314"}) %>
+<p>If you have a list of several names to be enrolled in the same class, <strong>copy and paste</strong> them into the form ("Enter Multiple Students", above).</p>
+<p>If you have a spreadsheet of enrollment data for multiple classes for the same teacher, you can <strong>upload</strong> the data by clicking the link on the right side of the enrollment page. The file must have student names for each class arranged in columns. You will be prompted to upload the file and then identify the columns:</p>
+<%= image_tag("help/upload_id.png", {:alt => "description", :size => "682x390"}) %>
+<h2>Removing Students from Classes</h2>
+<p>To remove a student from a class, click the <code>Remove student</code> link at the bottom of the rollbook table on the section page. (Teachers can also remove students from the gradebook page, using the '' link at the bottom of the list of students.) </p>
+</div>
+<div>
+<h2>How Teachers Get to the Enrollment Page</h2>
+<p>When you log in as a teacher, there are links to gradebooks for all of your classes on the front page. Click on a gradebook link, and you will see a gradebook page listing every assignment created for and every student enrolled in that class. If there are no students enrolled, there will be a direction to the "Add students" link at the bottom of the table:</p>
+<p>For instructions on what to do on the enrollment page, see the header "How to Enroll Students" below.</p>
+</div>
+</div>

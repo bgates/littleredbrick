@@ -1,0 +1,13 @@
+<div id="content">
+<h1>New Assignment</h1>
+<%= error_messages_for("assignment") %>
+<%= form_for @assignment, :url => section_assignments_path(@section),
+                          :html => { :multipart => true } do |a| %>
+ <fieldset>
+<legend>Assignment</legend>
+<%= render(:partial => "assignment_form", :locals => { :a => a }) %>
+<%= submit_tag("Create Assignment", :class => 'button') %>
+</fieldset>
+<% end %>
+<%= link_to "Back to gradebook", section_gradebook_path(@section) %>
+</div>

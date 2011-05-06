@@ -1,0 +1,12 @@
+<div id="content">
+<h1>Forums</h1>
+<p>This page will discuss how to reach, create, edit, and remove forums from the discussion groups.</p>
+<h2>Reaching a Forum</h2>
+<p>When you click on the name of a discussion group on the discussions front page, you see a list of forums. Clicking the name of a forum will take you to a list of all the <%= link_to "topics", 'topics' %> within it. The forum list also has a link to all of the recent <%= link_to "posts", 'posts' %> from all the topics in all of the forums for the discussion group.</p>
+<h2>Creating a Forum</h2>
+<p>If you are allowed to create a forum for a particular discussion group, you will see a <code>Create New Forum</code> link on the right side of the forum list page for the group.</p>
+<p>When you create a forum, you need to give it a name and a short description of the kinds of topics it should contain. For instance, "Homework Help : Request Extra Examples, Not Answers!" You also need to indicate whether other group members should be allowed to create <%= link_to "topics", 'topics' %>. If you think everyone in the group can be trusted to only create appropriate topics, it is probably better to allow it to foster discussion (bear in mind you will be able to remove any inappropriate or out of place topics in your forum). You may want to prohibit anyone but the forum creator from adding topics in the more open discussion groups, like the School and PTA.</p>
+<h2>Moderating a Forum</h2>
+<p>When you create a forum, you automatically become a <%= link_to "moderator", 'moderators' %> for it. Forum moderators may edit or remove any <%= link_to "topic", 'topics' %> or <%= link_to "post", 'posts' %> that does not belong. You may also give any other member of the discussion group moderator privileges. Since people need to be able to log in to see Little<span class='company'>Red</span>Brick fora, you will not have problems with <abbr title="">comment spam</abbr>, but of course you will need to keep an eye on the content of the fora where students and parents are allowed to post to make sure nothing that violates school policies appears.</p>
+</div>
+<%= render(:partial => "help/general/discussions/forums") %>

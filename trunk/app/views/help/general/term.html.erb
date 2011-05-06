@@ -1,0 +1,49 @@
+<div id="content" class="help">
+<h1><%= @page_h1 = "Academic Terms" -%></h1>
+<div style="margin-right:3%">
+<p>The <strong>academic term</strong> is the period of time for which classes meet at your school. The most common term for a middle school or high school is the school year. Colleges typically have shorter terms, either semesters or quarters. A summer school session can also be an academic term.</p>
+<h2>What Constitutes a Term</h2>
+<p>A term has a <strong>daily schedule</strong> and one or more <strong>marks</strong>.</p>
+<p>The daily schedule simply indicates the class periods that make up the school day. The <em>students list</em> and <em>teachers list</em> pages shows the class schedule for each student and teacher. If your school does not have a consistent daily schedule (for instance, if you use a block schedule or teach at a community college), the daily schedule can be replaced with the number of classes a teacher can teach or a student can study during the term.</p>
+<p><strong>Marks</strong> are the grades teachers are required to submit to the administration. A common organization for a high school is to split the school year into four <strong>marking periods</strong>, and require teachers to submit grades at the end of each. (As teachers enter scores for individual assignments into their Little<span class='company'>Red</span>Brick gradebooks, the scores are automatically incorporated into marking period grades.) Many schools also require teachers to submit additional marks, as cumulative grades for each semester and/or the entire term. Little<span class='company'>Red</span>Brick makes it easy for administrators to add these mark requirements, for teachers to set their own marks, and for teachers to calculate marks based on marking period grades. (See more about calculating marks <%= link_to "here", :action => 'marks' %>.)</p>
+<p>Some schools have adopted a multitrack format, in which different groups of students have staggered vacations. It is possible for multitrack schools to set marking period dates for each track.</p>
+
+</div>
+<div>
+<h2>A Typical Term</h2>
+<p>
+</p>
+<dl class="notice" style="margin-bottom: 1em">
+ <dt>Daily Schedule</dt><dd>6 periods</dd>
+ <dt>Marking Periods</dt>
+ <dd>
+  <ul>
+   <li>Sept 3 - Nov 7</li>
+   <li>Nov 10 - Jan 16</li>
+   <li>Jan 20 - Mar 23</li>
+   <li>Mar 27 - Jun 6</li>
+  </ul>
+ </dd>
+ <dt style="clear:right">Marks</dt>
+ <dd>
+  <ul>
+   <li>Marking Period 1</li>
+   <li>Marking Period 2</li>
+   <li>First Semester Grade</li>
+   <li>Marking Period 3</li>
+   <li>Marking Period 4</li>
+   <li>Second Semester Grade</li>
+   <li>Term Grade</li>
+  </ul>
+ </dd>
+</dl>
+<% if current_user.admin? %>
+<h2>Editing the Term</h2>
+The term page lists the start and end dates for every marking period (for every track, if your school is multitrack) during the term. It also lists the number of classes in a typical school day (*or the maximum number of classes/teacher if your school does not have a consistent daily schedule) as well as the grades every teacher has the responsibility to collect ("Reported Grades", eg 'Semester', 'Final Exam', 'Cumulative', and all the marking period grades). From the term page, there are links to edit any aspect of the term - change the dates for any of the marking periods, add or remove marking periods, add, remove, or rename reported grades.</p>
+<% end %>
+
+</div>
+</div>
+<div id="secondary">
+
+</div>

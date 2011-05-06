@@ -1,0 +1,9 @@
+<div id="content">
+<h1><%= @page_title = "Select Child" -%></h1>
+<p>Please select which child's grades you would like to see first. </p>
+<ul>
+ <% current_user.children.each do |child| %>
+  <li><%= button_to child.first_name, session_path(:child => child), :method => :put, :class => :button %></li>
+ <% end %>
+</ul>
+</div>

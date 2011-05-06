@@ -1,0 +1,10 @@
+  page.replace "reported_grade_#{@grade.id}", :partial => 'rg', :object => @grade
+  page.visual_effect 'highlight', "reported_grade_#{@grade.id}", {:startcolor => '#f8f8ff', :endcolor => '#ffffff'}
+  page << "var replaceables = $('content').select('[value = \"#{@grade.id}\"]');"
+  page << "replaceables.each(function(elm){
+                               if(elm.getStyle('padding-right') == '10px'){
+                                 elm.update('#{@grade.description}')
+                               }
+                             });"
+  page << 'setReportedGradeForms();'
+

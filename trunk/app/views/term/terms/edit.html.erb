@@ -1,0 +1,23 @@
+<div id="content">
+<h1>Edit Term <%= term_name @term %></h1>
+<%= error_messages_for("term") %>
+<%= form_tag term_path(@term), :method => :put do %>
+  <fieldset>
+  <legend>Edit Period Schedule</legend>
+  <p>If you have numbered periods (classes) in a typical school day, indicate the numbers used for first and last period.</p>
+  <ul>
+  <li><label for='term[low_period]'>First Period:</label><%= select("term", "low_period", (0..1)) %>
+  </li>
+  <li><label for='term[high_period]'>Last Period:</label><%= select("term", "high_period", (1..10)) %>
+  </li>
+  </ul>
+  <%= submit_tag 'Update Daily Period Schedule', :class => 'button' %>
+  </fieldset>
+<% end %>
+<%= link_to "Cancel", term_path(@term) %>
+</div>
+<div id="secondary">
+<h2>Note</h2>
+<p>To edit other aspects of the term, like the grades teachers must report or the dates they must be reported, <%= link_to "go back to the term page.", term_path(@term) %></p>
+<%= initial %>
+</div>

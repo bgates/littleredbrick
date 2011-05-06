@@ -1,0 +1,20 @@
+<% @page_title = 'Marks' %>
+<div id="content">
+ <h1>Marks Help Page</h1>
+ <p>Marks are the really important grades like marking period grades, semester grades, final exam grades, and cumulative or course grades. They can be required by the administration for all classes during the term, or added by a teacher for one class.</p>
+ <h2>Marks Table</h2>
+ <p>There are two columns for each mark. The first presents the number of points each student earned for the mark compared to the number of points available. The second translates the ratio of earned / possible into a percent.</p>
+ <h2>Identifying Marks</h2>
+ <p>A numbered list to the side of the mark table identifies the marks in the table.</p>
+ <h2>Adding Marks</h2>
+ <% if current_user.admin? %>
+ <p>You can add a mark for all classes by clicking the <code>Marks</code> link on the <em>term</em> page.</p>
+ <% end %>
+ <% if current_user.is_a?Teacher %>
+ <p>You can add a mark for one of your classes by clicking the <code>Add Mark</code> link at the bottom of the numbered list of marks beside the marks table.</p>
+ <% end %>
+</div>
+<div id="secondary">
+  <%= render 'help/page/marks/related' -%>
+  <%= render 'help/page/shared/tech_support', :subject => 'marks' -%>
+</div>

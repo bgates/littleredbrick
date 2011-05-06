@@ -1,0 +1,22 @@
+<% @page_title = 'Show Forum' %>
+<div id="content" class="help">
+ <h1>Show Forum Help Page</h1>
+ <p>The <em>Show Forum</em> page contains a list of <%= link_to "topics", '/help/discussions/topics' %>. Each topic notes the following:</p>
+ <dl class="notice">
+  <dt>Activity indicator</dt><dd>Either <%= image_tag("comment.gif", {:alt => "recent activity", :title => "recent activity", :size => "16x16", :class => 'icon highlight'}) %> if there has been a <%= link_to "post", '/help/discussions/posts' %> to the topic within the past day, <%= image_tag("comment.gif", {:alt => "no recent activity", :title => "no recent activity", :size => "16x16", :class => 'icon grey'}) %> if there has not been a recent post, or <%= image_tag("lock.gif", {:title => 'no recent activity, this topic is locked', :alt => "locked", :size => "16x16", :class => 'icon grey darkgrey'}) %> if the topic is locked and does not allow posts in response.</dd>
+  <dt>Topic name</dt><dd>Which links to the topic (and a separate link to the last post if there are a lot of them)</dd>
+  <dt>Number of posts</dt><dd>Written in response to the topic</dd>
+  <dt>Number of views</dt><dd>How many times the topic has been looked at by anyone beside the topic author</dd>
+  <dt>Last post</dt><dd>The date and author of the last post, and a direct link to it</dd>
+ </dl>
+ <p style="clear:both;padding-top:2em">Click on a topic name to read the topic and its posts.</p>
+ <h2>Other Things on the Page</h2>
+ <p>If the forum creator allows it (or if you are the forum creator), there will be a <code>New topic</code> link under the list of topics.</p>
+ <p>The forum description is found in the sidebar. If you are the forum creator, the link to edit the forum is found directly under the description.</p>
+ <p>Finally, the forum description is followed by a list of forum <%= link_to "moderators", '/help/discussions/moderators' %>, people empowered to edit or remove other people&#8217;s posts.</p>
+</div>
+<div id="secondary">
+  <%= render 'help/page/shared/discussion_related' -%>
+ <%= render 'help/page/shared/tech_support', :subject => 'forums' %>
+</div>
+

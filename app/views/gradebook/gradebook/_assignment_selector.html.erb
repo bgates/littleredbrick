@@ -1,0 +1,8 @@
+<div class = 'sidebar'>
+<h2>Take Gradebook to Assignment:</h2>
+ <%= form_tag('', { :method => :get, :class => 'line'}) do %>
+  <%= select_tag(:start, options_for_select(assignment_titles)) %>
+  <input class="button" type="submit" value="Go" />
+ <% end %>
+</div>
+<hr />

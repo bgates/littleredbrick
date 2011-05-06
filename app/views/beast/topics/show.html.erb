@@ -1,0 +1,88 @@
+<div id="content">
+
+<h1>
+  <%= @page_h1 = h @topic.title %>
+  <%= is_locked?(@topic) %>
+</h1>
+
+<p class="subtitle">
+  <%= pluralize(@topic.posts_count, 'post') %>,
+  <%= pluralize(@voices.length, 'voice') %>
+</p>
+
+<%= pagination @posts %>
+
+<a name="<%= dom_id @posts.first %>" id="<%= dom_id @posts.first %>">&nbsp;</a>
+
+<table border="0" cellspacing="0" cellpadding="0" class="posts wide beast">
+<%= render(:partial => "post", :collection => @posts) %>
+</table>
+
+<%= next_page @posts %>
+<%= pagination @posts %>
+
+<div id="edit"></div>
+<% if @topic.locked? %>
+<p>
+    <%= image_tag "lock.gif", :class => "icon grey", :title => "Topic locked"[:topic_locked_title] %>
+    <label>
+    <%= 'No replies are allowed; this topic is locked'[:locked_topic] %>.</label>
+</p>
+<% else %>
+
+  <p><%= link_to 'Reply to topic'[], new_forum_topic_post_path(@discussable, @forum, @topic), {:id => 'post_reply'} if current_user.may_participate_in?(@discussable) %></p>
+
+<div id="reply" class="editbox container hide">
+  <%= p(flash[:error], :class => 'notice') if flash[:error] %>
+  <%= form_for :post, :url => posts_path(@discussable, :forum_id => @forum, :topic_id => @topic, :page => @topic.last_page) do |f| -%>
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" class='beast'>
+    <tr>
+      <td rowspan="2" width="70%">
+        <%= f.text_area :body, :rows => 8 %>
+      </td>
+      <td valign="top">
+        <h3><%= 'Formatting Options'[] %></h3>
+        <ul class="help">
+          <li><%= '*bold*'[:formatting_bold] %></li>
+          <li><%= '_italics_'[:formatting_italics] %></li>
+          <li><%= 'bq. <span>(quotes)</span>'[:formatting_blockquote] %></li>
+          <li>"IBM":http://www.ibm.com</li>
+          <li><%= '* or # <span>(lists)</span>'[:formatting_list] %></li>
+        </ul>
+        <%= link_to "Formatting help", '/help/page/posts/edit' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="bottom" style="padding-bottom:15px;">
+       <%= submit_tag "Save Reply"[], :class => 'button' %><span class="button_or">or <%= link_to 'cancel'[], 'javascript:void();', {:id => 'cancel_reply'} %></span>
+     </td>
+   </tr>
+  </table>
+  <% end -%>
+</div>
+<% end %>
+
+</div>
+
+<div id="secondary">
+ <% if @topic.editable_by?(current_user) -%>
+  <h2>Admin</h2>
+  <%= link_to('Edit topic'[], edit_forum_topic_path(@discussable, @forum, @topic)) %>
+ <% end -%>
+ <%= form_tag forum_topic_monitorship_path(@discussable, @forum, @topic) do -%>
+  <input id="monitor_checkbox" type="checkbox" <%= "checked='checked'" if @monitoring %> />
+  <label id="monitor_label" for="monitor_checkbox" class='checkbox' title="When you monitor a topic, it gets bumped to the top of the list of recent discussion posts on the front page. This can be handy when there is a lot of discussion activity, but you only care about a few subjects."><%= @monitoring ? 'Monitoring topic'[] : 'Monitor topic'[] %></label>
+  <%= hidden_field_tag '_method', 'delete' if @monitoring %>
+  <noscript><%= submit_tag :Set, :id => 'monitor_submit', :class => 'button' %></noscript>
+ <% end unless is_locked?(@topic) -%>
+ <hr/>
+ <h2><%= readers_link(@discussable) %></h2>
+ <ul class="flat talking">
+ <% @voices.each do | user | %>
+  <li><%= reader_link(@discussable, user, {}, false) %></li>
+ <% end %>
+ </ul>
+</div>
+
+
+

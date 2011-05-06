@@ -1,0 +1,8 @@
+ <fieldset>
+  <legend>Name</legend>
+  <ul class='line'>
+   <li><%= f.label :title -%><%= f.select('title', %w(Mr Mrs Ms Dr)) %></li>
+   <li><%= f.label :first_name, 'First' -%><%= f.text_field :first_name, {:size => 12} %></li>
+   <li><%= f.label :last_name, 'Last' -%><%= f.text_field :last_name, {:size => 12} %></li>
+  </ul>
+ </fieldset>

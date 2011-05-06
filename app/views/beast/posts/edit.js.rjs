@@ -1,0 +1,13 @@
+page["edit-post-#{@post.id}_spinner"].hide
+page << "if($('edit')) {$('edit').remove();}"
+page.replace_html "post-body-#{@post.id}", :partial => 'edit'
+page.edit_form.set_reply_id(@post.id.to_s)
+page.hide 'edit'
+
+page.visual_effect :blind_down, 'edit', :transition => 'Effect.Transitions.spring'
+page.delay(0.25) do
+  page[:edit_post_body].focus
+end
+
+page << "var form = $$('.button-to')[0];"
+page << "deleteWarning('Are you sure you want to delete this post?', form);"

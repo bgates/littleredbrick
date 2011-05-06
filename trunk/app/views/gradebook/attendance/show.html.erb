@@ -1,0 +1,35 @@
+<div id="content">
+ <h1><%= @section.time_and_name -%> Attendance Record</h1>
+ <div class="scrollableTable" id="taller">
+  <table cellspacing = 0 class="sortable">
+   <thead>
+    <tr>
+     <th colspan="3">Student</th>
+     <th colspan="12">Attendance <%= @start.strftime("%b %d") %>&ndash;<%= @finish.strftime("%b %d") %></th>
+    </tr>
+    <tr>
+     <th>#</th>
+     <th>Name</th>
+     <th>Year</th>
+     <th><%= link_to "<", section_attendance_path(@section, :date => @start - 7), :style => 'float:left', :title => "Click to see attendance records for the week of #{(@start - 7).strftime("%B %d")}" %></th>
+     <% (@start..@finish).each do |date| %>
+      <% next if date.cwday > 5 %>
+      <th><%= date.strftime("%m-%d") %></th>
+     <% end %>
+     <th><%= link_to ">", section_attendance_path(@section, :date => @finish + 3), :style => 'float:left', :title => "Click to see attendance records for the week of #{(@finish + 3).strftime("%B %d")}" unless @finish >= Date.today %></th>
+    </tr>
+   </thead>
+   <tfoot>
+    <tr><th colspan="15">&nbsp;</th></tr>
+   </tfoot>
+   <tbody id='student_table'>
+    <%= render(:partial => "show_student", :collection => @section.students) %>
+    <%= render(:partial => "shared/initial") if @section.students.empty? %>
+    <%= filler_row(@section.students, 6) %>
+   </tbody>
+  </table>
+ </div>
+ <%= link_to 'Edit', edit_section_attendance_path(@section, :date => @start) if current_user.teaches?(@section) -%>
+</div>
+<div id="secondary">
+</div>

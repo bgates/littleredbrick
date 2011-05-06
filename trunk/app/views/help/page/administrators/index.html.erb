@@ -1,0 +1,18 @@
+<% @page_title = 'Administrators List' %>
+<div id="content">
+ <h1>Administrators List Help Page</h1>
+ <p>The <em>Administrators List</em> page shows every <strong>administrator</strong> at your school, as well as any teachers who have been given <strong>admin privileges</strong>. An administrator, or a teacher with admin privileges, can perform the following tasks which a teacher normally cannot:</p>
+ <ul>
+  <li><%= link_to "Create / edit a term", '/help/term' %></li>
+  <li><%= link_to "Create / edit / delete teacher and administrator accounts", '/help/users' %></li>
+  <li><%= link_to "Assign teaching loads", '/help/teaching_load' %></li>
+  <li><%= link_to "Create / edit / delete departments and subjects in the school course catalog", '/help/catalog' %></li>
+ </ul>
+ <h2 style="margin-top:1em">Adding Administrators</h2>
+ <p>The <code>new administrator</code> link is in the sidebar at the right side of the administrators table. You can make a new account for an administrator who doesn&#8217;t have one yet, or assign admin privileges to a teacher.</p>
+ <h2>Removing Administrators</h2>
+ <p>You can remove a teacher&#8217;s <strong>admin privileges</strong> without having any other effect on the teacher&#8217;s account. If you remove an administrator, that person&#8217;s account is destroyed.</p>
+</div>
+<div id="secondary">
+  <%= render 'help/page/shared/tech_support', :subject => 'administrator accounts' -%>
+</div>

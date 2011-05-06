@@ -1,0 +1,26 @@
+<% @page_title = "Sort Students | Sections" -%>
+<div id="content">
+<h1>Sort Students</h1>
+<fieldset>
+ <legend>Gradebook Order</legend>
+ <%= form_tag({}, {:method => 'put'}) do %>
+  <ul id='list'>
+  <% @students.each do |student| %>
+   <li id = 'student_<%= student.rbe_id %>'>
+    <label style='display:block'><noscript><%= text_field("student[#{student.rbe_id}]", "position", :size => 2, :value => student.position) %></noscript>
+    <%= student.last_name %>, <%= student.first_name %></label>
+   </li>
+  <% end %>
+ </ul>
+ <noscript><%= submit_tag("Save Changes", :class => 'button') %></noscript>
+<% end %>
+</fieldset>
+</div>
+<div id="secondary">
+<h2>Options</h2>
+<noscript><p>Enter the position every student should occupy in the gradebook.</p></noscript>
+<hr/>
+<%= link_to "Return to gradebook", section_gradebook_path(@section) %>
+<hr/>
+<%= button_to("Alphabetize", {}, :method => 'put', :class => 'button', :style => 'float:none') %>
+</div>

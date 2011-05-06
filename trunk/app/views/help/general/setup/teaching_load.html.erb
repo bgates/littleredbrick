@@ -1,0 +1,21 @@
+<div id="content" class="help gapless">
+<h1>Setup Task 4: Classes for Teachers</h1>
+<p>Once teachers have been <%= link_to "given accounts", :action_name => 'users' %>, and the <%= link_to "class catalog", :action_name => 'catalog' %> has been entered, teachers can be assigned classes. Teachers may do this for themselves, or an administrator can do it for them.</p>
+<div style="margin-right:3%">
+<h3>Directions for Administrators</h3>
+<p>As an administrator, you can access the teacher schedule page and see every teacher's schedule. If a teacher has not been assigned classes, there will be a link provided to set the teaching assignment for that teacher.</p> 
+<h3>The Teaching Assignment Form</h3>
+<p>To assign subjects to a teacher, first select the department or departments in which the subjects are.</p>
+<%= image_tag("help/new_teaching_load.png", {:alt => "description", :size => "482x320"}) %>
+<p>After you indicate the department(s) by checking boxes on the left half of the form, the right half of the form will be updated to reflect your choices. At that point, you can select the subject, time, and track for all of the teacher&#8217;s periods. (The "track" option will only appear if you have a multitrack school.) If your teacher does not have a class every period, just delete one of the lines in the form. If your teacher teaches more than one class per period, use the "add sections" link at the bottom of the form.</p>
+<%= image_tag("help/teaching_load.png", {:alt => "description", :size => "526x330"}) %>
+<p>After submitting the teaching assignments form, you will be returned to the teacher schedule page. It should show the schedule you have just created. Repeat the process of assigning classes for each teacher. Once you have set every teacher&#8217;s schedule, you and/or your teachers can <%= link_to "set student schedules", :action_name => 'enrollment' %>.</p>
+</div>
+<div>
+<h3>Directions for Teachers</h3>
+<p>A teacher who logs in before classes have been assigned will see a link to the teaching load assignment form on the front page.</p>
+</div>
+</div>
+<div id="secondary">
+<%= setup_task_list %>
+</div>

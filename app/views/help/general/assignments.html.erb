@@ -1,0 +1,36 @@
+<div id="content" class="help">
+<h1><%= @page_h1 = "Assignments" -%></h1>
+<% if current_user.is_a?Teacher %>
+<h2>How Assignments are Created</h2>
+<p>To create an assignment for a class, go to the class <strong>gradebook</strong> page and click the <%= image_tag("add_16.png", {:alt => "add assignment", :size => "16x16"}) %> at the top of the gradebook table.</p>
+<h3>Defining an Assignment</h3>
+<p>When creating an assignment, set the point value, due date, title, marking period, and category (homework, classwork, quiz, test, etc). You may add a short description of the assignment, and you are free to create your own category names. The category names are used in a couple of places: the section overview includes a comparison of the point values of all assignments in each category, the student performance page has a breakdown of student performance in each category, and the assignments page allows inspection of individual and classwide performance on particular assignments selected by category.</p>
+<h3>Setting Due Dates</h3>
+<p>Sometimes it is useful to set due dates for each student rather than for the class as a whole, for instance if you have assigned oral presentations which only a few students can complete each class period. If you have to do this, you can. Each student will see the appropriate due date for the assignment on the calendar. Your calendar will show every occurence of the assignment.</p>
+<h3>Grading an Assignment</h3>
+<p>When an assignment is created for a section, all students in the section are given a placeholder grade '-'. This is <i>not</i> a zero. The placeholder does not count for or against a student. When you grade a student's assignment by awarding any number grade, the assignment is automatically factored in to the marking period grade.</p>
+<p>Grades can either be typed in or <%= link_to "uploaded", :action => 'upload_grades' %>. A grade must be either a whole number, a number with one decimal place, or the placeholder '-'.</p>
+<% end %>
+<h2>Where You Can See Assignment Information</h2>
+<% if !current_user.is_a?Staffer %>
+<p>As soon as one of your <%= 'child&#8217; ' if current_user.is_a?Parent %>teachers enters an assignment into Little<span class='company'>Red</span>Brick, you can see it in three places: the <strong>front page</strong>, the <strong>calendar</strong>, and the <strong>class detail</strong> page. The </p>
+<% else %>
+<p>There are several different pages on which you can see assignment information:</p>
+<dl class="notice">
+ <dt><%= link_to "Assignment detail", :action => '#detail' %></dt><dd>Complete description of a single assignment</dd>
+ <dt><%= link_to "Class assignment analysis", :action => 'assignments' %></dt><dd>A page to investigate the performance of the class as a whole on selected assignments</dd>
+ <dt><%= link_to "Class page", :action => '#section' %></dt><dd>Comprehensive view of academics for all of the students in one section</dd>
+ <dt><%= link_to "Class performance analysis", :action => 'class_analysis' %></dt><dd>A page to investigate the performance of each student in a class on selected assignments</dd>
+ <% if current_user.is_a?Teacher %>
+  <dt><%= link_to "Gradebook", :action => 'gradebook' %></dt><dd>Page to create and score assignments (<em>Teachers only</em>)</dd>
+ <% end %>
+ <dt><%= link_to "Student classes overview", :action => 'student_sections' %></dt><dd>High&ndash;level perspective on all of a given student&#8217;s classes</dd>
+ <dt><%= link_to "Student performance", :action => 'student' %></dt><dd>Focused look at one student in one class</dd>
+ <dt><%= link_to "Subject overview", :action => 'subject' %></dt><dd>High&ndash;level perspective on every section of a given subject (ie, all Algebra I classes at the school)</dd>
+ <% if current_user.admin? %>
+ <dt><%= link_to "Teacher overview", :action => 'teacher' %></dt><dd>High&ndash;level perspective on all of a given teacher&#8217;s classes (<em>Admins only</em>)</dd>
+ <% end %>
+</dl>
+<% end %>
+
+</div>

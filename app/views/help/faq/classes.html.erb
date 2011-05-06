@@ -1,0 +1,37 @@
+<div id="content">
+<h1>Classes</h1>
+<h2>Questions</h2>
+<ol id="questions">
+ <li><%= link_to "What information can I see about each class?", '#class_info' %></li>
+ <li><%= link_to "How can I see information about multiple classes at once?", '#multiple_classes' %></li>
+ <li><%= link_to "What higher-level information is available about classes at my school?", '#dept_info' %></li>
+ <li><span class="question">Want to ask something else? Do you want more than the answers provided here?</span>Ask your question in the <%= link_to "help forums", forums_path('help') %>.</li>
+</ol>
+<h2 id="answer_header">Answers</h2>
+<ol id="answers">
+ <li id="#class_info"><span class="question">What information can I see about each class?</span>The class page has a wealth of information summarizing the academic performance and workload of its students. Some features are outlined below.<%= image_tag("help/annotated_section_page.png", {:alt => "description", :size => "540x264", :style => 'margin-right:-200px;float:right'}) %>
+ <ol>
+  <li><span class="annotation">Average grade</span> The grade for the  <%= link_to "marking period", 'grades#mp' %>. By default this is the current marking period, but it is possible to view earlier grades (see below).</li>
+  <li><span class="annotation">Grade distribution</span> graphical representation of student grades according to the grade scale for the class.</li>
+  <li><span class="annotation">Number of assignments</span> for the marking period and the term to date. The link is to the <%= link_to "assignment summary", 'assignments#analyzer' %> page, which lists class average and other information for user-selected assignments.</li>
+  <li><span class="annotation">Point distribution</span> of assignments for the marking period in the categories defined by the teacher when <%= link_to "creating assignments", 'assignments#create_assign' %>.</li>
+  <li><span class="annotation">Last assignment</span> link to <%= link_to "details", 'assignments#review_assign' %> on the last assignment graded for the class.</li>
+  <li><span class="annotation">Class Discussions</span> Indications of the activity level in the <%= link_to "discussion group", 'discussions' %> for the class.</li>
+  <li><span class="annotation">Rollbook</span> There are four columns of information on each student here. The student names each link to their <%= link_to "rollbook page", 'grades#rollbook' %>. Beside each name is that student&#8217;s marking period grade for the marking period under examination. Click a marking period number at the head of this column to see information for that marking period. The third column contains grades on the 3 most recent assignments. Click the assignment number to see <%= link_to "details", 'assignments#review_assign' %> on that assignment. The final column lists the number of <%= link_to "posts", 'discussions#post_def' %> each student has made to the discussion group for the class. Click a link in that column to <%= link_to "read the posts", 'discussions#user_posts' %> by that student.</li></ol>
+</li>
+  <li id="multiple_classes"><span class="question">How can I see information about multiple classes at once?</span>Section summaries of the type described <%= link_to "above", '#class_info' %> (items 1-6) can be accessed in the following contexts:
+   <ul>
+   <% if current_user.is_a?(Teacher) %>
+    <li><span class="annotation">All of your classes</span> are summarized under the 'Classes' tab. That page links to the class page and gradebook for each class.</li>
+   <% end %>
+   <% if current_user.admin? %>
+    <li><span class="annotation">All of a teacher&#8217;s classes</span> are summarized on the teacher&#8217;s page, accessible under the 'Teachers' tab.</li>
+    <li><span class="annotation">All sections of the same <%= link_to "subject", '#subject' %></span> are summarized on the subject page, accessible through the catalog.</li>
+   <% end %>
+   <li><span class="annotation">All of a student&#8217;s classes</span> are summarized under the student's "classes" page, accessible through the student&#8217;s personal summary page.</li>
+   </ul>
+  </li>
+  <% if current_user.admin? %>
+  <li id="dept_info"><span class="question">What higher-level information is available about classes at my school?</span><p>The catalog page, reached through the admin tab, lists the total enrollment for each department and the number of sections of each subject. </p><%= image_tag("help/catalog.png", {:alt => "description", :size => "508x262"}) %> <p>Each department name links to a department page, which shows the teacher and enrollment for each section of each subject in the department. </p><%= image_tag("help/department.png", {:alt => "description", :size => "510x308"}) %> <p>Each subject name (on the catalog and department pages) links to a subject page, which summarizes every section of the subject as described <%= link_to "above", '#multiple_classes' %>. Note that this information is only accessible to administrators and teachers with admin privileges.</p></li><% end %>
+</ol>
+</div>

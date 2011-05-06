@@ -1,0 +1,7 @@
+ <% if due_date_for_each? %>
+   <%= link_to "Click to set one due date for all students", 
+               new_or_edit_link(:due => 'all') %>
+ <% else %>
+   <%= link_to "Click to set due date for each student",
+               new_or_edit_link(:due => 'individual') %>
+ <% end %>

@@ -1,0 +1,46 @@
+<% @page_title = 'Gradebook' %>
+<div id="content" class="help gapless">
+ <h1>Gradebook Help Page</h1>
+ <p>The <em>gradebook</em> page is the most important page in the whole site. It is also the most complicated. Here is how it works.</p>
+ <div style="margin-right:3%">
+ <h2>Students</h2>
+ <h3>Adding Students</h3>
+ <p>To add students, click the <%= image_tag("add_16_ie.png", {:alt => "Add Students", :title => 'Add Students', :size => "16x16"}) %> link at the bottom of the gradebook table.</p>
+ <h3>Removing Students</h3>
+ <p>To remove a student from a class, click the <%= image_tag("sub_16.png", {:alt => "Remove Students", :size => "16x16"}) %> link at the bottom of the gradebook table and a similar icon will appear beside each student&#8217;s name. Click the icon beside a student&#8217;s name to unenroll that student. Note that <strong>removing a student from a class destroys all of the grade date for that student in that class</strong>, though it will not affect the student&#8217;s account or grades in other classes.</p>
+ <h3>Sorting Students</h3>
+ <p>Students will be listed in the gradebook table in the order that you add them. If you need to change the order, there is a <code>Sort students</code> link at the bottom of the gradebook table.    </p>
+ <h2>Assignments</h2>
+ <h3>Adding Assignments</h3>
+ <p>To add an assignment, click the <%= image_tag("add_16_ie.png", {:alt => "Add Assignment", :title => 'Add Assignment', :size => "16x16"}) %> link at the top of the gradebook table.</p>
+ <div class="notice" style="width:100%;margin-bottom:1em"><h2>Note</h2><p>It is recommended that you add assignments to the gradebook as soon as you assign them, rather than wait until they are due. This is to ensure that everyone at your school is aware of upcoming assignments, including your students, administrators, and especially parents.</p></div>
+ <h3 class="clear">Identifying Assignments</h3>
+ <p>Assignments are aligned in columns and identified by a number corresponding to the order in which assignments are entered into the gradebook. If you need a reminder of which assignment a number represents, point the mouse at the number and you will see the assignment&#8217;s title, due date, and point value.</p>
+ <h3>Editing / Removing Assignments</h3>
+ <p>Clicking an assignment number at the top of a column will take you to the <em>assignment</em> page. The <code>Edit assignment</code> link is found on that page. If you need to delete an assignment, you can find the <code>Delete</code> button on the edit page.</p>
+ </div>
+ <div>
+ <h2>Grades</h2>
+ <p>Grades for an assignment are aligned in columns in the gradebook table. If you have not scored an assignment yet, you will see '-' in place of grades. <strong>That does not mean the same as a score of zero, and never turns into a zero unless you change it.</strong> When you do score an assignment, the score must be numerical. Scores may include one digit after a decimal point (9 or 9.5 would be legitimate scores but not 9.52).</p>
+ <h3>Grade Display</h3>
+ <p>The gradebook table lets you enter scores for student grades on the last five assignments you created. On the right side of the table are student averages over those assignments, and the current marking period grade for each student.</p>
+ <p>To see older assignments, there are three options:</p>
+ <dl class="unobtrusive">
+  <dt>Page through</dt><dd>Click the <code>&lt;</code> link in front of the first assignment number on the gradebook table to see grades for the previous assignment.</dd>
+  <dt>Go to a date</dt><dd>The calendar beside the gradebook table indicates due dates for assignments. Click a date to navigate through the gradebook to assignments due on that date.</dd>
+  <dt>Select</dt><dd>The dropdown list beside the gradebook table has the title of every assignment for the class. Select an assignment to navigate to its grades.</dd>
+ </dl>
+ <h3>Uploading Grades</h3>
+ <p>If you keep your grades in an Excel or OpenOffice spreadsheet, you can upload them instead of typing them in again. Assignments need to be added before grades for them can be uploaded. The <code>Upload grades</code> link is below the calendar on the gradebook page.</p>
+ </div>
+</div>
+<div id="secondary">
+  <h2>Related Topics</h2>
+ <p>These links are to general information about the site, not help on any specific page.</p>
+ <ul>
+  <li><%= link_to "Assignments", '/help/assignments' %></li>
+  <li><%= link_to "Gradebooks", '/help/gradebooks' %></li>
+ </ul>
+ <hr/>
+  <%= render 'help/page/shared/tech_support', :subject => 'gradebooks' -%>
+</div>

@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"                 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+  <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+    <link href="/stylesheets/public.css" media="screen" rel="Stylesheet" type="text/css" />
+    <!--[if lt IE 7]>
+	<link rel="stylesheet" href="stylesheets/ie6_public.css" media="screen" type="text/css">
+    <![endif]-->
+    <!--[if lt IE 8]>
+     <link rel="stylesheet" href="stylesheets/ie7_public.css" media="screen" type="text/css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+     <link rel="stylesheet" href="stylesheets/ie8_public.css" media="screen" type="text/css">
+    <![endif]-->
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta name="content" description="The easiest, most useful online gradebook" />
+    <meta name="keywords" content="easy online gradebook, easy, simple, administrator" />
+  <%= javascript_include_tag 'prototype', 'lowpro', 'effects', 'window', 'signup', 'password',  'calendar', :cache => 'signup_cache' %>
+    <title>Schools Online Simply | LittleRedBrick</title>
+  </head>
+  <body id="logged_out">
+   <div id = "wrapper">
+   <div id="masthead" class="selectfree">
+      <a id="logo" href="/">Little Red Brick: Schools Online Simply</a>
+    <div id="secondary_nav">
+     <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="tour">Tour</a></li>
+      <li><a href="uses">Uses</a></li>
+      <li><a href="questions">Questions</a></li>
+      <li><a href="plans">Signup Plans</a></li>
+     </ul>
+    </div>
+    <!--[if lte IE 6.5]><iframe></iframe><![endif]-->
+    </div>
+    <div id="content_wrap">
+      <div id="content">
+     <h1>Personal Sign Up</h1>
+     <%= error_messages_for("school", 'user', :header_message => 'There were problems with the signup.', :message => "Please fix the following #{pluralize((@school.errors.length + @user.errors.length), 'error')} and submit the form again.") %>
+       <%= form_tag 'signup', :id => 'signup' do %>
+        <fieldset>
+         <legend>Create Your School Site</legend>
+         <ul>
+          <li>
+           <p>Every Little<span class="company">Red</span>Brick site has its own unique web address. This is where you&#39;ll login. For example, if you wanted your site to be at tomlandry.littleredbrick.com you&#8217;d enter <code>tomlandry</code> in the field below. We suggest you use your school name, not your own name, in case you and your school decide to upgrade the account.<em>Use letters and numbers only &mdash; no spaces.</em> </p>
+           <label for="school_domain_name" id="domain"><strong>http://</strong></label>
+           <%= text_field("school", "domain_name", :size => 15)  %><strong>.littleredbrick.com </strong></li>
+          <li><p>Enter your school&#8217;s real name (what shows up on your letterhead) so people can search for it if they forget the web address.</p><label for="school_name">School Name</label><%= text_field("school", "name", :size => 30) %></li>
+          <li><p id="clear">Your school has students in the following grades:</p>
+           <label for="school_low_grade">Start</label> <%= select("school", "low_grade", (1..12)) %>
+          </li><li>
+           <label for="school_high_grade">Finish</label>
+           <%= select("school", "high_grade", (1..12)) %></li>
+          <li><%= hidden_field("school", "teacher_limit", :value => 1) %></li>
+         </ul>
+        </fieldset>
+
+        <fieldset id="name">
+	 <legend>Create your administrative account</legend>
+         <p><span class="highlight">This is the master log-in for your account.</span> Once your account is set up you can add accounts for students, parents, and administrators as well.</p>
+         <ul>
+          <li><label for="user_title">Title</label> <%= select("user", "title", %w(Mr Mrs Ms Dr)) %></li>
+          <li><label for="user_first_name">First Name</label><%= text_field("user", "first_name", :size => 20) %></li>
+          <li><label for="user_last_name">Last Name</label><%= text_field("user", "last_name", :size => 20) %></li>
+        <li><label for="user_authorization_login">Login</label><%= text_field("user[authorization]", "login", :size => 20) %></li>
+        <li><label for="user_authorization_password" id="password_label">Password</label><%= password_field "user[authorization]", 'password', :size => 20 %></li>
+        <li><label for="user_authorization_password_confirmation" title="Yes, I know everyone just does cut and paste">Confirm Password</label><%= password_field "user[authorization]", 'password_confirmation', :size => 20 %></li>
+          <li><label for="user_email">Email</label><%= text_field("user", "email", :size => 20) %>
+          <p id="email">An email address is required so we can let you back in to your account in case you forget your login or password.</p></li>
+          <li><%= hidden_field_tag("singleton") %></li>
+         </ul>
+        </fieldset>
+
+        <fieldset id="personal_agreement">
+         <legend>Review, accept terms, &amp; complete signup</legend>
+         <%= render(:partial => "personal_terms") %>
+	<hr>
+	 <p>Please review our <a href="terms" target="_blank">Terms of Service</a>, <a href="privacy" target="_blank">Privacy Policy</a>, and <a href="refunds" target="_blank">Refund Policy</a>. If you have questions please <a href="mailto:support@littleredbrick.com">email support</a>.</p>
+         <label class="highlight" style="width:auto;line-height:20px">
+         <input id="signup_accepts_eula" name="signup[accepts_eula]" type="checkbox" value="1" style="padding-right:10px"/>
+         <input name="signup[accepts_eula]" type="hidden" value="0" />I agree to the Terms of Service, Privacy, &amp; Refund policies</label>
+      <input class="disabled button" disabled="disabled" id="signup_submit" name="commit" type="submit" value="Place order &amp; create my LittleRedBrick site" />
+     </fieldset>
+    <% end %>
+      </div>
+      <div id="secondary">
+      </div>
+    </div>
+    <div id='footer' class='selectfree'>&#169; 2009 Little<span class='company'>Red</span>Brick <!--[if lte IE 6.5]><iframe></iframe><![endif]--></div>
+  </div>
+  </body>
+</html>

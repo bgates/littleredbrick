@@ -1,0 +1,12 @@
+<div id="content">
+ <h1>New Marks Help Page</h1>
+ <p>If you want to grade a class on something that <strong>is not a part of any marking period</strong>, but is used to calculate semester or final grades, you should create a mark.</p>
+ <h2>Description</h2>
+ <p>The <em>description</em> for a mark is really just the name, like <em>final exam</em>.</p>
+ <h2>Order</h2>
+ <p>You will also need to define the position of any new mark in the order in which marks are graded. For instance, if your school requires two marking period grades and a semester grade as marks, and you want to base the semester grade equally on the two marking periods and a semester final exam, you should specify that the exam will be graded after the second marking period (not after the semester grade itself).</p>
+</div>
+<div id="secondary">
+  <%= render 'help/page/marks/related' -%>
+  <%= render 'help/page/shared/tech_support', :subject => 'editing marks' -%>
+</div>

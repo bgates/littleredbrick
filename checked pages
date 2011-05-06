@@ -1,0 +1,225 @@
+Term
+xterms#show
+xterms#edit
+xterms#update
+
+xmarks#index
+xmarks#create + fail - insert 1st, last
+xmarks#update + fail
+xmarks#delete + warning
+
+xmp#delete +warning
+xmp#new
+xmp#create + fail
+
+xtracks#edit
+xtracks#update + fail
+xtracks#delete + warning
+xtracks#new
+xtracks#create + fail
+
+xenter#multiple + hit teacher limit
+xenter#names + fail
+xenter#details + fail
+xenter#select_file + fail
+xenter#describe_file + fail
+xenter#import (direct success + fix duplicate logins)
+
+xteachers#index - empty, full, @ & under teacher limit, w & w/out classes
+xteachers#show w & w/out classes
+xteachers#edit
+xteachers#update + fail
+xteachers#destroy + warning
+xteachers#new
+xteachers#create + fail
+
+xadmin#index
+xadmin#new
+xadmin#create + fail
+xadmin#search + fail (inc fail @ teacher limit)
+xadmin#show
+xadmin#edit
+xadmin#update + fail
+xadmin#delete + warning, delete admin status of teacher + warning
+
+xstudents#index
+xstudents#new
+xstudents#create + fail
+xstudents#show no classes; classes, no assignments & no logins; classes, assignments & no logins
+xstudents#parents
+
+Parent
+xparents#edit + fail
+xparents#delete + warning, delete relationship w student + warning
+xparents#index
+
+x-inc pwd - check from console
+
+
+departments#create catalog - delete department, delete class, add multiple departments, add class
+
+teaching_load#new - select departments, add/remove sections
+teaching_load#create (can't have error)
+teaching_load#edit - select departments, add/remove sections
+teaching_load#update (can't have error)
+teaching_load#destroy + warning
+
+teaching_load#describe_file
+teaching_load#select_file + fail
+teaching_load#upload
+teaching_load#import
+
+sections#show
+sections#edit + edit grade_scale (+fail)
+sections#update
+
+rollbook#new
+rollbook#search
+rollbook#create + fail inc multiple
+rollbook#select_file
+rollbook#describe_file
+rollbook#upload
+rollbook#import
+rollbook#destroy + warning
+rollbook#assignments w no assignments
+rollbook#marks
+rollbook#index (no students; students, no assignments)
+rollbook#show (na), some assignments no posts
+rollbook#sort
+
+help/setup
+
+front_page#index staffer;w discussion post;w event+post; teacher w post & classes
+front_page#admin
+
+departments#index
+departments#show
+departments#edit + fail
+departments#update
+departments#new
+departments#create + fail
+departmets#destroy
+
+subjects#show - empty
+subjects#new
+subjects#create + fail
+subjects#edit + fail
+supjects#update
+subjects#destroy (no warning - can be destroyed only if all sections empty)
+
+schools#show
+schools#edit
+schools#update + fail
+schools#new (as signup page)
+schools#create + fail
+[no destroy or index]
+
+forums#index - personal, empty; personal, 1 post for staff
+forums#new
+forums#create + fail
+forums#edit
+forums#update + fail
+forums#delete + warning
+forums#show - empty, 1 topic
+
+topics#new
+topics#create + fail
+topics#show
+
+monitorship#create
+monitorship#destroy
+
+posts#edit (the js version, anyway)
+posts#update (can't seem to fail)
+posts#delete
+posts#new (js)
+posts#create (can't fail here either)
+
+users#index
+users#show
+
+moderators#index
+moderators#update
+moderators#search
+moderators#create
+
+accounts#edit
+accounts#update + fail
+
+session#style
+
+events#show
+events#day
+events#index
+events#edit
+events#update+fail
+events#destroy (no warning)
+events#new
+events#create + fail
+
+login
+account#edit on 1st login (teacher)
+toggle_status (session#update, both ways)
+
+sections#index (multiple classes, no assignments)
+
+gradebook#show (students, no assignments; students, 1 asssignment)
+gradebook#update
+gradebook#select_file +fail
+gradebook#describe_file + fail
+
+assignments#show - graded and not
+assignments#edit - individual grade/class grade
+assignments#destroy
+assignments#update + fail
+assignments#new
+assignments#create
+assignments#index + search
+
+marks#index
+marks#show
+marks#edit
+marks#update + fail
+marks#new
+marks#create + fail
+
+help
+help#subject_menu
+help#video_menu
+help#student_info
+help#class_info
+help#gradebooks
+help#enrollment
+help#student_view
+help#calendar
+help#discussions
+help#account
+
+help/disc/topics
+h/d/groups
+h/d/posts
+h/d/monitoring
+h/d/moderators
+h/d/readers
+
+should change page_title
+
+what else ought i to do?
+parent login - multiple kids, switching kids
+student login
+multiperson comment thread
+search forum
+hook up email notification
+rcov
+browsers - ie6/7/8, safari, chrome
+attendance
+help, each page
+several ways to look at attendance
+
+resource of section: this lets teacher examine/edit attendance for section
+section/:section_id/attendance/:id can give attendance for one student over long period
+
+stand-alone resource: so admin can do things like change codes, (run reports?)
+
+resource of student: se one student's attendance in all classes over long period
+

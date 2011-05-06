@@ -1,0 +1,13 @@
+<% @page_title = 'New Mark' %>
+<div id="content">
+ <h1>Adding a Mark Help Page</h1>
+ <p>When you add a mark, all you need to specify is its name (e.g. <em>Final Exam</em>), and its place in the list of marks.</p>
+ <h2>You Cannot Add a Marking Period Here</h2>
+ <p>Since marking periods can be more complicated, because they have dates, if you need to add a marking period you must do so through the links on the term page.</p>
+</div>
+<div id="secondary">
+ <h2>Related Pages</h2>
+ <%= link_to "An example term", '/help/term' %>
+ <hr />
+ <%= render 'help/page/shared/tech_support', :subject => 'adding a mark' -%>
+</div>

@@ -1,0 +1,49 @@
+<dt style='float:none;clear:left'>Grades on this Assignment</dt>
+<dd style='clear:left;float:left;padding-left:0'>
+ <dl class='distribution' style='clear:none'>
+  <dt>Distribution</dt><dd><%= histogram(grade_values, @section.grade_scale) %></dd>
+ </dl>
+</dd>
+<dd style='float:left;width:45%;padding-left:17px'>
+ <dl class='distribution'>
+  <dt>Scale</dt>
+  <dd>
+   <dl class='grade_scale'>
+   <% @section.grade_scale.reverse.each do |range, grade| %>
+    <dt><%= grade %></dt><dd><%= rangify(range) %></dd>
+   <% end %>
+   </dl>
+  </dd>
+ </dl>
+</dd>
+</dl>
+<p>This assignment represents <%= point_value(@category_points) -%> of the <%= @assignment.category %> points, and <%= point_value(@mp_points) %> of the total points, assigned during marking period <%= @mp_position %>.</p>
+</div>
+<div class="students">
+<h3>Student Scores on Assignment <%= @assignment.position %> : <%= @assignment.name %></h3>
+<div class="scrollableTable">
+<table class = "sortable" cellspacing='0'>
+ <thead>
+ <tr>
+  <th class='student'>Name</th>
+  <th class='student'>ID</th>
+  <th>Year</th>
+  <%= '<th>Due</th>' unless @assignment.date_due %>
+  <th>Score</th>
+  <th>Percent</th>
+ </tr>
+ </thead>
+ <tfoot>
+ <tr>
+ <th colspan = "<%= @assignment.date_due ? 3 : 4 %>" class="number">Class average<%= "<span title='Note that ungraded assignments are not used in calculating the average'>*</span>".html_safe if @assignment.grades.any?{|g| !g.graded?} %>:</th>
+  <th class="number"><%= number_with_precision(@assignment.average_score, :precison => 1) || 'N/A' %></th>
+  <th class="number"><%= grade_with_precision(@assignment.average_pct) %>% (<%= @section.on_scale(@assignment.average_pct) %>)</th>
+ </tr>
+ </tfoot>
+ <tbody>
+  <%= render(:partial => "gradebook/assignments/student", :collection => @students) %>
+  <%= filler_row(@students, (@assignment.date_due ? 5 : 6)) %>
+ </tbody>
+</table>
+</div>
+<%= link_to "Gradebook", section_gradebook_path(@section) if current_user.teaches?(@section) %>

@@ -1,0 +1,55 @@
+<div id="content">
+ <h1>Gradebooks</h1>
+ <h2>Questions</h2>
+ <ol id="questions">
+  <li><%= link_to "How do I get to the gradebook for a class?", '#1' %></li>
+  <li><%= link_to "Can anyone else see my gradebooks?", '#2' %></li>
+  <li><%= link_to "How do I make an assignment?", '#how_to_assign' %></li>
+  <li><%= link_to "What do I have to do to calculate marking period grades?", '#4' %></li>
+  <li><%= link_to "Can I give letter grades?", '#5' %></li>
+  <li><%= link_to "How can I mark an assignment as ungraded?", '#6' %></li>
+  <li><%= link_to "How can I change the grade scale for a class?", '#9' %></li>
+  <li><%= link_to "How can I upload grades?", '#10' %></li>
+  <li><%= link_to "If the gradebook only shows the 5 most recent assignments, how can I edit older grades?", '#11' %></li>
+  <li><%= link_to "How can I change the order of the names in a gradebook?", '#how_to_sort' %></li>
+ <li><span class="question">Want to ask something else? Do you want more than the answers provided here?</span>Ask your question in the <%= link_to "help forums", forums_path('help') %>.</li>
+ </ol>
+
+ <h2 id="answer_header">Answers</h2>
+ <ol id="answers">
+  <li id="1"><span class="question">How do I get to the gradebook for a class?</span>There are links on the front page after you log in. <%= image_tag("help/teacher_front.png", {:alt => "The gradebook links are at the bottom of the sidebar", :size => "499x226"}) %></li>
+  <li id="2"><span class="question">Can anyone else see my gradebooks?</span>No one else can edit your gradebook, and no one can see your gradebook page, but administrators can see your <%= link_to 'classes', 'classes' %>, <%= link_to 'assignments', 'assignments' %>, and <%= link_to 'student performance information', 'grades#2' %>. If you want, you can open that information to other teachers also, to compare notes.</li>
+  <li id="how_to_assign"><span class="question">How do I make an assignment?</span>The gradebook page has a table listing student scores for the 5 most recent assignments. After the assignments there is a <%= image_tag("add_16.png", {:alt => "add assignment", :size => "16x16"}) %> link to add an assignment. <%= image_tag("help/add_assignment.png", {:alt => "This is the only link in the first row of the header of the gradebook table", :size => "549x139"}) %></li>
+  <li id="4"><span class="question">What do I have to do to calculate marking period grades?</span>Nothing. When you grade an assignment, marking period grades are automatically recalculated incorporating the new scores. If you would like to <%= link_to "adjust a marking period grade", 'marks#recalc' %>, you can do so manually as well.</li>
+  <li id="5"><span class="question">Can I give letter grades?</span>Not for individual assignments. Assignment grades must be numerical so the scores can be used to calculate marking period grades. You can set a <%= link_to 'grade scale', '#9' %> to equate marking period percentages to letter grades, or a 4 point scale, etc. </li>
+  <li id="6"><span class="question">How can I mark an assignment as ungraded?</span>When an assignment is created, all students are given a score of '-', which means the assignment is not used in calculating their marking period grades.</li>
+  <li id="9"><span class="question">How can I change the grade scale for a class?</span>The default grade scale for every class is as follows:
+  <dl class='section'>
+   <% Section.new.grade_scale.reverse.each do |range, grade| %>
+    <dt><%= grade %></dt><dd><%= rangify(range) %></dd>
+   <% end %>
+  </dl><p>If you would like to use something different for a class, click the 'edit section' link on the section page or the gradebook page, and then the 'change grade scale' link on the edit page.</p></li>
+ <li id="10"><span class="question">How can I upload grades?</span>First, make sure all the assignments have been entered in your (Little<span class='company'>Red</span>Brick) gradebook. Then click the "Upload grades" link on the gradebook page, enter the name of your Excel or OpenOffice grade spreadsheet  into the form, and upload the grade file. The file should have this format:
+ <table class="scrollike" cellspacing="0">
+  <thead>
+   <tr><th>Name</th><th>Assignment 1</th><th>Assignment 2</th><th>...</th></tr>
+  </thead>
+  <tbody>
+   <tr class="odd"><td>Potter, Harry</td><td>10</td><td>8</td><td>...</td></tr>
+   <tr class="even"><td>etc.</td><td>...</td><td>...</td><td>...</td></tr>
+  </tbody>
+ </table>
+ Indicate the assignments for which you are uploading grades, and lrb will copy the scores and update marking period grades for the class.</li>
+ <li id="11"><span class="question">If the gradebook only shows the 5 most recent assignments, how can I edit older grades?</span>If you need to edit the grades, there are four ways to access older grades in the gradebook.
+ <ul>
+  <li>One at a time: In the gradebook illustrated here, there are 16 assignments, so numbers 12-16 are visible. Clicking the '&lt;' before assignment #12 will navigate backwards through the assignments to display 11-15.</li>
+  <li>By date: The calendar beside the gradebook highlights the dates on which assignments are due. Click on a link in that calendar to jump in the gradebook to the assignment due on that date. For example, in the illustration clicking the link to September 29 would navigate through the gradebook to assignment #7 which was due on that date.</li>
+  <li>By title: Above the calendar is a form to choose an assignment to jump to. Even if you have created hundreds of assignments over the course of a term, this form will let you pull up and edit the grades for any assignment instantly.</li>
+  <li>Upload: If you have a spreadsheet with grade data, you can <%= link_to "upload", '#upload_grades' %> the grades.</li>
+ </ul>
+ <%= image_tag("help/gradebook_nav.png", {:alt => "An illustration of the three ways to navigate through the gradebook", :size => "496x186"}) %>
+ Bear in mind that if you want to get at older grades for any reason besides changing them, there are <%= link_to "better ways", 'grades' %>.
+ </li>
+ <li id="how_to_sort"><span class="question">How can I change the order of the names in a gradebook?</span>At the bottom of the student list in the gradebook is a link to "Sort Names".</li>
+</ol>
+</div>

@@ -1,0 +1,34 @@
+<div id="grades">
+<% if params[:commit].blank? %>
+ <h3 title='Graded assignments due between <%= 7.days.ago.strftime("%a %b %d") %> and <%= 1.week.from_now.strftime("%a %b %d") %>'>Recently Graded Assignments</h3>
+ <% end %>
+ <% if @graded.empty? %>
+  <p>None of <%= @student == current_user ? 'your' : (@student.first_name + '&#39;s').html_safe %> assignments <%= 'that fit the criteria to the right ' unless controller.action_name == 'show' %>have been graded recently</p>
+ <% else %>
+ <%= "<div class=\"scrollableTable\">" if full_page %>
+ <table class="<%= full_page ? '' : 'scrollike ' %>sortable" cellspacing='0'>
+  <thead>
+   <tr>
+    <th>#</th><th>Category</th><th>Due Date</th><th>Points</th>
+    <th>Score</th><th>%</th><th title='Class Average'>Class Avg (%)</th>
+   </tr>
+  </thead>
+  <tbody>
+   <% @graded.each do |g| %>
+   <tr class='<%= cycle('odd', 'even', :name => 'graded') %>'>
+    <td class='text'><%= assignment_link(g) %></td>
+    <td><%= g.assignment.category %></td>
+    <td><%= g.due.strftime("%a %b %d") %></td>
+    <td><%= g.assignment.point_value %></td>
+    <td><%= g.score %></td>
+    <td><%= number_with_precision(g.percent, :precision => 1) || '&nbsp;' %></td>
+    <td><%= number_with_precision(g.assignment.average_score / g.assignment.point_value * 100, :precision => 1) rescue 'N/A' %></td>
+   </tr>
+   <% end %><% reset_cycle('graded') %>
+  </tbody>
+ </table>
+ <%= "</div>" if full_page %>
+ <% end %>
+</div>
+
+

@@ -1,0 +1,10 @@
+<% @details = staff_details %>
+<tr>
+  <td><%= select("details", "title", ['Dr','Mr','Mrs','Ms'], {:selected => nil, :include_blank => true}, {:index => staff_details_counter} ) %></td>
+  <td><%= text_field("details", "first_name", :size => 15, :index => staff_details_counter) %></td>
+  <td><%= text_field("details", "last_name", :size => 15, :index => staff_details_counter) %></td>
+  <td><%= text_field("details", "id_number", :size => 10, :index => staff_details_counter) %></td>
+  <% if @new_people.any?{|u| u.authorization && !u.authorization.errors.empty?} %>
+  <td><%= fields_for "details[#{staff_details_counter}][authorization]", @details.authorization do |auth| %><%= auth.text_field(:login, :size => 10) %><% end %></td>
+  <% end %>
+</tr>

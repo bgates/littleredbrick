@@ -1,0 +1,41 @@
+<div id="content">
+ <h1>Grades</h1>
+ <h2>Questions</h2>
+ <ol id="questions">
+  <li><%= link_to "Where can I focus on how one student is doing?", '#rollbook' %></li>
+  <li><%= link_to "How can I see the grades for one assignment?", '#see_assign' %></li>
+  <li><%= link_to "How can I see class grades for a specific timespan?", '#8' %></li>
+  <li><%= link_to "Who can see the grades?", '#visibility' %></li>
+  <li><%= link_to "How can I analyze grades?", '#11' %></li>
+  <li><%= link_to "What is a mark?", 'marks#mark' %></li>
+  <li><%= link_to "What is a marking period?", 'marks#mp' %></li>
+ <li><span class="question">Want to ask something else? Do you want more than the answers provided here?</span>Ask your question in the <%= link_to "help forums", forums_path('help') %>.</li>
+ </ol>
+
+ <h2 id="answer_header">Answers</h2>
+ <ol id="answers">
+  <li id="rollbook"><span class="question">Where can I focus on how one student is doing?</span>On almost any page that has a list of your students, whether the <%= link_to "gradebook", 'gradebooks' %>, the <%= link_to "class page", 'classes' %>, or an <%= link_to "assignment analysis page", 'assignments#analyzer' %>, each student name is a link to a page that focuses on that student. This page (which we&#8217;re calling the "rollbook page", though we&#8217;re open to better suggestions) presents several depictions of the student&#8217;s performance:
+  <%= image_tag("help/annotated_rollbook.png", {:alt => "The rollbook page", :size => "512x248", :style => 'float:right;margin-right:-200px'}) %>
+  <ol>
+   <li><span class="annotation">The Marking Period Grade:</span> This is the student&#8217;s cumulative grade for all assignments due during the <%= link_to "marking period", '#mp' %>, including a letter grade and class rank. The letter grade is determined by the grade scale for the class, which the teacher <%= link_to "may change", 'gradebooks#9' %>.</li>
+   <li><span class="annotation">Marking Period Selector:</span> The marking period displayed by default is the current one, but you can view data from past marking periods as well. You can also see all of a student&#8217;s marking period grades and other <%= link_to "marks", '#mark' %> at once by clicking the 'See all marks' link.</li>
+   <li><span class="annotation">Performance by Assignment Category:</span> As each assignment is created, the teacher is required to select a category (homework, classwork, test, quiz, etc). That allows us to calculate how each student does in each assignment category.</li>
+   <li><span class="annotation">Grade Progression:</span> See how a student&#8217;s marking period grade has changed over time. </li>
+   <li><span class="annotation">Recently Graded Assignments:</span> See a comparison of the student&#8217;s scores with the class average for any assignment due within the last week.</li>
+  </ol>
+  As a comprehensive summary of a student&#8217;s academic performance, the rollbook page is an ideal report to bring to teacher conferences. The information on the page is also accessible to parents online, so conscientious parents can keep up on their child&#8217;s performance without waiting for grade reports or contacting you directly.  </li>
+  <li id="see_assign"}><span class="question">How can I see the grades for one assignment?</span>See the discussion on the <%= link_to "assignments", 'assignments#review_assign' %> page.</li>
+  <li id="8"><span class="question">How can I see class grades for a specific timespan?</span>From the section page, click the "View Grades on Selected Assignments" link to get to the assignment analyzer.
+  <%= image_tag("help/section_link_to_analyzer.png", {:alt => "the link is the last item in the sidebar", :size => "506x234"}) %>
+  Select a date range in the form on the right, and you will see the cumulative grades for each student over assignments due in that date range.<%= image_tag("help/grade_over_date_range.png", {:alt => "assignment analysis form page", :size => "504x270"}) %>Most tables in Little<span class='company'>Red</span>Brick can be sorted by a selected column; here the table is sorted by student grades as percentages. It&#8217;s also possible to select any combination of assignments using the form - assignments 1 through 10, all homework from the month of October, any tests in 25 most recent assignments, etc - so not only is this tool perfect for filling out weekly progress reports, it can show you and your principal trends in class performance in just a few seconds of clicking.</li>
+  <li id="visibility"><span class="question">Who can see the grades?</span>Unlike the <%= link_to "gradebook", 'gradebooks' %>, which is available only to the teacher of a class, the <%= link_to "rollbook page", '#2' %>, which summarizes a student&#8217;s performance in a class, can be seen by teachers, administrators, and the students themselves, as well as their parents.</li>
+  <li id="mark"><span class="question">What is a mark?</span> A mark is a grade teachers are required to calculate for each student in their classes. A grade for the course would be a mark, so would a cumulative grade for the first nine weeks (in which case the nine weeks would be called a <%= link_to "marking period", '#mp' %>). Marking period grades are calculated automatically, though teachers can edit the results. Other marks like semester grades and final grades can be entered manually or calculated; to see everything Little<span class='company'>Red</span>Brick can do with marks, have a look at the <%= link_to "marks page", 'faq/marks' %>.  </li>
+  <li id="mp"><span class="question">What is a marking period?</span>All of a student&#8217;s coursework that is due within a certain period of time is used to calculate a <%= link_to "mark", '#mark' %> for that period of time. The period of time used to calculate the mark is a marking period. (That&#8217;s one of those things we thought everybody had heard of until we ran into someone who didn&#8217;t, at which point we discovered it&#8217;s an impossible term to explain. Neither Google nor Webster&#8217;s Encyclopedic Unabridged Dictionary of the English Language has a good way to complete the sentence, "A marking period is ____". Though we did learn from the latter that marmots are bigger than marmosets. 2 1/2 feet. Wow.)</li>
+ <li id="11"><span class="question">How can I analyze grades?</span>
+
+ The <%= link_to "gradebook page", 'gradebooks' %> lists current marking period grades and scores on the last 5 assignments for each student. The <%= link_to "class page", 'classes' %> shows the class average, grade distribution for the class and the point values of each category of assignment, plus current marking period grades and scores on the last 3 assignments for each student.
+
+ To see class averages on any type of assignment, click the "View Assignment Details" link on the section page. You can then select assignments by marking period, category, due date, and/or by position (first created, second, etc), and see class average and other information about all assignments that meet your selection criteria. Click an assignment position number to view it in <%= link_to "more detail", 'assignments/#review_assign' %>.
+</li>
+</ol>
+</div>

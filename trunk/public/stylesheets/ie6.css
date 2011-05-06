@@ -1,0 +1,141 @@
+html, body {
+  background: #F7F7F4 url(/images/empty.gif) fixed;
+}
+#masthead, #footer {
+  position:absolute;
+  z-index:1000;
+}
+#masthead {
+  top:expression(eval(document.compatMode && document.compatMode=='CSS1Compat') ? documentElement.scrollTop : document.body.scrollTop);
+}
+#masthead, #masthead:hover {padding-bottom: 0; margin-bottom:0}
+
+a#home:hover {padding-bottom:0;height: 60px}
+
+#wrapper, #content_wrap {height:100%;}
+
+#footer {
+  top:expression(eval(document.compatMode && document.compatMode=='CSS1Compat') ? documentElement.scrollTop +(documentElement.clientHeight-this.clientHeight) : document.body.scrollTop +(document.body.clientHeight-this.clientHeight));
+}
+.selectfree {
+  z-index:10;/*any value*/
+  overflow:hidden;/*must have*/
+}
+.selectfree iframe {
+  display:none;/*for IE5*/
+  display/**/:block;/*for IE5*/
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:-1;
+  filter:mask();
+  width:expression(this.parentElement.offsetWidth);
+  height:expression(this.parentElement.offsetHeight);
+}
+#primary li * {
+  background: url(../images/tabs/tan_tab_left.gif) no-repeat 0 0;
+}
+li#active * {
+  background: url(../images/tabs/blue_tab_left.gif) no-repeat 0 0;
+}
+#events_index #content_wrap {padding-top:68px;}
+
+#content table.cal li a, #events_index #secondary li {
+  width: 100%;
+  text-align: right;
+}
+#content table.cal a.personal, #events_index #secondary li.personal{background: url(../images/dots/green2.gif) no-repeat;}
+
+#content table.cal a.schoolwide, #events_index #secondary li.schoolwide{background: url(../images/dots/green.gif) no-repeat;}
+
+#content table.cal a.event_teachers, #events_index #secondary li.event_teachers{background: url(../images/dots/tan.gif) no-repeat;}
+
+#content table.cal a.event_staff, #events_index #secondary li.event_staff{background: url(../images/dots/red2.gif) no-repeat;}
+
+#content table.cal a.class1, #events_index #secondary li.class1 {background: url(../images/dots/black.gif) no-repeat;}
+
+#content table.cal a.class2, #events_index #secondary li.class2 {background: url(../images/dots/blue.gif) no-repeat;}
+
+#content table.cal a.class3, #events_index #secondary li.class3 {background: url(../images/dots/gray.gif) no-repeat;}
+
+#content table.cal a.class4, #events_index #secondary li.class4 {background: url(../images/dots/red.gif) no-repeat;}
+
+#content table.cal a.class5, #events_index #secondary li.class5 {background: url(../images/dots/blue2.gif) no-repeat;}
+
+#content table.cal a.class6, #events_index #secondary li.class6 {background: url(../images/dots/green2.gif) no-repeat;}
+
+.section hr {visibility: none;}
+
+.section dt.hr {width: 80%; border-top: 2px solid;}
+
+#accounts_edit form p, #accounts_update form p {margin-top: -2.5em;}
+
+#reported_grade_index #content ol, #schools_show #content ol { margin-left: 2em;}
+
+#content #errorExplanation {border-top:0;padding-bottom:0;}
+
+#content div.ie#errorExplanation {margin-bottom: 2em;}
+
+#content div.ie_high#errorExplanation {margin-bottom: 5em;clear: both;}
+
+#track_update form {padding-top:1em;margin-top:1em}
+
+#track_create form, #marking_period_create form, #administrators_create form, #administrators_update form {padding-top:2em;margin-top:2em}
+
+#assignment_create form, #marks_create form {margin-top: 3em}
+
+.dateBocksMessage {clear:left;display:inline}
+
+div.dateBocks {margin-left: 3px}/*for events form*/
+
+.section dd { padding-left: 10%}
+
+.section .distribution dd, .section dd.wide {padding-left: 0}
+.section .distribution dl dd {padding-left: 10%}
+.section dd.assign_stats {padding-left: 10%}
+
+#content .students { width: 65%;margin-left: 1%}
+
+#front_page_index #content div {height: 150px;width: 31%}
+#front_page_index #content div#notice {height: auto;}
+div.auto_complete {position: static}
+#logout {float:right;}
+
+#logout li{display: inline;}
+
+#logout a {display: block;}
+
+#assignment_selection div.dateBocks, #assignment_new div.dateBocks, #assignment_create #content div.dateBocks {margin-left:0;}
+
+#assignment_selection div.dateBocks li {padding: 3px 1px;}
+
+#assignment_selection #list li {margin-bottom: 0px;}
+
+div.dateBocks div.dateBocksMessage {display: block;clear:none;}
+
+.line li {width: 33%;}
+
+a.delete_dept {display: block}
+
+textarea {overflow: auto}
+
+td.grade, td.mark, td.recent_avg, td.grade input, td.mark input {text-align: right; width: auto}
+#marks_index td {width: auto}
+
+#student_head {width: 10em}
+
+#gradebook_show #content form input.button {text-align: left}
+
+#rollbook_show div#progression, #rollbook_show div#ungraded {padding-left: 20px; width: 35%}
+
+#rollbook_show div#categories, #rollbook_show div#graded {width: 53%}
+
+div#content_wrap #search {height: 1.2em;}
+
+.popupcalendar thead .title {background: ActiveCaption;} 
+
+#accounts_edit p#top, #accounts_update p#top {margin-top: 2em;}
+
+#accounts_edit table, #accounts_update table {margin-bottom: 5em;}
+
+legend {top: -0.5em;}

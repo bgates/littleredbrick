@@ -1,0 +1,23 @@
+<div id="content">
+<h1>New Subject</h1>
+<%= error_messages_for("subject") %>
+<%= form_tag department_subjects_path(@department) do %>
+<fieldset>
+<legend>Name</legend>
+<p>Enter the name of the subject you want to create for <%= @department.name %></p>
+<%= text_field("subject", "name") %>
+<%= submit_tag("Create Subject", :class => 'button') %>
+</fieldset>
+
+<% end %>
+<%= link_to "Return to department page", department_subjects_path(@department) %>
+</div>
+<div id="secondary">
+<h2>Current Subjects</h2>
+<ul>
+<% for subject in @department.subjects %>
+<% next if subject.new_record? %>
+  <li><%= subject.name %></li>
+<% end %>
+</ul>
+</div>

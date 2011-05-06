@@ -1,0 +1,48 @@
+<html>
+<head>
+  <title>DateBox - Help</title>
+  <%= stylesheet_link_tag "datebocks/datebocks_engine", "datebocks/help" %>
+</head>
+<body onclick="window.close();">
+Clicking the calendar icon (<%= image_tag 'calendar.png', :style => 'margin-bottom: -5px;' %>) opens a small calendar that can be used to select a date.  Alternately, the date field is smart enough to interpret many different expressions.  For instance, the following can all be typed to indicate today, <%= @d.strftime "%b %d, %Y" %>:
+<ul>
+<li>Today</li>
+<li>tod</li>
+<li><%= @d.strftime "%b %d" %></li>
+<li><%= @d.strftime "%d %b" %></li>
+<li><%= @d.strftime "%m/%d" %></li>
+<li><%= @d.strftime "%m-%d" %></li>
+<li><%= @d.strftime "%m/%d/%Y" %></li>
+<li><%= @d.strftime "%Y-%m-%d" %></li>
+<li><%= @d.strftime "%d" %></li>
+</ul>
+The following sorts of expressions can also be used.  Type in what is in the left column to get the date shown in the right column.
+  <table>
+  <thead>
+    <tr>
+      <td>Input</td>
+      <td>Result</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Tomorrow</strong> (<strong>tom</strong> also works)</td>
+      <td><%= (@d + 1).strftime "%Y-%m-%d" %></td>
+    </tr>
+    <tr>
+      <td><strong>Yesterday</strong> (<strong>yes</strong> also works)</td>
+      <td><%= (@d - 1).strftime "%Y-%m-%d" %></td>
+    </tr>
+    <tr>
+      <td><strong>Next Friday</strong> (<strong>next f</strong>, <strong>next fri</strong> also work)</td>
+      <td><%= (@d + (@d.wday == 6 ? 6 : 5 - @d.wday)).strftime "%Y-%m-%d" %></td>
+    </tr>
+    <tr>
+      <td><strong>Last Monday</strong> (<strong>last m</strong>, <strong>last mon</strong> also work)</td>
+      <td><%= (@d + (@d.wday == 0? -6 : 1 - @d.wday)).strftime "%Y-%m-%d" %></td>
+    </tr>
+  </tbody>
+  </table>
+  <p>Powered by <a href="javascript:void(0);" onclick="window.open('http://datebocks.inimit.com', 'datebocks', 'width=570,height=600,scrollbars=yes,resizable=yes,location=yes');">DateBocks Engine</a></p>
+</body>
+</html>

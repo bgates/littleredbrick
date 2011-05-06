@@ -1,0 +1,2327 @@
+<html>
+  <head>
+    <title>Coverage Report</title>
+    <link href="report.css?0.6012159539630758" media="screen" rel="stylesheet" type="text/css" />
+    <link href="index.css?0.6888494781517467" media="screen" rel="stylesheet" type="text/css" />
+    <script src="jquery.js?0.4621141604782748"></script>
+    <script src="jquery.tablesorter.js?0.9828114718213878"></script>
+    <script>
+      $(function() {
+        
+        function filterByPercent() {
+          var p = $('#filter_by_percent').val();
+          if (p == 0 ) {
+            $('#main tbody tr').show();
+          } else if (p == 10) {
+            $('#main tbody tr.row').show();
+            $('#main tbody tr.10').hide();
+          } else if (p == 100) {
+            $('#main tbody tr.row').hide();
+            $('#main tbody tr.10').show();
+          } else {
+            $('#main tbody tr.row').hide();
+            var x = 0;
+            while (x < p) {
+              $('#main tbody tr.' + x).show();
+              x++;
+            }
+          }
+        }
+        
+        function filterByName(name) {
+          $('#main tbody tr:visible').each(function() {
+            if ($(this).attr('id').indexOf(name) != -1) {
+              $(this).show();
+            } else {
+              $(this).hide();
+            }
+          });
+        }
+        
+        $('#filter_by_percent').change(function(e) {
+          filterByPercent();
+          filterByName($('#filter_by_name').val());
+        });
+      
+        $('#filter_by_name').keyup(function(e) {
+          filterByPercent();
+          filterByName($(this).val());
+        });
+        
+        $("#main").tablesorter(); 
+      });
+    </script>
+  </head>
+  <body>
+    <div id='big_total' class='miss'>94.97%</div>
+    
+    <h1>Coverage Report</h1>
+    
+    <div id='filters'>
+      Filter:
+      <input type='text' id='filter_by_name'>
+      
+      Code Coverage Threshold:
+      <select id='filter_by_percent'>
+        <option value='0'>Show All</option>
+        <option value='1'><= 10% Coverage</option>
+        <option value='2'><= 20% Coverage</option>
+        <option value='3'><= 30% Coverage</option>
+        <option value='4'><= 40% Coverage</option>
+        <option value='5'><= 50% Coverage</option>
+        <option value='6'><= 60% Coverage</option>
+        <option value='7'><= 70% Coverage</option>
+        <option value='8'><= 80% Coverage</option>
+        <option value='9'><= 90% Coverage</option>
+        <option value='10'>< 100% Coverage</option>
+        <option value='100'>= 100% Coverage</option>
+      </select>
+    </div>
+
+    <table cellpadding='0' cellspacing='1'>
+      <tr>
+        <th>Legend</th>
+      </tr>
+      <tr>
+        
+        <td class='hit'>This file was tested 100%!</td>
+      </tr>
+      <tr>
+        <td class='near'>This file was tested >90%!</td>
+      </tr>
+      <tr>
+        <td class='miss'>This file was not tested nearly enough!</td>
+      </tr>
+    </table>
+    
+    <div>&nbsp;</div>
+
+    <table cellpadding="0" cellspacing='1' id='main'>
+      <thead>
+        <tr class='header'>
+          <th>File</th>
+          <th>Lines</th>
+          <th>Lines Of Code</th>
+          <th>Tested %</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        
+          <tr class='row hit 10' id='app/controllers/accounts_controller.rb'>
+            <td>
+              <a href="app/controllers/accounts_controller.rb.html">app/controllers/accounts_controller.rb</a>
+            </td>
+            <td>
+              58
+            </td>
+            <td>
+              36
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/controllers/application_controller.rb'>
+            <td>
+              <a href="app/controllers/application_controller.rb.html">app/controllers/application_controller.rb</a>
+            </td>
+            <td>
+              81
+            </td>
+            <td>
+              42
+            </td>
+            <td>
+              92.9%
+            </td>
+          </tr>
+        
+          <tr class='row miss 3' id='app/controllers/attendance_controller.rb'>
+            <td>
+              <a href="app/controllers/attendance_controller.rb.html">app/controllers/attendance_controller.rb</a>
+            </td>
+            <td>
+              25
+            </td>
+            <td>
+              14
+            </td>
+            <td>
+              35.7%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/controllers/beast/forums_controller.rb'>
+            <td>
+              <a href="app/controllers/beast/forums_controller.rb.html">app/controllers/beast/forums_controller.rb</a>
+            </td>
+            <td>
+              87
+            </td>
+            <td>
+              52
+            </td>
+            <td>
+              98.1%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/beast/moderators_controller.rb'>
+            <td>
+              <a href="app/controllers/beast/moderators_controller.rb.html">app/controllers/beast/moderators_controller.rb</a>
+            </td>
+            <td>
+              91
+            </td>
+            <td>
+              54
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/controllers/beast/monitorships_controller.rb'>
+            <td>
+              <a href="app/controllers/beast/monitorships_controller.rb.html">app/controllers/beast/monitorships_controller.rb</a>
+            </td>
+            <td>
+              25
+            </td>
+            <td>
+              16
+            </td>
+            <td>
+              93.8%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/beast/posts_controller.rb'>
+            <td>
+              <a href="app/controllers/beast/posts_controller.rb.html">app/controllers/beast/posts_controller.rb</a>
+            </td>
+            <td>
+              136
+            </td>
+            <td>
+              85
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/controllers/beast/topics_controller.rb'>
+            <td>
+              <a href="app/controllers/beast/topics_controller.rb.html">app/controllers/beast/topics_controller.rb</a>
+            </td>
+            <td>
+              98
+            </td>
+            <td>
+              58
+            </td>
+            <td>
+              98.3%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/beast/users_controller.rb'>
+            <td>
+              <a href="app/controllers/beast/users_controller.rb.html">app/controllers/beast/users_controller.rb</a>
+            </td>
+            <td>
+              25
+            </td>
+            <td>
+              15
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row miss 8' id='app/controllers/beast_controller.rb'>
+            <td>
+              <a href="app/controllers/beast_controller.rb.html">app/controllers/beast_controller.rb</a>
+            </td>
+            <td>
+              33
+            </td>
+            <td>
+              22
+            </td>
+            <td>
+              86.4%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/controllers/catalog/catalogs_controller.rb'>
+            <td>
+              <a href="app/controllers/catalog/catalogs_controller.rb.html">app/controllers/catalog/catalogs_controller.rb</a>
+            </td>
+            <td>
+              35
+            </td>
+            <td>
+              19
+            </td>
+            <td>
+              94.7%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/controllers/catalog/departments_controller.rb'>
+            <td>
+              <a href="app/controllers/catalog/departments_controller.rb.html">app/controllers/catalog/departments_controller.rb</a>
+            </td>
+            <td>
+              80
+            </td>
+            <td>
+              46
+            </td>
+            <td>
+              93.5%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/controllers/catalog/subjects_controller.rb'>
+            <td>
+              <a href="app/controllers/catalog/subjects_controller.rb.html">app/controllers/catalog/subjects_controller.rb</a>
+            </td>
+            <td>
+              78
+            </td>
+            <td>
+              46
+            </td>
+            <td>
+              93.5%
+            </td>
+          </tr>
+        
+          <tr class='row miss 6' id='app/controllers/datebocks_controller.rb'>
+            <td>
+              <a href="app/controllers/datebocks_controller.rb.html">app/controllers/datebocks_controller.rb</a>
+            </td>
+            <td>
+              9
+            </td>
+            <td>
+              5
+            </td>
+            <td>
+              60.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/controllers/events_controller.rb'>
+            <td>
+              <a href="app/controllers/events_controller.rb.html">app/controllers/events_controller.rb</a>
+            </td>
+            <td>
+              114
+            </td>
+            <td>
+              68
+            </td>
+            <td>
+              94.1%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/controllers/front_page_controller.rb'>
+            <td>
+              <a href="app/controllers/front_page_controller.rb.html">app/controllers/front_page_controller.rb</a>
+            </td>
+            <td>
+              126
+            </td>
+            <td>
+              69
+            </td>
+            <td>
+              97.1%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/controllers/gradebook/assignments_controller.rb'>
+            <td>
+              <a href="app/controllers/gradebook/assignments_controller.rb.html">app/controllers/gradebook/assignments_controller.rb</a>
+            </td>
+            <td>
+              128
+            </td>
+            <td>
+              80
+            </td>
+            <td>
+              96.3%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/gradebook/attendance_controller.rb'>
+            <td>
+              <a href="app/controllers/gradebook/attendance_controller.rb.html">app/controllers/gradebook/attendance_controller.rb</a>
+            </td>
+            <td>
+              34
+            </td>
+            <td>
+              22
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row miss 8' id='app/controllers/gradebook/enrollment_controller.rb'>
+            <td>
+              <a href="app/controllers/gradebook/enrollment_controller.rb.html">app/controllers/gradebook/enrollment_controller.rb</a>
+            </td>
+            <td>
+              99
+            </td>
+            <td>
+              61
+            </td>
+            <td>
+              88.5%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/controllers/gradebook/gradebook_controller.rb'>
+            <td>
+              <a href="app/controllers/gradebook/gradebook_controller.rb.html">app/controllers/gradebook/gradebook_controller.rb</a>
+            </td>
+            <td>
+              60
+            </td>
+            <td>
+              37
+            </td>
+            <td>
+              97.3%
+            </td>
+          </tr>
+        
+          <tr class='row miss 8' id='app/controllers/gradebook/individual_controller.rb'>
+            <td>
+              <a href="app/controllers/gradebook/individual_controller.rb.html">app/controllers/gradebook/individual_controller.rb</a>
+            </td>
+            <td>
+              57
+            </td>
+            <td>
+              37
+            </td>
+            <td>
+              89.2%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/controllers/gradebook/marks_controller.rb'>
+            <td>
+              <a href="app/controllers/gradebook/marks_controller.rb.html">app/controllers/gradebook/marks_controller.rb</a>
+            </td>
+            <td>
+              126
+            </td>
+            <td>
+              78
+            </td>
+            <td>
+              91.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/gradebook/seating_chart_controller.rb'>
+            <td>
+              <a href="app/controllers/gradebook/seating_chart_controller.rb.html">app/controllers/gradebook/seating_chart_controller.rb</a>
+            </td>
+            <td>
+              37
+            </td>
+            <td>
+              20
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/help/faq_controller.rb'>
+            <td>
+              <a href="app/controllers/help/faq_controller.rb.html">app/controllers/help/faq_controller.rb</a>
+            </td>
+            <td>
+              7
+            </td>
+            <td>
+              4
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/controllers/help/general_controller.rb'>
+            <td>
+              <a href="app/controllers/help/general_controller.rb.html">app/controllers/help/general_controller.rb</a>
+            </td>
+            <td>
+              73
+            </td>
+            <td>
+              39
+            </td>
+            <td>
+              97.4%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/help/page_controller.rb'>
+            <td>
+              <a href="app/controllers/help/page_controller.rb.html">app/controllers/help/page_controller.rb</a>
+            </td>
+            <td>
+              27
+            </td>
+            <td>
+              14
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/people/administrators_controller.rb'>
+            <td>
+              <a href="app/controllers/people/administrators_controller.rb.html">app/controllers/people/administrators_controller.rb</a>
+            </td>
+            <td>
+              74
+            </td>
+            <td>
+              41
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/controllers/people/enter_controller.rb'>
+            <td>
+              <a href="app/controllers/people/enter_controller.rb.html">app/controllers/people/enter_controller.rb</a>
+            </td>
+            <td>
+              67
+            </td>
+            <td>
+              42
+            </td>
+            <td>
+              97.6%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/controllers/people/parents_controller.rb'>
+            <td>
+              <a href="app/controllers/people/parents_controller.rb.html">app/controllers/people/parents_controller.rb</a>
+            </td>
+            <td>
+              100
+            </td>
+            <td>
+              62
+            </td>
+            <td>
+              96.8%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/people/students_controller.rb'>
+            <td>
+              <a href="app/controllers/people/students_controller.rb.html">app/controllers/people/students_controller.rb</a>
+            </td>
+            <td>
+              92
+            </td>
+            <td>
+              55
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/people/teachers_controller.rb'>
+            <td>
+              <a href="app/controllers/people/teachers_controller.rb.html">app/controllers/people/teachers_controller.rb</a>
+            </td>
+            <td>
+              75
+            </td>
+            <td>
+              44
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/controllers/schools_controller.rb'>
+            <td>
+              <a href="app/controllers/schools_controller.rb.html">app/controllers/schools_controller.rb</a>
+            </td>
+            <td>
+              100
+            </td>
+            <td>
+              70
+            </td>
+            <td>
+              95.7%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/search_controller.rb'>
+            <td>
+              <a href="app/controllers/search_controller.rb.html">app/controllers/search_controller.rb</a>
+            </td>
+            <td>
+              32
+            </td>
+            <td>
+              23
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/controllers/sections_controller.rb'>
+            <td>
+              <a href="app/controllers/sections_controller.rb.html">app/controllers/sections_controller.rb</a>
+            </td>
+            <td>
+              76
+            </td>
+            <td>
+              49
+            </td>
+            <td>
+              98.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/session_controller.rb'>
+            <td>
+              <a href="app/controllers/session_controller.rb.html">app/controllers/session_controller.rb</a>
+            </td>
+            <td>
+              84
+            </td>
+            <td>
+              50
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/student_controller.rb'>
+            <td>
+              <a href="app/controllers/student_controller.rb.html">app/controllers/student_controller.rb</a>
+            </td>
+            <td>
+              66
+            </td>
+            <td>
+              46
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/controllers/teaching_load_controller.rb'>
+            <td>
+              <a href="app/controllers/teaching_load_controller.rb.html">app/controllers/teaching_load_controller.rb</a>
+            </td>
+            <td>
+              116
+            </td>
+            <td>
+              70
+            </td>
+            <td>
+              95.7%
+            </td>
+          </tr>
+        
+          <tr class='row miss 8' id='app/controllers/term/marking_periods_controller.rb'>
+            <td>
+              <a href="app/controllers/term/marking_periods_controller.rb.html">app/controllers/term/marking_periods_controller.rb</a>
+            </td>
+            <td>
+              53
+            </td>
+            <td>
+              33
+            </td>
+            <td>
+              81.8%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/term/reported_grades_controller.rb'>
+            <td>
+              <a href="app/controllers/term/reported_grades_controller.rb.html">app/controllers/term/reported_grades_controller.rb</a>
+            </td>
+            <td>
+              78
+            </td>
+            <td>
+              48
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/controllers/term/staging_controller.rb'>
+            <td>
+              <a href="app/controllers/term/staging_controller.rb.html">app/controllers/term/staging_controller.rb</a>
+            </td>
+            <td>
+              97
+            </td>
+            <td>
+              59
+            </td>
+            <td>
+              91.5%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/term/term_controller.rb'>
+            <td>
+              <a href="app/controllers/term/term_controller.rb.html">app/controllers/term/term_controller.rb</a>
+            </td>
+            <td>
+              12
+            </td>
+            <td>
+              6
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/term/terms_controller.rb'>
+            <td>
+              <a href="app/controllers/term/terms_controller.rb.html">app/controllers/term/terms_controller.rb</a>
+            </td>
+            <td>
+              48
+            </td>
+            <td>
+              29
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/term/tracks_controller.rb'>
+            <td>
+              <a href="app/controllers/term/tracks_controller.rb.html">app/controllers/term/tracks_controller.rb</a>
+            </td>
+            <td>
+              49
+            </td>
+            <td>
+              29
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/upload/enrollment_controller.rb'>
+            <td>
+              <a href="app/controllers/upload/enrollment_controller.rb.html">app/controllers/upload/enrollment_controller.rb</a>
+            </td>
+            <td>
+              34
+            </td>
+            <td>
+              20
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/upload/grades_controller.rb'>
+            <td>
+              <a href="app/controllers/upload/grades_controller.rb.html">app/controllers/upload/grades_controller.rb</a>
+            </td>
+            <td>
+              43
+            </td>
+            <td>
+              27
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/controllers/upload/teacher_schedules_controller.rb'>
+            <td>
+              <a href="app/controllers/upload/teacher_schedules_controller.rb.html">app/controllers/upload/teacher_schedules_controller.rb</a>
+            </td>
+            <td>
+              23
+            </td>
+            <td>
+              13
+            </td>
+            <td>
+              92.3%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/upload/users_controller.rb'>
+            <td>
+              <a href="app/controllers/upload/users_controller.rb.html">app/controllers/upload/users_controller.rb</a>
+            </td>
+            <td>
+              48
+            </td>
+            <td>
+              33
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/controllers/upload_controller.rb'>
+            <td>
+              <a href="app/controllers/upload_controller.rb.html">app/controllers/upload_controller.rb</a>
+            </td>
+            <td>
+              37
+            </td>
+            <td>
+              21
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/account_upload_helper.rb'>
+            <td>
+              <a href="app/helpers/account_upload_helper.rb.html">app/helpers/account_upload_helper.rb</a>
+            </td>
+            <td>
+              51
+            </td>
+            <td>
+              25
+            </td>
+            <td>
+              96.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/accounts_helper.rb'>
+            <td>
+              <a href="app/helpers/accounts_helper.rb.html">app/helpers/accounts_helper.rb</a>
+            </td>
+            <td>
+              38
+            </td>
+            <td>
+              16
+            </td>
+            <td>
+              93.8%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/application_helper.rb'>
+            <td>
+              <a href="app/helpers/application_helper.rb.html">app/helpers/application_helper.rb</a>
+            </td>
+            <td>
+              351
+            </td>
+            <td>
+              164
+            </td>
+            <td>
+              98.8%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/attendance_helper.rb'>
+            <td>
+              <a href="app/helpers/attendance_helper.rb.html">app/helpers/attendance_helper.rb</a>
+            </td>
+            <td>
+              2
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row miss 8' id='app/helpers/beast/forums_helper.rb'>
+            <td>
+              <a href="app/helpers/beast/forums_helper.rb.html">app/helpers/beast/forums_helper.rb</a>
+            </td>
+            <td>
+              143
+            </td>
+            <td>
+              64
+            </td>
+            <td>
+              87.5%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/beast/moderators_helper.rb'>
+            <td>
+              <a href="app/helpers/beast/moderators_helper.rb.html">app/helpers/beast/moderators_helper.rb</a>
+            </td>
+            <td>
+              56
+            </td>
+            <td>
+              23
+            </td>
+            <td>
+              95.7%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/beast/monitorships_helper.rb'>
+            <td>
+              <a href="app/helpers/beast/monitorships_helper.rb.html">app/helpers/beast/monitorships_helper.rb</a>
+            </td>
+            <td>
+              2
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/beast/posts_helper.rb'>
+            <td>
+              <a href="app/helpers/beast/posts_helper.rb.html">app/helpers/beast/posts_helper.rb</a>
+            </td>
+            <td>
+              85
+            </td>
+            <td>
+              36
+            </td>
+            <td>
+              94.4%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/beast/topics_helper.rb'>
+            <td>
+              <a href="app/helpers/beast/topics_helper.rb.html">app/helpers/beast/topics_helper.rb</a>
+            </td>
+            <td>
+              30
+            </td>
+            <td>
+              13
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/beast/users_helper.rb'>
+            <td>
+              <a href="app/helpers/beast/users_helper.rb.html">app/helpers/beast/users_helper.rb</a>
+            </td>
+            <td>
+              39
+            </td>
+            <td>
+              17
+            </td>
+            <td>
+              94.1%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/beast_helper.rb'>
+            <td>
+              <a href="app/helpers/beast_helper.rb.html">app/helpers/beast_helper.rb</a>
+            </td>
+            <td>
+              63
+            </td>
+            <td>
+              33
+            </td>
+            <td>
+              97.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/bifurcated_routes_helper.rb'>
+            <td>
+              <a href="app/helpers/bifurcated_routes_helper.rb.html">app/helpers/bifurcated_routes_helper.rb</a>
+            </td>
+            <td>
+              56
+            </td>
+            <td>
+              28
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/catalog/catalogs_helper.rb'>
+            <td>
+              <a href="app/helpers/catalog/catalogs_helper.rb.html">app/helpers/catalog/catalogs_helper.rb</a>
+            </td>
+            <td>
+              20
+            </td>
+            <td>
+              7
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/catalog/departments_helper.rb'>
+            <td>
+              <a href="app/helpers/catalog/departments_helper.rb.html">app/helpers/catalog/departments_helper.rb</a>
+            </td>
+            <td>
+              75
+            </td>
+            <td>
+              29
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/catalog/subjects_helper.rb'>
+            <td>
+              <a href="app/helpers/catalog/subjects_helper.rb.html">app/helpers/catalog/subjects_helper.rb</a>
+            </td>
+            <td>
+              79
+            </td>
+            <td>
+              31
+            </td>
+            <td>
+              93.5%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/chart_helper.rb'>
+            <td>
+              <a href="app/helpers/chart_helper.rb.html">app/helpers/chart_helper.rb</a>
+            </td>
+            <td>
+              32
+            </td>
+            <td>
+              22
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/events_helper.rb'>
+            <td>
+              <a href="app/helpers/events_helper.rb.html">app/helpers/events_helper.rb</a>
+            </td>
+            <td>
+              204
+            </td>
+            <td>
+              101
+            </td>
+            <td>
+              91.1%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/front_page_helper.rb'>
+            <td>
+              <a href="app/helpers/front_page_helper.rb.html">app/helpers/front_page_helper.rb</a>
+            </td>
+            <td>
+              66
+            </td>
+            <td>
+              33
+            </td>
+            <td>
+              97.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/gradebook/assignments_helper.rb'>
+            <td>
+              <a href="app/helpers/gradebook/assignments_helper.rb.html">app/helpers/gradebook/assignments_helper.rb</a>
+            </td>
+            <td>
+              99
+            </td>
+            <td>
+              44
+            </td>
+            <td>
+              97.7%
+            </td>
+          </tr>
+        
+          <tr class='row miss 6' id='app/helpers/gradebook/attendance_helper.rb'>
+            <td>
+              <a href="app/helpers/gradebook/attendance_helper.rb.html">app/helpers/gradebook/attendance_helper.rb</a>
+            </td>
+            <td>
+              58
+            </td>
+            <td>
+              27
+            </td>
+            <td>
+              66.7%
+            </td>
+          </tr>
+        
+          <tr class='row miss 6' id='app/helpers/gradebook/enrollment_helper.rb'>
+            <td>
+              <a href="app/helpers/gradebook/enrollment_helper.rb.html">app/helpers/gradebook/enrollment_helper.rb</a>
+            </td>
+            <td>
+              76
+            </td>
+            <td>
+              37
+            </td>
+            <td>
+              67.6%
+            </td>
+          </tr>
+        
+          <tr class='row miss 8' id='app/helpers/gradebook/gradebook_helper.rb'>
+            <td>
+              <a href="app/helpers/gradebook/gradebook_helper.rb.html">app/helpers/gradebook/gradebook_helper.rb</a>
+            </td>
+            <td>
+              121
+            </td>
+            <td>
+              55
+            </td>
+            <td>
+              89.1%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/gradebook/individual_helper.rb'>
+            <td>
+              <a href="app/helpers/gradebook/individual_helper.rb.html">app/helpers/gradebook/individual_helper.rb</a>
+            </td>
+            <td>
+              39
+            </td>
+            <td>
+              15
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row miss 8' id='app/helpers/gradebook/marks_helper.rb'>
+            <td>
+              <a href="app/helpers/gradebook/marks_helper.rb.html">app/helpers/gradebook/marks_helper.rb</a>
+            </td>
+            <td>
+              99
+            </td>
+            <td>
+              46
+            </td>
+            <td>
+              89.1%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/gradebook/seating_chart_helper.rb'>
+            <td>
+              <a href="app/helpers/gradebook/seating_chart_helper.rb.html">app/helpers/gradebook/seating_chart_helper.rb</a>
+            </td>
+            <td>
+              42
+            </td>
+            <td>
+              19
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/help/faq_helper.rb'>
+            <td>
+              <a href="app/helpers/help/faq_helper.rb.html">app/helpers/help/faq_helper.rb</a>
+            </td>
+            <td>
+              11
+            </td>
+            <td>
+              6
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/help/general_helper.rb'>
+            <td>
+              <a href="app/helpers/help/general_helper.rb.html">app/helpers/help/general_helper.rb</a>
+            </td>
+            <td>
+              67
+            </td>
+            <td>
+              27
+            </td>
+            <td>
+              96.3%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/help/page_helper.rb'>
+            <td>
+              <a href="app/helpers/help/page_helper.rb.html">app/helpers/help/page_helper.rb</a>
+            </td>
+            <td>
+              13
+            </td>
+            <td>
+              7
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/nav_helper.rb'>
+            <td>
+              <a href="app/helpers/nav_helper.rb.html">app/helpers/nav_helper.rb</a>
+            </td>
+            <td>
+              76
+            </td>
+            <td>
+              36
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/people/administrators_helper.rb'>
+            <td>
+              <a href="app/helpers/people/administrators_helper.rb.html">app/helpers/people/administrators_helper.rb</a>
+            </td>
+            <td>
+              46
+            </td>
+            <td>
+              20
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/people/enter_helper.rb'>
+            <td>
+              <a href="app/helpers/people/enter_helper.rb.html">app/helpers/people/enter_helper.rb</a>
+            </td>
+            <td>
+              77
+            </td>
+            <td>
+              35
+            </td>
+            <td>
+              97.1%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/people/parents_helper.rb'>
+            <td>
+              <a href="app/helpers/people/parents_helper.rb.html">app/helpers/people/parents_helper.rb</a>
+            </td>
+            <td>
+              58
+            </td>
+            <td>
+              27
+            </td>
+            <td>
+              92.6%
+            </td>
+          </tr>
+        
+          <tr class='row miss 8' id='app/helpers/people/students_helper.rb'>
+            <td>
+              <a href="app/helpers/people/students_helper.rb.html">app/helpers/people/students_helper.rb</a>
+            </td>
+            <td>
+              183
+            </td>
+            <td>
+              115
+            </td>
+            <td>
+              80.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/people/teachers_helper.rb'>
+            <td>
+              <a href="app/helpers/people/teachers_helper.rb.html">app/helpers/people/teachers_helper.rb</a>
+            </td>
+            <td>
+              150
+            </td>
+            <td>
+              73
+            </td>
+            <td>
+              93.2%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/schools_helper.rb'>
+            <td>
+              <a href="app/helpers/schools_helper.rb.html">app/helpers/schools_helper.rb</a>
+            </td>
+            <td>
+              60
+            </td>
+            <td>
+              28
+            </td>
+            <td>
+              96.4%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/search_helper.rb'>
+            <td>
+              <a href="app/helpers/search_helper.rb.html">app/helpers/search_helper.rb</a>
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/sections_helper.rb'>
+            <td>
+              <a href="app/helpers/sections_helper.rb.html">app/helpers/sections_helper.rb</a>
+            </td>
+            <td>
+              94
+            </td>
+            <td>
+              40
+            </td>
+            <td>
+              90.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/session_helper.rb'>
+            <td>
+              <a href="app/helpers/session_helper.rb.html">app/helpers/session_helper.rb</a>
+            </td>
+            <td>
+              18
+            </td>
+            <td>
+              8
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/setup_helper.rb'>
+            <td>
+              <a href="app/helpers/setup_helper.rb.html">app/helpers/setup_helper.rb</a>
+            </td>
+            <td>
+              101
+            </td>
+            <td>
+              49
+            </td>
+            <td>
+              98.0%
+            </td>
+          </tr>
+        
+          <tr class='row miss 7' id='app/helpers/student_helper.rb'>
+            <td>
+              <a href="app/helpers/student_helper.rb.html">app/helpers/student_helper.rb</a>
+            </td>
+            <td>
+              57
+            </td>
+            <td>
+              26
+            </td>
+            <td>
+              76.9%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/teaching_load_helper.rb'>
+            <td>
+              <a href="app/helpers/teaching_load_helper.rb.html">app/helpers/teaching_load_helper.rb</a>
+            </td>
+            <td>
+              77
+            </td>
+            <td>
+              38
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/term/marking_periods_helper.rb'>
+            <td>
+              <a href="app/helpers/term/marking_periods_helper.rb.html">app/helpers/term/marking_periods_helper.rb</a>
+            </td>
+            <td>
+              11
+            </td>
+            <td>
+              5
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/term/reported_grades_helper.rb'>
+            <td>
+              <a href="app/helpers/term/reported_grades_helper.rb.html">app/helpers/term/reported_grades_helper.rb</a>
+            </td>
+            <td>
+              19
+            </td>
+            <td>
+              9
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/term/staging_helper.rb'>
+            <td>
+              <a href="app/helpers/term/staging_helper.rb.html">app/helpers/term/staging_helper.rb</a>
+            </td>
+            <td>
+              104
+            </td>
+            <td>
+              53
+            </td>
+            <td>
+              98.1%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/term/terms_helper.rb'>
+            <td>
+              <a href="app/helpers/term/terms_helper.rb.html">app/helpers/term/terms_helper.rb</a>
+            </td>
+            <td>
+              66
+            </td>
+            <td>
+              30
+            </td>
+            <td>
+              93.3%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/term/tracks_helper.rb'>
+            <td>
+              <a href="app/helpers/term/tracks_helper.rb.html">app/helpers/term/tracks_helper.rb</a>
+            </td>
+            <td>
+              24
+            </td>
+            <td>
+              11
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/upload/enrollment_helper.rb'>
+            <td>
+              <a href="app/helpers/upload/enrollment_helper.rb.html">app/helpers/upload/enrollment_helper.rb</a>
+            </td>
+            <td>
+              16
+            </td>
+            <td>
+              8
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/upload/grades_helper.rb'>
+            <td>
+              <a href="app/helpers/upload/grades_helper.rb.html">app/helpers/upload/grades_helper.rb</a>
+            </td>
+            <td>
+              14
+            </td>
+            <td>
+              5
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/helpers/upload/teacher_schedules_helper.rb'>
+            <td>
+              <a href="app/helpers/upload/teacher_schedules_helper.rb.html">app/helpers/upload/teacher_schedules_helper.rb</a>
+            </td>
+            <td>
+              29
+            </td>
+            <td>
+              13
+            </td>
+            <td>
+              92.3%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/upload/users_helper.rb'>
+            <td>
+              <a href="app/helpers/upload/users_helper.rb.html">app/helpers/upload/users_helper.rb</a>
+            </td>
+            <td>
+              12
+            </td>
+            <td>
+              6
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/helpers/upload_helper.rb'>
+            <td>
+              <a href="app/helpers/upload_helper.rb.html">app/helpers/upload_helper.rb</a>
+            </td>
+            <td>
+              5
+            </td>
+            <td>
+              2
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/mailers/user_notifier.rb'>
+            <td>
+              <a href="app/mailers/user_notifier.rb.html">app/mailers/user_notifier.rb</a>
+            </td>
+            <td>
+              30
+            </td>
+            <td>
+              20
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/models/absence.rb'>
+            <td>
+              <a href="app/models/absence.rb.html">app/models/absence.rb</a>
+            </td>
+            <td>
+              53
+            </td>
+            <td>
+              32
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/account_upload.rb'>
+            <td>
+              <a href="app/models/account_upload.rb.html">app/models/account_upload.rb</a>
+            </td>
+            <td>
+              126
+            </td>
+            <td>
+              75
+            </td>
+            <td>
+              98.7%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/assignment.rb'>
+            <td>
+              <a href="app/models/assignment.rb.html">app/models/assignment.rb</a>
+            </td>
+            <td>
+              189
+            </td>
+            <td>
+              106
+            </td>
+            <td>
+              91.5%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/models/authorization.rb'>
+            <td>
+              <a href="app/models/authorization.rb.html">app/models/authorization.rb</a>
+            </td>
+            <td>
+              72
+            </td>
+            <td>
+              43
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/models/department.rb'>
+            <td>
+              <a href="app/models/department.rb.html">app/models/department.rb</a>
+            </td>
+            <td>
+              71
+            </td>
+            <td>
+              47
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/enrollment_upload.rb'>
+            <td>
+              <a href="app/models/enrollment_upload.rb.html">app/models/enrollment_upload.rb</a>
+            </td>
+            <td>
+              52
+            </td>
+            <td>
+              37
+            </td>
+            <td>
+              91.9%
+            </td>
+          </tr>
+        
+          <tr class='row miss 8' id='app/models/event.rb'>
+            <td>
+              <a href="app/models/event.rb.html">app/models/event.rb</a>
+            </td>
+            <td>
+              85
+            </td>
+            <td>
+              43
+            </td>
+            <td>
+              88.4%
+            </td>
+          </tr>
+        
+          <tr class='row miss 8' id='app/models/forum.rb'>
+            <td>
+              <a href="app/models/forum.rb.html">app/models/forum.rb</a>
+            </td>
+            <td>
+              95
+            </td>
+            <td>
+              51
+            </td>
+            <td>
+              86.3%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/models/forum_activity.rb'>
+            <td>
+              <a href="app/models/forum_activity.rb.html">app/models/forum_activity.rb</a>
+            </td>
+            <td>
+              18
+            </td>
+            <td>
+              11
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/grade.rb'>
+            <td>
+              <a href="app/models/grade.rb.html">app/models/grade.rb</a>
+            </td>
+            <td>
+              100
+            </td>
+            <td>
+              56
+            </td>
+            <td>
+              94.6%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/models/grade_scale.rb'>
+            <td>
+              <a href="app/models/grade_scale.rb.html">app/models/grade_scale.rb</a>
+            </td>
+            <td>
+              64
+            </td>
+            <td>
+              35
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/models/grade_upload.rb'>
+            <td>
+              <a href="app/models/grade_upload.rb.html">app/models/grade_upload.rb</a>
+            </td>
+            <td>
+              57
+            </td>
+            <td>
+              35
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/gradebook.rb'>
+            <td>
+              <a href="app/models/gradebook.rb.html">app/models/gradebook.rb</a>
+            </td>
+            <td>
+              109
+            </td>
+            <td>
+              69
+            </td>
+            <td>
+              97.1%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/models/login.rb'>
+            <td>
+              <a href="app/models/login.rb.html">app/models/login.rb</a>
+            </td>
+            <td>
+              7
+            </td>
+            <td>
+              4
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/marking_period.rb'>
+            <td>
+              <a href="app/models/marking_period.rb.html">app/models/marking_period.rb</a>
+            </td>
+            <td>
+              81
+            </td>
+            <td>
+              53
+            </td>
+            <td>
+              96.2%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/milestone.rb'>
+            <td>
+              <a href="app/models/milestone.rb.html">app/models/milestone.rb</a>
+            </td>
+            <td>
+              80
+            </td>
+            <td>
+              46
+            </td>
+            <td>
+              91.3%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/models/moderatorship.rb'>
+            <td>
+              <a href="app/models/moderatorship.rb.html">app/models/moderatorship.rb</a>
+            </td>
+            <td>
+              29
+            </td>
+            <td>
+              15
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/models/monitorship.rb'>
+            <td>
+              <a href="app/models/monitorship.rb.html">app/models/monitorship.rb</a>
+            </td>
+            <td>
+              12
+            </td>
+            <td>
+              7
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/models/monitorships_sweeper.rb'>
+            <td>
+              <a href="app/models/monitorships_sweeper.rb.html">app/models/monitorships_sweeper.rb</a>
+            </td>
+            <td>
+              9
+            </td>
+            <td>
+              5
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/parent.rb'>
+            <td>
+              <a href="app/models/parent.rb.html">app/models/parent.rb</a>
+            </td>
+            <td>
+              164
+            </td>
+            <td>
+              84
+            </td>
+            <td>
+              95.2%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/post.rb'>
+            <td>
+              <a href="app/models/post.rb.html">app/models/post.rb</a>
+            </td>
+            <td>
+              127
+            </td>
+            <td>
+              76
+            </td>
+            <td>
+              97.4%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/models/posts_sweeper.rb'>
+            <td>
+              <a href="app/models/posts_sweeper.rb.html">app/models/posts_sweeper.rb</a>
+            </td>
+            <td>
+              12
+            </td>
+            <td>
+              8
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/models/reported_grade.rb'>
+            <td>
+              <a href="app/models/reported_grade.rb.html">app/models/reported_grade.rb</a>
+            </td>
+            <td>
+              176
+            </td>
+            <td>
+              106
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/models/role.rb'>
+            <td>
+              <a href="app/models/role.rb.html">app/models/role.rb</a>
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              2
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/rollbook_entry.rb'>
+            <td>
+              <a href="app/models/rollbook_entry.rb.html">app/models/rollbook_entry.rb</a>
+            </td>
+            <td>
+              97
+            </td>
+            <td>
+              65
+            </td>
+            <td>
+              96.9%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/school.rb'>
+            <td>
+              <a href="app/models/school.rb.html">app/models/school.rb</a>
+            </td>
+            <td>
+              164
+            </td>
+            <td>
+              94
+            </td>
+            <td>
+              94.7%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/models/seating_chart.rb'>
+            <td>
+              <a href="app/models/seating_chart.rb.html">app/models/seating_chart.rb</a>
+            </td>
+            <td>
+              44
+            </td>
+            <td>
+              28
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row miss 8' id='app/models/section.rb'>
+            <td>
+              <a href="app/models/section.rb.html">app/models/section.rb</a>
+            </td>
+            <td>
+              178
+            </td>
+            <td>
+              106
+            </td>
+            <td>
+              87.7%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/models/section_discussion.rb'>
+            <td>
+              <a href="app/models/section_discussion.rb.html">app/models/section_discussion.rb</a>
+            </td>
+            <td>
+              48
+            </td>
+            <td>
+              23
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/staffer.rb'>
+            <td>
+              <a href="app/models/staffer.rb.html">app/models/staffer.rb</a>
+            </td>
+            <td>
+              51
+            </td>
+            <td>
+              24
+            </td>
+            <td>
+              91.7%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/student.rb'>
+            <td>
+              <a href="app/models/student.rb.html">app/models/student.rb</a>
+            </td>
+            <td>
+              130
+            </td>
+            <td>
+              69
+            </td>
+            <td>
+              95.7%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/models/subject.rb'>
+            <td>
+              <a href="app/models/subject.rb.html">app/models/subject.rb</a>
+            </td>
+            <td>
+              18
+            </td>
+            <td>
+              9
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/superuser.rb'>
+            <td>
+              <a href="app/models/superuser.rb.html">app/models/superuser.rb</a>
+            </td>
+            <td>
+              42
+            </td>
+            <td>
+              21
+            </td>
+            <td>
+              90.5%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/teacher.rb'>
+            <td>
+              <a href="app/models/teacher.rb.html">app/models/teacher.rb</a>
+            </td>
+            <td>
+              98
+            </td>
+            <td>
+              53
+            </td>
+            <td>
+              94.3%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/teaching_upload.rb'>
+            <td>
+              <a href="app/models/teaching_upload.rb.html">app/models/teaching_upload.rb</a>
+            </td>
+            <td>
+              43
+            </td>
+            <td>
+              30
+            </td>
+            <td>
+              96.7%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/term.rb'>
+            <td>
+              <a href="app/models/term.rb.html">app/models/term.rb</a>
+            </td>
+            <td>
+              85
+            </td>
+            <td>
+              49
+            </td>
+            <td>
+              98.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/topic.rb'>
+            <td>
+              <a href="app/models/topic.rb.html">app/models/topic.rb</a>
+            </td>
+            <td>
+              124
+            </td>
+            <td>
+              73
+            </td>
+            <td>
+              98.6%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/track.rb'>
+            <td>
+              <a href="app/models/track.rb.html">app/models/track.rb</a>
+            </td>
+            <td>
+              101
+            </td>
+            <td>
+              61
+            </td>
+            <td>
+              98.4%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/upload.rb'>
+            <td>
+              <a href="app/models/upload.rb.html">app/models/upload.rb</a>
+            </td>
+            <td>
+              149
+            </td>
+            <td>
+              88
+            </td>
+            <td>
+              96.6%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='app/models/user.rb'>
+            <td>
+              <a href="app/models/user.rb.html">app/models/user.rb</a>
+            </td>
+            <td>
+              162
+            </td>
+            <td>
+              98
+            </td>
+            <td>
+              94.9%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='app/models/user_beast.rb'>
+            <td>
+              <a href="app/models/user_beast.rb.html">app/models/user_beast.rb</a>
+            </td>
+            <td>
+              47
+            </td>
+            <td>
+              26
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row miss 1' id='lib/account_job.rb'>
+            <td>
+              <a href="lib/account_job.rb.html">lib/account_job.rb</a>
+            </td>
+            <td>
+              19
+            </td>
+            <td>
+              12
+            </td>
+            <td>
+              16.7%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='lib/account_upload_handler.rb'>
+            <td>
+              <a href="lib/account_upload_handler.rb.html">lib/account_upload_handler.rb</a>
+            </td>
+            <td>
+              36
+            </td>
+            <td>
+              22
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='lib/assignment_preparation.rb'>
+            <td>
+              <a href="lib/assignment_preparation.rb.html">lib/assignment_preparation.rb</a>
+            </td>
+            <td>
+              30
+            </td>
+            <td>
+              22
+            </td>
+            <td>
+              90.9%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='lib/authenticated_system.rb'>
+            <td>
+              <a href="lib/authenticated_system.rb.html">lib/authenticated_system.rb</a>
+            </td>
+            <td>
+              135
+            </td>
+            <td>
+              42
+            </td>
+            <td>
+              95.2%
+            </td>
+          </tr>
+        
+          <tr class='row hit 10' id='lib/authenticated_test_helper.rb'>
+            <td>
+              <a href="lib/authenticated_test_helper.rb.html">lib/authenticated_test_helper.rb</a>
+            </td>
+            <td>
+              116
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+              100.0%
+            </td>
+          </tr>
+        
+          <tr class='row near 9' id='lib/section_preparation.rb'>
+            <td>
+              <a href="lib/section_preparation.rb.html">lib/section_preparation.rb</a>
+            </td>
+            <td>
+              29
+            </td>
+            <td>
+              19
+            </td>
+            <td>
+              94.7%
+            </td>
+          </tr>
+        
+      </tbody>
+      
+      <tr class='header'>
+        <th>Total</th>
+        <th>10237</th>
+        <th>5575</th>
+        <th>94.97%</th>
+      </tr>
+    </table>
+    <p>Generated on: 2011-02-26 21:12:42 -0500</p>
+  </body>
+</html>

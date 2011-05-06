@@ -1,0 +1,61 @@
+<div id="content" style='width:90%'>
+<h1><%= @school.name %></h1>
+<div style="float:left; margin-right: 20px">
+<table class="scrollike" style="width: 18em;margin-bottom: 1em" cellspacing="0">
+ <thead>
+  <tr><th colspan="2">Enrollment</th></tr>
+ </thead>
+ <tbody>
+  <tr class="odd">
+   <td class='text'><%= link_to "Students", students_path %></td><td style='width: 25%'><%= @students.size %></td>
+  </tr>
+  <%= render :partial => 'enrollment', :collection => @school.grade_range.to_a %>
+  <tr class='<%= grade_cycle %> '>
+   <td class='text'>Average Class Size</td><td><%= enrollment %></td>
+  </tr>
+ </tbody>
+</table>
+<table class='scrollike' style='width: 18em'>
+ <thead>
+  <tr><th colspan='2'>Employment</th></tr>
+ </thead>
+ <tbody>
+  <tr class='odd'>
+   <td class='text'><%= link_to "Teachers", teachers_path %></td><td style='width: 25%'><%= @school.teachers.count %></td>
+  </tr>
+  <tr class='even'>
+  <td class='text'><%= link_to "Administrative Staff", administrators_path %></td><td><%= User.count(:conditions => ["school_id = ? AND type = 'Staffer'", @school.id]) %></td>
+ </tbody>
+</table>
+
+</div>
+<div style='float:left; width: 25%'>
+<h2>Current Term</h2>
+<dl>
+ <dt>Duration</dt><dd><%= term_name @last_term %></dd>
+ <dt>Classes / Day</dt><dd><%= day_length %> <%= "(numbered #{@last_term.low_period} - #{@last_term.high_period}" if @last_term.low_period != 1 %></dd>
+ <%= tracks %>
+</dl>
+<%= link_to "Edit term", term_path(@last_term), :style => 'display:block;clear:left' if current_user.admin? %>
+<h3 style='clear:left;padding: 1em 0;margin:0'>Marks</h3>
+<ol>
+<% for mark in @last_term.reported_grades_with_sort %>
+<li><%= mark.description %></li>
+<% end %>
+</ol>
+<%= link_to "Edit marks", term_reported_grades_path(@last_term), :style => 'display:block;clear:left' if current_user.admin? %>
+</div>
+<div style='float:left; margin-left:20px'>
+<%= notice_or_error %>
+<h2>School</h2>
+<dl>
+ <dt>Name</dt><dd><%= @school.name %></dd>
+ <dt>Domain</dt><dd><%= @school.domain_name %>.littleredbrick.com</dd>
+ <dt style='white-space:nowrap'>Grade Range</dt><dd><%= @school.low_grade %> to <%= @school.high_grade %></dd>
+ <dt style='white-space:nowrap'>Teacher Accounts</dt><dd>Up to <%= @school.teacher_limit %></dd>
+</dl>
+<%= link_to "Edit school information", edit_school_path, :style => 'display:block;clear:left' if current_user.admin? %>
+</div>
+</div>
+<div id='secondary'>
+</div>

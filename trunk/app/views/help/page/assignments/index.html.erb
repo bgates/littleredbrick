@@ -1,0 +1,30 @@
+<% @page_title = 'Assignments' %>
+<div id="content" class="help">
+ <h1>Assignments Help Page</h1>
+ <p>The <em>Assignments</em> page shows the due date, title, category, point value, and average score for each assignment during the current marking period.</p>
+ <h2>Selecting Assignments</h2>
+ <p>To analyze different sets of assignments, use the form in the sidebar. You can choose assignments by any of several characteristics:</p>
+ <dl class="notice">
+  <dt>Marking period</dt><dd>Select 0 or more (defaults to current marking period if left blank)</dd>
+  <dt>Category</dt><dd>Select 0 or more</dd>
+  <dt>Point Value</dt><dd>If you filter assignments by point value, choose both a minimum and maximum</dd>
+  <dt>Assignment Range</dt><dd>Eg assignments 1 &ndash; 5</dd>
+  <dt>Date Range</dt><dd>If you filter assignments by due date, choose both a start and end date</dd>
+ </dl>
+ <h2 class="clear" style="padding-top:2em">Note on Date Range</h2>
+ <p>It is possible to give each student in a class an individual due date for an assignment (usually for a class presentation which is impossible for all students to complete on the same day). An assignment with individual due dates will be selected by the date filter if any of the student due dates are within the chosen date range.</p>
+ <h2>Assignment Details</h2>
+ <p>To see more details about one assignment, like student scores or a description of an assignment, click the assignment number in the first column of the assignments table. <% unless current_user.admin? %>Note that you can only see assignment details for assignments in your own classes.<% end %></p>
+ <% if current_user.is_a?Teacher %>
+ <h2>Editing an Assignment</h2>
+ <p>If you need to change some aspect of an assignment, click the assignment number in the table. The <em>Assignment Details</em> page has a link to edit the assignment.</p>
+ <p>To enter or edit <strong>grades</strong> for an assignment, go to the <em>Gradebook</em> page for the class.</p>
+ <% end %>
+</div>
+<div id="secondary">
+<% if current_user.is_a?Teacher %>
+  <%= render 'help/page/assignments/related' -%>
+<% end %>
+  <%= render 'help/page/shared/tech_support', :subject => 'assignments' -%>
+</div>
+

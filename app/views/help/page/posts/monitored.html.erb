@@ -1,0 +1,11 @@
+<% @page_title = 'Monitored Topics' %>
+<div id="content">
+ <h1>Monitored Topics Help Page</h1>
+ <p>When you decide to <em>monitor</em> one or more topics, you can see them more easily.</p>
+</div>
+<% if current_user.is_a?Staffer %>
+<div id="secondary">
+  <%= render 'help/page/shared/discussion_related' -%>
+  <%= render 'help/page/shared/tech_support', :subject => 'monitoring posts' -%>
+</div>
+<% end %>

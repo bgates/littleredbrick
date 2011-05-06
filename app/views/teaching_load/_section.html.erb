@@ -1,0 +1,15 @@
+<tr id = "section_<%= s.object.id %>">
+ <td class="subject_header">
+ <%= s.select("subject_id",
+              options_from_collection_for_select(@department_subjects, "id", "name", s.object.subject_id), {}, :class => 'subject_list') %>
+ </td>
+ <% unless @low_period.nil? %>
+  <td>
+   <%= s.select("time", options_for_select(@low_period..@high_period, s.object.time.to_i)) %>
+  </td>
+ <% end %>
+ <%= conditional_track_selector(s) -%>
+  <td class="narrow">
+   <%= link_to 'Delete', teaching_load_path(@teacher, :section_id => s.object.id, :length => params[:length], :term => params[:term]), {:class => (s.object.id.nil?? 'button new_section' : 'button delete')} %>
+  </td>     
+</tr>

@@ -1,0 +1,42 @@
+<div id="secondary">
+<h2>Select Assignments</h2>
+<%= form_tag({}, {:method => :get, :id  => 'assignment_selection'}) do %>
+ <fieldset style='padding-top:1em'>
+  <h3>Marking Period</h3>
+  <ul class='line'>
+  <% @section.marking_periods.each_with_index do |marking_period, i| %>
+   <li style='margin-right:0.5em'><label style='width:auto;white-space:nowrap'>
+   <% @check = (params[:mp] && params[:mp].include?(marking_period.position.to_s)) || marking_period.position == @mp %>
+   <%= check_box_tag("mp[]", marking_period.position.to_s, @check, :id => "mp[#{i}]") %> <%= i + 1 %></label></li>
+  <% end %>
+  </ul>
+ <hr />
+  <h3>By Category</h3>
+  <ul id='list'>
+   <% @section.assignments.categories.each_with_index do |category, i| %>
+    <li><label for="cat[<%= i %>]">
+    <%= check_box_tag("cat[]", category,  params[:cat] && params[:cat].include?(category), :id => "cat[#{i}]") %>
+    <%= category %></label></li>
+   <% end %>
+  </ul>
+ <hr />
+ <% if @high %>
+ <h3>Point Value</h3>
+ From <%= select_tag('low', options_for_select(0..@high), { :selected => params[:low].to_i,:include_blank => true}) %> to <%= select_tag 'high', options_for_select(0..@high), :include_blank => true %>
+ <hr />
+ <% end %>
+ <h3>Assignment Range</h3>
+ <% @count = @section.assignments.size %>
+  From <%= select_tag 'first', options_for_select(1..@count), {:selected => params[:first].to_i, :include_blank => true} %> to <%= select_tag 'last', options_for_select(1..@count), :include_blank => true %>
+ <hr />
+ <h3>Date Range</h3>
+  <ul>
+   <li><%= datebocks_field_tag 'start', params[:start], 'From ' %></li>
+   <li id='to_label'><%= datebocks_field_tag 'finish', params[:finish], 'To', false %></li>
+  </ul>
+
+  <%= submit_tag("Find Assignments", :class => 'button') %>
+ </fieldset>
+<% end %>
+  <%= return_link_by_user.html_safe %>
+</div>

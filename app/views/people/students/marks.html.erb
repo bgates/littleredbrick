@@ -1,0 +1,35 @@
+<% @marks = @rbes[0].milestones.collect(&:reported_grade) unless @rbes.empty? %>
+<div id="content">
+  <h1><%= @page_h1 = "Marks for #{@student.full_name}" %></h1>
+<table class='scrollike' cellspacing='0' style='width:100%'>
+ <thead>
+  <tr>
+   <th colspan='3'>Class</th><th colspan='<%= @marks.length %>'>Marks</th>
+  </tr>
+  <tr>
+   <th>Name</th><th>Time</th><th>Teacher</th><% @marks.each_with_index do |m, i| %><th><%= i + 1 %></th><% end %>
+  </tr>
+ </thead>
+ <tbody>
+  <% for rbe in @rbes %>
+   <tr>
+    <td class='text'><%= section_student_link(rbe.section, @student, rbe.name, rbe.name) %></td><td><%= rbe.time %></td><td><%= teacher_link(rbe.teacher, rbe.teacher != current_user) %></td>
+    <% for mark in rbe.milestones %>
+     <td title='<%= mark.earned %> / <%= mark.possible %>'><%= number_with_precision(mark.grade, :precision => 1) %></td>
+    <% end %>
+   </tr>
+  <% end %>
+ </tbody>
+</table>
+</div>
+<div id="secondary">
+<h2>Marks</h2>
+<ol>
+ <% for mark in @marks %>
+  <li><%= mark.description %></li>
+ <% end %>
+</ol>
+<hr />
+<h3>Notes</h3>
+<p>These are the marks required for all classes. Some classes may have additional marks. To see grades specific to a class, go to that class' page.</p>
+</div>

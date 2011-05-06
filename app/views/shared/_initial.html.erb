@@ -1,0 +1,4 @@
+<tr><td colspan="6" class="text">No students have been enrolled in this class. To enroll a student, <%= link_to "click here", new_section_enrollment_path(@section) %>.</td></tr>
+<tr><td colspan="6" class="text">You can also enroll students through the "add student" link at the bottom of the Rollbook table on the <%= link_to "section page", section_path(@section) %><% if current_user.teaches?(@section) %>, or the link at the bottom of the table on the <%= link_to "gradebook page", section_gradebook_path(@section) %><% end %>.</td></tr>
+<tr><td colspan="6" class="text">Enrolled students will be listed here with their current marking period grades.</td></tr>
+<tr><td colspan="6" class="text">The table at the right can be used to calculate student grades for any subset of their assignments - all tests, for example, or assignments due in the past week.</td></tr>

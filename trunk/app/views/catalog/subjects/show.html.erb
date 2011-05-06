@@ -1,0 +1,26 @@
+<div id="content">
+<h1><%= @subject.name %> <% if @n_mps && @n_mps > 1 %>| Marking Period <%= marking_period_links %><% end %></h1>
+<h2>Total Enrollment: <%= @enroll = @sections.sum{|s| s.enrollment} %> <%= link_to "Sort by class size", :sort => 'enrollment', :marking_period => @mp_position unless params[:sort] || @enroll == 0 %></h2>
+<%= notice_or_error %>
+<%= render(:partial => "sections/section", :collection => @sections) %>
+<%= p "There are no sections of #{@subject.name} meeting this term" if @sections.empty? %>
+</div>
+<div id="secondary">
+<h2><%= @department.name %> Department</h2>
+<ul>
+ <% for subject in @department.subjects %>
+  <li>
+   <%= link_to_unless_current subject.name, department_subject_path(@department, subject), :title => "Click to see an overview of every section of #{subject.name}" %>
+   <%= link_to '(edit)', edit_department_subject_path(@department, @subject), :title => "Click to change the name of the subject" if subject == @subject && current_user.admin? %>
+  </li>
+ <% end %>
+</ul>
+<hr/>
+<p><%= link_to "Go to course catalog", departments_path %></p>
+<p><%= link_to "Go to #{@department.name} department page", department_subjects_path(@department), :title => "Click to see enrollment information for the #{@department.name} department" %></p>
+<% if @school.terms.count > 1 %>
+<hr/>
+<h3>Next Term</h3>
+<p>See enrollment for all sections of <%= link_to "#{@subject.name}", term_staging_path(@school.terms.last, :subject => @subject) %> for next term.</p>
+<% end %>
+</div>

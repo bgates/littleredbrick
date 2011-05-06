@@ -1,0 +1,12 @@
+
+#masthead { width: expression(this.parentElement.offsetWidth - 2);}
+
+#wrapper {width: expression(this.parentElement.offsetWidth < 1152 ? 980 : 0.85 * this.parentElement.offsetWidth)}
+
+#footer { width: expression(this.parentElement.offsetWidth - 2);}
+
+.scrollableTable thead tr {position: relative;top:expression(this.offsetParent.scrollTop - 2)}
+
+.scrollableTable tfoot tr {position: relative;top:expression(this.offsetParent.clientHeight - this.offsetParent.scrollHeight + this.offsetParent.scrollTop)}
+
+legend {top: -0.5em;}

@@ -1,0 +1,39 @@
+<div id="content">
+<h1><%= @page_h1 = @student.full_name %> | Marking Period <%= marking_period_links %></h1>
+<%= notice_or_error %>
+<h2>Class Summary</h2>
+<%= render(:partial => "personal_section", :collection => @rbes) %>
+<% if @rbes.empty? %>
+<p>To enroll <%= @student.first_name %> in a class for this term, go to <%= teacher_or_your %> and click 'add student' at the bottom of the class rollbook.</p>
+<% end %>
+</div>
+<div id="secondary">
+<h2>Student Summary</h2>
+<dl>
+<dt>Grade</dt><dd><%= @student.grade %></dd>
+<dt>ID</dt><dd><%= @student.id_number %></dd>
+<dt>Absence History</dt><dd><%= absence_summary(@student.absences) %></dd>
+<dt class="clear">Login History</dt><dd><%= student_logins(@student) %></dd>
+</dl>
+<%= link_to "Edit Student", edit_student_path(@student), :style => 'display:block;clear:both' %>
+<hr class="clear"/>
+<dl>
+<dt class="clear"><h3><%= link_to "Parents", student_parents_path(@student) %></h3></dt>
+ <% @student.parents.each do |parent| %>
+  <ul>
+   <li><%= parent_logins(parent) %></li> 
+  </ul>
+ <% end %>
+</dl>
+<hr class="clear"/>
+<% unless @rbes.empty? %>
+<h3>Classes</h3>
+<p>See class-level information for all of <%= @student.first_name %>'s sections <%= link_to "here", sections_student_path(@student) %></p>
+<% end %>
+<% if @school.terms.count > 1 %>
+<hr/>
+<h3>Next Term</h3>
+See <%= @student.first_name %>&#8217;s <%= link_to "classes for next term", term_staging_path(@school.terms.last, :student => @student) %>
+<% end %>
+<%= initial %>
+</div>

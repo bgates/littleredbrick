@@ -1,0 +1,36 @@
+<fieldset>
+<ul>
+<li><label for="topic_title"><%= 'Title'[:title_title] %></label>
+<%= form.text_field :title,  :class => "primary", :tabindex => 10 %></li>
+
+<% if admin? %>
+<li><label class='checkbox' for='topic_sticky' title='Mark a topic as sticky if you want it always to be at the top of the list of topics'> <%= 'Sticky'[:sticky_title] %>
+</label>
+<%= form.check_box :sticky, :checked => @topic.sticky %></li>
+<li>
+<label class='checkbox' for='topic_locked' title='Mark a topic as locked if you do not want to allow anyone to reply to it'> <%= 'Locked'[:locked_title] %>
+</label>
+<%= form.check_box :locked %>
+</li>
+<% end %>
+
+<% if @topic.new_record? %>
+<%= fields_for 'topic[first_post]', @post do |post| %>
+<li>
+<label for="first_post_body"><%= 'Body'[:body_title] %></label>
+<%= post.text_area :body, :rows => 10 %></li>
+<% end %><% end %>
+
+<% if not @topic.new_record? and @forums.length > 1 and current_user.id == @forum.owner_id %>
+<li>
+  <label for="topic_forum_id"><%= 'Forum'[:forum_title] %></label>
+  <%= form.select :forum_id, @forums.map {|x| [x.name, x.id] } %></p>
+</li>
+<% end %>
+</ul>
+<% if @topic.new_record? %>
+  <%= submit_tag 'Post Topic'[], :class => 'button' %>
+<% else %>
+  <%= submit_tag 'Save Changes'[], :class => 'button' %>
+<% end %>
+</fieldset>

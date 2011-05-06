@@ -1,0 +1,26 @@
+<div id="content">
+<h1>Your Class Summary | Marking Period <%= marking_period_links %></h1>
+<%= notice_or_error %>
+<%= render(:partial => "section", :collection => @sections) %>
+</div>
+<div id='secondary'>
+<h2>Compare with Other Classes</h2>
+<% @subjects = @sections.map{|s| s.subject}.uniq %>
+<p>See all classes for</p>
+<ul>
+<% for subject in @subjects %>
+  <li><%= subject_link(subject, subject.department_id) %></li>
+<% end %>
+</ul>
+<hr/>
+<%= link_to "Edit teaching load", edit_teaching_load_path(current_user) %>
+<% if @school.terms.count > 1 %>
+<hr/>
+<h3>Next Term</h3>
+ <ul>
+  <li><%= link_to "Edit next term's teaching load", new_teaching_load_path(current_user, :term => 'future') %></li>
+  <li><%= link_to "Enrollment for next term's classes", term_staging_path(@school.terms.last) %></li>
+ </ul>
+<% end %>
+</div>
+

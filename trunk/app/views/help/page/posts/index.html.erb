@@ -1,0 +1,44 @@
+<% @page_title = 'Posts' %>
+<div id="content">
+ <h1>Posts Help Page</h1>
+ <p>You can view collections of <%= link_to "posts", '/help/discussions/posts' %> in two contexts: all recent posts from a forum, or all posts from a user.</p>
+ <h2>Posts from a Forum</h2>
+ <p>Clicking the <code>Recent posts</code> link at the bottom of a forum list page shows all the posts that have been contributed to any topic in those forums in the past week. Each post lists the forum and topic it came from, and its author.</p>
+  <table border="0" cellspacing="0" cellpadding="0" class="posts wide beast">
+ <tr class="post hentry">
+  <td class="author vcard">
+    <a href="#">Forum link</a> <span class='arrow'>&rarr;</span> <a href="#">Topic link</a><br/><a href="#" class="threadauthor fn">Mr Example</a><span class="admin">Moderator </span><span class='posts'>21 posts</span>
+    <div class="date">
+      <abbr class="updated" title="<%= Time.now.strftime("%b %d, %I:%M%p") %>">Post added <%= Date.today.strftime("%b %d, %Y") %></abbr>
+    </div>
+    <span class="edit"> 
+      <a href="#">Edit Post</a>
+    </span>
+  </td>
+  <td class="body entry-content"><p>Links are provided to the topic and forum to which each post was added. The post author&#8217;s name is a link to his <%= link_to "participant page", '/help/page/users/show' %></p></td>
+ </tr>
+</table> 
+
+<h2>Posts from one Author</h2>
+<p>If you look at all the posts from one author, the formatting is slightly different:</p>
+<table border="0" cellspacing="0" cellpadding="0" class="posts wide beast">
+ <tr class="post hentry">
+  <td class="author vcard">
+    <a href="#">Forum link</a> <span class='arrow'>&rarr;</span> <a href="#">Topic link</a><br/>
+    <div class="date">
+      <abbr class="updated" title="<%= Time.now.strftime("%b %d, %I:%M%p") %>">Post added <%= Date.today.strftime("%b %d, %Y") %></abbr>
+    </div>
+    <span class="edit"> 
+      <a href="#">Edit Post</a>
+    </span>
+  </td>
+  <td class="body entry-content"><p>Since the author of every post on this page is the same (the participant page looks at one person&#8217;s posts), there is no need to list the author with every post. Instead, links are provided to the topic and forum to which each post was added.</p></td>
+ </tr>
+</table> 
+</div>
+<% if current_user.is_a?Staffer %>
+<div id="secondary">
+  <%= render 'help/page/shared/discussion_related' -%>
+  <%= render 'help/page/shared/tech_support', :subject => 'editing posts' -%>
+</div>
+<% end %>

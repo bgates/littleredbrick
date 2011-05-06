@@ -1,0 +1,24 @@
+<div id="content">
+<h1>Edit School</h1>
+<%= error_messages_for("school") %>
+<%= form_tag school_path, {:method => :put} do %>
+<fieldset>
+<legend>School</legend>
+<ul>
+  <li><label for='school_name'>Name</label>
+  <%= text_field("school", "name") %></li>
+  <li><label for='school_domain_name'>Domain Name</label>
+  <%= text_field("school", "domain_name") %>.littleredbrick.com
+  <li class='line'><p>The school has students in the following grades:</p>
+  <label for='school_low_grade'>Grade</label> <%= select("school", "low_grade", (1..12)) %>
+    <label for='school_high_grade' id="gap">to grade</label> <%= select("school", "high_grade", (1..12)) %></li>
+</ul>
+  <%= submit_tag 'Save Changes', :class => 'button' %>
+<% end %>
+</fieldset>
+<%= link_to "Cancel", school_path %>
+</div>
+<div id='secondary'>
+<h2>Warning</h2>
+You should only change the domain name if you are the only person who has an account, because the application will appear broken to anyone who attempts to view a page using the old domain name.
+</div>

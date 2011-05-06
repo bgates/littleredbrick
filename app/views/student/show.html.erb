@@ -1,0 +1,26 @@
+<% @page_title = @section.name + " | Classes" %>
+<div id = 'content'>
+ <h1 style='display:inline'><%= @section.name %> (<%= @teacher.display_name %>) | Marking Period <%= marking_period_links %></h1>
+ <h2 style='margin-top:1em'>Marking Period Grade: <%= number_with_precision(@marking_period.grade, :precision => 1) %> (<%= @section.on_scale(@marking_period.grade) %>)</h2>
+ <%= render :partial => "shared/category" %>
+ <%= render :partial => "shared/progression" %>
+ <%= render :partial => "shared/grade" %>
+ <%= render :partial => "shared/ungrade" %>
+ <%= link_to "See all assignments", student_assignments_path(@section, :mp => @mp_position), :id => 'assignments' %>
+ <%= render :partial => "shared/post" %>
+</div>
+<div id='secondary'>
+<h2>Report Card</h2>
+<table id='marks' style="margin-top:2em">
+ <thead>
+  <tr><th class='text'>Marks</th><th>%</th><th>Grade</th></tr>
+ </thead>
+ <tbody>
+  <%= render(:partial => "mark", :collection => @marks) %>
+ </tbody>
+</table>
+<% unless @section.point_distribution.empty? %>
+<h2>Point Distribution</h2>
+<%= pie_chart(@section.point_distribution) %>
+<% end %>
+</div>

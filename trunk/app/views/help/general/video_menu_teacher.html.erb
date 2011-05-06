@@ -1,0 +1,40 @@
+<div id="content"><style>#general_video_menu .scrollike tbody th {border-bottom: 1px solid #ccc;}</style>
+ <h1>Help <%= @page_h1 = "Video Menu" -%></h1>
+ <p>A picture is worth a thousand words, so imagine what a <em>moving</em> picture is worth. The durations on these are approximate, because they all have a lot of pauses to read little informational items. The faster you read, the faster you will be able to watch one of these videos.</p>
+ <table class="scrollike" cellspacing="0">
+  <thead>
+   <tr><th>Category</th><th>Subject</th><th>Duration</th></tr>
+  </thead>
+  <tbody>
+    <%= video_header 4, 'Big Picture', 'Academics', 'section_page', '15:08' -%>
+    <%= video_row 'Calendar', 'calendar', '2:50' -%>
+    <%= video_row('Discussions', 'discussions', '6:58') %>
+    <%= video_row('What a student can see', 'student_view', '2:55') %>
+    <%= video_header 6, 'Gradebook', 'Changing a marking period grade', 'edit_first_marking_period', '1:14' -%>
+   <%= video_row('Enrolling a student', 'enroll', '0:27') %>
+   <%= video_row('Marks', 'marks', '3:32') %>
+   <%= video_row('Sorting student names', 'sort_names', '0:36') %>
+   <%= video_row('Uploading grades', 'upload_grades', '1:04') %>
+   <%= video_row('Unenrolling a student', 'unenroll', '0:28') %>
+   <%= video_header 3, 'Student and Class Performance', 'Student Academics', 'student_academics', '2:58' -%>
+   <%= video_row('Understanding the assignment page', 'assignment_page', '1:09') %>
+   <%= video_row('Understanding the student performance page', 'student_performance_page', '0:43') %>
+   <%= video_header('2', 'Editing a Class', 'Grade scale', 'grade_scale', '1:25') %>
+   <%= video_row('Seating chart', 'seating_chart', '0:28') %>
+   <%= video_header 2, 'Creating User Accounts', 'Parent', 'create_parent', '1:15' -%>
+   <%= video_row('Student', 'create_student', '2:31') %>
+   <%= video_header('1', 'Working with the catalog', 'Overview', 'catalog', '0:35') %>
+   <%= video_header('3', 'Editing User Accounts', 'Edit a parent account', 'edit_parent', '2:03') %>
+   <%= video_row('Edit a student account', 'edit_student', '0:32') %>
+   <%= video_row('Edit your login and password', 'edit_self', '0:47') %>
+  </tbody>
+ </table>
+</div>
+<div id="secondary">
+<h2>Other Help Options</h2>
+<h3>Tech Support</h3>
+<p>If you can't find your answer in any of the links on this page, you can always try the <%= link_to "help forums", forums_path('help') %>. That is the place to get tech support. You may even find someone else has asked your question already, and gotten an answer.</p>
+<hr/>
+<h3>Explore the Site</h3>
+<p>Each page in the site has its own help section. When you click <code>Help</code> on the front page, you get the help menu page. When you click <code>Help</code> on any other page, you will see information on the purpose of that specific page.</p>
+</div>

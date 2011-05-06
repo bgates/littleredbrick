@@ -1,0 +1,22 @@
+<div id='content'>
+  <h1>New <%= @section.name -%> Mark</h1>
+  <%= error_messages_for("mark") %>
+  <%= form_tag(section_marks_path(@section)) do %>
+  <fieldset>
+    <legend>Description</legend>
+    <p>Enter the name of the new grade you want to create for this class, and its position relative to the existing grades. You will be able to set student marks afterward.</p>
+    <ul>
+     <li>
+      <label for='mark_description'>Description</label>
+      <%= text_field("mark", "description") %>
+     </li>
+     <li>
+      <label for='mark_predecessor_id'>New grade should follow</label>
+      <%= select("mark", "predecessor_id", @marks) %>
+     </li>
+    <%= submit_tag("Create Mark", :class => 'button') %>
+    </ul>
+  </fieldset>
+  <% end %>
+  <%= link_to "Cancel", section_marks_path(@section) %>
+</div>

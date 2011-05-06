@@ -1,0 +1,21 @@
+<div id = 'content'>
+<h1>Administrative Tasks</h1>
+<p>There are four subdivisions of Little<span class='company'>Red</span>Brick accessible only by administrators.</p>
+<%= notice_or_error %>
+<div>
+ <h2><%= link_to "Administrators", administrators_path %></h2>
+ <p>An administrative account is suitable for a principal or other non-teaching staff member, or a technical-minded teacher who is in charge of maintaining Little<span class='company'>Red</span>Brick for the school. Go to this section to add, edit, or remove administrator accounts. There <%= (@admins = @school.admins.count) == 1 ? 'is' : 'are' %> <%= pluralize(@admins, 'account') %> with administrative privileges for your school.</p>
+</div>
+<div>
+ <h2><%= link_to "Catalog", departments_path %></h2>
+ <p>View enrollment data for every department and subject at the school, and compare student and teacher performance for all sections of a given subject.</p>
+</div>
+<div>
+ <h2><%= link_to "School", school_path %></h2>
+ <p>View and edit school statistics, including enrollment and the numbers of teacher and administrative accounts.</p>
+</div>
+<div>
+ <h2><%= link_to "Term", term_path(@last_term = @school.terms.first) %></h2>
+ <p>Set the number of classes per school day during this academic term, the dates for the start and end of each marking period, and any grades teachers must submit for all classes (semester grade, cumulative grade, etc).</p>
+</div>
+</div>

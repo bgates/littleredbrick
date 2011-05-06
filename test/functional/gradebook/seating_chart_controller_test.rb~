@@ -1,0 +1,48 @@
+require 'test_helper'
+
+class Gradebook::SeatingChartControllerTest < ActionController::TestCase
+  
+  def setup
+    @request.session[:school] = @request.session[:user] = :exists
+    @controller.stubs(:set_user).returns(@teacher= Teacher.new)
+    @user.stubs(:school).returns(@school = School.new)
+    Section.expects(:find).returns(@section = Section.new)
+    @section.expects(:teacher).at_least_once.returns(@teacher)
+    @section.stubs(:to_param).returns 'section'
+  end
+
+  def test_new
+    get :new
+    assert_response :success
+  end
+  
+  def test_show
+    stub_seats
+    get :show
+    assert_response :success
+  end
+
+  def test_cannot_show_new
+    @section.stubs(:rollbook_entries).returns([RollbookEntry.new])
+    get :show
+    assert_redirected_to new_seating_chart_path(@section)
+  end
+  
+  def test_edit
+    stub_seats
+    get :edit
+    assert_response :success
+  end
+
+  def test_create
+    #SeatingChart.expects(:new).with(@section, 'seats').returns(mock(:save => true, :valid? => true)) BaseWithoutTable can't be mocked, so I have to hack a little
+    @section.stubs(:enrollment).returns(1)
+    post :create, :seat => {0 => {0 => '1'}}
+    assert_redirected_to section_path(@section)
+  end
+  protected
+  def stub_seats
+    @section.stubs(:rollbook_entries).returns([RollbookEntry.new(:x => 1, :y => 1), RollbookEntry.new(:x => 1, :y => 2)])
+    RollbookEntry.any_instance.stubs(:student).returns(stub(:full_name => 'student'))
+  end
+end

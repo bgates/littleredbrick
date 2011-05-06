@@ -1,0 +1,49 @@
+<div id="content" class="help">
+<h1><%= @page_h1 = "Student View" -%></h1>
+<p>Students can see all of their own grade information (and so can their parents). The following pages are available to <%= them_or_you %>:
+</p>
+ <dl class="notice">
+  <dt><%= link_to "Front page", '#index' %></dt><dd>Shows the current marking period grade for every class and a list of assignments due within the next week</dd>
+  <dt><%= link_to "Class overview", '#overview' %></dt><dd>Shows the student&#8217;s grade progression in all classes</dd>
+  <dt><%= link_to "Class detail", '#detail' %></dt><dd>Comprehensive view of the student&#8217;s performance in one class</dd>
+  <dt><%= link_to "Assignments", '#assignments' %></dt><dd>A table showing the student&#8217;s grades on all assignments</dd>
+  <dt><%= link_to "Assignment detail", '#single_assignments' %></dt><dd>Detailed information on one assignment</dd>
+ </dl>
+ <h3 id="index">Front Page</h3>
+ <dl>
+ <dt>How to get there</dt><dd>Just log in</dd>
+ <dt>Summary</dt><dd>Shows the current marking period grade for every class and a list of assignments due within the next week</dd>
+ <dt>More information</dt><dd>The student/parent front page shows the most important student information, current grades and upcoming assignments. Click on any subject name to see the detail page for that class. Click on any assignment number to see more information about that assignment.<%= image_tag("help/student_front.png", {:alt => "description", :size => "572x176"}) %></dd></dl>
+ <hr/> 
+ <h3 id="overview">Class overview</h3>
+ <dl>
+ <dt>How to get there</dt><dd>Click the <code>Classes</code> tab</dd>
+ <dt>Summary</dt><dd>Shows the student&#8217;s grade progression in all classes</dd>
+ <dt>More information</dt><dd>The next level of detail after the front page, this page shows changes in the student&#8217;s grade over time during the marking period. This can be a useful tool for a parent to see whether a problem grade is an isolated occurrence, if there is a downward trend in multiple classes, or if something has gone wrong suddenly in only one class. Clicking on a subject's name brings up the <%= link_to "detail page", '#detail' %> for that class.</dd></dl>
+ <hr/>
+  <h3 id="detail">Class Detail</h3>
+ <dl>
+  <dt>How to get there</dt><dd>Click any class name on the <%= link_to "class overview", '#overview' %> page or the front page</dd>
+  <dt>Summary</dt><dd>Comprehensive view of a student&#8217;s performance in one class</dd>
+  <dt>More information</dt><dd>This is the most informative, and most complex presentation of a single student&#8217;s academic performance, which contains the following pieces of information:
+  <ol style="width:600px">
+  <li>Marking period grade and class rank</li>
+  <li>Links to view grade information for other marking periods</li>
+  <li>Points earned in each assignment category created by the teacher</li>
+  <li>History of the changes in the student&#8217;s grade over time during the marking period</li>
+  <li>Information about recently graded and upcoming assignments</li>
+  <li>Recent posts on any topics in the section&#8217;s <%= link_to "discussion group", :action => 'discussions' %></li>
+ </ol></dd></dl>
+ <hr/>
+ <h3 id="assignments">Assignments</h3>
+ <dl>
+ <dt>How to get there</dt><dd>Click the <code>See all assignments</code> link on a class detail page</dd>
+ <dt>Summary</dt><dd>A table showing the student&#8217;s grades on all assignments for one class</dd>
+ <dt>More information</dt><dd>It is also possible to look at a selection of assignments by specifying a marking period, category, or date range of interest. Clicking on an assignment number provides more detail about that assignment.</dd></dl>
+ <hr/>
+ <h3 id="assignment_detail">Assignment Detail</h3>
+ <dl>
+ <dt>How to get there</dt><dd>Click an assignment number on the front page or on a class detail page</dd>
+ <dt>Summary</dt><dd>Detailed information on one assignment</dd>
+ <dt>More information</dt><dd>Shows everything a student can know about a particular assignment: the due date, point value, date it was assigned, how important it is in the marking period grade, score (if it has been graded), and any directions or other notes provided by the teacher.</dd></dl>
+</div>

@@ -1,0 +1,12 @@
+<% @page_title = 'Parent Accounts' %>
+<div id="content">
+<h1>About Parent Accounts</h1>
+ <p>Each time a <strong>student</strong> account is created, two <strong>parent</strong> accounts are created with temporary names and logins. For instance, if an account is created for a student named <em>Harold Potter</em>, his login and password will be <code>haroldpotter</code>, and his parents&#8217; logins will be <code>haroldpotter_father</code> and <code>haroldpotter_mother</code>. Parents are asked to enter their real names, and choose their own passwords, the first time they log in. If you see a parent with a name that ends in <em>_mother</em> or <em>_father</em>, it is because that parent has never logged in.</p>
+ <h2>Children List</h2>
+ <p>Each parent is listed along with all of their children. If a parent should have more than one child, they will be listed here. If a list of children is missing a sibling, go to that sibling&#8217;s list of parents and click the <code>Add Parent</code> link.</p>
+
+</div>
+
+<div id="secondary">
+ <%= render 'help/page/shared/tech_support', :subject => 'parent accounts' -%>
+</div>

@@ -1,0 +1,8 @@
+<tr class="<%= cycle('odd','even') %>">
+ <td><%= student_performance.position %></td>
+ <td class='text'><%= section_student_link(@section, student_performance.student) %></td>
+ <td><%= student_performance.student.grade  %></td>
+ <td><%= student_performance.grade_for(@assignments)[:earned] %></td>
+ <td><%= student_performance.grade_for(@assignments)[:possible] %></td>
+ <td><%= number_with_precision(student_performance.grade_for(@assignments)[:percent], :precision => 1) %>(<%= @section.on_scale(student_performance.grade_for(@assignments)[:percent]) %>)</td>
+</tr>

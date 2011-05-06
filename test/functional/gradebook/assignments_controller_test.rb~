@@ -1,0 +1,146 @@
+require 'test_helper'
+
+class Gradebook::AssignmentsControllerTest < ActionController::TestCase
+
+  def setup
+    generic_setup Teacher
+    @user.stubs(:admin?).returns true
+    School.stubs(:find).returns @school
+    @controller.expects(:logged_in?).at_least_once.returns(true)
+    Section.expects(:find).returns(@section = Section.new)
+    #@section.stubs(:to_param).returns(1)
+    @section.expects(:teacher).at_least_once.returns @user 
+  end
+
+  def test_index
+    @section.expects(:marking_periods).returns([MarkingPeriod.new])
+    @mp = MarkingPeriod.new(:reported_grade_id => 1)
+    @section.expects(:current_marking_period).at_least_once.returns(@mp)
+    Assignment.expects(:maximum).returns(1)
+    get :index, :section_id => 1
+    assert_template('index')
+  end
+
+  def test_show
+    MarkingPeriod.expects(:find_by_track_id_and_reported_grade_id).returns(MarkingPeriod.new)
+    stub_assignments(false, false)
+    @assignments.expects(:find).with('1', :include => :grades).returns(@assignment)
+    @assignment.attributes = {:date_due => Date.today, :date_assigned => Date.today + 1, :description => '', :position => 1}
+    @assignments.expects(:find).with(:all, :conditions => ['position IN (?)', -1..3], :order => :position).returns([Assignment.new])
+    get :show, :section_id => 1, :id => 1
+    assert_template('show')
+  end
+
+  def test_new
+    stub_new
+    get :new, :section_id => 1
+    assert_template('new')
+  end
+
+  def test_new_individual_due_dates_for_grades
+    stub_new
+    get :new, :due => 'individual'
+    assert_template('new')
+  end
+  
+  def test_create
+    post_assignment(true)
+    post :create, :section_id => 1, :assignment => {}
+    assert flash[:notice]
+    assert_redirected_to gradebook_path(@section)
+  end
+
+  def test_fail_create
+    post_assignment(false)
+    @assignments.expects(:find).with(:all, :select => 'category').returns([])
+    @assignment.errors.add(:date_due, 'error msg')
+    stub_marking_periods
+    @mp.expects(:find).returns([MarkingPeriod.new])
+    post :create, :section_id => 1, :assignment => {}
+    #assert_select '.fieldWithErrors'
+    assert_template('new')
+  end
+
+  def test_destroy
+    stub_assignments(true, false)
+    @assignment.expects(:destroy).returns(true)
+    post :destroy, :section_id => 1, :id => 1, :method => :delete
+    assert flash[:notice]
+    assert_redirected_to gradebook_path(:section_id => 1)
+  end
+
+  def test_destroy_xhr
+    stub_assignments(true, false)
+    @assignment.expects(:destroy).returns(true)
+    xhr :delete, :destroy, :section_id => 1, :id => 1
+    assert flash[:notice]
+    #don't rememember how to test redirect in js
+  end
+  
+  def test_edit
+    stub_assignments
+    stub_marking_periods
+    @mp.expects(:find).returns([MarkingPeriod.new])
+    get :edit, :section_id => 1, :id => 1
+    assert_response :success
+  end
+
+  def test_fail_update
+    stub_assignments
+    stub_marking_periods
+    @assignment.expects(:update_attributes).returns(false)
+    @assignment.errors.add(:date_due, 'error msg')
+    @mp.expects(:find).returns([MarkingPeriod.new])
+    post :update, :section_id => 1, :id => 1, :method => :put, :assignment => {}
+    assert_template('edit')
+    #assert_select '.fieldWithErrors'
+  end
+
+  def test_update
+    @section.stubs(:assignments).returns(mock(:find => @assignment = Assignment.new))
+    @assignment.expects(:update_attributes).returns(true)
+    put :update, :assignment => {}
+    assert_redirected_to gradebook_url(@section)
+  end
+
+  def test_fail_update_individual_grades
+    stub_assignments
+    stub_marking_periods
+    @mp.expects(:find).returns([mock(:reported_grade_id => 1)])
+    @assignment.expects(:update_attributes).returns(false)
+    @assignment.expects(:grades).returns(mock(:find => [@grade = Grade.new]))
+    @grade.stubs(:id).returns(1)
+    @grade.expects(:rollbook_entry).returns(mock(:student => Student.new))
+    put :update, :assignment => {:grades => {'1' => {:date_due => 'filler'}}}, :id => 1
+    assert_template('edit')
+  end
+protected
+
+  def post_assignment(response)
+    stub_assignments(false, false)
+    @assignments.expects(:create).returns(@assignment)
+    @assignment.expects(:valid?).returns(response)
+  end
+
+  def stub_assignments(single = true, double = true)
+    @assignments = mock()
+    @assignment = Assignment.new
+    @section.stubs(:assignments).returns(@assignments)
+    @assignments.expects(:find).with('1').returns(@assignment) if single
+    @assignments.expects(:find).with(:all, :select => 'category').returns([]) if double
+  end
+
+  def stub_marking_periods
+    @track = mock()
+    @track.expects(:marking_periods).returns(@mp = mock())
+    @section.expects(:track).returns(@track)
+  end
+
+  def stub_new
+    @section.expects(:current_marking_period).returns(MarkingPeriod.new)
+    stub_assignments(false)
+    @assignments.expects(:build).returns(Assignment.new(:date_due => Date.today))
+    stub_marking_periods
+    @mp.expects(:find).returns([MarkingPeriod.new])
+  end
+end

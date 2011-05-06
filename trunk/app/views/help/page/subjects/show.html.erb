@@ -1,0 +1,14 @@
+<% @page_title = 'Subject' %>
+<div id="content">
+ <h1>Subject Help Page</h1>
+ <p>The <em>subject</em> page shows every section of one subject. For each section, links to its teacher&#8217;s page and to the section itself headline an overview in the following format:</p>
+ <%= render(:partial => "/help/general/class_summary") %>
+ <h2 style="clear:both">Marking Period</h2>
+ <p>By default, the class average and grade distribution for each section are presented for the school&#8217;s current marking period. The marking period number is indicated on the first line of the page, beside the subject name, with links to views of other marking periods.</p>
+ <h2>Editing Subject</h2>
+ <p>The link to edit the subject is in the sidebar beside the subject name.</p>
+</div>
+<div id="secondary">
+ <h2>Other Questions?</h2>
+ <p>If there is something else you want to ask about subjects, try the <%= link_to "help forums", forums_path('help') %> for Little<span class='company'>Red</span>Brick tech support.</p>
+</div>

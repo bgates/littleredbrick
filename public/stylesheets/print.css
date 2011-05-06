@@ -1,0 +1,710 @@
+/*BODY*/
+* { margin: 0; padding: 0;}
+
+html, body {
+  color:#000;
+}
+body {font: 12pt/1.4em Georgia, Garamond, "Times New Roman", Times, serif; }
+* html #wrapper, html>body #wrapper { min-height: 100%;}
+
+#wrapper, #masthead, #footer { min-width: 1000px;}
+
+#wrapper {
+  width: 100%;
+  background: #fff;
+}
+
+html>body #content_wrap {
+  min-height:550px;
+  height: auto;
+  background:white;
+  position: relative;
+}
+#content_wrap:after, form:after, #wrapper:after, #content:after, .clear:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/*FOOTER*/
+#footer {
+  width: 84.8%;
+  font-size: x-small;
+  text-align: center;
+  height: 2em;
+  z-index: 1000;
+  background: white;
+  border: 1px solid #808080;
+  border-bottom: 0;
+  padding: 5px 0;/*former 0.5em 0*/
+}
+html>body #footer {
+  position:fixed;
+  bottom:0;
+  z-index:10; /* Prevent certain problems with form controls */
+}
+/*HEADER*/
+
+#masthead { display:none;}
+
+/*CONTENT*/
+#content {
+  float: left;
+  width: 70%;
+  padding: 0 0 2em 0;
+  background: #fff;
+}
+html>body #content {height: 100%;}
+/*GENERIC TYPOGRAPHY*/
+h1,h2,h3,h4,h5,h6 {
+  font-family:'Lucida Grande', 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  color: #66aebd;
+}
+h1 {
+  font-size: 1.23em;
+  line-height: 1em;
+  margin: 0 0 1em 0;
+}
+h2 {
+  font-size: 1.1em;
+  line-height: 1em;
+  margin: 0 0 1em 0;
+}
+h3 {
+  font-size: 1em;
+  line-height: 1em;
+  margin: 0 0 1em 0;
+}
+
+li { list-style: none;}
+
+option { padding-right: 10px;}
+
+a { color: #529aa9; text-decoration: none}
+
+a img { border: 0;}
+
+hr { margin: 1em 0;}
+/*TABLE*/
+table { margin-bottom: 1em;}
+
+thead { padding-bottom: 0.5em;}
+
+th {padding: 2px 10px;}
+
+thead th { position:relative;}
+
+td {/*almost certainly needs to change*/
+  text-align: center;
+  padding: 5px 10px;
+}
+tr td.text {text-align: left;}
+
+td.number {text-align: right;}
+
+td.align { padding-bottom: 2.05em;}
+
+.scrollike td.first, .scrollableTable td.first  {float:none; text-align: left;}
+div.scrollableTable {
+  width: 100%;    /* table width will be 99% of this*/
+  height: 350px;   /* must be greater than tbody*/
+  overflow-x: auto;
+  margin: 0 auto;
+}
+.scrollableTable table {
+  width: 99%;    /*100% of container produces horiz. scroll in Mozilla*/
+  border: none;
+  height: 295px;
+}
+.scrollableTable table, table.scrollike {
+  background-color: #f7f7f7;
+  margin-bottom: 0;
+  border: solid 1px #d8d8d8;
+}
+.scrollableTable table>tbody  {  /* child selector syntax which IE6 and older do not support*/
+  overflow: auto;
+  height: 250px;
+}
+.scrollableTable thead td, .scrollableTable thead th, .scrollike thead td, .scrollike thead th {
+  text-align: center;
+  background: #66aebd url(../images/blueglass.jpg) repeat-x top;
+  color: white;
+  font-weight: bold;
+  border-top: solid 1px #d8d8d8;
+}
+.scrollableTable thead th, .scrollableTable tfoot th, .scrollike thead th {font-size: 1.1em;}
+
+.scrollableTable td, .scrollike td  {
+  color: #000;
+  padding-right: 2px;
+  text-align: right;
+  border-bottom: solid 1px #d8d8d8;
+  border-left: solid 1px #d8d8d8;
+}
+.scrollableTable thead a, .scrollableTable tfoot a, .scrollike thead a {
+  color: #f5f5f5;
+  text-decoration: none;
+}
+.scrollableTable tfoot td, .scrollableTable tfoot th  {
+  text-align: center;
+  font-weight: bold;
+  background: #98e0f9 url(../images/blueglass_reverse.jpg) repeat-x bottom;
+  color: white;
+}
+.scrollableTable input.button { margin-top: 0; margin-bottom: 0}
+.scrollableTable tfoot td, .scrollike tfoot td { font-size: 0.7857em;}
+.scrollableTable td:last-child {padding-right: 20px;} /*prevent Mozilla scrollbar from hiding cell content*/
+
+/*everything past here is the print stylesheet for scrollable tables*/
+table>tbody  {overflow: visible; }
+td {height: 14pt;} /*adds control for test purposes*/
+thead td  {font-size: 11pt;}
+tfoot td  {
+  text-align: center;
+  font-size: 9pt;
+  border-bottom: solid 1px slategray;
+}
+
+thead  {display: table-header-group;}
+tfoot  {display: table-footer-group;}
+thead th, thead td  {position: static; }
+
+thead tr  {position: static; } /*prevent problem if print after scrolling table*/
+table tfoot tr {     position: static;  }
+tr.setup td {text-align: center;}
+
+.recent_avg {width:60px;}
+
+#student_head { width: 165px;}
+
+#header_bottom th { padding: 0 0 3px 0;}
+
+tr.even td, tr.even td input, tr.even td a {
+  background: #eee;
+}
+tr.odd td, tr.odd td input, tr.odd td a {
+  background: #fff;
+}
+td.grade, td.grade input {
+  text-align: center;
+  width: 3em;
+}
+.mark {
+  text-align: center;
+  width: 4em;
+}
+/*CONTENT AREA*/
+#content p, #secondary p {
+  margin: 1.3846em 0 1.3846em 0;
+  line-height: 1.3846;
+}
+#content ul { margin: 1em 0 0 1em;}
+
+/*FORM*/
+fieldset {
+  position: relative;
+  padding: 1em;
+  padding-top: 2em;
+  background: #f8f8ff;
+  margin: 1em 0;
+  border:2px solid #66aebd;
+  color: #4a7f8a;
+}
+legend {
+  position: absolute;
+  top: -0.5em;
+  left: 0.2em;
+  border:2px solid #66aebd;
+  background: #fff;
+  color: #66aebd;
+  padding: 0 5px;
+  font-variant: small-caps;
+}/*i need to put the legend deal in a separate, ie-only css file and hide its import with conditional comments:*/
+input, textarea, select {
+  font: 100% tahoma, helvetica, verdana, arial, sans-serif;
+}
+.line li, .line li input, .line li select, .line li label, .line li div, .line a.button, .line label, .line select {
+  display: inline;
+  float: none;
+  width: auto;
+}
+.line.stagger li {display: block;float: left;}
+
+.line.stagger li label {display: block;text-align: left;}
+
+.line li { margin-right: 2.5em;}
+
+.checkbox li label { text-align: left;}
+
+label { margin-right: 0.3em;}
+
+label input { float: left;}
+
+.uniform label { width: 7em;}
+
+label.textarea {
+  float: none;
+  display: block;
+}
+#content fieldset ul { margin: 0;}
+
+#content fieldset p { margin-top: 0;}
+
+.button {
+  cursor:pointer;
+  border:outset 1px #ccc;
+  background:#999;
+  color:#666;
+  font-weight:bold;
+  padding: 1px 2px;
+  background:url(../images/submit_button_bg.gif) repeat-x left top;
+  clear: both;
+  float: right;
+  margin: 5px 8px 5px 5px;
+  font-size: 13px;
+  font-family: tahoma,helvetica,verdana,arial,sans-serif
+}
+a.button {
+  float: none;
+  text-decoration: none;
+  font-size: 1.0256em;
+  display: block;
+}
+.sidebar select {display:inline;}
+form.line .button {margin-top: -1.75em;}
+form img {
+  margin: 0 auto;
+  padding-left: 1em;
+}
+fieldset hr {
+  clear: left;
+  margin: 0.25em 0;
+  color: #66aebd;
+  background: #66aebd;
+}
+/**/
+dl#secondary {
+  float: right;
+  width: 20%;
+}
+div#secondary {
+  float: right;
+  width: 20%;
+  padding-right: 2em;
+}
+#secondary ol {
+  list-style: decimal inside;
+}
+#secondary ol li {
+  padding-left: 1em;
+  color: #529aa9;
+  /*margin: 0.5em 0 0;*/
+}
+#secondary h2 {
+  line-height: 1.142857;
+  margin-bottom: 1.142857em;
+}
+/*FLASH*/
+#notice, .notice {
+  border:2px solid #66aebd;
+  background:#f8f8ff;
+  color: #4a7f8a;
+  padding: 5px;
+  margin-bottom: 1em;
+}
+#notice h2, .notice h2, #notice h3, .notice h3, #notice a, .notice a {
+  color: #4a7f8a;
+}
+#notice ul li, .notice ul li {
+  list-style: disc inside;
+}
+#error {
+  border: 2px solid #bd6666;
+  background:#fff8f8;
+  color: #a35858;
+  padding: 2px;
+}
+#error h2 {
+  color: #a35858;
+}
+/*ERROR*/
+.fieldWithErrors {
+  padding: 2px;
+  background-color: #bd6666;
+  display: table;
+  margin-top: -2px;
+}
+.line .fieldWithErrors { padding: 4px 2px;}
+
+#errorExplanation {
+  /*width: 400px;*/
+  border: 2px solid #bd6666;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #fff8f8;
+}
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #bd6666;
+  color: #fff;
+}
+#errorExplanation p {
+  color: #a35858;
+  margin-bottom: 0;
+  padding: 5px;
+}
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square inside;
+  color: #a35858;
+}
+div#errorExplanation ul {
+  float: none;
+}
+/*CALENDAR*/
+#events_index #content {
+  margin: 0;
+  padding: 0;
+  width: 76%;
+}
+#events_index #footer {visibility: hidden;}
+html > body#events_index #masthead {position: static;}
+#events_index #masthead {width: 100%;margin-bottom: 0px}
+#events_index #content_wrap {padding-top: 0px;border-left: 0;}
+#events_index #masthead #logout {position: static; float: right;}
+table.cal {
+  width: 100%;
+  font-size: 85%;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  margin-bottom: 5px;
+}
+table.cal {border-left: 1px solid #c2cfc8;}
+table.cal tr.odd {
+  background-color: #f7f9fa;
+}
+table.cal tr.even {
+  background-color: #dee7ec;
+}
+table.cal th {
+  color: #ffffff;
+  text-align: center;
+  font-weight: bold;
+  background-color: #00602b;
+  padding: 0 5px 5px;
+  border-right: #ccc 1px solid;
+  width: 14%;
+}
+table.cal td {
+  color: #000000;
+  font-weight: normal;
+  height: 105px;
+  vertical-align: top;
+  text-align: left;
+  padding: 5px;
+  border: #c2cfc8 1px solid;
+}
+table.cal td:hover, table.cal a:hover {
+  background-color: #ccc;
+  color: white;
+}
+table.cal td.noevent {
+  background-color: #f7f9fa;
+}
+table.cal td.event {
+  background-color: #dee7ec;
+}
+table.cal td.outOfMonth {
+  background-color: gray;
+  border: #f7f9fa 1px solid;
+}
+table.cal td.outOfMonth span.day {
+  font-weight: normal;
+}
+table.cal td span.day {
+  font-weight: bold;
+  color: #000000;
+}
+table.cal a {
+  display: block;
+}
+._1 a {
+  color: red;
+}
+._2 a {
+  color: blue;
+}
+._3 a {
+  color: green;
+}
+#event_form #event {float: left;margin-right: 2%}
+#event_form #audience ul {float:right;}
+#event_form #sections label {width: 13em;}
+#event_form .dateBocks li {padding-left: 0}
+/*CATALOG*/
+#departments_index #content ul {
+  margin: 0;
+  padding: 5px 0;
+}
+dl#subjects { border: 2px solid #f2f3f2;}
+#enrollment {width: 90%}
+#subjects td li {
+  display: inline;
+  padding-right: 10px;
+  line-height: 1.5;
+}
+#subjects td a { white-space: nowrap;}
+#subjects dd li input {
+  margin: 2px;
+  width: 24%;
+}
+#subjects dt input {
+  margin: 5px 0;
+  width: 90%;
+}
+#subjects dt {
+  width: 20%;
+  border-top: 2px solid #f8f8ff;
+  float: left;
+  font-weight: 600;
+  color: #4a7f8a;
+  margin-bottom: 0;
+  padding-left: 5px;
+}
+#subjects dd {
+  width: 79%;
+  padding-bottom: 5px;
+  border-top: 2px solid #f8f8ff;
+  float: left;
+  text-decoration: none;
+  font-weight: 600;
+  color: #4a7f8a;
+  line-height: 1.5;
+}
+#subjects dd.even { background: #f8f8ff;}
+
+/*TRACK*/
+ol { margin: 0 0 0 1.5em;}
+
+ol li {
+  list-style: decimal outside;
+  padding: 0 0 5px 0;
+}
+ol li div { margin: 0;}
+
+/*TERM/START*/
+#para_def dt {
+  text-decoration: none;
+  font-weight: 600;
+  color: #64acbb;
+}
+#para_def dd {
+  padding: 0 1em;
+  margin-bottom: 1em;
+  line-height: 1.3846em;
+}
+/*SETUP*/
+.full #content { width: 95%;}
+
+#front_page_index #content div {
+  margin: 0 1% 10px 0;
+  width: 32%;
+  float: left;
+  min-height: 150px;
+}
+#front_page_index #content div#notice {
+  float: none;
+  width: auto;
+  min-height: 0;
+}
+/*LOGIN*/
+#logged_out #content_wrap {
+  padding-top: 210px;
+  min-height: 410px;
+}
+html>body#logged_out #content_wrap{
+  min-height: 410px;
+}
+#logged_out #masthead {
+  background: url(../images/logo/logo_repeat.gif) repeat-x top left;
+  height: 200px;
+  padding-top: 0;
+}
+#logged_out #logo {
+  background: url(../images/logo/left_logo.gif) no-repeat;
+  float: left;
+  z-index: 1001;
+  width: 271px;
+  height: 200px;
+  text-indent: -9000px;
+}
+#logged_out #side_logo {
+  background: url(../images/logo/right_logo.gif) no-repeat;
+  float: right;
+  z-index: 1002;
+  width: 343px;
+  height: 200px;
+}
+#logged_out #content {
+  padding-left: 72px;
+  width: 85%;
+}
+.first, .second { float: left;}
+
+.equal { width: 45%;}
+
+.first { margin-right: 30px;}
+
+li label, #label {
+  display: block;
+  float: left;
+  text-align: right;
+  width: 9em;
+  margin: 0 20px 0 0;
+}
+#list li label {
+  float: none;
+  width: auto;
+  text-align: left;
+}
+#list li label input {margin-right: 10px;}
+
+fieldset li { margin: 0 0 10px 0;}
+
+#content p.explanation {
+  margin: 0 0 0 12.5em;
+  font-style: italic;
+  font-size: 0.83em;
+  width: 18em;
+}
+#content label.radio {
+  width: auto;
+  float: left;
+  margin-right: 2em;
+}
+#content .radio input { margin: 2px 1em 0 0;}
+
+/*PEOPLE*/
+#spaced li { margin: 10px 0;}
+/*MARKS*/
+#marks_index #content {
+  width: 78%;
+}
+#marks_index #secondary {
+  width: 13%;
+}
+#marks_edit td.mark {min-width: 5%}
+
+#marks_edit #previous_marks {min-width: 8em;}
+
+#marks_edit form.reset {clear: left; margin-right: 3%}
+
+#marks_edit form.calculate {
+  width: 30%;
+  margin-right: 3%;
+  float: left;
+}
+/*FORUMS*/
+#forums_index #secondary_nav a, #forums_show #secondary_nav a {
+  padding: 0 1px;
+}
+/*ROLLBOOK*/
+#rollbook_show #categories, #rollbook_show #progression, #rollbook_show #grades, #rollbook_show #ungraded {float: left}
+#rollbook_show #categories {padding-right: 60px}
+#rollbook_show #progression, #rollbook_show #ungraded {clear: right;}
+#rollbook_show canvas {margin-bottom: 1.5em}
+#rollbook_show #grades {margin-right: 1em}
+#rollbook_show #assignments {display:block; clear:left}
+#rollbook_marks #marks {
+  float: left;
+  border: 1px solid #b96;
+  background: #ec7;
+  color: #653;
+}
+#assignment_selection li label {margin-right: 10px}
+#assignment_selection .dateBocks {width: 100%}
+#assignment_selection .dateBocks li {padding: 3px;}
+#rollbook_marks #marks a { color: #653;}
+
+#rollbook_marks #marks th { padding: 0 0.5em;}
+
+#rollbook_show td { text-align: right; padding-right: 0.5em;}
+
+#rollbook_show #posts {margin-top: 1em;clear: left}
+
+#rollbook_show table td p { margin: 0; line-height: 0.67;}
+/*SECTIONS*/
+#content .section, #content .students, #sections_show .section, #sections_show .students {
+  float: left;
+  display: inline;
+}
+#content .section { width: 33%; margin-bottom: 1.5em;}
+
+.section dt, #progression dt {
+  font-weight: 600;
+  color: #4a7f8a;
+  float: left;
+}
+.section dd { padding-left: 70%}
+.section .distribution dt, .section dt.wide {float:none}
+.section .distribution dd, .section dd.wide {padding-left: 0}
+.section .distribution dl dt {float: left;}
+.section .distribution dl dd {padding-left: 50%}
+.section div.topline dd, .section div.topline dt { display: inline;}
+.section p {display: block; clear:left}
+.section #description {padding-left: 0; display:block; clear: left;}
+#progression dt {margin-right: 3em}
+.section dd.assign_stats {padding-left: 50%}
+#content .students { width: 65%;margin-left: 2%}
+
+#sections_show th.student {
+  text-align: left;
+  padding-right: 5px;
+}
+#sections_show td.mark, #sections_show td.score { padding: 0 20px;}
+
+#sections_show th.score { padding: 0 10px;}
+
+.section .distribution {
+  display:inline;
+  float:left;
+  clear: right;
+}
+#content .section h2, #content .section h3 {margin-bottom: 0.5em}
+#content .section h3 {margin-top: 0.5em}
+/*AUTOCOMPLETE*/
+div.auto_complete {
+  width: 350px;
+  background: #fff;
+  margin: 0;
+  position: absolute;
+}
+div.auto_complete ul { border: 1px solid #888;}
+
+div.auto_complete ul li { padding: 3px;}
+
+div.auto_complete ul li.selected { background: #ffb;}
+
+div.auto_complete ul strong.highlight { color: #800;}
+/**/
+a.excel {padding-left: 20px; background: url(../images/excel-file.gif) no-repeat 0;}
+
+.hide { display: none;}
+
+.company {
+  color: #d20019;
+  font-weight: bold;
+}
+.clear {
+  clear: both;
+  display: block;
+}
+.big {font-size: 1.2em; color: #4a7f8a;}
+.section .plotr-legend {width: 65%}
+.plotr-legend td {text-align: left; padding: 2px 5px;}
+

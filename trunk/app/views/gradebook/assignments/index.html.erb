@@ -1,0 +1,33 @@
+<div id="content">
+<h1><%= assignment_page_title %></h1>
+<% if @assignments.empty? %>
+ <% if @section.assignments.count == 0 %>
+  <p>No assignments have been created for this <%= qualifier %> yet. <%= link_to "Create one", new_section_assignment_path(@section) if current_user.teaches?(@section) %></p>
+ <% else %>
+  <p>No assignments match your search criteria.</p>
+ <% end %>
+<% else %>
+<div class="scrollableTable">
+<table class="sortable" cellspacing=0>
+ <thead>
+  <tr>
+    <th>#</th>
+    <th id="date-us-2">Due Date</th>
+    <th>Title</th>
+    <th>Category</th>
+    <th>Point Value</th>
+    <th>Average Score</th>
+    <th>Percentage (Letter)</th>
+  </tr>
+ </thead>
+ <tbody>
+  <%= render(:partial => "assignment", :collection => @assignments) %>
+  <%= filler_row(@assignments, 6) %>
+ </tbody>
+</table>
+<p>Click an assignment number to see assignment details.</p>
+</div>
+<% end %>
+
+</div>
+<%= render(:partial => "shared/assignment_form") %>

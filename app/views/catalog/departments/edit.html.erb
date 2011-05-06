@@ -1,0 +1,12 @@
+<div id="content">
+<h1><%= @page_h1 = "Edit #{@department.name} Department" -%></h1>
+<p>Alter the name of the department and any of its subjects.</p>
+<%= render :partial => "department_form" %>
+</div>
+<div id="secondary">
+<h2>Remove Department</h2>
+<%= button_to 'Destroy', department_path(@department), {:method => :delete, :class => 'button', :style => 'float:left'} if @department.enrollment == 0 %>
+<p style='clear:left'>The department can be destroyed only if no students are enrolled in any of its subjects.</p>
+<hr />
+<%= link_to "Return to course catalog", departments_path %>
+</div>

@@ -1,0 +1,21 @@
+<h2><%= link_to "Classes", sections_path, :title => 'Click to see an overview of all of your classes' %></h2>
+<table cellspacing="0" class="scrollike">
+ <thead>
+  <tr>
+   <th>Section</th>
+   <%=  '<th class="thin">Time</th>'.html_safe if @time = @sections.any?{|s| s.time} %>
+   <th class="thin" title='Number of students'>Size</th>
+   <th title='Class average for the current marking period'>Avg</th>
+  </tr>
+ </thead>
+ <tbody>
+  <% for section in @sections %>
+   <tr class="<%= cycle 'odd', 'even' %>">
+    <td class="text"><%= section_link(section) %></td>
+    <%= "<td class=\"thin\">#{section.time}</td>".html_safe if @time %>
+    <td class="thin"><%= section.enrollment %></td>
+    <td style='padding: 2px'><%= link_to grade_with_precision(section.average).html_safe, section_gradebook_path(section), :title => 'go to gradebook' %></td>
+   </tr>
+  <% end %>
+ </tbody>
+</table>

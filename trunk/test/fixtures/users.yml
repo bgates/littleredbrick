@@ -1,0 +1,31 @@
+---
+aaron:
+  first_name: 'aaron'
+  last_name: 'romano'
+  title: 'Dr'
+  id_number: 1001
+  school: default
+  type: Teacher
+
+sam:
+  school: default
+  type: Student
+  first_name: sam
+  last_name: iam
+
+joe:
+  type: Student
+  school: default
+
+Sir:
+  type: Teacher
+  school: default
+  first_name: Alex
+  last_name: Gruenberg
+  title: Sir
+  roles: admin
+
+unenrolled_student:
+  type: Student
+  school: elementary
+

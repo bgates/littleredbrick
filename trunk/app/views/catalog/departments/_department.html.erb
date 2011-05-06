@@ -1,0 +1,12 @@
+<tr class = '<%= cycle('odd', 'even') %>'>
+ <td class='text'><%= link_to_unless((params[:term] || session[:initial]), "#{department.name} (#{department.enrollment(params[:term].nil?)})", department_subjects_path(department), {:id => "department_#{department.id}", :title => "Click to view enrollment information for subjects in the #{department.name} department"}) %></td>
+ <td>
+  <ul>
+  <% department.subjects.each do |subject| %>
+  <li><%= link_to_unless((params[:term] || session[:initial]), "#{subject.name} (#{subject.sections.select{|s|s.current == params[:term].nil?}.length})", department_subject_path(department,subject), :title => "Click to see an overview of every section of #{subject.name}", :id => subject.id) %></li>
+  <% end %>
+  <li><%= link_to "New #{department.name} Subject", new_department_subject_path(department), {:id => "new_#{department.id}", :title => "Click to add a new subject to the #{department.name} department"} if current_user.admin? %></li>
+  </ul>
+ </td>
+</tr>
+

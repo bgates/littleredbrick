@@ -1,0 +1,43 @@
+<div id="content">
+  <h1>Welcome to LittleRedBrick</h1>
+  <%= notice_or_error %>
+  <div>
+   <% if @sections.empty? %>
+   <h2><%= link_to "Set Up Classes", new_teaching_load_path(current_user), :title => 'Click to set up your classes' %></h2>
+   <p>You have to choose your classes and enroll students.</p>
+   <% else %>
+    <%= render(:partial => "teacher_sections") %>
+   <% end %>
+  </div>
+  <div>
+   <h2><%= link_to "Calendar", calendar_path %></h2>
+   <p>Everything that happens, when it happens. List events for yourself or your classes. See events set by the administration.</p>
+  </div>
+  <div>
+   <h2><%= link_to "Students", students_path %></h2>
+   <p>See how your students are doing in all their classes. </p>
+  </div>
+  <%= '<hr/>'.html_safe unless @sections.empty? %>
+  <div>
+   <h2><%= link_to "Discussions", personal_path %></h2>
+   <p>Set up and participate in forums with your classes. Offer homework help online, talk about extra credit projects, maybe get to know some of your students better, in a medium that might get responses from some kids who don't open up in class.</p>
+  </div>
+  <div>
+   <%= render(:partial => "gradebooks") %>
+   <%= render(:partial => "attendance") %>
+  </div>
+  <div>
+   <h2><%= link_to "Help", '/help' %></h2>
+   <p>Every page at the site has a link to help for that page. The front page links to a general help manual for the site, and Little<span class='company'>Red</span>Brick tech support.</p>
+  </div>
+ </div>
+ <div id="secondary">
+  <h2 title="If you're thinking of that theme song right now, I'm sorry">What's Happening Now</h2>
+  <%= render(:partial => "events") %>
+  <%= render(:partial => "posts") %>
+  <% if current_user.admin? %>
+  <hr/>
+    <h2>Switch to Admin</h2>
+    <p>Since you have administrative privileges for this site, you can access the administrator part of the site to do some things that teachers normally can't.<%= button_to "Switch to admin", 'toggle_status', :method => :put, :class => 'button' %></p>
+  <% end %>
+ </div>

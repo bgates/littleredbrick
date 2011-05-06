@@ -1,0 +1,14 @@
+<% @page_title = "Events for #{Date::MONTHNAMES[@month]}" unless @month == Date.today.month %>
+<div id = 'content' class='month'>
+ <%= event_calendar.html_safe %>
+</div>
+<div id="secondary">
+ <% if unique_audience? %>
+  <%= render(:partial => "unique_marker") unless @events.empty? || @events.all?{|e| e.id.nil?} %>
+ <% else %>
+  <%= render(:partial => "selector") %>
+<% end %>
+<%= link_to "Add Event", new_event_path %>
+</div>
+
+

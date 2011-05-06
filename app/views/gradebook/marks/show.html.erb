@@ -1,0 +1,72 @@
+<div id="content">
+  <h1><%= @mark.description %> Marks for <%= @section.name %></h1>
+   <div class='scrollableTable'>
+    <table cellspacing = 0 class="sortable">
+     <thead>
+      <tr>
+       <th colspan="2" id = "student_head">Student</th>
+       <th colspan="3" style="width:50%"><%= @mark.description %></th>
+      </tr>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Earned</th>
+        <th>Possible</th>
+        <th>(%)</th>
+      </tr>
+     </thead>
+     <tbody>
+      <% for student in @students %>
+       <tr class="<%= cycle('odd', 'even') %>">
+       <% rbe = @section.rollbook_entries.detect{|rbe|rbe.student_id == student.id} %>
+        <td><%= rbe.position %></td>
+        <td class="text"><%= section_student_link(@section, student, student.last_first, 'this class') %></td>
+        <% milestone = rbe.milestones.detect{|m| m.reported_grade_id == @mark.id} %>
+        <td><%= milestone.earned %></td>
+        <td><%= milestone.possible %></td>
+        <td><%= number_with_precision(milestone.grade, :precision => 1) %></td>
+       </tr>
+      <% end %>
+      <%= filler_row(@students, 5) %>
+      </tbody>
+    </table>
+  </div>
+  <% if @point_distribution %>
+  <p>Grades for the marking period are calculated automatically as assignments are scored. <% if current_user.teaches?(@section) %>You can change scores on assignments on the <%= link_to "gradebook page", section_gradebook_path(@section) %>. If you would like to adjust the overall marking period grades directly, click <%= link_to "here", edit_section_mark_path(@section, @mark) %>.<% end %></p>
+  <% end %>
+  <% if current_user.teaches?(@section) && !@point_distribution  -%>
+    <%= link_to "Edit #{@mark.description} scores", edit_section_mark_path(@section, @mark) -%> | 
+<% end %>
+  <%= link_to 'Back', section_marks_path(@section), :title => 'See all the marks for this class' -%>
+</div>
+<div id="secondary" class="section">
+ <h2>Grade Distribution</h2>
+ <div class="distribution">
+  <%= histogram(@students.collect{|s| s.rollbook_entries.detect{|rbe| rbe.section_id == @section.id}.milestones.detect{|m| m.reported_grade_id == @mark.id}.grade}, @section.grade_scale) %>
+ </div>
+ <div class="distribution" style="width:45%;margin-left: 5%">
+  <dl>
+  <dt>Grade Scale</dt><dd id="grade_scale">
+   <dl class="grade_scale">
+   <% @section.grade_scale.reverse.each do |range, grade| %>
+    <dt><%= grade %></dt><dd><%= rangify(range) %></dd>
+   <% end %>
+   </dl>
+   </dd>
+  </dl>
+ </div>
+<% if @point_distribution %>
+<h3 style='clear:left'>Point Distribution</h3>
+ <% if @point_distribution.empty? %>
+  <p>No Assignments</p>
+ <% else %>
+  <dl class='points'>
+   <% @point_distribution.each do |category, pts| %>
+    <dt><%= category %></dt>
+    <dd><%= pts %></dd>
+   <% end %>
+  </dl>
+  <%= link_to "#{@section.assignments.size} assignments", section_assignments_path(@section, :mp => @mp.position) %>
+ <% end %>
+<% end %>
+</div>

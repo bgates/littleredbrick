@@ -1,0 +1,28 @@
+<!--[form:assignment]-->
+
+<tr>
+  <td><label for="assignment_title">Title</label></td>
+  <td><label for="assignment_point_value">Point value</label></td>
+  <td><label for="assignment_category">Category</label></td>
+</tr>
+<tr>
+  <td><%= text_field 'assignment', 'title' %></td>
+  <td><%= select 'assignment', 'point_value', (0..100), :selected => @assignment.point_value.to_i  %></td>
+  <td><%= select 'assignment', 'category', %w(Classwork Homework Quiz Test Report)  %></td>
+</tr>
+<tr>
+  <td><label for="assignment_date_assigned">Date assigned</label></td>
+  <td><label for="assignment_date_due">Date due</label></td>
+</tr>
+<tr>
+  <td><%= datebocks_field 'assignment', 'date_assigned' %></td>
+  <td colspan = '2'><%= datebocks_field 'assignment', 'date_due'  %></td>
+</tr>  
+<tr>
+  <td><label for="assignment_description">Description</label> (optional)</td>
+</tr>
+<tr>
+  <td colspan = '3'><%= text_area 'assignment', 'description', :cols => '50', :rows => '5'  %></td>
+</tr> 
+
+<!--[eoform:assignment]-->

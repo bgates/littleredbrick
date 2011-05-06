@@ -1,0 +1,7 @@
+math:
+  name: Math
+  school: default
+other_school_math:
+  name: Math
+  school: other
+

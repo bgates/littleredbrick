@@ -1,0 +1,4 @@
+<tr class='<%= cycle('even', 'odd') %>'>
+ <td><%= enrollment == @school.low_grade ? "Grade #{enrollment}" : enrollment %></td>
+ <td><%= @students.find_all{|s|s.grade == enrollment }.length %></td>
+</tr>

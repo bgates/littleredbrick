@@ -1,0 +1,10 @@
+<% @page_title = 'Editing a Department' %>
+<div id="content">
+ <h1>Department Editing Help Page</h1>
+ <p>All you can change about a department is its name. The edit form also allows you to change the name of any subjects in the department, or add more subjects.</p>
+ <h2>Removing a Department</h2>
+ <p>If there are any active classes in the department, you will not be able to delete it. If you want to delete a department with active classes, you will need to go through the <%= link_to "teaching assignments", '/help/page/teaching_load/edit' %> of teachers with classes in the department and delete the classes one at a time.</p>
+</div>
+<div id="secondary">
+  <%= render 'help/page/shared/tech_support', :subject => 'editing departments' -%>
+</div>

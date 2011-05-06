@@ -1,0 +1,19 @@
+<div id="content">
+ <h1>Posts</h1>
+ <p>Inside the <%= link_to "topics", 'topics' %> inside the <%= link_to "forums", 'forums' %> are the <strong>posts</strong>, which are the things people write. When you read a discussion topic, what you are reading are posts. Each post lists the author&#8217;s name, whether the author is a teacher (or a <%= link_to "moderator", 'moderators' %> for the forum), the number of posts the author has written in the <%= link_to "discussion group", 'groups' %>, the date the post was written, and the content of the post.</p>
+ <%= image_tag("help/posts.png", {:alt => "description", :size => "675x189"}) %>
+ <h2>Writing a Post</h2>
+ <p>Unless a topic has been <em>locked</em> (closed to replies by its author), a <code>Reply to topic</code> link should be located at the bottom of the list of posts. Click on it to see a little form pop up that lets you write a post.</p>
+ <h3>Post Formatting</h3>
+ <p>The options for formatting include the following:</p>
+ <dl>
+  <dt>*text enclosed in asterisks*</dt><dd>Results in bold text like this: <strong>text enclosed in asterisks</strong></dd>
+  <dt>_text enclosed in underscores_</dt><dd>Results in italicized text like this: <em>text enclosed in underscores</em></dd>
+  <dt>A word in quotes followed by a web address like this "Discussions":http://<%= @school.domain_name %>.littleredbrick.com/help/discussions/</dt><dd>Results in a link to the web address: <%= link_to "Discussions", '/help/discussions' %></dd>
+  <dt style="margin-bottom: 1em">Starting a line with "bq. " (with a space but no quote marks) turns out like this:</dt><dd><blockquote class="notice">This is typically used to quote a part of what someone said earlier in the thread (bq. stands for <em>blockquote</em>).</blockquote></dd>
+ </dl>
+ <h3 style="margin-top:2em">Editing a Post</h3>
+ <p>You can edit a post after you have written it. All of your posts will have an <code>edit post</code> link under the post date which only you can see. Click it to reopen the same form you used to write the post. When you open the form, you will also see a <code>delete</code> button you can use to remove the post.</p>
+ <p>All <%= link_to "moderators", 'moderators' %> for a forum can edit and delete any post in that forum.</p>
+</div>
+<%= render(:partial => "help/general/discussions/forums") %>

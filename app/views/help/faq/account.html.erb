@@ -1,0 +1,60 @@
+<div id="content">
+<h1>Changing Account Information</h1>
+<h2>Questions</h2>
+<ol id="questions">
+ <li><%= link_to "How do I edit my information?", '#1' %></li>
+ <li><%= link_to "What information can I edit?", '#2' %></li>
+ <% if current_user.is_a?(Staffer) %>
+  <li><%= link_to "How can I edit a student or parent account?", '#3' %></li>
+  <li><%= link_to "What information about other users&#39; accounts can I edit?", '#4' %></li>
+  <% if current_user.admin? %>
+  <li><%= link_to "How do I edit a teacher account?", '#5' %></li>
+  <li><%= link_to "How do I edit an administrator account?", '#6' %></li>
+  <li><%= link_to "How do I give a teacher admin privileges?", '#8' %></li>
+  <% end %>
+ <% end %>
+ <li><%= link_to "What happens if I forget my login/password?", '#7' %></li>
+ <li><span class="question">Want to ask something else? Do you want more than the answers provided here?</span>Ask your question in the <%= link_to "help forums", forums_path('help') %>.</li>
+</ol>
+<h2 id="answer_header">Answers</h2>
+<ol id="answers">
+ <li id="1"><span class="question">How do I edit my information?</span>Use the 'edit account' link that shows up in the top right corner of every page. <%= image_tag("help/edit_account.png", {:alt => "The 'edit account' link is at the beginning of the navigation section", :size => "514x34"}) %></li>
+ <li id="2"><span class="question">What information can I edit?</span>You can set your login, password, and enter an email address which you can use to get back in the system if you forget your login or password.<% unless current_user.is_a?(Student) %> You can also fix typos in your name.<% end %></li>
+ <% if current_user.is_a?(Staffer) %>
+  <li id="3"><span class="question">How can I edit a student or parent account?</span>Click the <code>Students</code> tab <span class='arrow'>&rarr;</span> student name <span class='arrow'>&rarr;</span> <code>edit student</code> (the 'edit student' link is on the right side of the student page). The links to edit parent accounts are on the <em>edit student</em> page.
+  <%= image_tag("help/edit_student_path.png", {:alt => "", :size => "506x388"}) %></li>
+  <li id="4"><span class="question">What information about other users&#39; accounts can I edit?</span>That depends on the type of user.
+  <table class="scrollike" cellspacing="0">
+   <thead>
+    <tr><th>User Type</th><th>Name</th><th>ID</th><th>Reset Login</th><th>Grade</th><th>Class Schedule</th><th>Other</th></tr>
+   </thead>
+   <tbody>
+    <tr class="odd">
+      <td>Student</td><td>&#x2713;</td><td>&#x2713;</td><td>&#x2713;</td><td>&#x2713;</td><td>&#x2713;</td><td>&nbsp;</td>
+    </tr>
+    <tr class="even">
+     <td>Parent</td><td>&#x2713;</td><td>&#x2713;</td><td>&#x2713;</td><td>&nbsp;</td><td>&nbsp;</td><td>Add/remove children</td>
+    </tr>
+    <% if current_user.admin? %>
+    <tr class="odd">
+     <td>Teacher</td><td>&#x2713;</td><td>&#x2713;</td><td>&#x2713;</td><td>&nbsp;</td><td>&#x2713;</td><td>Grant Admin Privileges</td>
+    </tr>
+    <tr class="even">
+     <td>Administrator</td><td>&#x2713;</td><td>&#x2713;</td><td>&#x2713;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+    </tr>
+    <% end %>
+   </tbody>
+  </table>
+  <% if current_user.admin? %>Administrators can give teachers admin privileges on the site as described <%= link_to "here", 'administrators' %>, and edit a teacher's teaching load, as described <%= link_to "here", 'teaching_load' %>.<% end %> A teacher can also edit <span title="or her">his</span> own teaching load. Resetting a user&#8217;s login and password changes it back to the lowercase version of his whole name, so your login and password would be <code><%= current_user.first_name.downcase + current_user.last_name.downcase %></code> if you had an administrator reset it for you.</li>
+  <% if current_user.admin? %>
+  <li id="5"><span class="question">How do I edit a teacher account?</span>Click the 'Teachers' tab <span class='arrow'>&rarr;</span> teacher name <span class='arrow'>&rarr;</span> edit teacher (there are two editing links on the right side of the teacher page, 'edit name/login'
+and 'edit teaching load').<%= image_tag("help/edit_teacher_path.png", {:alt => "", :size => "544x230"}) %></li>
+  <li id="6"><span class="question">How do I edit an administrator account?</span>Click the 'Admin' tab <span class='arrow'>&rarr;</span> Administrators <span class='arrow'>&rarr;</span> administrator name <span class='arrow'>&rarr;</span> edit administrator.<%= image_tag("help/edit_admin_path.png", {:alt => "", :size => "522x201"}) %></li>
+  <li id="8"><span class="question">How do I give a teacher admin privileges?</span>Click the 'Admin' tab <span class='arrow'>&rarr;</span> Administrators <span class='arrow'>&rarr;</span> new administrator. Instead of entering a name in the main form, use the 'Make Teacher Admin' form on
+the right side of the page. Just type in a teacher's name, and that teacher will be given <admin privileges>. <%= image_tag("help/admin_priv_path.png", {:alt => "", :size => "504x290"}) %></li>
+  <% end %>
+ <% end %>
+ <li id="7"><span class="question">What happens if I forget my login/password?</span>If you have previously supplied Little<span class='company'>Red</span>Brick with an email address, you can click the "I forgot my password" link on the login page to have a link mailed to you that will let you re-enter the site. <%= image_tag("help/password_request.png", {:alt => "The link is at the bottom of the page", :size => "494x226"}) %>If you have not supplied an email address, ask a school administrator to reset your login and password for you.</li>
+</ol>
+
+</div>

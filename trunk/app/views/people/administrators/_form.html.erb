@@ -1,0 +1,34 @@
+<fieldset>
+  <legend>Name</legend>
+  <ul class='line'>
+    <li><label for='admin_title'>Title</label>
+     <% if @admin.new_record? %><%= select("admin", "title", %w(Mr Mrs Ms Dr)) %>
+     <% else %><%= f.text_field 'title', {:size => 12} %><% end %>
+     </li>
+    <li><label for='admin_first_name'>First</label><%= f.text_field 'first_name', {:size => 12} %></li>
+    <li><label for='admin_last_name'>Last</label><%= f.text_field 'last_name', {:size => 12} %></li>
+  </ul>
+</fieldset>
+<fieldset>
+  <legend>Login</legend>
+  <ul class='line'>
+   <% if @admin.id == current_user.id || @admin.new_record? || @admin.errors.on(:login) %>
+    <%= fields_for "admin[authorization]", @admin.authorization do |auth| %>
+     <li><label for='admin_authorization_login'>Login</label><%= auth.text_field 'login', {:size => 12} %></li>
+     <li><label for='admin_authorization_password' id='password_label'>Password</label><%= auth.password_field 'password', {:size => 12} %></li>
+     <li><label for='admin_authorization_password_confirmation'>Confirm Password</label><%= auth.password_field 'password_confirmation', {:size => 12} %></li>
+    <% end %>
+   <% else %>
+    <li class='long'><label for='reset'>Reset Login/Password</label>
+    <%= f.check_box("reauthorize") %><span class='explanation' style='margin-left:0;'>Check this box to reset <%= @admin.display_name %>&#39;s login and password to &quot;<%= @admin.first_name.downcase + @admin.last_name.downcase %>&quot;, if <%= @admin.display_name %> has forgotten them.</span></li>
+  <% end %>
+  </ul>
+</fieldset>
+<fieldset>
+  <legend>Optional Information</legend>
+  <ul class='line'>
+    <li><label for='admin_id_number'>ID</label><%= f.text_field 'id_number', {:size => 10} %></li>
+    <li id="ie_email"><label for="admin_email">Email</label><%= f.text_field 'email', :size => 15 %></li>
+  </ul>
+  <%= submit_tag(button, :class => 'button') %>
+</fieldset>

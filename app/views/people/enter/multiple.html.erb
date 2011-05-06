@@ -1,0 +1,34 @@
+<div id="content">
+<h1><% @page_h1 = "Enter Multiple #{@type.capitalize.singularize} Accounts" %></h1>
+
+<p>Choose one of the following three methods to enter data about the <%= @type %> at your school:</p>
+<ul id='spaced'>
+  <li><%= link_to('Copy/paste names', :action => 'names', :id => @type) %>, if you have a list of names to copy in from a Word document or other text file. If you select this choice, LittleRedBrick will generate ID numbers.  Note that ID numbers like any other entered data can be updated later.</li>
+  <li><%= link_to('Type in names and other attributes', :action => 'details', :id => @type) %> for <%= @type.downcase %> if you would like to specify ID numbers but don't have a spreadsheet.</li>
+  <li><%= link_to 'Upload data from a spreadsheet', new_users_upload_path(@type) %> if you have an Excel or OpenOffice spreadsheet file containing names and (optionally) <%= 'grades and' if @type.downcase == 'students' %>ID numbers.</li>
+</ul>
+<hr/>
+<div style="width:45%;padding-right:3%;float:left">
+<h2>How <%= @type.capitalize %> Log In</h2>
+<p>When you create accounts in bulk, you only need to enter the names of people who will get the accounts. Little<span class='company'>Red</span>Brick will automatically generate logins and passwords for each account. For example, if you create an account for someone named 'John Roberts', his will be able to log in to his account by using <code>johnroberts</code> (lowercase, no spaces) as his login and password. <strong>You have to let <%= @type %> know how to log in.</strong></p>
+<% if @type == 'students' %>
+<h3>Where Parents Come From</h3>
+<p>Two parent accounts are created automatically for each student account. A parent account&#8217;s login and password is based on the student account. For instance, if John Roberts was a student, creating his account would automatically generate two parent accounts:
+<dl id="para_def">
+ <dt>Mom</dt><dd>Login and password <code>johnroberts_mother</code></dd>
+ <dt style="clear:left">Dad</dt><dd>Login and password <code>johnroberts_father</code></dd>
+</dl>
+</p>
+<% elsif @type == 'staffers' && current_user.is_a?(Staffer) && @school.teacher_limit > 1 %>
+<div class="notice">
+<h3>To Give a Teacher an Administrative Account</h3>
+<p>Normally, administrators can edit logins and passwords and class schedules for everybody, and teachers can only edit their own login and their own classes. If you would like to give a techie teacher administrative privileges so he can take care of entering scheduling and enrollment data for other teachers, click <%= link_to "here", new_administrator_path %> and enter his name in the little form on the right.</p>
+</div>
+<% end %>
+</div>
+<div style="width:49%;float:left">
+<h2>How to Keep Accounts Secure</h2>
+<p>The first time someone (besides you) logs in to Little<span class='company'>Red</span>Brick, he will be prompted to change his login and password. Any user can also change the password and login later, using the <code>Edit Account</code> link that shows up on every page<% if session[:initial] %> (you will see it under the <code>Logout</code> link in the top right corner of the screen once you finish setup)<% end %>.</p>
+</div>
+</div>
+<div id="secondary"><%= initial %></div>

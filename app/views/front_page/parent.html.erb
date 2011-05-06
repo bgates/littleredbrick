@@ -1,0 +1,58 @@
+<div id = "content">
+ <h1>Welcome to LittleRedBrick</h1>
+ <%= notice_or_error %>
+ <div id="current">
+  <h2><%= @student.first_name %>&#8217;s Current Marking Period Grades</h2>
+   <table id = 'grade' summary="This table of grades lists the course name, letter grade, and percentage (column headings) for each subject.  To find more information about a class, click on its name." class="sortable scrollike" cellspacing="0">
+    <thead>
+     <tr><th>Subject</th><th>Teacher</th><th class = 'grade'>Grade</th><th class = 'percent'>Percent</th></tr>
+    </thead>
+    <tbody>
+     <% @rbes.each do |rbe| %><% reset_cycle %>
+      <tr class="<%#= cycle('odd', 'even') %>">
+       <td class = 'subject'><%= link_to rbe.section.name, student_class_path(rbe.section) %></td>
+       <td><%= rbe.section.teacher.display_name %></td>
+        <% mark = rbe.milestones.detect{|m| m.reported_grade_id == @mp.reported_grade_id} %>
+       <td class = 'grade'><%= rbe.section.on_scale(mark.grade) %></td>
+       <td class = 'percent'><%= number_with_precision(mark.grade, :precision => 1) %></td>
+      </tr>
+     <% end %>
+    </tbody>
+   </table>
+  </div>
+  <%= render(:partial => "shared/ungrade") %>
+  <h2 style="clear:both">Recent Absences</h2>
+  <table class="scrollike" cellspacing="0">
+   <thead>
+    <tr><th>Date</th><th>Class</th><th>Excused</th><th>Unexcused</th><th>Tardy</th></tr>
+   </thead>
+   <tbody>
+    <%= render(:partial => "absence", :collection => @absences) %>
+    <% if @absences.empty? %>
+     <tr class="odd"><td colspan="5"><%= @student.first_name %> has had no attendance issues lately. Click <%= link_to "the calendar", calendar_path %> to see all attendance information for your student on the calendar.</td></tr>
+     <% end %>
+   </tbody>
+  </table>
+ </div>
+ <div id="secondary">
+ <% if current_user.is_a?(Parent) && current_user.children.length > 1 %>
+ <h2>Children</h2>
+    <ul>
+    <% for child in current_user.children %>
+     <li><%= link_to_unless @student == child, child.first_name, child_path(child) %></li>
+    <% end %>
+   </ul>
+   <hr/>
+ <% end %>
+ 
+  <%= render(:partial => "posts") %>
+  <hr/>
+  <%= render(:partial => "events") %>
+  <hr/>
+ <h3>Classes</h3>
+ <p>Click the classes tab to see more detail about <%= @student.first_name %>'s classes.</p>
+ <h3>Calendar</h3>
+ <p>You can see events for the school and <%= @student.first_name %>'s classes, and add events for your own family.</p>
+ <h3>Help</h3>
+ <p>Read about what you can do with Little<span class='company'>Red</span>Brick <%= link_to "here", '/help' %>.</p>
+ </div>

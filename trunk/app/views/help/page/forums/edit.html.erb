@@ -1,0 +1,30 @@
+<% @page_title = 'Forum Editing' %>
+<div id="content" class="help">
+ <h1>Forum Editing Help Page</h1>
+ <p>A forum can be edited by the person who created it. There are four aspects to a forum which can be changed on the <em>Edit Forum</em> page:</p>
+ <dl class="notice">
+  <dt>Name</dt><dd>The name shows up on the <%= link_to "forum list", help_path('forums', 'index') %> page</dd>
+  <dt>Description</dt><dd>One or two sentences about the kinds of <%= link_to "topics", general_help_path('discussions', 'topics') %> that the forum should contain</dd>
+  <dt>Position</dt><dd>Where the forum you are editing should appear in the list of forums on the forum list page</dd>
+  <dt>Topic creation</dt><dd>Whether other people should be allowed to add their own topics to the forum</dd>
+ </dl>
+ <h2 style="clear:both;padding-top:3em">More Information</h2>
+ <p>The main use for editing a forum is to correct typos. If you want to drastically change a forum name or description, you may as well just create a new forum.</p>
+ <p>You also have the option to destroy the forum on the <em>Edit Forum</em> page, though you will be warned that doing so will also delete all of the topics and <%= link_to "posts", general_help_path('discussions', 'posts') %> in the forum.</p>
+ <% unless params[:id].blank? %>
+ <p>You can reach the <em>Edit Forum</em> page from the forum list page for its <%= link_to "discussion group", general_help_path('discussions', 'groups') %>, or from the page for the <%= link_to "forum", help_path('forums', 'show') %> itself.</p>
+ <% end %>
+ <p>If you do not want to edit the forum, there is a <code>cancel</code> link at the bottom of the form.</p>
+</div>
+<div id="secondary">
+ <h2>Related Pages</h2>
+ <p>If you can&#8217;t do what you want on the <em>Edit Forum</em> page, maybe you want one of these:</p>
+ <ul>
+  <li><%= link_to "Edit topic", help_path('topics', 'edit') %></li>
+  <li><%= link_to "Add topic", help_path('topics' 'new') %></li>
+ </ul>
+ <hr/>
+ <%= render 'help/page/shared/discussion_related' -%>
+ <%= render 'help/page/shared/tech_support', :subject => 'forums' %>
+</div>
+

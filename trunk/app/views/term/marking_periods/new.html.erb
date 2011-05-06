@@ -1,0 +1,38 @@
+<div id= "content">
+<h1>New Marking Period Dates</h1>
+<%= error_messages_for("marking_period", :header_message => "There was a problem creating the new marking period.", :message => nil, :object => @tracks.map(&:marking_periods).flatten) %>
+<%= form_tag term_marking_periods_path(@term) do %>
+  <fieldset>
+  <legend>Dates</legend>
+  <p>Set the start and end dates for the new marking period<% if @tracks.length > 1 %> for each track<% end %>. Make sure the new marking period does not overlap with the previous one.</p>
+  <table cellspacing = '9'>
+    <tr>
+      <th>Track</th>
+      <th>End Date</th>
+      <th colspan='4'>New Marking Period Dates</th>
+    </tr>
+    <% @tracks.each_with_index do |track, i| %>
+    <% @marking_period = track.marking_periods.last %>
+    <% @marking_period.id ||= i %>
+    <tr>                          <%#= text_field "marking_period[]", "start" -%>
+      <td class="align" style="padding: 0 10px 7px 10px"><%= i + 1 %></td>
+      <td class="align" style="padding: 0 10px 7px 10px"><%= @marking_period.previous %></td>
+      <td style="vertical-align:top;padding:7px 0 0 20px"><label for="marking_period_<%= @marking_period.id %>_start">Start</label></td>
+      <td style="padding: 2px 0 3px"><%= datebocks_field "marking_period[]", 'start' %></td>
+      <td style="vertical-align:top;padding:7px 0 0 20px"><label for="marking_period_<%= @marking_period.id %>_finish">Finish</label></td>
+      <td style="padding: 2px 0 3px"><%= datebocks_field "marking_period[]", 'finish', nil, false %></td>
+    </tr>
+    <% end %>
+  </table>
+  <%= submit_tag 'Save Dates', :class => 'button' %>
+  </fieldset>
+<% end %>
+<%= link_to "Cancel", term_path(@term) %>
+</div>
+<div id="secondary">
+<h2>Note</h2>
+<p>A marking period is a period of time at the end of which teachers must submit grades, or marks, for each student. These grades should reflect each student's performance during the marking period.</p>
+<p>If you would like to make all teachers responsible for a different kind of grade, such as a cumulative score or midterm exam, <%= link_to "go to the marks page.", term_reported_grades_path(@term) %></p>
+<p>To see all marks and marking period dates for the current term, <%= link_to "go back to the term page.", term_path(@term) %></p>
+<%= initial %>
+</div>

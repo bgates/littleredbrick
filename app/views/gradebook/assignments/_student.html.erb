@@ -1,0 +1,8 @@
+<tr class = '<%= cycle('odd','even') %>'>
+  <td class='text'><%= rbe_link(student, @section) %></td>
+  <td><%= student.id_number %></td>
+  <td><%= student.grade %></td> <% grade = @grades[student.id] %>
+  <%= "<td>#{grade.date_due.strftime('%b %d')}</td>" unless @assignment.date_due %>
+  <td><%= grade.score %></td>
+  <td><%= grade_with_precision(grade.percent(@assignment)) || '-' %>(<%= @section.on_scale(grade.percent(@assignment)) rescue '-' %>)</td>
+</tr>

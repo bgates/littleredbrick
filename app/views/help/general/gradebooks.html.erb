@@ -1,0 +1,112 @@
+<div id="content" class="help">
+<h1 id="top"><%= @page_h1 = "Gradebooks" -%></h1>
+<p>The gradebooks are the most important part of Little<span class='company'>Red</span>Brick. All of the academic information that is presented to administrators, teachers, students, and parents is derived from the assignment and grade data you enter. The way the gradebook works seemed clear to the guy who wrote it, but we wanted to make sure it was clear to you too. If the instructions here are confusing, please let us know in the <%= link_to "teacher tech support discussion group", forum_path('help', 1) %></p>
+<dl class="notice">
+ <dt><%= link_to "Getting to the Gradebook", '#directions' %></dt><dd>Hey, walk before you run.</dd>
+ <dt><%= link_to "Enrolling Students", '#enroll' %></dt><dd>Can&#8217;t teach without students.</dd>
+ <dt><%= link_to "Unenrolling Students", '#unenroll' %></dt><dd>And sometimes, can&#8217;t teach with students.</dd>
+ <dt><%= link_to "Creating Assignments", '#create' %></dt><dd>What information you need to provide about assignments, <strong>and when you should provide it</strong></dd>
+ <dt><%= link_to "Editing/Deleting Assignments", '#edit' %></dt><dd>How to change assignments</dd>
+ <dt><%= link_to "Entering Grades", '#grades' %></dt><dd>What you can type in</dd>
+ <dt><%= link_to "Uploading Grades", '#upload' %></dt><dd>If you keep grades in a spreadsheet, you don&#8217;t have to type them twice</dd>
+ <dt><%= link_to "Marking Period Grades", '#marking_period' %></dt><dd>The automatic calculation</dd>
+ <dt><%= link_to "Calculating Marks", '#calculate' %></dt><dd>When automatic calculation is unsatisfactory or impossible</dd>
+ <dt><%= link_to "Arranging Names in the Gradebook", '#sort' %></dt><dd>When you need to alphabetize or otherwise change the order</dd>
+ <dt><%= link_to "Grade Scales", '#scale' %></dt><dd>Defining what percentages correspond to different letter grades (A &ndash; F) or other scales</dd>
+ <dt><%= link_to "Navigating Around the Gradebook", :action => 'index' %></dt><dd>Finding assignments</dd>
+</dl>
+ <h3 id="directions">Getting to the Gradebook</h3>
+ <dl>
+ <dt>Where to go</dt><dd>Links to all of your gradebooks are on the front page when you log in.</dd></dl>
+ <hr/>
+ <h3 id="enroll">Enrolling Students</h3>
+ <dl>
+ <dt>Where to go</dt><dd>Click the <%= image_tag("add_16_ie.png", {:alt => "Add Students", :title => 'Add Students', :size => "16x16"}) %> link at the bottom of a gradebook table</dd>
+ <dt>What to do</dt><dd>
+ There are three ways to enroll students. If you only have a few students to add, <strong>type each name</strong> as illustrated below. As you start to type a name, the system will try to guess the rest of the name. Clicking a name when it shows up in the guess list will autocomplete the form.
+<%= image_tag("help/enroll.png", {:alt => "description", :size => "606x314"}) %>
+<p>If you have a list of several names to be enrolled in one class, <strong>copy and paste</strong> them into the form (in the box marked "Enter Multiple Students" in the above illustration). When you add names with either of these methods, you will still see the enrollment page. When you have finished enrolling students, click the <code>back</code> link to return to the gradebook. You can always enroll more students later.</p>
+<p>If you have a spreadsheet with all of your enrollment data, you can <strong>upload</strong> the data by clicking the link on the right side of the enrollment page. The file must have student names for each class arranged in columns. You will be prompted to upload the file, and then asked to identify the columns:</p>
+<%= image_tag("help/upload_id.png", {:alt => "description", :size => "682x390"}) %><p>When you upload enrollment data, you will be returned to the gradebook. The link to enroll students will still be there, so you can enroll more whenever you want.</p></dd>
+<dt>More Information</dt><dd><p>An administrator may have enrolled all of your classes already. If you go to your gradebook page and see a list of students, thank an administrator. If not, <s>go yell at the lazy</s> you will have to do it yourself.</p></dd></dl> <%= link_to "top", '#top' %>
+ <hr/>
+ <h3 id="unenroll">Unenrolling Students</h3>
+ <dl>
+ <dt>Where to go</dt><dd>Click the <%= image_tag("sub_16.png", {:alt => "Remove Students", :size => "16x16"}) %> link at the bottom of a gradebook table and a similar icon will appear beside each student&#8217;s name.</dd>
+ <dt>What to do</dt><dd>Click the icon beside a student&#8217;s name to unenroll that student.</dd>
+ <dt>More information</dt><dd>When you click the button to unenroll a student, you will be asked to confirm what you are doing. Confirming the decision to unenroll destroys all of the student&#8217;s grade information for your class (though it does not affect the student in other classes), so be careful.</dd></dl> <%= link_to "top", '#top' %>
+ <hr/>
+ <h3 id="create">Creating Assignments</h3>
+ <dl>
+ <dt>Where to go</dt><dd>Click the <%= image_tag("add_16_ie.png", {:alt => "Add Assignment", :title => 'Add Assignment', :size => "16x16"}) %> link at the top of the gradebook table.</dd>
+ <dt>What to do</dt><dd>There are several attributes that must be entered for an assignment:
+ <dl class="inset">
+ <dt>Name</dt><dd>"Chapter 3 Questions", "Summarize Proust", that kind of thing</dd>
+ <dt>Point value</dt><dd>0 to 100 (Yes, 0. Extra credit.)</dd>
+ <dt>Date assigned</dt><dd>See the note on dates for the reason you should put information in the system on this date instead of waiting until you score an assignment</dd>
+ <dt>Date due</dt><dd>See the notes below</dd>
+ <dt>Marking Period</dt><dd>The system guesses that you want an assignment to count for the current marking period, but you can change that if you give an assignment late in one marking period that you won&#8217;t score until the next marking period starts</dd>
+ <dt>Category</dt><dd>Homework, test, quiz, etc. </dd>
+ <dt>Description</dt><dd>Optional, in case the assignment requires explanation</dd>
+</dl>
+ <dt>More information</dt><dd>As soon as you create an assignment, it appears on student calendars, lists of upcoming assignments, and on every other page where academic information about your class goes.</dd></dd></dl>
+<div class="notice" id="note">
+<h3>Two Notes on Due Dates</h3>
+<p>If you have been keeping your grades on paper or even in a computer spreadsheet, you may have been in the habit of not adding an assignment to your gradebook until you grade it. We recommend that you <strong>add assignments to your online gradebooks as soon as you assign them</strong>. That way the assignments will show up on student and parent calendars before they are due.</p>
+<p>Usually an assignment has the same due date for the entire class. Some assignments, especially presentations, may require individual due dates for each student. There is an option on the assignment creation form to give due dates for each student in the class.</p>
+</div> <%= link_to "top", '#top' %>
+ <hr/><h3 id="edit">Editing/Deleting Assignments</h3>
+ <dl>
+ <dt>Where to go</dt><dd>Clicking on an assignment number at the top of a grade column on the gradebook page brings up a page of information about that assignment. That page has a link to edit the assignment.</dd>
+ <dt>What to do</dt><dd>Change anything about the assignment you want. If you change the point value, you have the option to scale the scores &ndash; in other words, if you decide to count a quiz for twice as much as you had planned after you input the grades, you can double the scores too. If you want to delete an assignment, there is a delete button on the edit page.</dd>
+ <dt>More information</dt><dd>You can even change the marking period in which the assignment should be counted. When you change the marking period or point value, or delete an assignment, student&#8217;s marking period grades are recalculated automatically.</dd></dl>
+ <%= link_to "top", '#top' %>
+ <hr/>
+ <h3 id="grades">Entering Grades</h3>
+ <dl>
+ <dt>Where to go</dt><dd>The gradebook page</dd>
+ <dt>What to do</dt><dd>Grades for each assignment are ordered in columns in the gradebook table. The assignments are identified by a number (1 for the first assignment you put in the gradebook, etc). If you lose track of which assignment goes with an identification number, point the mouse at the number and you will see more information about the assignment.</dd>
+ <dt>More information</dt><dd>When an assignment is added to the gradebook, all students are given a placeholder grade, '-'. This is to indicate the assignment has not been graded yet. <em>It does not mean the same as a score of zero, and never turns in to a zero unless you change it.</em> When you do score an assignment, the score must be numerical, though you can use one digit after a decimal point (that&#8217;s for the math teachers).</dd></dl> 
+ <%= link_to "top", '#top' %>
+ <hr/>
+ <h3 id="upload">Uploading Grades</h3>
+ <dl>
+ <dt>Where to go</dt><dd>The <code>upload grades</code> link on the right side of a gradebook page</dd>
+ <dt>What to do</dt><dd>You need to have a spreadsheet in which the first column has student names, and each column after that has grade data. You also need to create an assignment before you can upload grades for it. Enter the grade file into the form.</dd>
+ <dt>More information</dt><dd>Make sure all your grades are numerical before you upload them.</dd></dl> 
+ <%= link_to "top", '#top' %>
+ <hr/>
+ <h3 id="marking_period">Marking Period Grades</h3>
+ <dl>
+ <dt>Where to go</dt><dd>Nowhere, unless you need to edit them</dd>
+ <dt>More information</dt><dd>As you grade assignments, the scores are automatically incorporated into marking period grades. If a student&#8217;s grades on the first two assignments in your class were 8 out of 10 and 10 out of 10, that student&#8217;s marking period grade at that point would be 18 out of 20. Marking period grades only reflect assignments that have been graded, so if you created a third assignment worth 50 points, the student&#8217;s marking period grade would not change until you score the third assignment.</dd></dl> <%= link_to "top", '#top' %>
+ <hr/>
+ <h3 id="calculate">Calculating Marks</h3>
+ <dl>
+ <dt>Where to go</dt><dd>Click the <code>View and edit marks</code> link on the right side of the gradebook page</dd>
+ <dt>What to do</dt><dd><p>The marks table will list every marking period, semester, final exam, etc, grade for each student. If you want to edit one of these marks, click its number in the column header.</p>
+ <p>There are several ways to edit a mark. </p></dd>
+ <dt>More information</dt><dd>Marking period grades are calculated automatically based on assignment scores. If you edit these, you can change back to </dd></dl> 
+ <%= link_to "top", '#top' %>
+ <hr/>
+ <h3 id="sort">Arranging Names in the Gradebook</h3>
+ <dl>
+ <dt>Where to go</dt><dd>Click the <code>sort names</code> link at the bottom of the gradebook table</dd>
+ <dt>What to do</dt><dd>Click and drag the names to move them into the order you want. If you just want to alphabetize the list, click the "alphabetize" button.</dd></dl>
+ <%= link_to "top", '#top' %>
+ <hr/>
+ <h3 id="scale">Scale Grades</h3>
+ <dl>
+ <dt>Where to go</dt><dd>Click the <code>Set grade scale</code> link on the right side of the gradebook page</dd>
+ <dt>What to do</dt><dd>Enter the percentage range for every letter or number grade you want to use in your class. In the example, there are five letter grades. The highest grade is A+, given for percentages higher than 95.<%= image_tag("help/grade_scale.png", {:alt => "description", :size => "378x304"}) %></dd>
+ <dt>More information</dt><dd>Every class starts out with a standard grade scale:
+ <dl class="inset">
+ <% Section::GRADE_SCALE.reverse.each do |range, letter| %>
+  <dt><%= rangify(range) %></dt><dd> = <%= letter %></dd>
+ <% end %>
+ </dl>
+ You can expand the scale to include A+ or D-, change the scale to Pass/Fail, use a 4 &ndash; scale,  or use any other labels you choose.
+ </dd></dl> 
+ <%= link_to "top", '#top' %>
+ <hr/>
+</div>

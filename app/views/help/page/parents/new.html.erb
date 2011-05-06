@@ -1,0 +1,24 @@
+<% @page_title = 'Adding a Parent' %>
+<div id="content">
+ <h1>New Parent Account Help Page</h1>
+ <p>Each time a student account is created, two parent accounts are added automatically. You should only need to create a parent account if a student has more than two adults interested in keeping tabs on his academic progress, or if two siblings have parent accounts which should be consolidated.</p>
+  <h2>Parents of Multiple Children</h2>
+<p>A parent&#8217;s account is automatically linked to a student, which is fine, unless the parent has more than one child at your school. A parent should not have to remember separate logins to check on each of their children. If a parent has more than one child, take the following steps to consolidate parent accounts:</p>
+<ol>
+ <li>Set a parent&#8217;s name correctly by editing the temporary name on one parent account.</li>
+ <li>Go to the accounts of one of the parent&#8217;s other children and add a parent.</li>
+ <li>The name of the parent you add should have the same name as you entered in step 1.</li>
+ <li>Finally, eliminate the parent account that still has a temporary name.</li>
+</ol>
+<h2>Example</h2>
+<p>I admit that list of instructions makes no sense. Here&#8217;s a concrete example. Suppose there are student accounts for two brothers at your school, Daniel and Nicolas Bernoulli. When those accounts are created, they will have a total of four parent accounts: DanielBernoulli_father, DanielBernoulli_mother, NicolasBernoulli_father, and NicolasBernoulli_mother. If you know these two kids are both sons of Johann Bernoulli, here is what you need to do:</p>
+<ol>
+ <li>Edit NicolasBernoulli_father&#8217;s name to the father&#8217;s real name, Johann Bernoulli.</li>
+ <li>Go to Daniel Bernoulli and add a parent.</li>
+ <li>The name of the parent you add should be Johann Bernoulli.</li>
+ <li>Finally, eliminate the parent account DanielBernoulli_father.</li>
+</ol>
+</div>
+<div id="secondary">
+ <%= render 'help/page/shared/tech_support', :subject => 'parent accounts' -%>
+</div>

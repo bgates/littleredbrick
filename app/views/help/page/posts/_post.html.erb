@@ -1,0 +1,13 @@
+<table cellspacing="0" class="scrollike posts">
+  <thead>
+   <tr><th>If you type this</th><th>The post will look like this</th></tr>
+  </thead>
+  <tbody>
+   <tr class="odd"><td>Normal text</td><td>Normal text</td></tr>
+   <tr class="even"><td>*bold text*</td><td><strong>bold text</strong></td></tr>
+   <tr class="odd"><td>_italicized text_</td><td><em>italicized text</em></td></tr>
+   <tr class="even"><td>"A link":http://<%= @school.domain_name %>.littleredbrick.com</td><td><%= link_to "A link", "http://#{@school.domain_name}.littleredbrick.com" %></td></tr>
+   <tr class="even"><td># pound sign<br/># then a space<br/># makes a list</td><td><ol><li>pound sign</li><li>then a space</li><li>makes a list</li></ol></td></tr>
+   <tr class="odd"><td>* asterisk<br/>* then a space<br/>* makes a list</td><td class="entry-content"><ul><li>asterisk sign</li><li>then a space</li><li>makes a list</li></ul></td></tr>
+  </tbody>
+ </table>

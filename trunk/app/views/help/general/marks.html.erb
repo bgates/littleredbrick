@@ -1,0 +1,87 @@
+<div id="content">
+<h1><%= @page_h1 = "Marks" -%></h1>
+<h2>An Example Scenario</h2>
+<p>Suppose an academic term runs from September to June. During the course of the term, teachers may be required to submit marks for four <strong>marking periods</strong>, which cover (roughly) September &ndash; October, November &ndash; January, February &ndash; March, and April &ndash; June. Teachers may be required to submit additional marks for semester grades after the 2nd and 4th marking periods. The following discussion will show how the marking period grades can be automatically or manually calculated, as well as the various options for calculating semester grades and other marks.</p>
+<h3>Automatic Mark Calculation : Marking Period Grades</h3>
+<p>As teachers assign and grade work over the course of a marking period, the scores for each student are incorporated into a running tally of that student&#8217;s marking period grade. For the first five assignments during a marking period, a student&#8217;s marking period grade might develop like the following:</p>
+<table class="scrollike" cellspacing="0">
+ <thead>
+  <tr><th colspan="6">Assignment</th></tr>
+  <tr><th>&nbsp;</th><th>#1</th><th>#2</th><th>#3</th><th>#4</th><th>#5</th></tr>
+ </thead>
+ <tbody>
+  <tr class="odd"><th class="text">Point Value</th><td>10</td><td>10</td><td>5</td><td>25</td><td>50</td></tr>
+  <tr class="even"><th class="text">Score</th><td>8</td><td>10</td><td>0</td><td>20</td><td>50</td></tr>
+  <tr class="odd"><th class="text">Marking Period Grade</th><td title="score / point value">8 / 10 = 80%</td><td title="scores / point values : (8 + 10) / (10 + 10)">18 / 20 = 90%</td><td title="(8 + 10 + 0) / (10 + 10 + 5)">18 / 25 = 72%</td><td title="(8 + 10 + 0 + 20) / (10 + 10 + 5 + 25)">38 / 50 = 76%</td><td>88 / 100 = 88%</td></tr>
+ </tbody>
+</table>
+<p>Marking period grades are the only marks that can be automatically calculated, because they are the only marks based on individual assignment grades.</p>
+<hr/>
+<h3>Mark Editing : Marking Period Grades</h3>
+<p>Suppose the student continues in the same vein for several weeks, and finishes the marking period with a marking period grade of 89.4%. If the teacher feels this grade does not adequately represent the student&#8217;s knowledge and mastery of the course material, it is possible to manually edit the grade to a higher value (or a lower one, if he chooses).</p>
+<p>To edit a mark, click the <code>set marks</code> link on a gradebook page. The marks page shows all marks for a class in columns very similar to the table on the gradebook page. At the head of each column is a link to edit a mark. On the edit page, a teacher may type in marks as described above, or use the <code>calculate</code> link to calculate marks as described below.</p>
+<hr/>
+<h2>Teacher &ndash; Driven Calculation : Semester Grades</h2>
+<p>Suppose a student finishes the first semester with marking period grades as follows:</p>
+
+<table class="scrollike" cellspacing="0">
+ <thead>
+  <tr><th colspan="3">Marking Period</th></tr>
+  <tr><th>&nbsp;</th><th>#1</th><th>#2</th></tr>
+ </thead>
+ <tbody>
+  <tr class="odd"><th class="text">Points Earned</th><td>176</td><td>276</td></tr>
+  <tr class="even"><th class="text">Points Assigned</th><td>200</td><td>300</td></tr>
+  <tr class="odd"><th class="text">Marking Period Grade</th><td title="points earned / points assigned">176 / 200 = 88%</td><td title="points earned / points assigned">297 / 300 = 99%</td></tr>
+ </tbody>
+</table>
+<p>The teacher has three options to calculate a semester grade from the marking periods: <strong>average</strong>, <strong>weighted average</strong>, or <strong>combine points</strong>.</p>
+<h3>Average</h3>
+<p>Calculating an average grade from two or more marks is the simplest option. It treats each marking period as equally important.</p>
+<table class="scrollike" cellspacing="0">
+ <thead>
+  <tr><th colspan="3">Marking Period</th><th>Semester</th></tr>
+  <tr><th>&nbsp;</th><th>#1</th><th>#2</th><th>&nbsp;</th></tr>
+ </thead>
+ <tbody>
+  <tr class="odd"><th class="text">Points Earned</th><td>176</td><td>276</td><td>&nbsp;</td></tr>
+  <tr class="even"><th class="text">Points Assigned</th><td>200</td><td>300</td><td>&nbsp;</td></tr>
+  <tr class="odd"><th class="text">Marking Period Grade</th><td title="points earned / points assigned">176 / 200 = 88%</td><td title="points earned / points assigned">297 / 300 = 99%</td><td>(88% + 99%) / 2 = 94.5%</td></tr>
+ </tbody>
+</table>
+<hr/>
+<h3>Weighted Average</h3>
+<p>A weighted average counts one mark more than another.</p>
+<table class="scrollike" cellspacing="0">
+ <thead>
+  <tr><th colspan="3">Marking Period</th><th>Semester</th></tr>
+  <tr><th>&nbsp;</th><th>#1</th><th>#2</th><th>&nbsp;</th></tr>
+  <tr><th>Weights</th><th>25</th><th>75</th><th>&nbsp;</th></tr>
+ </thead>
+ <tbody>
+  <tr class="odd"><th class="text">Points Earned</th><td>176</td><td>276</td><td>&nbsp;</td></tr>
+  <tr class="even"><th class="text">Points Assigned</th><td>200</td><td>300</td><td>&nbsp;</td></tr>
+  <tr class="odd"><th class="text">Marking Period Grade</th><td title="points earned / points assigned">176 / 200 = 88%</td><td title="points earned / points assigned">297 / 300 = 99%</td><td>0.25 * 88% + 0.75 * 99% = 96.25%</td></tr>
+ </tbody>
+</table>
+<hr/>
+<h3>Combine Points</h3>
+<p>Combining the points of two or more marks is a way to weight the marks based on how many points they are worth.</p>
+<table class="scrollike" cellspacing="0">
+ <thead>
+  <tr><th colspan="3">Marking Period</th><th>Semester</th></tr>
+  <tr><th>&nbsp;</th><th>#1</th><th>#2</th><th>&nbsp;</th></tr>
+ </thead>
+ <tbody>
+  <tr class="odd"><th class="text">Points Earned</th><td>176</td><td>276</td><td>176 + 276 = 452</td></tr>
+  <tr class="even"><th class="text">Points Assigned</th><td>200</td><td>300</td><td>200 + 300 = 500</td></tr>
+  <tr class="odd"><th class="text">Marking Period Grade</th><td title="points earned / points assigned">176 / 200 = 88%</td><td title="points earned / points assigned">297 / 300 = 99%</td><td>452 /500 = 90.25%</td></tr>
+ </tbody>
+</table>
+<hr/>
+<h3>Additional Marks</h3>
+<p>Teachers may create more marks for their own classes than are required by the school. For instance, a teacher may want to have a final exam that is not counted as a part of either marking period grade, but is used to calculate the semester grade. The link to <code>Add mark</code> is located on the marks page, reached by clicking the <code>set marks</code> link on the gradebook page. To add a mark, simply enter its name and position (for example, the semester final exam would come after the second marking period).</p>
+<% if current_user.admin? %>
+<p>For an administrator to add, remove, or edit a mark which is required for all classes, click the <code>Marks</code> link on the term page, which is reached by clicking the <code>term</code> link under the <code>Admin</code> tab. If the new mark is to be a <strong>marking period</strong>, it requires dates in addition to a name, and must be added with the <code>new marking period</code> link on the term page.</p>
+<% end %>
+</div>

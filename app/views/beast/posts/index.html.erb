@@ -1,0 +1,16 @@
+<div id="content">
+<h1><%= @page_h1 = search_posts_title %></h1>
+<p class="subtitle">
+  <%= '{count} post(s) found'[(count=@posts.total_entries)==1 ? :post_count_found : :posts_count_found, number_with_delimiter(count)] %>
+</p>
+
+<%= pagination @posts %>
+
+<table border="0" cellspacing="0" cellpadding="0" class="posts wide beast">
+<%= render(:partial => "beast/topics/post", :collection => @posts, :locals => {:users => @users, :discussable => @discussable}) %>
+</table>
+<%= link_to "See all posts", '?all=true' if show_all_posts? %>
+<div id="edit"></div>
+<%#= next_page @posts %>
+<%= pagination @posts %>
+</div>

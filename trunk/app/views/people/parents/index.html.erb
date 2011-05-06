@@ -1,0 +1,25 @@
+<div id="content">
+<h1>Parents</h1>
+
+<table class="scrollike sortable" cellspacing="0" style="width:60%">
+ <thead>
+  <tr><th>Parent</th><th>Children</th></tr>
+ </thead>
+ <tbody>
+ <% for parent in @parents %>
+  <tr class="<%= cycle('odd', 'even') %>">
+   <td><%= link_to "#{parent.last_name}, #{parent.first_name}", student_parent_path(parent.children.first, parent) %></td>
+   <td><% parent.children.each do |student| %><%= link_to student.full_name, student_path(student) %><% end %></td>
+  </tr>
+ <% end %>
+ </tbody>
+</table>
+<%= pagination @parents %>
+</div>
+<div id="secondary">
+<h2>Notes</h2>
+<p>There are <%= @parent_count %> parents in this school.</p>
+<p>To read about how parent accounts are created, click <%= link_to "here", parents_path(:about => '') %></p>
+<%= initial %>
+</div>
+

@@ -1,0 +1,12 @@
+<% @page_title = 'Teacher' %>
+<div id="content" class="help">
+ <h1>Teacher Page Help</h1>
+ <p>The teacher page presents an overview of the teacher&#8217;s classes. For each class, the name and period are listed, along with a link to more <%= link_to "information about the class", '/help/page/sections/show' %>, followed by the following summary:</p>
+ <%= render(:partial => "help/general/class_summary") %>
+ <h2 class="clear" style="margin-top:2em">Editing a Teacher</h2>
+ <p>The links to edit a teacher is in the sidebar of the teacher&#8217;s page. You can edit both account information, like name and password, and teaching assignments.</p>
+</div>
+<div id="secondary">
+ <h2>Other Questions?</h2>
+ <p>If there is something else you want to ask about teachers, try the <%= link_to "help forums", forums_path('help') %> for Little<span class='company'>Red</span>Brick tech support.</p>
+</div>

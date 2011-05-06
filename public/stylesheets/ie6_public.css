@@ -1,0 +1,65 @@
+html, body {
+  background: #F7F7F4 url(/images/empty.gif) fixed;
+}
+#masthead, #footer {
+  position:absolute;
+  z-index:1000;
+}
+#masthead {
+  top:expression(eval(document.compatMode && document.compatMode=='CSS1Compat') ? documentElement.scrollTop : document.body.scrollTop);
+  width: expression(this.parentElement.offsetWidth - 1);
+  height: 61px;
+}
+#wrapper, #content_wrap {height:100%;}
+
+#wrapper {width: expression(this.parentElement.offsetWidth < 1100 ? 935 : 0.85 * this.parentElement.offsetWidth)}
+
+#footer {
+  top:expression(eval(document.compatMode && document.compatMode=='CSS1Compat') ? documentElement.scrollTop +(documentElement.clientHeight-this.clientHeight) : document.body.scrollTop +(document.body.clientHeight-this.clientHeight));
+  width: expression(this.parentElement.offsetWidth - 2);
+}
+.selectfree {
+  z-index:10;/*any value*/
+  overflow:hidden;/*must have*/
+}
+.selectfree iframe {
+  display:none;/*for IE5*/
+  display/**/:block;/*for IE5*/
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:-1;
+  filter:mask();
+  width:expression(this.parentElement.offsetWidth);
+  height:expression(this.parentElement.offsetHeight);
+}
+ul#secondary_nav {width:100%;}
+
+h2 {font-size: 1.05em}
+
+html .fieldWithErrors { display: inline;}
+
+#home { background: url(../images/logo/alt_small_round_ie.png) 0 0 no-repeat;}
+
+#home:hover {background: url(../images/logo/small_round.png) 0 0 no-repeat;}
+/*next 2 needed for ie6*/
+#logo { margin: 1px 0 0 5%; }
+
+a#logo { margin: 1px 0 0 10%; }
+
+textarea {overflow: auto}
+
+#public #logo, #signup #logo {height: 59px; margin-top:1px;}
+
+#signup p {margin-left: 5.5em; padding-right: 16px;}
+
+legend {top: -0.5em;visibility: visible}
+
+fieldset {display:block;}
+
+#signup p#email {float: none; padding-left: 5.5em}
+
+#signup p#clear{width: 80%;}
+
+#agreement p, #personal_agreement p {width: 700px}
+

@@ -1,0 +1,60 @@
+<div id="content">
+ <h1>Help <%= @page_h1 = "Menu" -%></h1>
+ <h2>Read About Little<span class='company'>Red</span>Brick</h2>
+ <p>The links in the table below explain how you can use Little<span class='company'>Red</span>Brick to learn more about your school. You can explore the help section through those links.</p> 
+ <div>
+ <table class="scrollike" cellspacing="0">
+  <thead>
+   <tr><th></th><%= '<th>Administrator</th>' if current_user.admin? %><th>Teacher</th><th>Student/Parent</th></tr>
+  </thead>
+  <tbody>
+   <tr class="odd"><td>See Academic Information About:</td>
+       <% if current_user.admin? %>
+       <td><ul>
+        <li><%= link_to "students", 'student_info'  %></li>
+        <li><%= link_to "classes", 'class_info' %></li>
+        <li><%= link_to "teachers", 'teacher_info' %></li>
+        <li><%= link_to "more...", 'subject_and_department_info' %></li>
+        </ul></td>
+       <% end %>
+       <td><ul>
+        <li><%= link_to "students", 'student_info'  %></li>
+        <li><%= link_to "classes", 'class_info' %></li>
+       </ul></td>
+        <td><%= link_to "themselves/their children", 'student_view' %>
+       </td>
+   </tr>
+   <tr class="odd">
+    <td>Manage Information For:</td>
+    <% if current_user.admin? %>
+    <td><ul>
+     <li><%= link_to "user accounts", 'users' %></li>
+     <li><%= link_to "the academic term", 'term' %></li>
+     <li><%= link_to "class enrollment", 'enrollment' %></li>
+    </ul></td>
+    <% end %>
+    <td><ul>
+     <li><%= link_to "gradebooks", 'gradebooks' %></li>
+     <li><%= link_to "class enrollment", 'enrollment' %></li>
+    </ul></td><td>&nbsp;</td>
+   </tr>
+   <tr class="odd"><td>All Users Can</td>
+       <td colspan="<%= current_user.admin? ? '3' : '2' %>"><%= link_to "Manage their own account", 'account' %> 
+       <%= link_to "Use the calendar", 'calendar' %> 
+       <%= link_to "Join discussions", 'discussions' %></td>
+   </tr>
+  </tbody>
+ </table>
+ </div>
+</div>
+<div id="secondary">
+<h2>Other Help Options</h2>
+<h3>Help Videos</h3>
+<p>Learn how to do different things with Little<span class='company'>Red</span>Brick by watching these <%= link_to "short instructional videos", :controller_name => 'video_menu' %>.</p>
+<hr/>
+<h3>Tech Support</h3>
+<p>If you can't find your answer in any of the links on this page, you can always try the <%= link_to "help forums", forums_path('help') %>. That is the place to get tech support. You may even find someone else has asked your question already, and gotten an answer.</p>
+<hr/>
+<h3>Explore the Site</h3>
+<p>Each page in the site has its own help section. When you click <code>Help</code> on the front page, you get the help menu page. When you click <code>Help</code> on any other page, you will see information on the purpose of that specific page.</p>
+</div>

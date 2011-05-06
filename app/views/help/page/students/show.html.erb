@@ -1,0 +1,32 @@
+<% @page_title="Student Overview" %>
+<div id="content">
+ <h1 id="students_show">Student Overview Page Help</h1>
+ <p>The <em>student overview</em> page provides an intuitive graphical summary of one student&#8217;s academic performance in all classes over the course of a marking period. By default the page shows the current marking period, but if you want to see how a student did during an earlier marking period, you can. Below is what the first line on the <em>student overview</em> page would look like for Kurt the example student during the third marking period (the 3 is the only number that is not a link). If you wanted to look at marking period 2 (if this was a real student), you would just click the 2.</p>
+ <h1>Kurt Smith | Marking Period <a href="#" title="If this were a real student, you could click here to see grades for marking period 1">1</a> <a href="#" title="If this were a real student, you could click to see grades for marking period 2">2</a><span style='font-size:1.3em' title='currently viewing grades for marking period 3'>3</span> <a href="#" title="If this were a real student, you could click to see grades for marking period 4">4</a> </h1>
+
+
+ For each class, the page presents 
+ <% if current_user.admin? %>
+ links to the class <em>teacher</em>&#8217;s page, to the <em>class</em> page,
+ <% else %>
+ the class teacher&#8217;s name and links to the <em>class</em> page
+ <% end %> and to the <em>student performance</em> page. The links are followed by the student&#8217;s current marking period grade, both percentage and letter. 
+ </p>
+ <div class="section" style="border:0">
+<h2><% if current_user.admin? %><a href="#" title="See all of Mr Fausey&#39;s sections">Mr Fausey</a><% else %>Mr Fausey<% end %><span class='arrow'>&rarr;</span><a href="#" title="See class-level data for Kurt&#39;s Chemistry class">Chemistry(1)</a><span class='arrow'>&rarr;</span><a href="#" title="See more information about Kurt&#39;s performance in Chemistry">Kurt</a></h2>
+
+<h3>Marking Period Grade: 68.7 (D)</h3>
+<div class="progression">
+ <h3>Grade Progression</h3>
+ 
+ <img src="http://chart.apis.google.com/chart?cht=lc&chd=t:90,95,65.8,60.8,66,71,70,72,69,68,68,69&chs=300x130&chco=66AEBD&chf=c,s,eeeeee&chxt=y&chg=1000,20,1,0" />
+</div>
+</div>
+<p>The grade progression charts show the student&#8217;s grade in each class over time. Kurt the example student started off well with a 90% on the first assignment of the marking period, and had a 95% average after the second, but then things started to go wrong, and he dropped to 60% before bringing his average back up to almost 70.</p>
+<h2 class="clear">Other Information</h2>
+<p>In the sidebar of the <em>student overview</em> page you can find out the last time the student and his parents logged in, links to edit the student&#8217;s account, and a link to see a class level overview of all of the student&#8217;s classes.</p>
+</div>
+<div id="secondary">
+ <h2>Other Questions?</h2>
+ <p>If there is something else you want to ask about understanding a student overview, try the <%= link_to "help forums", forums_path('help') %> for Little<span class='company'>Red</span>Brick tech support.</p>
+</div>

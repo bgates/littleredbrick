@@ -1,0 +1,34 @@
+<div id="content">
+<h1><%= @page_h1 = "Teachers" -%> List</h1>
+<%= notice_or_error %>
+<p>The list below shows all teachers in the school and their schedules for the <%= 'upcoming ' if params[:term] %>term. Click the name of a teacher or section to get more information.</p>
+<div class="scrollableTable">
+ <table class="sortable resizable" cellspacing = 0>
+  <colgroup><col width="15%"/><col width="50"/></colgroup>
+  <thead>
+   <%= index_header('Teacher',@low_period, @high_period) %>
+  </thead>
+  <tbody>
+   <%= render(:partial => "teacher", :collection => @teachers) %>
+   <%= filler_row(@teachers, (@high_period - @low_period + 3)) %>
+  </tbody>
+</table>
+</div>
+</div>
+
+<div id="secondary">
+<% if current_user.admin? %>
+<h2>Other Tasks</h2>
+<% if @school.may_add_more_teachers? %>
+<p>Click <%= link_to "here", new_teacher_path %> to create a new teacher account.</p>
+<% else %>
+  <p>If you need to add more teacher accounts, contact us at <%= mail_to 'support@littleredbrick.com', 'support@littleredbrick.com', :encode => :hex %></p>             
+<% end %>
+<hr/>
+<% if @prepped_for_assignments %>
+<p>To upload teaching assignments for one or more teachers from an Excel or OpenOffice spreadsheet file, click <%= link_to "here", new_teaching_load_upload_path %></p><hr/>
+<% end %>
+<%= initial %>
+<%= term_link %>
+<% end %>
+</div>

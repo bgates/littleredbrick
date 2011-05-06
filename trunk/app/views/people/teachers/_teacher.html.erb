@@ -1,0 +1,14 @@
+<tr id = 'teacher_<%= teacher.id %>' class='<%= cycle('odd','even') %>'>
+<% if params[:term] %>
+<td class='text'><%= link_to "#{teacher.last_name}, #{teacher.title} #{teacher.first_name}", term_staging_path(@school.terms.last, :teacher => teacher), :title => "Click to view and edit enrollment for all of #{teacher.display_name}&#39;s classes for next term" %></td>
+ <td><%= teacher.id_number %></td>
+ <%= section_list(teacher, @sections[teacher.id], @low_period, @high_period) %>
+<% else %>     
+  <td class='text'><%= teacher_link teacher, @sections[teacher.id], "#{teacher.last_name}, #{teacher.title} #{teacher.first_name}" do
+    schedule_or_teacher_link(teacher)
+  end %></td>
+ <td><%= teacher.id_number %></td>
+ <%= section_links(teacher, @sections[teacher.id], @low_period, @high_period) %>
+<% end %>
+</tr>
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"                 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml'>
+  <%= render(:partial => "layouts/header") %>
+  <style>
+#masthead {
+  background: url(../../images/logo/small_repeat.gif) repeat-x 0;
+  padding: 0 0 1px;/*this is weak; it should be possible to have padding over the top, like normal*/
+}
+/*HEADER*/
+#home {
+  text-indent: -9000px;
+}
+#secondary_nav {margin-top: 40px;}
+
+#secondary_nav li { line-height: 1.4em;}
+</style>
+  <body id="<%= controller.controller_name %>_<%= controller.action_name %>"<%= mark_of_the_beast %>>
+   <div id = "wrapper">
+    <div id="masthead" class="selectfree">
+     <a id="home" href="/">Little Red Brick: Schools Online Simply</a>
+     <div id="nav"><ul id ="secondary_nav"><%= secondary_nav unless session[:initial] %></ul></div>
+    </div>
+    <div id="content_wrap"<%= ' class="big_nav"' if @two_lines %>>
+     <div id="content" class="video">
+      <h1><% @page_h1 = "#{params[:id].humanize.titleize} Video" %></h1>
+      <center><OBJECT CLASSID="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" WIDTH="954" HEIGHT="601" CODEBASE="http://active.macromedia.com/flash5/cabs/swflash.cab#version=7,0,0,0" id="video">
+      <PARAM NAME=movie VALUE="<%= video %>.swf">
+      <PARAM NAME=play VALUE=true>
+      <PARAM NAME=loop VALUE=false>
+      <PARAM NAME=wmode VALUE=transparent>
+      <PARAM NAME=quality VALUE=low>
+      <EMBED src="<%= video %>.swf" WIDTH=954 HEIGHT=601 quality=low loop=false wmode=transparent TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+      </EMBED>
+     </OBJECT></center>
+     <a href="<%= session[:return_to] %>">Back</a>
+     </div>
+    </div>
+    <div id='footer' class='selectfree'><%= footer.html_safe %><!--[if lte IE 6.5]><iframe></iframe><![endif]--></div>
+   </div>
+  </body>
+</html>
+

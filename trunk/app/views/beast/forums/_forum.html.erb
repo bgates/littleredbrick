@@ -1,0 +1,23 @@
+<tr>
+  <td class="vat c1">
+    <%= recent_activity_indicator(forum) %>
+  </td>
+  <td class="c2 vat">
+    <%= forum_link(@discussable, forum, forum.name, forum.name, :class => "title") %>
+    <div class="posts">
+      <%= pluralize(forum.topics_count, 'topic') %>,
+      <%= pluralize(forum.posts_count, 'post') %>
+    </div>
+    <%= forum.description_html.html_safe %>
+  </td>
+  <td class="c3">
+    <%= link_to 'Edit'[:edit_title], edit_forum_path(@discussable, forum), :class => "tiny", :rel => "directory", :style => "float:right" if current_user.owns?(forum) %>&nbsp;
+  </td>
+  <td class="inv lp">
+    <% unless forum.posts.empty? %>
+      <%= time_ago_in_words(forum.posts.last.created_at) %> ago<br />
+      <%= 'by {user}'[:by_user,"<strong>#{forum.posts.last.user.display_name}</strong>"].html_safe %>
+      <span>(<%= link_to 'view'[],forum_topic_path(@discussable, forum, forum.posts.last.topic_id) + "##{forum.posts.last.dom_id}?page=#{forum.posts.last.topic.last_page}" %>)</span>
+    <% end %>&nbsp;
+  </td>
+</tr>

@@ -1,0 +1,5 @@
+<div id="content">
+<h1><%= @section.name %> Assignments for <%= @student.full_name %></h1>
+  <%= render(:partial => "shared/grade", :collection => @grades, :locals => {:full_page => true}) %>
+</div>
+<%= render(:partial => "shared/assignment_form") %>

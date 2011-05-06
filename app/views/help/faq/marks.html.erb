@@ -1,0 +1,57 @@
+<div id="content">
+ <h1>Grades</h1>
+ <h2>Questions</h2>
+ <ol id="questions">
+  <li><%= link_to "What is a mark?", '#mark' %></li>
+  <li><%= link_to "What is a marking period?", '#mp' %></li>
+  <li><%= link_to "Is a mark the same thing as a marking period grade?", '#def' %></li>
+  <li><%= link_to "How do I know what marks I have to calculate?", '#know' %></li>
+  <li><%= link_to "How can I add a mark for a class?", '#how_to_add' %></li>
+  <li><%= link_to "How are marking period grades calculated?", '#autocalc' %></li>
+  <li><%= link_to "How can I recalculate or change marking period grades?", '#recalc' %></li>
+  <li><%= link_to "How are non-marking period marks calculated?", '#calc' %></li>
+  <li><%= link_to "How can I see the grade distribution for a mark?", '#dist' %></li>
+ <li><span class="question">Want to ask something else? Do you want more than the answers provided here?</span>Ask your question in the <%= link_to "help forums", forums_path('help') %>.</li>
+ </ol>
+
+ <h2 id="answer_header">Answers</h2>
+ <ol id="answers">
+  <li id="mark"><span class="question">What is a mark?</span> A mark is a grade teachers are <%= link_to "required", '#know' %> to calculate for each student in their classes. A grade for the course would be a mark, so would a cumulative grade for the first nine weeks (in which case the nine weeks would be called a <%= link_to "marking period", '#mp' %>). Marks do not have to be <%= link_to "tied to a marking period", '#def' %>, though.<%= link_to "top", '#content' %></li>
+  <li id="mp"><span class="question">What is a marking period?</span>All of a student&#8217;s coursework that is due within a certain period of time is automatically used to <%= link_to "calculate", '#autocalc' %> a <%= link_to "mark", '#mark' %> for that period of time. The period of time used to calculate the mark is a marking period. (That&#8217;s one of those things we thought everybody had heard of until we ran into someone who didn&#8217;t, at which point we discovered it&#8217;s an impossible term to explain. Neither Google nor Webster&#8217;s Encyclopedic Unabridged Dictionary of the English Language has a good way to complete the sentence, "A marking period is ____". Though we did learn from the latter that marmots are bigger than marmosets. 2 &frac12; feet. Wow.)<%= link_to "top", '#content' %></li>
+  <li id="def"><span class="question">Is a mark the same thing as a marking period grade?</span>Not necessarily. A marking period grade is the most commmon kind of mark, but there can be others. For example, suppose a school has four 9-week marking periods in a term. The school may require teachers to submit grades for each marking period, each <abbr title="half of the term">semester</abbr>, and a final grade:
+  <table class="scrollike">
+   <thead>
+    <tr>
+      <th>Marking Period 1</th><th>Marking Period 2</th><th>Semester 1</th><th>Marking Period 3</th><th>Marking Period 4</th><th>Semester 2</th><th>Final</th>
+    </tr>
+   </thead>
+  </table>
+  The marking period grades would be calculated <%= link_to "automatically", '#autocalc' %> by Little<span class='company'>Red</span>Brick. Teachers would have to decide how the semester and final grades would be determined, though Little<span class='company'>Red</span>Brick can perform those <%= link_to "calculations", '#calc' %> given a formula.<%= link_to "top", '#content' %>
+  </li>
+  <li id="know"><span class="question">How do I know what marks I have to calculate?</span>You probably already turn in some kind of form to the office with a record of the marks. To see what marks the administration has entered into Little<span class='company'>Red</span>Brick for all classes, click the "Set Marks" link located in the gradebook page for all of your classes (illustrated <%= link_to "here", '#recalc' %>) and you will see a list of marks. Sometimes teachers may want to set their own marks. For instance, if the school requires two marking period grades and a semester mark, a teacher may add a final exam mark in order to be able to <%= link_to "calculate", '#calc' %> semester marks required for the term based on a weighted average of 40% of the first marking period, 50% of the second, and 10% for a semester final exam. <%= link_to "top", '#content' %></li>
+  <li id="how_to_add"><span class="question">How can I add a mark for a class?</span>On the marks page, there is an "Add Mark" under the list of class marks in the sidebar. <%= link_to "top", '#content' %></li>
+  <li id="autocalc"><span class="question">How are marking period grades calculated?</span><p>The marking period grade for a student is calculated automatically based on the scores the student earns and the point values for all assignments due during the marking period.</p><p>When an assignment is created, it must be given a point value and a marking period. Until the assignment is scored, it has no effect on the marking period grade. Once the assignment is scored, the point value and score are incorporated into the marking period grade according to the formula (sum of scores) / (sum of point values). <%= link_to "top", '#content' %></p>
+  <h3>Example</h3>
+  <p>The first assignment for a class is worth 10 points, and a student gets 9/10, so his marking period grade at that point is 90%. (Hey, walk before you run.) A second assignment is created due a week in the future, worth 20 points. At that point the student&#8217;s grade is still 90%. When the assignment is graded,the student earns 15 points. His marking period grade is now (9 + 15) / (10 + 20) = 24 / 30 = 83.3%.</p>
+  <p>A teacher also has the option to <%= link_to "edit a marking period grade", '#recalc' %> to <span title="or fail a nasty little creature">give a kid a few extra points</span>.<%= link_to "top", '#content' %></p>
+  </li>
+  <li id="recalc"><span class="question">How can I recalculate or change marking period grades?</span>There is a link from the gradebook page to the marks page. <%= image_tag("help/link_to_marks_from_gradebook.png", {:alt => "the link is towards the bottom of the sidebar content", :size => "788x384"}) %>Each mark for each student is displayed as a ratio of points earned to possible points, as well as a percentage. At the head of each column of marks is a link to edit them.<%= image_tag("help/marks_edit_link.png", {:alt => "it simply says 'edit'", :size => "762x334"}) %><p>On the edit page, you can change the values for earned points or possible points for any student.<%= image_tag("help/edit_mark.png", {:alt => "just type in the values in the form", :size => "763x422"}) %><%= link_to "top", '#content' %></p></li>
+  <li id="calc"><span class="question">How are non-marking period marks calculated?</span>These marks can be either typed in or calculated by a formula chosen by the teacher. Going back to the earlier <%= link_to "example", '#def' %> of a school term with the following marks:
+  <table class="scrollike">
+   <thead>
+    <tr>
+      <th>Marking Period 1</th><th>Marking Period 2</th><th>Semester 1</th><th>Marking Period 3</th><th>Marking Period 4</th><th>Semester 2</th><th>Final</th>
+    </tr>
+   </thead>
+  </table>
+  The marking period grades would be calculated <%= link_to "automatically", '#autocalc' %>, but what about the semester marks? To enter values, follow the same path illustrated <%= link_to "above", '#recalc' %> from the gradebook to the edit page. There is also an option to calculate marks based on their predecessors by following the "calculate" link on the edit page.<%= image_tag("help/calculate_note.png", {:alt => "in the sidebar, of course", :size => "763x422"}) %>There are three options for calculating marks:
+  <dl>
+   <dt class="annotation">Average</dt><dd>by combining percentages, so that a student who earned 60% in the first marking period and 80% in the second would receive a semester mark of 70%.</dd>
+   <dt class="annotation">Weighted Average</dt><dd>if the marking periods should not count equally. For instance, if the first and second marking periods were weighted 40:60, the above student would receive a semester mark of <abbr title="40% of 60 + 60% of 80">72%</abbr>.</dd>
+   <dt class="annotation">Combine Points</dt><dd>which is a weighted average according to the number of points assigned in each of the marking periods. In the example illustrated in the above screenshots, there were 540 points assigned in the first marking period and 500 in the second, so combining points would be the same as a weighted average of <abbr title="540 points out of 1040 total ~ 52%">52</abbr>:48.</dd>
+  </dl>
+  <%= image_tag("help/calculate.png", {:alt => "illustration of the mark calculation page", :size => "768x382"}) %><%= link_to "top", '#content' %>
+  </li>
+  <li id="dist"><span class="question">How can I see the grade distribution for a mark?</span>On the <%= link_to "marks page", '#recalc' %>, each column is headed by an edit link and the numbered position of the mark (1st, 2nd, etc). Click the number to see the grade distribution for the mark. If the mark is a marking period, the grade distribution will be accompanied by a breakdown of the assignments for the marking period by category.<%= image_tag("help/mark.png", {:alt => "the distributions are graphs, but turning off javascript yields tabular equivalents", :size => "752x309"}) %><%= link_to "top", '#content' %></li>
+</ol>
+</div>

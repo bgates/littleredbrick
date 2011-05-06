@@ -1,0 +1,15 @@
+<% @page_title = 'Assignment' %>
+<div id="content">
+ <h1>Assignment Help Page</h1>
+ <p>The <em>Assignment</em> page shows everything there is to know about an assignment, including the due date, point value, category, description, and the date it was assigned.</p>
+ <h2>Grades</h2>
+ <p>The grade distribution on the <em>Assignment</em> page is for the assignment, not the entire marking period. Likewise, the student score table lists student scores on the assignment only.</p>
+ <h2>Due Dates</h2>
+ <p>If the assignment has individual due dates for each student, they will be listed in the student score table.</p>
+</div>
+<div id="secondary">
+<% if current_user.is_a?Teacher %>
+  <%= render 'help/page/assignments/related' -%>
+<% end %>
+  <%= render 'help/page/shared/tech_support', :subject => 'assignments' -%>
+</div>

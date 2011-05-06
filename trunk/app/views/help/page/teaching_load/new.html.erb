@@ -1,0 +1,15 @@
+<% @page_title = 'Set a Teaching Load' %>
+<div id="content">
+ <h1>Setting a Teaching Load Help Page</h1>
+ <p>There are two steps in setting the teaching load, or class assignment, for a teacher: setting the departments, and setting the classes.</p>
+ <h2>Setting the Departments</h2>
+ <p>Check the names of every department&#8217;s box on the form on the left. That should update the selection choices on the right side form. (Sometimes the form gets stuck. If that happens, reload the page and try again. Sorry.)</p>
+ <h2>Setting Classes</h2>
+ <p>You will be given one class per period in the school day. If you teach fewer classes than that, delete one or more of them. If you teach more, click the <code>Add Sections</code> link.</p>
+ <h2>Missing Subjects</h2>
+ <p>If you are trying to add a section and the subject does not appear in the subject pulldown list even though the department is checked, or the department does not appear in the department list, the class catalog must be updated. <% if current_user.admin? %>Go <% else %>Have an administrator go <% end %>to the catalog page and add the subject or department and subject you need.</p>
+</div>
+<div id="secondary">
+ <h2>Other Questions?</h2>
+ <p>If there is something else you want to ask about editing teaching assignments, try the <%= link_to "help forums", forums_path('help') %> for Little<span class='company'>Red</span>Brick tech support.</p>
+</div>

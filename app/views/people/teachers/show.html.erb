@@ -1,0 +1,34 @@
+<% @page_h1 = "#{@teacher.display_name} Class Summaries" %>
+<div id="content">
+<h1>Class Summary for <%= @teacher.display_name %> | Marking Period <%= marking_period_links %></h1>
+<%= notice_or_error %>
+<%= render(:partial => "sections/section", :collection => @sections) %>
+<% if @sections.blank? %><p>Click <%= link_to "here", new_teaching_load_path(@teacher) %> to set <%= his_or_your.html_safe %> teaching schedule. (Once you have classes set up, you can find the link to edit the teaching schedule over on the right side of the page.)</p><% end %>
+</div>
+<div id="secondary">
+<h2>Editing Links</h2>
+<ul>
+<li><%= link_to "Edit name/login", edit_teacher_path(@teacher), :title => "Click to change #{@teacher.display_name}&#39;s name, reset his/her login and password, or delete this account".html_safe %></li>
+<li><%= link_to "Edit teaching load", edit_teaching_load_path(@teacher), :title => "Click to change #{@teacher.display_name}&#39;s classes".html_safe %></li>
+</ul>
+<hr/>
+<% if @teacher.last_login? %>
+<ul>
+<li>Last login: <%= @teacher.last_login.strftime("%I:%M%p %a %b %d") %></li>
+<li><%= link_to "Login history", logins_teacher_path(@teacher) %></li>
+</ul>
+<% else %>
+<p><%= @teacher.display_name %> has never logged in.</p>
+<% end %>
+<% if @school.terms.count > 1 %>
+<hr/>
+<h3>Next Term</h3>
+<ul>
+<li><%= link_to "Edit next term's teaching load", new_teaching_load_path(@teacher, :term => 'future') %></li>
+<li><%= link_to "Enrollment for next term's classes", term_staging_path(@school.terms.last, :teacher => @teacher) %></li>
+</ul>
+<% end %>
+<%= initial %>
+</div>
+
+

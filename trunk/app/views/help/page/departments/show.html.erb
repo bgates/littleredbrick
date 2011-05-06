@@ -1,0 +1,12 @@
+<% @page_title = 'Department' %>
+<div id="content">
+ <h1>Department Help Page</h1>
+ <p>A <em>department</em> page lists the total enrollment for the department, the number of sections of each subject in the department, and the teacher and enrollment for each section.</p>
+ <h2>Adding a Subject</h2>
+ <p>There is a <code>New Subject</code> link at the bottom of the subject table.</p>
+ <h2>Editing / Removing the Department</h2>
+ <p>In the list of departments in the sidebar, there is a link to <code>edit</code> the department. The edit form allows you to delete the department (provided there are no active classes taking place in any subject in the department).</p>
+</div>
+<div id="secondary">
+  <%= render 'help/page/shared/tech_support', :subject => 'viewing departments' -%>
+</div>

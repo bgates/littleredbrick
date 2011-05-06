@@ -1,0 +1,22 @@
+<% @page_title = 'Forum List' %>
+<div id="content">
+ <h1>Forum List Help Page</h1>
+ <p>A <em>Forum List</em> page lists all of the forums that have been created for a particular <%= link_to "discussion group", general_help_path('discussions', 'groups') %>. For each forum in the list, there is an activity indicator (either <%= image_tag("comment.gif", {:alt => "recent activity", :title => "recent activity", :size => "16b16", :class => 'icon highlight'}) %> if anyone has added a post to the forum in the past day, or <%= image_tag("comment.gif", {:alt => "no recent activity", :title => "no recent activity", :size => "16x16", :class => 'icon grey'}) %> otherwise), the forum name, the number of <%= link_to "topics", general_help_path('discussions', 'topics') %> and <%= link_to "posts", general_help_path('discussions', 'posts') %> in the forum, and a link to the last post anyone added to the forum. Click a forum name to see the topics in it. Any forum you created will also have a <code>edit</code> link to let you <%= link_to "edit the forum", help_path('forums', 'edit') %></p>
+
+ <h2>Recent Posts</h2>
+ <p>The <code>recent posts</code> link brings up every post made in the discussion group within the past week.</p>
+ <h2>Search</h2>
+ <p>The <strong>navigation bar</strong> (at the top of the screen, under the tabs) has a search box which you can use to search all the posts in the discussion group &ndash; that is, all the posts in all the topics in all the forums in the list. Just type in a word or phrase and hit Enter, and you will find all the posts people have made that contain that word or phrase.</p>
+ <h2>Adding a Forum</h2>
+ <p>If you are allowed to create a forum for a discussion group, you will see the <code>Create New Forum</code> link on the right side of the forum list page. If you&#8217;re not, you won&#8217;t.</p>
+ <h3>Other Notes</h3>
+ <p>The heading of the forum list page notes the number of topics, posts, and <strong>voices</strong> in the forums. The number of voices refers to the number of people who have written posts.</p>
+  <% unless params[:id].blank? %>
+ <p>You can reach the <code>Forum List</code> page from the list of discussion groups under the <code>Discussions</code> <%= link_to "tab", general_help_path('navigation') %>.</p>
+ <% end %>
+</div>
+<div id="secondary">
+ <%= render 'help/page/shared/discussion_related' %>
+ <%= render 'help/page/shared/tech_support', :subject => 'forums' -%>
+</div>
+

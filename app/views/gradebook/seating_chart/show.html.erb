@@ -1,0 +1,13 @@
+<div id="content">
+<h1><%= @page_h1 = "#{@section.name} Seating Chart" %></h1>
+   <table>
+    <% 0.upto(@rbes.map(&:y).max) do |y| %>
+     <tr>
+      <% 0.upto(@rbes.map(&:x).max) do |x| %>
+       <td><%= @rbes.detect{|rbe| rbe.x == x && rbe.y == y}.student.full_name rescue '&nbsp;' %></td>
+      <% end %>
+     </tr>
+    <% end %>
+   </table>
+   <%= link_to "Edit", edit_section_seating_chart_path(@section) if current_user.teaches?(@section) %>
+</div>

@@ -1,0 +1,10 @@
+<div class="progression">
+ <h3 title="Marking period grade over time">Grade Progression</h3>
+ <% if @progression.empty? %>
+  <p>Nothing has been graded this marking period</p>
+ <% elsif @progression.length == 1 %>
+  <p>The score on the only assignment graded this marking period was <%= @progression[0][:grade] %></p>
+ <% else %>
+  <%= progression_graph(@progression) %>
+ <% end %>
+</div>

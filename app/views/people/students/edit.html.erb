@@ -1,0 +1,48 @@
+<div id="content">
+<h1><%= @page_h1 = "Edit Student" -%></h1>
+<%= error_messages_for("student", :class => 'ie_high') %>
+<%= form_for @student do |f| %>
+<fieldset>
+  <legend>Name</legend>
+  <ul>
+    <li><label for='student_first_name'>First</label><%= f.text_field 'first_name' %></li>
+    <li><label for='student_last_name'>Last</label><%= f.text_field 'last_name' %></li>
+  </ul>
+</fieldset>
+
+<fieldset>
+ <legend>Other Information</legend>
+ <ul>
+  <li><label for='student_grade'>Grade</label></li><%= f.select("grade", (@school.low_grade..@school.high_grade)) %>
+  <li><label for='student_id_number'>ID</label><%= f.text_field 'id_number' %>
+  <p class='explanation'>Optional</p></li>   
+  <% if !@student.errors[:login].empty? %>
+   </ul>
+   <%= fields_for "student[authorization]", @student.authorization do |auth| %>
+    <ul class="line">
+     <li><label for='student_authorization_login'>Login</label><%= auth.text_field 'login', {:size => 12} %></li>
+     <li><label for='student_authorization_password' id='password_label'>Password</label><%= auth.password_field 'password', {:size => 12} %></li>
+     <li><label for='student_authorization_password_confirmation'>Confirm Password</label><%= auth.password_field 'password_confirmation', {:size => 12} %></li>
+    </ul>
+   <% end %>
+  <% else %>
+   <li><label for='reset'>Reset Login</label><%= f.check_box("reauthorize") %><p class='explanation'>Check this box to reset <%= @student.first_name %>&#39;s login and password to &quot;<%= @student.first_name.downcase + @student.last_name.downcase %>&quot;, if <%= @student.first_name %> has forgotten them.</p></li>
+  </ul>
+  <% end %>
+<%= submit_tag("Update Student", :class => 'button') %>
+</fieldset>
+<% end %>
+<%= button_to 'Delete Student', student_path(@student), {:method => :delete, :class => 'button', :id => 'delete_student'} %>
+<%= link_to "Back", student_path(@student) %>
+</div>
+<div id="secondary">
+<h2>Parents</h2>
+<p>Click a name to edit.</p>
+<ul>
+ <% @student.parents.each do |parent| %>
+  <li><%= link_to parent.full_name.sub(/ _/, '&#8217;s ').html_safe, edit_student_parent_path(@student, parent) %></li>
+ <% end %>
+ <li><%= link_to "Add a parent", new_student_parent_path(@student) %></li>
+</ul>
+<%= initial %>
+</div>

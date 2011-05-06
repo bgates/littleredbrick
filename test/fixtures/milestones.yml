@@ -1,0 +1,36 @@
+mark_avg_1:
+  rollbook_entry: mark_test_1
+  earned: 80.0
+  possible: 100
+  reported_grade: mark_test_1
+mark_unchanged_1:
+  rollbook_entry: mark_test_2
+  earned: 0.0
+  possible: 0
+  reported_grade: mark_test_1
+mark_avg_2:
+  rollbook_entry: mark_test_1
+  earned: 100.0
+  possible: 100
+  reported_grade: mark_test_2
+mark_unchanged_2:
+  rollbook_entry: mark_test_2
+  earned: 0.0
+  possible: 0
+  reported_grade: mark_test_2
+mark_avg_result:
+  rollbook_entry: mark_test_1
+  earned: 0.0
+  possible: 0
+  reported_grade: final
+mark_unchanged_3:
+  rollbook_entry: mark_test_2
+  earned: 0.0
+  possible: 0
+  reported_grade: final
+sam:
+  rollbook_entry: sam
+  earned: 0.0
+  possible: 0
+  reported_grade: mark_test_1
+

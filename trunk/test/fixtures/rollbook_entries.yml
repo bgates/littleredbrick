@@ -1,0 +1,15 @@
+rbe:
+  student: sam
+  section: beast
+joe:
+  student: joe
+  section: beast
+mark_test_1:
+  student: sam
+  section: marks
+mark_test_2:
+  student: joe
+  section: marks
+sam:
+  student: sam
+  section: section

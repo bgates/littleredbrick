@@ -1,0 +1,7 @@
+<p><%= he_or_you %> <%= conjugate_has %> no
+<% if @discussable_posts == 0 %>
+posts in forums for the <%= @discussable.klass %>.
+<% else %>
+<abbr title="Posts within the past week">recent posts</abbr>. If you would like to see older posts, click the <%= link_to 'View all'[:view_all], reader_posts_path(@discussable, @user) %> link.
+<% end %>
+</p>

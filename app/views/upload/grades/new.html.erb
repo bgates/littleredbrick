@@ -1,0 +1,43 @@
+<div id="content" class="upload_info">
+<h1><%= @page_h1 = "Upload Grades" -%></h1>
+  <%= notice_or_error %>
+  <%= error_messages_for("upload", :class => 'ie') %>
+  <% if @section.assignments.size == 0 %>
+  <p>You cannot upload grades for assignments until the assignments have been entered into the database. Click <%= link_to "here", new_section_assignment_path(@section) %> to create an assignment.</p>
+  <% else %>
+    <p>Find the grade file you want to upload from your computer to the database. Once you have identified a file, click 'Upload' to upload it.</p>
+ <div id="SWFUploadTarget">
+    <%= form_tag(grades_upload_path(@section), {:multipart => true, :class => 'fileinputs'}) do %>
+      <%= file_field_tag 'Filedata', :class => 'file' %>
+      <input type="submit" name="Upload" value = 'Upload' class='button file' id = 'original'/>
+    <% end %>
+  </div>
+<h2>Upload File Format</h2>
+<table class='scrollike'>
+ <thead>
+  <tr>
+   <td>Student</td><td>Assignment #1</td><% 2.upto(5) do |n| %><td>#<%= n %></td><% end %>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td class='text'>Arthur, Chester</td><td>18</td><td>8</td><td>1</td><td>18</td><td>85</td>
+  </tr>
+  <tr>
+   <td class='text'>Cleveland, Grover</td><td>18</td><td>8</td><td>5</td><td>18</td><td>97</td>
+  </tr>
+  <tr>
+   <td class='text'>Fillmore, Millard</td><td>18</td><td>5</td><td>0</td><td>18</td><td>53</td>
+  </tr>
+  <tr>
+   <td class='text'>Hayes, Rutherford</td><td>18</td><td>7</td><td>7</td><td>18</td><td>81</td>
+  </tr>
+  <tr>
+   <td class='text'>McKinley, Willam</td><td>18</td><td>9</td><td>7</td><td>19</td><td>01</td>
+  </tr>
+ </tbody>
+</table>
+<p>The uploaded grades should be on one sheet of an Excel or OpenOffice spreadsheet file. The first column must contain student names or id numbers. Each column after the first should contain grades for one assignment. </p>
+<% end %>
+<%= link_to 'Return to gradebook', section_gradebook_path(@section) %>
+</div>
