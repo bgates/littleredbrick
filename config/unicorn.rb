@@ -10,7 +10,7 @@ listen "/tmp/littleredbrick.socket", :backlog => 64
 # nuke workers after 30 seconds instead of 60 seconds (the default)
 timeout 30
 # feel free to point this anywhere accessible on the filesystem
-user 'deployer', 'staff'
+user 'deploy', 'deploy'
 shared_path = '/srv/www/littleredbrick/shared'
 pid "#{shared_path}/pids/unicorn.pid"
 stderr_path "#{shared_path}/log/unicorn.stderr.log"
