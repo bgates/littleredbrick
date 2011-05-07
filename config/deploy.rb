@@ -32,10 +32,10 @@ set :unicorn_pid,    "#{current_path}/tmp/pids/unicorn.pid"
 
 namespace :deploy do
   task :start, :roles => :app, :except => { :no_release => true } do
-    sudo "/etc/init.d/unicorn start"
+    sudo "/etc/init.d/unicorn start /etc/unicorn/littleredbrick.conf"
   end
   task :stop, :roles => :app, :except => { :no_release => true } do
-    sudo "/etc/init.d/unicorn stop"
+    sudo "/etc/init.d/unicorn stop /etc/unicorn/littleredbrick.conf"
   end
   task :restart, :roles => :app, :except => { :no_release => true } do
     stop

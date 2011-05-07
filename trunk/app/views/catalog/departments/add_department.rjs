@@ -1,2 +1,0 @@
-page.insert_html :before, 'new_department', :partial => 'department_form', :locals => {:department_counter => params[:id]}
-page.replace_html 'new_department', link_to('Add department', :url => {:action => "add_department", :id => params[:id].to_i + 1}, :remote => true)

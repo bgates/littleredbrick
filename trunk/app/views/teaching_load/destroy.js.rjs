@@ -1,1 +1,0 @@
-  page.remove "section_#{params[:section_id]}"

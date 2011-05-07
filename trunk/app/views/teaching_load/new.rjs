@@ -1,6 +1,0 @@
-page.insert_html :bottom, 'section_form_body', :partial => 'section', :locals => {:section => Section.new, :sections => @department_subjects, :low => @low_period, :high => @high_period, :term => params[:term], :tracks => @tracks, :section_counter => @n, :teacher => params[:id], :new => true}
-page << %q{var elm = $$('#section_form .new');elm.invoke('setStyle','display:none');elm.invoke('removeClassName','new');}
-page << %q{new Effect.multiple(elm, Effect.Appear)}
-  page.replace 'add_link', "#{link_to "Add section", edit_teaching_load_url(:term => params[:term], :length => @n + 1, :id => params[:id]), :id => 'add_link'}"
-  #this add_link doesn't get the xhr behavior every time
-  page << "teachingLoadReset();"

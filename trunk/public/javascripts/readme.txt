@@ -1,1 +1,0 @@
-java -jar custom_rhino.jar -c infile.js > outfile.js 2>&1

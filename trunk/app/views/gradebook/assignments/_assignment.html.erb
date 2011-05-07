@@ -1,9 +1,0 @@
-<tr class = '<%= cycle('odd','even') %>'>
-  <td><%= assignment_link(assignment) %></td>
-  <td><%= assignment.date_due.strftime("%a %b %d") rescue '<span title="This assignment has individual due dates for each student">N/A</span>' %></td>
-  <td><%= truncate assignment.title, :length => 15 %></td>
-  <td><%= "#{truncate assignment.category, :length => 20}" %></td>
-  <td><%= assignment.point_value %></td>
-  <td><%= number_with_precision(assignment.average_score, :precision => 1) || 'N/A' %></td>
-  <td><%= number_with_precision(assignment.average_pct, :precision => 1) || 'N/A' %>(<%= @section.on_scale(assignment.average_pct) %>)</td>
-</tr>

@@ -1,6 +1,0 @@
-<div id="content">
-<h1>Initial Login</h1>
-<p>You have logged in as the parent of <%= current_user.children[0].full_name %>. If you are also the parent of other children at this school, you may combine accounts so you do not need to remember separate passwords to check on each child.</p>
-<p>Click <%= link_to "here", new_child_path(current_user) %> if you have multiple children at <%= @school.name %>.</p>
-<p>Click <%= link_to "here", edit_parent_path(current_user) %> if you have no other children at this school.</p>
-</div>

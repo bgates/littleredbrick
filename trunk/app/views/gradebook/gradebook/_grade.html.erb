@@ -1,4 +1,0 @@
-<% @grade = grade; array_index ||= grade_counter %>
-<td id = '<%= student.id %>_<%= grade.assignment_id %>' class = 'grade'>
-<%= text_field("grade[]", 'score', {:maxlength => '4', :tabindex => "#{class_size*array_index + position + 1}"}) %>
-</td>

@@ -1,7 +1,0 @@
-<div id = 'title'><h3><%= assignment.section.name %> Assignment</h3><h3><%= assignment.title %></h3></div>
-<div id = 'a_date'><h3>Assigned</h3><%= assignment.date_assigned.strftime(%Q{%a %b %d}) %></div>
-<div id = 'd_date'><h3>Due</h3><%= assignment.date_due.strftime(%Q{%a %b %d}) %></div>
-<div id = 'description'>
-<% if assignment.description %><h3>Description</h3> <%= assignment.description %><% end %>
-<h3>Point Value</h3><%= assignment.point_value %>
-</div>

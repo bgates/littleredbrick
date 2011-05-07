@@ -1,6 +1,0 @@
-<ul class='autocomplete_list'>
-  <% @potential_moderators.each do |moderator| %>
-    <li class='autocomplete_item' id='<%= moderator.id %>'><%= moderator.full_name %></li>
-  <% end %>
-  <%= li "No one with that name who could access this forum was found." if @potential_moderators.empty? %>
-</ul>

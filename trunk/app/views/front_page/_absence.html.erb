@@ -1,1 +1,0 @@
-<tr class="<%= cycle 'odd', 'even' %>"><td><%= absence.date.strftime("%B %d") %></td><td><%= absence.section.name %></td><td><%= checkmark('excused') if absence.code == 1 || absence.code == 2 %></td><td><%= checkmark('unexcused') if absence.code == 3 %></td><td><%= checkmark('tardy') if absence.code == 0 %></td></tr>

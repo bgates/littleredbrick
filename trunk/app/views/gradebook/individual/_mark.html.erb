@@ -1,7 +1,0 @@
-<tr style='<%= cycle('background-color: #ec8','') %>'>
-<th class='text'><%= link_to_if mark.reported_grade.description =~ /Marking Period (\d)/, mark.reported_grade.description, rbe_path(@student, @section, :marking_period => $1), :title => "Click to see #{@student.first_name}&#39;s performance in #{@section.name}" %></th>
- <td><%= mark.earned %></td>
- <td><%= mark.possible %></td>
- <td><%= number_with_precision(mark.grade, :precision => 1) %></td>
- <td><%= @section.on_scale(mark.grade) %></td>
-</tr>

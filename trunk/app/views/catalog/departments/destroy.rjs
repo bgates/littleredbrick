@@ -1,7 +1,0 @@
-page.visual_effect :drop_out, @table, :duration => 1
-page.delay(2) do 
-  page.remove(@table) 
-end
-
- 
- 
