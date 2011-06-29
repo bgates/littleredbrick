@@ -44,6 +44,7 @@ gem 'delayed_job'
 gem 'factory_girl_rails', :git => "http://github.com/CodeMonkeySteve/factory_girl_rails.git"
 
 gem 'paperclip'
+gem 'acts_as_list'
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
