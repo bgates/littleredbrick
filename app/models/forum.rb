@@ -7,7 +7,7 @@ class Forum < ActiveRecord::Base
   belongs_to                    :discussable, :polymorphic => true
   belongs_to                    :owner, :class_name => 'User'
   validates_presence_of         :name, :owner_id
-  validates_numericality_of     :position
+  validates_numericality_of     :position, :on => :update
   has_many                      :members, :class_name => 'User', 
                                 :finder_sql => '#{self.member_conditions}'
 
