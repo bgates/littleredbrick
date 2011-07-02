@@ -1,6 +1,6 @@
 class UserNotifier < ActionMailer::Base
 
-  default :from => "support@littleredbrick.com"
+  default :from => "auto-email@littleredbrick.com"
   
   def password_bypass(school, user)
     setup_email(user, school)
@@ -12,6 +12,7 @@ class UserNotifier < ActionMailer::Base
     setup_email(user, school)
     @subject = "Thanks for signing up with LittleRedBrick!"
     @url = "http://#{school.domain_name}.littleredbrick.com"
+    mail(:from => "welcome@littleredbrick.com")
   end
 
   def school_creation_notification(school, user)
