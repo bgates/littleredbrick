@@ -1,9 +1,0 @@
-  msg = "There was a problem with the attempt to #{controller.action_name} the grade"
-  page << "Dialog.alert('#{escape_javascript(error_messages_for(@grade, :header_message => msg, :message => nil))}',
-  {windowParameters: {width:400, height:200, zIndex: 1002, buttonClass:\"button\", className:\"error\"}, okLabel: 'close'
-  });"
-  if @grade.new_record?
-    page << "$('grade_description').addClassName('fieldWithErrors');"
-  else
-    page << "$$('#reported_grade_#{@grade.id} input')[1].addClassName('fieldWithErrors');"
-  end

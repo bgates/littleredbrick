@@ -1,5 +1,0 @@
-<% i ||= assignment.position %>
-<th id = 'assignment_<%= assignment.id %>'>
- <%= link_to "<", section_gradebook_path(@section, :start => @assignments[0].position - 1), :style => 'float:left', :title => 'previous assignment'  if (assignment_counter == 0 && @assignments[0].position > 1) %>
- <%= link_to i, section_assignment_path(section,assignment), :title => "#{assignment.point_value } points: #{assignment.title} [due #{assignment.date_due ? assignment.date_due.strftime("%a %b %d") : 'dates set for each student'}]", :class => 'date'%>
-</th>

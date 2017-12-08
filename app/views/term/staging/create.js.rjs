@@ -1,4 +1,0 @@
-  page.replace_html "enrollment_#{@section.id}", @section.enrollment + 1 #enrollment is   stale here
-  page.replace_html "#{@section.id}", :partial => 'student', :collection => @students
-  page.visual_effect 'highlight', "student_#{@new_student.id}", {:startcolor => '#f8f8ff', :endcolor => '#ffffff', :duration => 5.0}
-

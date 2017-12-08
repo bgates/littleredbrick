@@ -1,2 +1,0 @@
-module Beast::MonitorshipsHelper
-end

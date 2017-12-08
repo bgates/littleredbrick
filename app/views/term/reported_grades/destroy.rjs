@@ -1,3 +1,0 @@
-  page.replace_html 'list', :partial => 'rg', :collection => @reported_grades
-
-  page << "var removable = $('grade[predecessor_id]').getElementsBySelector('[value=\"#{@grade.to_param}\"]')[0]; if(removable){removable.remove();}; setReportedGradeForms();"

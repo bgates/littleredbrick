@@ -1,6 +1,0 @@
-<ul class='autocomplete_list'>
-  <% @teachers.each do |teacher| %>
-    <li class='autocomplete_item' id='<%= teacher.id %>'><%= teacher.full_name %></li>
-  <% end %>
-  <%= new_link_if_allowed %>
-</ul>

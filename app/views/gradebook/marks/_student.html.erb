@@ -1,7 +1,0 @@
-<tr id = "current_<%= student.id %>" class = "<%= cycle('odd','even') %>">
-  <td><%= @section.rollbook_entries.detect{|rbe|rbe.student_id == student.id}.position %></td>
-  <td id = "name_<%= student.id %>" class="text"><%= section_student_link(@section, student, student.last_first, 'this class') %></td>
-  <% @milestones[student.id].each do |milestone| %>
-    <td class = "mark" title="<%= milestone.earned %> points earned out of <%= milestone.possible %>"><%= percentage_for(milestone) %></td>
-  <% end %>
-</tr>

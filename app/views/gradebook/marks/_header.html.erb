@@ -1,3 +1,0 @@
-<th>
-  <%= link_to header_counter, section_mark_path(@section, header), :title => "#{header.description}"  %><%= link_to ' | edit', edit_section_mark_path(@section, header), :title => "click to edit or calculate marks for #{header.description}" if current_user.teaches?(@section) %>
-</th>

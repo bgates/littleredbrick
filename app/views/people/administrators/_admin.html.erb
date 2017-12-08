@@ -1,9 +1,0 @@
-<tr class='<%= cycle('odd','even') %>'>
- <td class='text'><%= link_to admin.display_name, administrator_path(admin), :title => "Click for more information about #{admin.display_name}" %></td>
- <td><%= admin.last_login.strftime("%I:%m%p %a, %b %d") rescue 'never' %></td>
- <td><%= admin.class.to_s %></td>
- <td><%= link_to "Edit", edit_administrator_path(admin) %></td>
- <% button, css, msg = admin.is_a?(Teacher)? ['Remove as Admin', 'teacher button', 'This will not destroy the teacher&#39;s account, just remove administrative privileges'] : ['Destroy Admin', 'button', 'This will destroy the administrator&#39;s account'] %>
- <td><%= button_to button, administrator_path(admin), :method => :delete, :class => css, :title => msg.html_safe unless @admins.length == 1 || current_user == admin %></td>
-</tr>
-

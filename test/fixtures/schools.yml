@@ -1,7 +1,0 @@
-default:
-  name: default
-  low_grade: 9
-  domain_name: default
-  high_grade: 12
-  teacher_limit: 100
-

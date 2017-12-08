@@ -1,9 +1,0 @@
-<tr class="<%= cycle('odd', 'even') %>">
- <td><%= grade.assignment.position %></td>
- <td><%= link_to grade.assignment.title, student_assignment_path(@section, grade.assignment) %></td>
- <td><%= link_to grade.assignment.category, student_assignments_path(@section, :cat => [grade.assignment.category]) %></td>
- <td><%= grade.due.strftime("%a %b %d") %></td>
- <td><%= grade.assignment.point_value %></td>
- <td><%= number_with_precision(grade.score, :precision => 1) || '-' %></td>
- <td><%= number_with_precision(grade.percent, :precision => 1) || '-' %></td>
-</tr>

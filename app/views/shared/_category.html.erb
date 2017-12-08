@@ -1,9 +1,0 @@
-<div id='categories'>
- <h3>Performance by Assignment Category</h3>
- <% if @categorized_performance.empty? %>
-  <p>Nothing has been assigned this marking period</p>
- <% else %>
-  <% @y_max = @categorized_performance.values.map{|pts| [pts[:earned], pts[:possible]]}.flatten.max %>
-  <img src="http://chart.apis.google.com/chart?cht=bvg&chs=300x140&chco=3b5e7e,66aebd&chd=t:<%= @categorized_performance.values.map{|pts| number_with_precision(pts[:earned], :precision => 0)}.join(',') %>|<%= @categorized_performance.values.map{|pts| pts[:possible]}.join(',') %>&chdl=Earned|Possible&chxt=x,y&chxl=0:|<%= @categorized_performance.keys.join('|') %>|1:|0|<%= @y_max %>&chf=c,s,efefef&chds=0,<%= @y_max %>&chbh=r,0.5,1.5" />
- <% end %>
-</div>
